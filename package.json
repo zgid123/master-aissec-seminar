@@ -1,0 +1,27 @@
+{
+  "name": "master-aissec-seminar",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export",
+    "ppt": "slidev export --format pptx"
+  },
+  "dependencies": {
+    "@alphacifer/core-utils": "^0.0.9",
+    "@alphacifer/slidev-addon-theme": "^0.0.2",
+    "@slidev/cli": "52.19.0",
+    "@slidev/theme-default": "0.25.0",
+    "@slidev/theme-seriph": "0.25.0",
+    "@slidev/types": "52.18.0",
+    "@vueuse/motion": "3.0.3",
+    "shiki": "4.3.1",
+    "shiki-magic-move": "1.4.0",
+    "vue": "3.5.40"
+  },
+  "devDependencies": {
+    "playwright-chromium": "1.61.1"
+  }
+}
