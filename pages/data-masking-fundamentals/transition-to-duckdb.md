@@ -7,7 +7,7 @@ transition: slide-left
 # Vì sao nhóm chốt DuckDB cho phần triển khai?
 
 <div class="why mt-6">
-  <div v-click><b>1</b><span>DuckDB là embedded database, nên nhóm dễ dựng demo ngay trong tiến trình ứng dụng.</span></div>
+  <div v-click><b>1</b><span>Từ các hướng AI gợi ý ban đầu, nhóm chốt DuckDB vì dễ bám đúng mục tiêu seminar.</span></div>
   <div v-click><b>2</b><span>Có sẵn SQL primitives để thử nghiệm masking: <code>CASE</code>, <code>concat</code>, <code>regexp</code>, macro, view.</span></div>
   <div v-click><b>3</b><span>Quan trọng nhất, nó giúp mình nhìn rõ ranh giới giữa masking logic và lớp enforcement.</span></div>
 </div>

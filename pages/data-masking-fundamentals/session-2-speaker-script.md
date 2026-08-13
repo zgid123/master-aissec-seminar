@@ -35,7 +35,7 @@ Vì vậy kiến trúc thực tế cần kết hợp masking + encryption + acce
 
 "Về ý tưởng thì dynamic masking khá rõ. Câu hỏi tiếp theo là triển khai như thế nào cho bối cảnh thực tế nhóm mình làm.
 
-Sau khi cân nhắc, nhóm chọn DuckDB vì nó là embedded database, dễ dựng demo trong application process, và có đủ SQL primitives như CASE, concat, macro, view để thử nghiệm masking logic.
+Từ các hướng AI gợi ý ban đầu, sau khi cân nhắc nhóm chọn DuckDB vì nó là embedded database, dễ dựng demo trong application process, và có đủ SQL primitives như CASE, concat, macro, view để thử nghiệm masking logic.
 
 Từ đây, mình xin mời bạn tiếp theo trình bày section 3: Dynamic Data Masking in DuckDB."
 
