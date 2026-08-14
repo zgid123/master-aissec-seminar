@@ -7,16 +7,16 @@ transition: slide-left
 # Vì sao chọn DuckDB cho phần triển khai?
 
 <div class="why mt-6">
-  <div v-click><b>1</b><span>DuckDB là <b>embedded / in-process analytical database</b> — chạy ngay trong application process, không cần server riêng nên dựng demo nhanh.</span></div>
-  <div v-click><b>2</b><span>Có sẵn SQL primitives để mô hình hóa masking: <code>CASE</code>, <code>concat</code>, <code>regexp</code>, macro, view.</span></div>
-  <div v-click><b>3</b><span>Quan trọng nhất, nó cho thấy rõ ranh giới giữa <b>masking logic</b> (trong SQL) và <b>lớp enforcement</b> (ai được thấy dữ liệu thật).</span></div>
+  <div v-click="1"><b>1</b><span>DuckDB là <b>embedded / in-process analytical database</b> — chạy ngay trong application process, không cần server riêng nên dựng demo nhanh.</span></div>
+  <div v-click="2"><b>2</b><span>Có sẵn SQL primitives để mô hình hóa masking: <code>CASE</code>, <code>concat</code>, <code>regexp</code>, macro, view.</span></div>
+  <div v-click="3"><b>3</b><span>Quan trọng nhất, nó cho thấy rõ ranh giới giữa <b>masking logic</b> (trong SQL) và <b>lớp enforcement</b> (ai được thấy dữ liệu thật).</span></div>
 </div>
 
-<div v-click class="mt-6 rounded-lg border border-cyan-300/35 bg-cyan-500/8 p-4 text-center text-lg transition-box">
+<div v-click="4" class="mt-6 rounded-lg border border-cyan-300/35 bg-cyan-500/8 p-4 text-center text-lg transition-box">
 Từ phần khái niệm, giờ mình chuyển sang phần triển khai cụ thể với DuckDB.
 </div>
 
-<div v-click class="mt-4 text-center text-[#2efab0] handoff-box">
+<div v-click="5" class="mt-4 text-center text-[#2efab0] handoff-box">
 Mời bạn <b>Trần Huy Vũ</b> trình bày section 3: <b>Dynamic Data Masking in DuckDB</b>.
 </div>
 
