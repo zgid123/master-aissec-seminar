@@ -6,21 +6,21 @@ transition: slide-left
 
 # Data Masking giúp ẩn phần không cần thiết
 
-Masking thay thế dữ liệu nhạy cảm bằng một biểu diễn an toàn hơn cho đúng mục đích sử dụng.{.op-60}
+Masking thay dữ liệu nhạy cảm bằng một dạng hiển thị an toàn hơn nhưng vẫn đủ dùng cho công việc.{.op-60}
 
 <div class="mask-example mt-7">
-  <div><small>Original</small><strong>john.doe@gmail.com</strong></div>
+  <div><small>Dữ liệu gốc</small><strong>john.doe@gmail.com</strong></div>
   <span>→</span>
-  <div class="result"><small>Masked</small><strong>j***@gmail.com</strong></div>
+  <div class="result"><small>Sau khi che</small><strong>j***@gmail.com</strong></div>
 </div>
 
 <div class="mt-6 grid grid-cols-2 gap-8 text-sm info-grid">
-  <div><b class="text-[#88ffff]">Dữ liệu thường được mask</b><br><span class="op-70">Email, phone, credit card, national ID, address, salary, medical và financial information.</span></div>
-  <div><b class="text-[#2efab0]">Người dùng điển hình</b><br><span class="op-70">Developer, tester, analyst, customer support và đối tác chỉ cần một phần dữ liệu.</span></div>
+  <div><b class="text-[#88ffff]">Dữ liệu thường được che</b><br><span class="op-70">Email, số điện thoại, thẻ tín dụng, số định danh, địa chỉ, lương, thông tin y tế và tài chính.</span></div>
+  <div><b class="text-[#2efab0]">Người dùng điển hình</b><br><span class="op-70">Lập trình viên, kiểm thử viên, nhân viên phân tích và hỗ trợ — những người chỉ cần một phần dữ liệu.</span></div>
 </div>
 
 <div class="mt-5 text-sm purpose-line">
-  <b class="text-[#ffda58]">Mục tiêu</b> · Giảm phơi lộ dữ liệu · Bảo vệ PII · Hỗ trợ <b>least privilege</b> · Mở dữ liệu an toàn cho dev, analyst, support.
+  <b class="text-[#ffda58]">Mục tiêu</b> · Giảm rủi ro lộ dữ liệu · Bảo vệ thông tin cá nhân (PII) · Chỉ cấp quyền ở mức tối thiểu cần thiết · Cho nhân viên dùng dữ liệu mà không thấy phần nhạy cảm.
 </div>
 
 <style scoped>
@@ -39,11 +39,11 @@ Masking thay thế dữ liệu nhạy cảm bằng một biểu diễn an toàn 
 [NOTE NHẮC BÀI — Slide 1/4: Data Masking là gì] (~50s)
 
 LỜI THOẠI GỢI Ý (slide không có animation → nói một mạch, dùng tay chỉ vào ví dụ):
-"Ở section 1, nhóm đã chỉ ra một vấn đề: user có thể đã authenticated, đã authorized, kết nối an toàn, và database cũng đã encrypted — nhưng dữ liệu nhạy cảm vẫn có thể bị lộ quá mức cần thiết.
-Data Masking xử lý đúng điểm này: nó thay dữ liệu nhạy cảm bằng một biểu diễn an toàn hơn, nhưng vẫn đủ dùng cho công việc.
-Ví dụ [chỉ tay vào slide]: email gốc john.doe@gmail.com sau khi mask còn j***@gmail.com — người dùng vẫn nhận ra domain và ngữ cảnh, nhưng không thấy được danh tính đầy đủ.
-Các trường thường được mask là email, phone, credit card, national ID, địa chỉ, lương, thông tin y tế và tài chính.
-Và mục tiêu cuối cùng là hỗ trợ least privilege: mở dữ liệu an toàn cho developer, analyst, support mà không phơi lộ thừa."
+"Ở phần 1, nhóm đã chỉ ra một vấn đề: người dùng có thể đã đăng nhập đúng, đã được cấp quyền, kết nối an toàn, và cơ sở dữ liệu cũng đã được mã hóa — nhưng dữ liệu nhạy cảm vẫn có thể bị lộ nhiều hơn mức cần thiết.
+Data Masking xử lý đúng điểm này: nó thay dữ liệu nhạy cảm bằng một dạng hiển thị an toàn hơn, nhưng vẫn đủ dùng cho công việc.
+Ví dụ [chỉ tay vào slide]: email gốc john.doe@gmail.com sau khi che chỉ còn j***@gmail.com — người xem vẫn biết đây là email dạng nào, nhưng không còn thấy được danh tính đầy đủ.
+Các trường thường được che là email, số điện thoại, thẻ tín dụng, số định danh, địa chỉ, lương, thông tin y tế và tài chính.
+Và mục tiêu cuối cùng là chỉ cấp quyền ở mức tối thiểu cần thiết: cho nhân viên (lập trình, kiểm thử, hỗ trợ) dùng được dữ liệu mà không thấy phần nhạy cảm."
 
-CHỐT (nhấn giọng): "Masking để GIẢM PHƠI LỘ, chứ không làm dữ liệu trở nên vô dụng."
+CHỐT (nhấn giọng): "Mục đích là GIẢM RỦI RO LỘ DỮ LIỆU, chứ không làm dữ liệu trở nên vô dụng."
 -->

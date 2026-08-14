@@ -7,7 +7,7 @@ transition: slide-left
 # Vì sao chọn DuckDB cho phần triển khai?
 
 <div class="why mt-6">
-  <div v-click="1"><b>1</b><span>DuckDB là <b>embedded / in-process analytical database</b> — chạy ngay trong application process, không cần server riêng nên dựng demo nhanh.</span></div>
+  <div v-click="1"><b>1</b><span>DuckDB là <b>embedded / in-process analytical database</b> — chạy ngay bên trong ứng dụng, không cần dựng máy chủ riêng nên làm demo rất nhanh.</span></div>
   <div v-click="2"><b>2</b><span>Có sẵn SQL primitives để mô hình hóa masking: <code>CASE</code>, <code>concat</code>, <code>regexp</code>, macro, view.</span></div>
   <div v-click="3"><b>3</b><span>Quan trọng nhất, nó cho thấy rõ ranh giới giữa <b>masking logic</b> (trong SQL) và <b>lớp enforcement</b> (ai được thấy dữ liệu thật).</span></div>
 </div>
@@ -37,7 +37,7 @@ Slide bản lề: chốt phần khái niệm của mình + bàn giao cho section
 [MỞ — khi tiêu đề hiện]
 "Về mặt khái niệm thì dynamic masking khá rõ. Câu hỏi tiếp theo là: triển khai thế nào cho bối cảnh thực tế của nhóm?"
 
-[CLICK 1] "Nhóm chọn DuckDB vì nó là embedded, in-process analytical database — chạy ngay trong application process, không cần dựng server riêng, nên rất nhanh để làm demo."
+[CLICK 1] "Nhóm chọn DuckDB vì nó là embedded, in-process analytical database — chạy ngay bên trong ứng dụng, không cần dựng máy chủ riêng, nên rất nhanh để làm demo."
 
 [CLICK 2] "Lý do thứ hai: DuckDB có sẵn các SQL primitives để mình mô hình hóa masking — như CASE, concat, regexp, rồi macro và view."
 
