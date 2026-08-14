@@ -19,13 +19,16 @@ Thiết kế thực tế cần <b class="text-[#2efab0]">masking + encryption + 
 </div>
 
 <!--
-[NOTE NHẮC BÀI — Slide 3/4: Masking ≠ Encryption] (~40s)
+[NOTE NHẮC BÀI — Slide 3/4: Masking ≠ Encryption] (~35s)
 
-Bảng hiện sẵn, chỉ có 1 lần CLICK cho box xanh cuối:
-- Thông điệp chính: masking và encryption ĐI CÙNG NHAU, KHÔNG thay thế nhau.
-- Encryption: bảo vệ dữ liệu khi LƯU TRỮ + TRUYỀN TẢI (chống lộ dữ liệu ở tầng storage).
-- Masking: kiểm soát phần HIỂN THỊ, giảm exposure trước mắt người dùng.
-- Không cần đọc hết bảng → chỉ nhấn 2-3 dòng: Goal, Output, Main use.
-- CLICK → hiện box: cần MASKING + ENCRYPTION + ACCESS CONTROL = defense in depth. Nhấn giọng.
-- Nếu hụt giờ: rút gọn slide này còn 2 câu rồi qua slide transition.
+LỜI THOẠI GỢI Ý (bảng hiện sẵn, 1 lần CLICK cho box xanh cuối):
+"Masking và encryption thường đi cùng nhau, nhưng KHÔNG thay thế cho nhau.
+Encryption tập trung bảo vệ dữ liệu khi LƯU TRỮ và TRUYỀN TẢI — kết quả là ciphertext, phải có key mới giải mã được.
+Masking thì tập trung bảo vệ phần HIỂN THỊ: kết quả vẫn đọc được nhưng đã được che bớt, và thường không cần khôi phục lại."
+(Không cần đọc hết bảng — chỉ nhấn 3 dòng: Goal, Output, Main use.)
+
+[CLICK] → hiện box, nhấn giọng:
+"Hệ thống thực tế cần cả MASKING + ENCRYPTION + ACCESS CONTROL — mỗi cơ chế giải quyết một vấn đề khác nhau, đó chính là defense in depth."
+
+NẾU HỤT GIỜ: rút slide này còn 2 câu (Goal + box tổng kết) rồi qua thẳng slide transition.
 -->

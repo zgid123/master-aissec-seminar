@@ -34,11 +34,15 @@ Static bảo vệ <b class="text-[#88ffff]">bản sao</b>; Dynamic kiểm soát 
 </style>
 
 <!--
-[NOTE NHẮC BÀI — Slide 2/4: Static vs Dynamic] (~45s)
+[NOTE NHẮC BÀI — Slide 2/4: Static vs Dynamic] (~50s)
 
-Hai cột hiện sẵn, chỉ có 1 lần CLICK cho câu tổng kết cuối:
-- Cột trái — STATIC: che dữ liệu TRƯỚC trên bản copy → dùng cho dev/test/training. Dữ liệu đã bị đổi sẵn.
-- Cột phải — DYNAMIC: dữ liệu gốc KHÔNG đổi; che tại QUERY TIME theo role / access context.
-- CLICK → hiện câu tổng kết: "Static bảo vệ BẢN SAO; Dynamic kiểm soát KHẢ NĂNG NHÌN THẤY trong hệ thống đang chạy." → nhấn giọng câu này.
-- Nhắc: seminar mình tập trung vào DYNAMIC (mở đường cho phần DuckDB sau).
+LỜI THOẠI GỢI Ý (hai cột hiện sẵn, 1 lần CLICK cho câu tổng kết):
+"Có hai hướng masking phổ biến.
+Thứ nhất — Static Data Masking: dữ liệu được che TRƯỚC trên một bản copy, rồi mới đưa sang môi trường development, testing hay training. Ưu điểm là an toàn cho môi trường non-production, nhưng dữ liệu trong bản sao đã bị thay đổi cố định.
+Thứ hai — Dynamic Data Masking: dữ liệu gốc KHÔNG đổi. Việc che diễn ra ngay tại query time, tùy theo role hoặc access context của người truy vấn."
+
+[CLICK] → hiện câu tổng kết, nhấn giọng:
+"Static bảo vệ BẢN SAO; còn Dynamic kiểm soát KHẢ NĂNG NHÌN THẤY trong hệ thống đang chạy."
+
+NHẮC: seminar của nhóm tập trung vào DYNAMIC — đây là nền tảng cho phần DuckDB ở section 3.
 -->
