@@ -21,3 +21,7 @@ src: ./static-vs-dynamic-masking.md
 ---
 src: ./masking-does-not-replace-encryption.md
 ---
+
+---
+src: ./transition-to-duckdb.md
+---
