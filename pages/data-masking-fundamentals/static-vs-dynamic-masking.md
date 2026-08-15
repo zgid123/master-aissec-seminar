@@ -15,7 +15,7 @@ transition: slide-left
   <div>
     <h3>Dynamic Data Masking</h3>
     <p><b>Dữ liệu gốc</b> → Truy vấn + Quy tắc → <b>Kết quả theo quyền</b></p>
-    <p>Dữ liệu gốc không đổi; kết quả chỉ được che ngay lúc truy vấn, tùy theo quyền của người truy vấn.</p>
+    <p>Dữ liệu lưu trong database <b>không hề đổi</b>; việc che chỉ áp lên <b>kết quả trả về</b> ngay lúc truy vấn, tùy theo quyền của người truy vấn.</p>
   </div>
 </div>
 
@@ -39,7 +39,9 @@ Static bảo vệ <b class="text-[#88ffff]">bản sao</b>; Dynamic kiểm soát 
 LỜI THOẠI GỢI Ý (hai cột hiện sẵn):
 "Có hai hướng che dữ liệu phổ biến.
 Thứ nhất — Static Data Masking: dữ liệu được che SẴN trên một bản sao, rồi mới đưa sang môi trường phát triển, kiểm thử hay huấn luyện. Ưu điểm là an toàn cho các môi trường không phải dữ liệu thật, nhưng dữ liệu trong bản sao đã bị thay đổi cố định.
-Thứ hai — Dynamic Data Masking: dữ liệu gốc KHÔNG đổi. Việc che chỉ diễn ra ngay lúc truy vấn, tùy theo vai trò hoặc quyền của người truy vấn."
+Thứ hai — Dynamic Data Masking: dữ liệu lưu trong database KHÔNG hề đổi. Việc che chỉ áp lên KẾT QUẢ TRẢ VỀ, ngay tại thời điểm truy vấn, tùy theo vai trò hoặc quyền của người truy vấn."
+
+(Chi tiết "che áp lên kết quả trả về" rất quan trọng — nó dẫn thẳng sang giới hạn của masking ở slide 3.)
 
 [CLICK] → hiện câu tổng kết, nhấn giọng:
 "Static bảo vệ BẢN SAO; còn Dynamic kiểm soát KHẢ NĂNG NHÌN THẤY trong hệ thống đang chạy."
