@@ -1,12 +1,44 @@
 Mình đề xuất chốt seminar thành **4 sections chính**, tương ứng luôn với **4 members**. Mỗi section có scope đủ rõ để từng người tự research và làm slides mà ít bị overlap.
 
-# Table of Contents
+# Mục lục — Table of Contents
 
-### 01 — Database Security Overview
+## 01 — Database Security Overview
 
-**Tổng quan về bảo mật cơ sở dữ liệu**
+**TỔNG QUAN BẢO MẬT CƠ SỞ DỮ LIỆU**
 
-Mục tiêu của section này là tạo nền tảng: **DBMS đang phải bảo vệ những gì, trước những nguy cơ nào, và tại sao các cơ chế security truyền thống vẫn chưa giải quyết hoàn toàn việc lộ dữ liệu nhạy cảm.**
+Những kiến thức nền tảng về bảo mật cơ sở dữ liệu, tam giác CIA, mô hình AAA và phòng thủ chiều sâu.
+
+---
+
+## 02 — Data Masking Fundamentals
+
+**NỀN TẢNG VỀ DATA MASKING**
+
+Khái niệm, vai trò, nguyên tắc của Data Masking và bài toán bảo vệ dữ liệu ở tầng hiển thị.
+
+---
+
+## 03 — Dynamic Data Masking in DuckDB
+
+**DYNAMIC DATA MASKING TRONG DUCKDB**
+
+Cơ chế hoạt động, kỹ thuật triển khai Dynamic Data Masking trong kiến trúc nhúng của DuckDB.
+
+---
+
+## 04 — Demonstration & Discussion
+
+**DEMO VÀ THẢO LUẬN**
+
+Minh họa thực tế theo ngữ cảnh truy cập, đánh giá kết quả và thảo luận các giới hạn bảo mật.
+
+---
+
+# 01 — DATABASE SECURITY OVERVIEW
+
+## **TỔNG QUAN BẢO MẬT CƠ SỞ DỮ LIỆU**
+
+> **Mục tiêu Section 1:** Xây dựng nền tảng tư duy: **DBMS cần bảo vệ những gì, trước những nguy cơ nào, và tại sao các cơ chế kiểm soát truyền thống vẫn chưa giải quyết triệt để bài toán lộ dữ liệu nhạy cảm.**
 
 Nội dung nên tìm hiểu:
 
