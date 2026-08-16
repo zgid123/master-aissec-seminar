@@ -5,7 +5,6 @@ background: ../../assets/heading.png
 ---
 
 <div class="flex flex-col items-center justify-center text-center">
-  <span class="text-xs tracking-[0.3em] text-[#38edf6] uppercase font-bold mb-2">PHẦN 01</span>
   <h1 class="text-3xl font-extrabold text-[#38edf6] uppercase tracking-wider">TỔNG QUAN BẢO MẬT CƠ SỞ DỮ LIỆU</h1>
 </div>
 
