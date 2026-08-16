@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "@alphacifer/core-utils": "^0.0.9",
-    "@alphacifer/slidev-addon-theme": "^0.0.2",
+    "@alphacifer/slidev-addon-theme": "^0.0.4",
     "@slidev/cli": "52.19.0",
     "@slidev/theme-default": "0.25.0",
     "@slidev/theme-seriph": "0.25.0",
