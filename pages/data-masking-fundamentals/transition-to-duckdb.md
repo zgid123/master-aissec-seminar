@@ -15,10 +15,6 @@ transition: slide-left
 Dynamic Data Masking nghe khá đơn giản trong một DBMS truyền thống. Nhưng trong một <b class="text-[#88ffff]">embedded analytical database như DuckDB</b> thì triển khai ra sao — và <b class="text-[#88ffff]">ai thực thi policy?</b>
 </div>
 
-<div v-click="4" class="mt-4 text-center text-[#2efab0] handoff-box">
-Mời bạn <b>Trần Huy Vũ</b> trình bày section 3: <b>Dynamic Data Masking in DuckDB</b>.
-</div>
-
 <style scoped>
 .why { display:grid; gap:.8rem; grid-auto-rows:min-content; align-content:start; min-height:7.4rem; }
 .why > div { display:grid; grid-template-columns:2rem 1fr; gap:.8rem; align-items:start; padding:.85rem 1rem; border-left:4px solid #88ffff; background:rgba(255,255,255,.045); }
@@ -44,7 +40,7 @@ QUAN TRỌNG: KHÔNG nói trước nội dung kỹ thuật của section 3 (ki�
 
 [CLICK 3 — đọc chậm, đây là câu chuyển section] "Nên câu hỏi đặt ra là: Dynamic Data Masking nghe khá đơn giản trong một DBMS truyền thống, nhưng trong một embedded analytical database như DuckDB thì triển khai ra sao, và ai thực thi policy?"
 
-[CLICK 4 — quay sang mời speaker kế tiếp, dứt khoát] "Phần trả lời xin nhường lại cho section 3. Mình xin mời bạn Trần Huy Vũ trình bày — Dynamic Data Masking in DuckDB. Cảm ơn mọi người."
+"Phần trả lời xin nhường lại cho section 3. Mình xin mời bạn Trần Huy Vũ trình bày — Dynamic Data Masking in DuckDB. Cảm ơn mọi người."
 
 NHẮC:
 - Đừng thêm nội dung kỹ thuật MỚI ở slide này — chỉ chốt + mở đường.
