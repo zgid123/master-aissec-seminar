@@ -1,0 +1,11 @@
+{
+  "name": "duckdb-masking-demo",
+  "private": true,
+  "packageManager": "pnpm@11.1.2",
+  "scripts": {
+    "dev": "pnpm --parallel --filter @demo/api --filter @demo/web dev",
+    "build": "pnpm -r build",
+    "typecheck": "pnpm -r typecheck",
+    "db:seed": "pnpm --filter @demo/api db:seed"
+  }
+}

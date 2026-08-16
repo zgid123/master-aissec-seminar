@@ -1,0 +1,5 @@
+node_modules
+dist
+*.tsbuildinfo
+apps/api/data/*.duckdb
+apps/api/data/*.wal
