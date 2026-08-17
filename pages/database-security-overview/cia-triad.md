@@ -47,42 +47,43 @@ CIA xác định **chúng ta cần bảo vệ điều gì**: giữ bí mật d�
 .principles {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  gap: clamp(0.5rem, 1.2vw, 0.85rem);
+  margin-top: 0.6rem;
 }
 
 .principles > div {
   display: flex;
-  gap: 0.9rem;
-  padding: 1.15rem 1.1rem;
+  gap: 0.75rem;
+  padding: clamp(0.55rem, 1.2vh, 0.85rem) clamp(0.65rem, 1.2vw, 0.95rem);
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-width: 4px;
+  border-top-width: 3.5px;
   border-top-color: #2efab0;
-  border-radius: 0 0 0.75rem 0.75rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 0 0 0.65rem 0.65rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .principles b {
   color: #2efab0;
-  font-size: 2rem;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
   line-height: 1;
   font-weight: 900;
 }
 
 .principles strong {
   display: block;
-  font-size: 1.05rem;
+  font-size: clamp(0.82rem, 1.1vw, 0.92rem);
   color: #ffffff;
   font-weight: 700;
-  line-height: 1.35;
-  margin-bottom: 0.4rem;
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
 }
 
 .principles small {
   display: block;
   color: #e2e8f0;
-  font-size: 0.85rem;
-  line-height: 1.55;
+  font-size: clamp(0.72rem, 0.95vw, 0.78rem);
+  line-height: 1.4;
   opacity: 0.95;
   text-align: justify;
 }
@@ -90,25 +91,26 @@ CIA xác định **chúng ta cần bảo vệ điều gì**: giữ bí mật d�
 .callout-box {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  padding: 0.75rem 1.15rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  gap: 0.7rem;
+  padding: clamp(0.35rem, 0.8vh, 0.55rem) clamp(0.65rem, 1.2vw, 0.95rem);
+  border-radius: 0.65rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
+  margin-top: 0.55rem !important;
 }
 
 .callout-box.amber {
   background: linear-gradient(90deg, rgba(245, 158, 11, 0.16) 0%, rgba(245, 158, 11, 0.06) 100%);
   border: 1.5px solid rgba(251, 191, 36, 0.45);
-  box-shadow: 0 0 20px rgba(245, 158, 11, 0.12);
+  box-shadow: 0 0 16px rgba(245, 158, 11, 0.1);
 }
 
 .callout-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding: 0.35rem;
+  border-radius: 0.45rem;
   flex-shrink: 0;
 }
 
@@ -120,7 +122,8 @@ CIA xác định **chúng ta cần bảo vệ điều gì**: giữ bí mật d�
 
 .callout-text {
   color: #fef3c7;
-  line-height: 1.55;
+  font-size: clamp(0.72rem, 1vw, 0.78rem);
+  line-height: 1.4;
   text-align: justify;
 }
 </style>

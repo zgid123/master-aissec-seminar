@@ -36,42 +36,43 @@ Một cơ sở dữ liệu không chỉ là nơi lưu trữ thông tin — đó 
 .db-explain {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: 1.25rem;
+  gap: clamp(0.6rem, 1.3vw, 1rem);
+  margin-top: 0.8rem;
 }
 
 .db-explain > div {
   display: flex;
-  gap: 1rem;
-  padding: 1.35rem 1.2rem;
+  gap: 0.85rem;
+  padding: clamp(0.7rem, 1.5vh, 1.1rem) clamp(0.75rem, 1.3vw, 1.05rem);
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-top-width: 4px;
+  border-top-width: 3.5px;
   border-top-color: #2efab0;
-  border-radius: 0 0 0.75rem 0.75rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 0 0 0.65rem 0.65rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .db-explain b {
   color: #2efab0;
-  font-size: 2.2rem;
+  font-size: clamp(1.6rem, 2.2vw, 2rem);
   line-height: 1;
   font-weight: 900;
 }
 
 .db-explain strong {
   display: block;
-  font-size: 1.05rem;
+  font-size: clamp(0.85rem, 1.15vw, 0.98rem);
   color: #ffffff;
   font-weight: 700;
-  line-height: 1.4;
-  margin-bottom: 0.5rem;
+  line-height: 1.3;
+  margin-bottom: 0.35rem;
 }
 
 .db-explain small {
   display: block;
   color: #e2e8f0;
-  font-size: 0.88rem;
-  line-height: 1.55;
+  font-size: clamp(0.74rem, 1vw, 0.82rem);
+  line-height: 1.45;
   opacity: 0.95;
   text-align: justify;
 }

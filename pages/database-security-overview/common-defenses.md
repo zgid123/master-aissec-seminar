@@ -43,33 +43,34 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
 .defenses {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.15rem;
+  gap: clamp(0.45rem, 1.1vw, 0.75rem);
+  margin-top: 0.55rem;
 }
 
 .defenses > div {
-  padding: 1.05rem 1.15rem;
+  padding: clamp(0.45rem, 1vh, 0.7rem) clamp(0.65rem, 1.2vw, 0.95rem);
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-left-width: 4px;
+  border-left-width: 3.5px;
   border-left-color: #2efab0;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .defenses strong {
   display: block;
-  font-size: 1.05rem;
+  font-size: clamp(0.82rem, 1.1vw, 0.92rem);
   color: #2efab0;
   font-weight: 700;
-  line-height: 1.35;
-  margin-bottom: 0.35rem;
+  line-height: 1.25;
+  margin-bottom: 0.2rem;
 }
 
 .defenses small {
   display: block;
   color: #e2e8f0;
-  font-size: 0.86rem;
-  line-height: 1.5;
+  font-size: clamp(0.7rem, 0.92vw, 0.76rem);
+  line-height: 1.36;
   opacity: 0.95;
   text-align: justify;
 }
@@ -83,25 +84,26 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
 .callout-box {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  padding: 0.75rem 1.15rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  gap: 0.7rem;
+  padding: clamp(0.35rem, 0.8vh, 0.55rem) clamp(0.65rem, 1.2vw, 0.95rem);
+  border-radius: 0.65rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
+  margin-top: 0.55rem !important;
 }
 
 .callout-box.emerald {
   background: linear-gradient(90deg, rgba(16, 185, 129, 0.16) 0%, rgba(16, 185, 129, 0.06) 100%);
   border: 1.5px solid rgba(52, 211, 153, 0.45);
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.12);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.1);
 }
 
 .callout-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding: 0.35rem;
+  border-radius: 0.45rem;
   flex-shrink: 0;
 }
 
@@ -113,7 +115,8 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
 
 .callout-text {
   color: #d1fae5;
-  line-height: 1.55;
+  font-size: clamp(0.72rem, 1vw, 0.78rem);
+  line-height: 1.38;
   text-align: justify;
 }
 </style>

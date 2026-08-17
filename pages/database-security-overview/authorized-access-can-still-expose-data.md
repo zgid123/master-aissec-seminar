@@ -43,38 +43,39 @@ Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn p
 .exposure {
   display: grid;
   grid-template-columns: 1fr auto 1.15fr;
-  gap: 1.25rem;
+  gap: clamp(0.6rem, 1.3vw, 1rem);
   align-items: center;
+  margin-top: 0.6rem;
 }
 
 .exposure .card {
-  padding: 1.15rem 1.35rem;
+  padding: clamp(0.6rem, 1.2vh, 0.85rem) clamp(0.75rem, 1.3vw, 1.1rem);
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.06);
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  border-radius: 0.65rem;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .exposure .arrow {
   color: #38edf6;
-  font-size: 2.2rem;
+  font-size: clamp(1.4rem, 2vw, 1.8rem);
 }
 
 .exposure .card-title {
   display: block;
   color: #38edf6;
-  font-size: 1rem;
+  font-size: clamp(0.82rem, 1.1vw, 0.92rem);
   font-weight: 700;
-  margin-bottom: 0.65rem;
+  margin-bottom: 0.35rem;
 }
 
 .exposure p {
   display: flex;
   justify-content: space-between;
-  margin: 0.45rem 0;
-  font-size: 0.88rem;
+  margin: 0.25rem 0;
+  font-size: clamp(0.72rem, 0.98vw, 0.8rem);
   color: #e2e8f0;
-  line-height: 1.5;
+  line-height: 1.4;
 }
 
 .exposure span {
@@ -93,25 +94,26 @@ Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn p
 .callout-box {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  padding: 0.75rem 1.15rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  gap: 0.7rem;
+  padding: clamp(0.35rem, 0.8vh, 0.55rem) clamp(0.65rem, 1.2vw, 0.95rem);
+  border-radius: 0.65rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
+  margin-top: 0.55rem !important;
 }
 
 .callout-box.cyan {
   background: linear-gradient(90deg, rgba(6, 182, 212, 0.16) 0%, rgba(6, 182, 212, 0.06) 100%);
   border: 1.5px solid rgba(56, 237, 246, 0.45);
-  box-shadow: 0 0 20px rgba(6, 182, 212, 0.12);
+  box-shadow: 0 0 16px rgba(6, 182, 212, 0.1);
 }
 
 .callout-icon {
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding: 0.35rem;
+  border-radius: 0.45rem;
   flex-shrink: 0;
 }
 
@@ -123,7 +125,8 @@ Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn p
 
 .callout-text {
   color: #cffafe;
-  line-height: 1.55;
+  font-size: clamp(0.72rem, 1vw, 0.78rem);
+  line-height: 1.4;
   text-align: justify;
 }
 </style>
