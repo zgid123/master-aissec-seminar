@@ -1,95 +1,56 @@
 ---
-layout: default
+layout: shifting-intro
 hideInToc: true
 transition: slide-left
 ---
 
-<div class="slide-container">
+# Mô hình phòng thủ chiều sâu (Defense-in-Depth)
 
-<div class="slide-header">
-  <h1 class="slide-title">MÔ HÌNH PHÒNG THỦ CHIỀU SÂU (DEFENSE-IN-DEPTH)</h1>
-  <p class="slide-subtitle">
-    Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô hiệu hóa từng loại nguy cơ.
-  </p>
-</div>
+Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô hiệu hóa từng loại nguy cơ.{.op-60}
 
-<div class="defenses">
-  <div v-click>
+<div class="defenses mt-5">
+  <div v-click="1">
     <strong>Access Control & Least Privilege</strong>
     <small>Chỉ cấp đúng quyền tối thiểu cần thiết — chặn trực tiếp <em class="threat-tag">Privilege abuse</em> và giới hạn thiệt hại từ <em class="threat-tag">Insider threat</em>.</small>
   </div>
-  <div v-click>
+  <div v-click="2">
     <strong>Input Validation & Parameterization</strong>
     <small>Kiểm tra và khử khuẩn dữ liệu đầu vào trước khi thực thi truy vấn — triệt tiêu <em class="threat-tag">SQL Injection</em> ngay từ gốc.</small>
   </div>
-  <div v-click>
+  <div v-click="3">
     <strong>Auditing & Monitoring</strong>
     <small>Ghi log và giám sát hành vi bất thường theo thời gian thực — phát hiện sớm các dấu hiệu <em class="threat-tag">Insider threat</em>.</small>
   </div>
-  <div v-click>
+  <div v-click="4">
     <strong>Backup & Disaster Recovery</strong>
     <small>Sao lưu định kỳ và cô lập bản sao an toàn — đảm bảo khôi phục dữ liệu nguyên vẹn khi xảy ra <em class="threat-tag">Ransomware</em>.</small>
   </div>
 </div>
 
-<div v-click class="callout-box emerald">
+<div v-click="5" class="callout-box emerald mt-4">
   <div class="callout-icon emerald">
-    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       <path d="M9 12l2 2 4-4"/>
     </svg>
   </div>
-  <div class="callout-text">
-    <strong class="text-emerald-300 font-bold">Nguyên tắc Defense-in-Depth:</strong> Không có một giải pháp đơn lẻ nào bảo vệ toàn diện hệ thống — <b class="text-white font-bold">CHỈ KHI PHỐI HỢP ĐA TẦNG</b> (phân quyền, mã hóa, giám sát, sao lưu), cơ sở dữ liệu mới được bảo vệ an toàn trước mọi rủi ro.
+  <div class="callout-text text-sm">
+    <strong class="text-emerald-300 font-bold">Nguyên tắc Defense-in-Depth:</strong> Không có giải pháp đơn lẻ nào bảo vệ toàn diện — <b class="text-white font-bold">chỉ khi phối hợp đa tầng</b> (phân quyền, mã hóa, giám sát, sao lưu), CSDL mới được bảo vệ an toàn trước mọi rủi ro.
   </div>
 </div>
 
-</div>
-
 <style scoped>
-.slide-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 0.5rem 0.25rem 0.5rem;
-  justify-content: flex-start;
-}
-
-.slide-header {
-  margin-bottom: 1.25rem;
-}
-
-.slide-title {
-  font-size: 2.1rem;
-  font-weight: 800;
-  color: #38edf6;
-  letter-spacing: 0.03em;
-  line-height: 1.2;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.slide-subtitle {
-  font-size: 1.05rem;
-  line-height: 1.65;
-  color: #c7f8ff;
-  opacity: 0.95;
-  margin-top: 0.85rem;
-  margin-bottom: 0;
-  text-align: justify;
-}
-
 .defenses {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
+  gap: 1.15rem;
 }
 
 .defenses > div {
-  padding: 1.25rem 1.2rem;
-  background: rgba(255, 255, 255, 0.08);
+  padding: 1.05rem 1.15rem;
+  background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-left-width: 5px;
+  border-left-width: 4px;
   border-left-color: #2efab0;
   border-radius: 0.5rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
@@ -97,18 +58,18 @@ transition: slide-left
 
 .defenses strong {
   display: block;
-  font-size: 1.15rem;
+  font-size: 1.05rem;
   color: #2efab0;
   font-weight: 700;
-  line-height: 1.4;
-  margin-bottom: 0.5rem;
+  line-height: 1.35;
+  margin-bottom: 0.35rem;
 }
 
 .defenses small {
   display: block;
   color: #e2e8f0;
-  font-size: 0.93rem;
-  line-height: 1.65;
+  font-size: 0.86rem;
+  line-height: 1.5;
   opacity: 0.95;
   text-align: justify;
 }
@@ -122,10 +83,9 @@ transition: slide-left
 .callout-box {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1.35rem;
-  padding: 0.95rem 1.25rem;
-  border-radius: 0.85rem;
+  gap: 0.85rem;
+  padding: 0.75rem 1.15rem;
+  border-radius: 0.75rem;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(10px);
 }
@@ -140,8 +100,8 @@ transition: slide-left
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem;
-  border-radius: 0.6rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   flex-shrink: 0;
 }
 
@@ -152,9 +112,8 @@ transition: slide-left
 }
 
 .callout-text {
-  font-size: 0.95rem;
   color: #d1fae5;
-  line-height: 1.65;
+  line-height: 1.55;
   text-align: justify;
 }
 </style>

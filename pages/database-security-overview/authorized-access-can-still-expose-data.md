@@ -1,28 +1,23 @@
 ---
-layout: default
+layout: shifting-intro
 hideInToc: true
 transition: slide-left
 ---
 
-<div class="slide-container">
+# Truy cập hợp lệ vẫn có thể làm lộ dữ liệu
 
-<div class="slide-header">
-  <h1 class="slide-title">TRUY CẬP HỢP LỆ VẪN CÓ THỂ LÀM LỘ DỮ LIỆU</h1>
-  <p class="slide-subtitle">
-    Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn phạm vi công việc cần thiết.
-  </p>
-</div>
+Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn phạm vi công việc cần thiết.{.op-60}
 
-<div class="exposure">
-  <div class="card">
+<div class="exposure mt-5">
+  <div class="card" v-click="1">
     <small class="card-title">Customer Support (User A)</small>
     <p><span>✓</span> Authenticated</p>
     <p><span>✓</span> Authorized</p>
     <p><span>✓</span> Secure connection</p>
     <p><span>✓</span> Database encrypted</p>
   </div>
-  <b class="arrow">→</b>
-  <div class="card record">
+  <b class="arrow" v-click="2">→</b>
+  <div class="card record" v-click="2">
     <small class="card-title">Customer Record (Bảng dữ liệu)</small>
     <p>Tên khách hàng <span>✓ Hợp lệ</span></p>
     <p>Trạng thái đơn hàng <span>✓ Hợp lệ</span></p>
@@ -31,90 +26,55 @@ transition: slide-left
   </div>
 </div>
 
-<div v-click class="callout-box cyan">
+<div v-click="3" class="callout-box cyan mt-4">
   <div class="callout-icon cyan">
-    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
       <circle cx="12" cy="12" r="10"/>
       <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
       <line x1="12" y1="17" x2="12.01" y2="17"/>
     </svg>
   </div>
-  <div class="callout-text">
-    <strong class="text-[#38edf6] font-bold">Câu hỏi cốt lõi:</strong> Làm thế nào để cho phép người dùng truy cập dữ liệu phục vụ công việc mà <b class="text-white font-bold">KHÔNG LÀM LỘ CÁC THÔNG TIN NHẠY CẢM</b> không liên quan?
+  <div class="callout-text text-sm">
+    <strong class="text-[#38edf6] font-bold">Câu hỏi cốt lõi:</strong> Làm thế nào để cho phép truy cập dữ liệu phục vụ công việc mà <b class="text-white font-bold">không làm lộ thông tin nhạy cảm</b> không liên quan?
   </div>
 </div>
 
-</div>
-
 <style scoped>
-.slide-container {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  padding: 0.5rem 0.25rem 0.5rem;
-  justify-content: flex-start;
-}
-
-.slide-header {
-  margin-bottom: 1.25rem;
-}
-
-.slide-title {
-  font-size: 2.1rem;
-  font-weight: 800;
-  color: #38edf6;
-  letter-spacing: 0.03em;
-  line-height: 1.2;
-  margin: 0;
-  text-transform: uppercase;
-}
-
-.slide-subtitle {
-  font-size: 1.05rem;
-  line-height: 1.65;
-  color: #c7f8ff;
-  opacity: 0.95;
-  margin-top: 0.85rem;
-  margin-bottom: 0;
-  text-align: justify;
-}
-
 .exposure {
   display: grid;
   grid-template-columns: 1fr auto 1.15fr;
-  gap: 1.5rem;
+  gap: 1.25rem;
   align-items: center;
-  margin-top: 0.5rem;
 }
 
 .exposure .card {
-  padding: 1.35rem 1.5rem;
+  padding: 1.15rem 1.35rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
-  background: rgba(255, 255, 255, 0.08);
+  background: rgba(255, 255, 255, 0.06);
   border-radius: 0.75rem;
   box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
 }
 
 .exposure .arrow {
   color: #38edf6;
-  font-size: 2.5rem;
+  font-size: 2.2rem;
 }
 
 .exposure .card-title {
   display: block;
   color: #38edf6;
-  font-size: 1.1rem;
+  font-size: 1rem;
   font-weight: 700;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.65rem;
 }
 
 .exposure p {
   display: flex;
   justify-content: space-between;
-  margin: 0.55rem 0;
-  font-size: 0.95rem;
+  margin: 0.45rem 0;
+  font-size: 0.88rem;
   color: #e2e8f0;
-  line-height: 1.65;
+  line-height: 1.5;
 }
 
 .exposure span {
@@ -133,10 +93,9 @@ transition: slide-left
 .callout-box {
   display: flex;
   align-items: center;
-  gap: 1rem;
-  margin-top: 1.35rem;
-  padding: 0.95rem 1.25rem;
-  border-radius: 0.85rem;
+  gap: 0.85rem;
+  padding: 0.75rem 1.15rem;
+  border-radius: 0.75rem;
   box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
   backdrop-filter: blur(10px);
 }
@@ -151,8 +110,8 @@ transition: slide-left
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.6rem;
-  border-radius: 0.6rem;
+  padding: 0.5rem;
+  border-radius: 0.5rem;
   flex-shrink: 0;
 }
 
@@ -163,9 +122,8 @@ transition: slide-left
 }
 
 .callout-text {
-  font-size: 0.98rem;
   color: #cffafe;
-  line-height: 1.65;
+  line-height: 1.55;
   text-align: justify;
 }
 </style>
