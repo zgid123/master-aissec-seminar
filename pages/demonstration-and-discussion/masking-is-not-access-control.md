@@ -4,17 +4,17 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Data Masking ≠ quyền
+# Data Masking ≠ Access Control
 
 <div class="limits mt-5">
-  <div v-click><b>Direct table access</b><span>View có thể bị bypass nếu raw table hoặc file vẫn đọc được.</span></div>
-  <div v-click><b>Identity & role</b><span>Host application phải xác thực và gán context đáng tin cậy.</span></div>
-  <div v-click><b>Arbitrary SQL</b><span>Macro và session variable không ngăn người dùng tự đổi query hoặc role.</span></div>
+  <div v-click><b>Direct table access</b><span>View bị bypass nếu raw table hoặc raw file vẫn query được.</span></div>
+  <div v-click><b>Identity & role</b><span>Application phải xác thực user và gán context đáng tin cậy.</span></div>
+  <div v-click><b>Arbitrary SQL</b><span>Macro không ngăn người dùng tự viết query đọc dữ liệu gốc.</span></div>
   <div v-click><b>Defense-in-depth</b><span>Masking không thay thế authorization, encryption, audit hay sandbox.</span></div>
 </div>
 
 <div v-click class="mt-6 rounded-lg border border-amber-300/35 bg-amber-500/8 p-4 text-center text-lg">
-Security question thật sự: <b class="text-[#2efab0]">Who can query what—and who enforces the policy?</b>
+Security question thật sự: <b class="text-[#2efab0]">Who can query what, and who enforces the policy?</b>
 </div>
 
 <style scoped>

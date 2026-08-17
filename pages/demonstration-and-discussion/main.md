@@ -15,11 +15,19 @@ src: ./sensitive-data-masking-demo.md
 ---
 
 ---
+src: ./query-time-policy-demo.md
+---
+
+---
 src: ./context-specific-results.md
 ---
 
 ---
 src: ./masking-is-not-access-control.md
+---
+
+---
+src: ./demo-bypass.md
 ---
 
 ---
