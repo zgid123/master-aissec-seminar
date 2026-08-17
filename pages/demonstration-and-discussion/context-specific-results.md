@@ -4,7 +4,7 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Kết quả thay đổi theo ngữ cảnh
+# Same data, different output
 
 <div class="roles mt-6">
   <div v-click>
@@ -19,7 +19,7 @@ transition: slide-left
 </div>
 
 <div v-click class="mt-6 text-center text-lg">
-“Dynamic” nghĩa là <b class="text-[#2efab0]">output thay đổi</b> mà <b class="text-[#88ffff]">original data không đổi</b>.
+“Dynamic” nghĩa là <b class="text-[#2efab0]">output thay đổi tại query time</b>, còn <b class="text-[#88ffff]">original data không đổi</b>.
 </div>
 
 <style scoped>
