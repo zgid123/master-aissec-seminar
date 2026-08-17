@@ -12,20 +12,24 @@
 
 | Slide | Nội dung | Thời lượng | Click |
 |---|---|---|---|
-| 1 | Data Masking là gì (+ các kỹ thuật masking) | ~50s (45–55s) | 1 |
-| 2 | Static vs Dynamic | ~45s (40–50s) | 1 |
+| 1 | Data Masking là gì (+ các kỹ thuật masking) | ~50s (45–55s) | 3 |
+| 2 | Static vs Dynamic | ~45s (40–50s) | 3 |
 | 3 | Masking ≠ Encryption (+ giới hạn của masking) | ~45s (40–50s) | 1 |
 | 4 | Từ khái niệm sang triển khai (handoff) | ~35s (30–40s) | 4 |
 
-Tổng ≈ 2.9 phút, **7 click** cho cả section.
-Nhịp click: **Slide 1 = 1 · Slide 2 = 1 · Slide 3 = 1 · Slide 4 = 4.**
+Tổng ≈ 2.9 phút, **11 click** cho cả section.
+Nhịp click: **Slide 1 = 3 · Slide 2 = 3 · Slide 3 = 1 · Slide 4 = 4.**
+
+> Slide 1 và 2 hiện nội dung theo từng ý (không đổ hết ra ngay từ đầu) để khớp
+> nhịp nói và đồng bộ với cách làm của Section 1, 3, 4. Slide 3 cố tình giữ
+> **đúng 1 click** vì bảng cần đọc liền mạch.
 
 **Nếu quá giờ:** cắt phần đọc bảng ở Slide 3 trước (giữ box tổng kết), sau đó cắt
 đoạn liệt kê kỹ thuật masking ở Slide 1.
 **Tuyệt đối không cắt:** câu tổng kết Slide 2, box tổng kết Slide 3, và câu bàn giao Slide 4.
 
 **Hai câu "ăn điểm" của cả section:**
-1. "Static bảo vệ **bản sao**; Dynamic kiểm soát **khả năng nhìn thấy**." (Slide 2)
+1. "Static không để **dữ liệu thật** rời khỏi production; Dynamic không để **dữ liệu thật** hiện ra sai người." (Slide 2)
 2. "Masking chỉ chi phối **kết quả truy vấn** — nó không phải một ranh giới bảo mật." (Slide 3)
 
 ---
@@ -97,9 +101,9 @@ là tên khái niệm chuẩn; nhưng bạn phải hiểu rõ nghĩa để nói 
 
 **Mục tiêu slide:** người nghe hiểu Data Masking là gì qua một ví dụ cụ thể, và hiểu
 nó sinh ra để giải quyết đúng cái vấn đề mà Section 1 vừa nêu.
-**Trạng thái slide:** tiêu đề, ví dụ gốc → đã che, và 3 cột thông tin đều hiện sẵn.
-Chỉ có dòng "Mục tiêu" màu vàng ở cuối là cần bấm.
-**Tổng: ~50 giây · 1 click.**
+**Trạng thái slide:** ban đầu chỉ có tiêu đề + câu định nghĩa. Ba click lần lượt hiện:
+(1) ví dụ gốc → đã che, (2) ba cột thông tin, (3) dòng "Mục tiêu" màu vàng.
+**Tổng: ~50 giây · 3 click.**
 
 #### Đoạn 1 — Nối từ Section 1 (~12s)
 
@@ -122,7 +126,9 @@ seeing sensitive information they do not need?", thì thêm một câu ngắn:]
 > "Data Masking — hay che dữ liệu — xử lý đúng điểm này. Nó thay dữ liệu nhạy cảm
 > bằng một dạng hiển thị an toàn hơn, // nhưng VẪN ĐỦ DÙNG cho công việc."
 
-#### Đoạn 3 — Ví dụ cụ thể (~10s)
+#### Đoạn 3 — [CLICK 1] Ví dụ cụ thể (~10s)
+
+[BẤM CLICK 1 → hiện khối ví dụ. Đợi nó hiện xong rồi mới nói.]
 
 [Chỉ tay vào ô bên trái trước, rồi kéo tay sang ô bên phải theo mũi tên. Đây là
 đoạn dễ nhớ nhất của slide, nên nói chậm và để khán giả kịp nhìn.]
@@ -131,7 +137,9 @@ seeing sensitive information they do not need?", thì thêm một câu ngắn:]
 > j–ba dấu sao–@gmail.com. Người xem VẪN biết đây là một email, vẫn biết nó thuộc
 > nhà cung cấp nào, // nhưng KHÔNG còn thấy được danh tính đầy đủ của khách hàng."
 
-#### Đoạn 4 — Che cái gì, cho ai (~10s)
+#### Đoạn 4 — [CLICK 2] Che cái gì, cho ai (~10s)
+
+[BẤM CLICK 2 → hiện cả ba cột cùng lúc.]
 
 [Chỉ lướt tay qua hai cột đầu, không dừng lâu ở từng cột.]
 
@@ -145,17 +153,19 @@ seeing sensitive information they do not need?", thì thêm một câu ngắn:]
 [Chỉ vào cột thứ ba màu vàng. Đoạn này là liệt kê — nói đều, không cần giải thích
 từng cái, vì phần giải thích đã có sẵn ở mục 2 nếu bị hỏi.]
 
-> "Về mặt kỹ thuật thì không chỉ có một cách che. Phổ biến nhất là che một phần
-> như ví dụ vừa rồi; ngoài ra còn có thay thế bằng dữ liệu giả, làm rỗng, xáo trộn
-> giữa các dòng, hash, tokenization, // hoặc giữ nguyên định dạng để hệ thống phía
-> sau vẫn xử lý được bình thường."
+> "Về mặt kỹ thuật thì không chỉ có một cách che. Bốn cách hay dùng nhất là: che một
+> phần — partial redaction, đúng như ví dụ vừa rồi; // thay thế bằng dữ liệu giả —
+> substitution; // hash; // và tokenization. Ngoài ra còn một số biến thể khác."
+
+[ĐÃ RÚT TỪ 7 TÊN XUỐNG CÒN 4 — đừng đọc thêm tên nào nữa. Danh sách đầy đủ (nulling,
+shuffling, format-preserving) nằm trong note nhắc bài của slide 1 để dành cho hỏi đáp.]
 
 [NẾU ĐANG CHẬM GIỜ: bỏ nguyên đoạn 5 này, nhảy thẳng xuống click. Cột vẫn nằm
 trên slide cho người nghe tự đọc.]
 
-#### Đoạn 6 — [CLICK] Mục tiêu + chốt slide (~10s)
+#### Đoạn 6 — [CLICK 3] Mục tiêu + chốt slide (~10s)
 
-[BẤM CLICK. Đợi dòng vàng hiện xong rồi mới nói — đừng nói đè lên animation.]
+[BẤM CLICK 3. Đợi dòng vàng hiện xong rồi mới nói — đừng nói đè lên animation.]
 
 > "Và mục tiêu cuối cùng của tất cả những thứ này là QUYỀN TỐI THIỂU: cho nhân viên
 > dùng được dữ liệu để làm việc, mà không thấy phần nhạy cảm họ không cần thấy."
@@ -177,28 +187,36 @@ trên slide cho người nghe tự đọc.]
 
 **Mục tiêu slide:** phân biệt rõ hai hướng, và chốt rằng seminar đi theo Dynamic.
 Đây là slide **bắt buộc** vì tên đề tài của nhóm là Dynamic Data Masking.
-**Trạng thái slide:** hai cột so sánh hiện sẵn. Câu tổng kết ở dưới cần bấm.
-**Tổng: ~45 giây · 1 click.**
+**Trạng thái slide:** ban đầu chỉ có tiêu đề. Ba click lần lượt hiện: (1) cột Static
+(kèm dòng Đánh đổi), (2) cột Dynamic (kèm dòng Đánh đổi), (3) câu tổng kết + dòng
+lý do chọn Dynamic. Hai cột đã được đặt chiều cao bằng nhau nên khi
+cột phải hiện ra, layout KHÔNG bị nhảy.
+**Tổng: ~45 giây · 3 click.**
 
 #### Đoạn 1 — Mở (~5s)
 
 > "Có hai hướng che dữ liệu phổ biến, và hai hướng này khác nhau ở đúng một điểm:
 > việc che diễn ra LÚC NÀO."
 
-#### Đoạn 2 — Static (~15s)
+#### Đoạn 2 — [CLICK 1] Static (~15s)
 
-[Chỉ tay vào cột trái, giữ tay ở đó suốt đoạn này để khán giả biết đang nói cột nào.]
+[BẤM CLICK 1 → hiện cột trái. Chỉ tay vào cột trái, giữ tay ở đó suốt đoạn này
+để khán giả biết đang nói cột nào.]
 
 > "Thứ nhất là **Static Data Masking**. Ở đây, dữ liệu được che SẴN trên một BẢN SAO,
 > // rồi bản sao đó mới được đưa sang môi trường phát triển, kiểm thử, hoặc huấn
 > luyện. Nghĩa là lập trình viên làm việc trên dữ liệu đã bị thay đổi sẵn từ trước.
 > // Ưu điểm là rất an toàn cho các môi trường không phải dữ liệu thật — vì ở đó
 > đơn giản là KHÔNG CÓ dữ liệu thật để mà lộ. Nhược điểm là dữ liệu trong bản sao
-> đã bị thay đổi cố định, không lấy lại được bản gốc."
+> đã bị thay đổi cố định, không lấy lại được bản gốc, // và phải làm mới định kỳ
+> mỗi khi dữ liệu gốc đổi."
 
-#### Đoạn 3 — Dynamic (~15s)
+[Dòng "Đánh đổi" ở cuối cột trái đã viết sẵn ý này — không cần đọc lại nguyên văn.]
 
-[Chuyển tay sang cột phải. Nhấn mạnh hơn đoạn trước, vì đây mới là hướng nhóm chọn.]
+#### Đoạn 3 — [CLICK 2] Dynamic (~15s)
+
+[BẤM CLICK 2 → hiện cột phải. Chuyển tay sang cột phải. Nhấn mạnh hơn đoạn trước,
+vì đây mới là hướng nhóm chọn.]
 
 > "Thứ hai là **Dynamic Data Masking** — và đây mới là hướng mà seminar của nhóm tập
 > trung vào. // Ở đây, dữ liệu lưu trong database KHÔNG HỀ ĐỔI. Việc che chỉ áp lên
@@ -207,13 +225,31 @@ trên slide cho người nghe tự đọc.]
 > liệu đó, người đủ quyền thì thấy giá trị thật, người không đủ quyền thì chỉ
 > thấy bản đã che."
 
-#### Đoạn 4 — [CLICK] Câu tổng kết (~10s)
+[Chỉ vào dòng "Đánh đổi" ở cuối cột phải — đây là câu bắt cầu sang slide 3, đừng bỏ:]
 
-[BẤM CLICK. Đợi câu hiện xong. Đây là một trong hai câu ăn điểm của cả section —
+> "Đánh đổi của Dynamic là: nó giữ được MỘT nguồn dữ liệu duy nhất và linh hoạt theo
+> role, // nhưng đổi lại nó phụ thuộc vào việc hệ thống xác định ĐÚNG danh tính và
+> quyền của người truy vấn — xác định sai là che sai."
+
+#### Đoạn 4 — [CLICK 3] Câu tổng kết (~10s)
+
+[BẤM CLICK 3. Đợi câu hiện xong. Đây là một trong hai câu ăn điểm của cả section —
 nói chậm, tách rõ hai vế, nhìn khán giả chứ đừng nhìn slide.]
 
-> "Nói ngắn gọn: // **Static bảo vệ BẢN SAO**; // còn **Dynamic kiểm soát KHẢ NĂNG
-> NHÌN THẤY** trong chính hệ thống đang chạy."
+> "Nói ngắn gọn: // **Static không để DỮ LIỆU THẬT rời khỏi production**; // còn
+> **Dynamic không để DỮ LIỆU THẬT hiện ra SAI NGƯỜI**."
+
+[Hai vế cùng nói về DỮ LIỆU THẬT, chỉ khác chỗ chặn: Static chặn ở khâu SAO CHÉP,
+Dynamic chặn ở khâu TRUY VẤN. Nếu bị hỏi "sao không nói bảo vệ bản sao?" — trả lời:
+bản sao không phải thứ cần bảo vệ; Static làm SẠCH bản sao để dữ liệu thật không bị
+đem ra khỏi production.]
+
+[Cùng CLICK 3 còn hiện thêm một dòng nhỏ bên dưới — lý do nhóm chọn Dynamic. Nói luôn,
+đừng bỏ, vì đây là câu bảo vệ lựa chọn đề tài của nhóm:]
+
+> "Và nhóm chọn Dynamic vì bài toán ở đây là dữ liệu production: chỉ có MỘT nguồn
+> dữ liệu duy nhất, // nhưng có NHIỀU ROLE khác nhau cùng truy vấn nó — nên không
+> thể giải quyết bằng cách tạo sẵn một bản sao đã che."
 
 **Câu chuyển sang Slide 3:**
 
@@ -268,7 +304,7 @@ thêm click nào.]
 
 **Nhịp 2 — vấn đề khóa:**
 
-> "Encryption đóng được đúng cái lỗ đó — vì lúc đó cầm file cũng không đọc được
+> "Encryption đóng đ��ợc đúng cái lỗ đó — vì lúc đó cầm file cũng không đọc được
 > gì. // Nhưng nó không XÓA được rủi ro, mà DỊCH CHUYỂN rủi ro sang chỗ khác: sang
 > cái khóa. Khóa giải mã được lưu ở đâu, ai được giữ, và xoay vòng thế nào. // Nếu
 > khóa lại nằm ngay cạnh file dữ liệu thì coi như chưa bảo vệ được gì."

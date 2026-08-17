@@ -27,7 +27,11 @@ LỜI THOẠI GỢI Ý (bảng hiện sẵn):
 "Masking và encryption thường đi cùng nhau, nhưng KHÔNG thay thế cho nhau.
 Encryption (mã hóa) tập trung bảo vệ dữ liệu khi LƯU TRỮ và TRUYỀN TẢI — kết quả là ciphertext, tức dữ liệu bị biến thành chuỗi vô nghĩa, phải có khóa mới đọc lại được.
 Masking (che dữ liệu) thì tập trung bảo vệ phần HIỂN THỊ: kết quả vẫn đọc được nhưng đã được che bớt, và thường không cần khôi phục lại."
-(Không cần đọc hết bảng — chỉ nhấn 3 dòng: Mục tiêu, Kết quả, Dùng để.)
+"Và còn một tiêu chí phân biệt rất rõ: encryption thì KHÔI PHỤC ĐƯỢC bằng khóa — đó chính là mục đích của nó; còn masking thì thường KHÔNG khôi phục được, vì giá trị gốc đã bị bỏ đi trong kết quả trả về."
+
+(Không cần đọc hết bảng — chỉ nhấn 3 dòng: Mục tiêu, Kết quả, Dùng để. Riêng ý "khôi phục được hay không" thì NÓI MIỆNG, không có trên slide để tránh tràn.)
+
+NẾU BỊ HỎI: "masking có khôi phục được không?" — trả lời: che một phần, thay thế, làm rỗng thì không; hash thì một chiều nên cũng không; riêng tokenization thì có, vì giá trị thật được giữ ở một token vault riêng — và khi đó vault ấy lại trở thành thứ phải bảo vệ, giống như vấn đề khóa giải mã.
 
 [CLICK] → hiện box. ĐÂY LÀ PHẦN QUAN TRỌNG NHẤT SLIDE — nói chậm, chia làm 3 nhịp:
 
