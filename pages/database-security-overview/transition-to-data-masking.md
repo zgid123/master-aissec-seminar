@@ -70,34 +70,35 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
 .transition-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.25rem;
+  gap: clamp(0.6rem, 1.5vw, 1rem);
+  margin-top: 0.6rem;
 }
 
 .t-card {
-  padding: 1.15rem 1.25rem;
-  border-radius: 0.75rem;
+  padding: clamp(0.55rem, 1.2vh, 0.85rem) clamp(0.75rem, 1.4vw, 1.1rem);
+  border-radius: 0.65rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .t-card.problem {
-  border-top: 4px solid #f87171;
+  border-top: 3.5px solid #f87171;
 }
 
 .t-card.solution {
-  border-top: 4px solid #2efab0;
+  border-top: 3.5px solid #2efab0;
 }
 
 .t-badge {
   display: inline-flex;
   align-items: center;
-  font-size: 0.75rem;
+  font-size: clamp(0.64rem, 0.9vw, 0.72rem);
   font-weight: 700;
-  letter-spacing: 0.05em;
-  padding: 0.2rem 0.6rem;
+  letter-spacing: 0.04em;
+  padding: 0.15rem 0.55rem;
   border-radius: 9999px;
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.35rem;
 }
 
 .t-badge.problem {
@@ -113,10 +114,11 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
 }
 
 .t-question {
-  font-size: 0.98rem;
+  font-size: clamp(0.82rem, 1.1vw, 0.92rem);
   font-weight: 700;
   color: #fca5a5;
-  margin-bottom: 0.55rem;
+  margin-bottom: 0.35rem;
+  line-height: 1.3;
 }
 
 .t-question.solution-color {
@@ -131,12 +133,16 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
 
 .t-list li {
   position: relative;
-  padding-left: 1.1rem;
-  margin-bottom: 0.35rem;
-  font-size: 0.85rem;
-  line-height: 1.5;
+  padding-left: 0.95rem;
+  margin-bottom: 0.25rem;
+  font-size: clamp(0.72rem, 1vw, 0.8rem);
+  line-height: 1.4;
   color: #e2e8f0;
   text-align: justify;
+}
+
+.t-list li:last-child {
+  margin-bottom: 0;
 }
 
 .t-list li::before {
@@ -160,17 +166,18 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
 .callout-box {
   display: flex;
   align-items: center;
-  gap: 0.85rem;
-  padding: 0.75rem 1.15rem;
-  border-radius: 0.75rem;
-  box-shadow: 0 4px 24px rgba(0, 0, 0, 0.35);
+  gap: 0.7rem;
+  padding: clamp(0.35rem, 0.8vh, 0.55rem) clamp(0.65rem, 1.2vw, 0.95rem);
+  border-radius: 0.65rem;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
+  margin-top: 0.55rem !important;
 }
 
 .callout-box.next-section {
   background: linear-gradient(90deg, rgba(16, 185, 129, 0.16) 0%, rgba(6, 182, 212, 0.08) 100%);
   border: 1.5px solid rgba(52, 211, 153, 0.45);
-  box-shadow: 0 0 20px rgba(16, 185, 129, 0.12);
+  box-shadow: 0 0 16px rgba(16, 185, 129, 0.1);
 }
 
 .callout-icon.next-icon {
@@ -180,14 +187,15 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.5rem;
-  border-radius: 0.5rem;
+  padding: 0.35rem;
+  border-radius: 0.45rem;
   flex-shrink: 0;
 }
 
 .callout-text {
   color: #d1fae5;
-  line-height: 1.55;
+  font-size: clamp(0.72rem, 1vw, 0.78rem);
+  line-height: 1.4;
   text-align: justify;
 }
 </style>

@@ -31,33 +31,34 @@ Các hình thức tấn công và sơ suất bảo mật thường gặp đe d�
 .threats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 1.25rem;
+  gap: clamp(0.55rem, 1.2vw, 0.9rem);
+  margin-top: 0.7rem;
 }
 
 .threats > div {
-  padding: 1.2rem 1.25rem;
+  padding: clamp(0.6rem, 1.3vh, 0.95rem) clamp(0.75rem, 1.3vw, 1.1rem);
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
-  border-left-width: 4px;
+  border-left-width: 3.5px;
   border-left-color: #fca5a5;
   border-radius: 0.5rem;
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
 }
 
 .threats strong {
   display: block;
-  font-size: 1.1rem;
+  font-size: clamp(0.86rem, 1.15vw, 0.98rem);
   color: #fca5a5;
   font-weight: 700;
-  line-height: 1.35;
-  margin-bottom: 0.4rem;
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
 }
 
 .threats small {
   display: block;
   color: #e2e8f0;
-  font-size: 0.88rem;
-  line-height: 1.55;
+  font-size: clamp(0.72rem, 0.98vw, 0.8rem);
+  line-height: 1.45;
   opacity: 0.95;
   text-align: justify;
 }
