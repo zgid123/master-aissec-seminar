@@ -31,5 +31,9 @@ src: ./demo-bypass.md
 ---
 
 ---
+src: ./duckdb-limitations-comparison.md
+---
+
+---
 src: ./three-key-takeaways.md
 ---

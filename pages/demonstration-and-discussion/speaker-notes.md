@@ -2,7 +2,7 @@
 
 ## Timing
 
-Target: 3.5-4 minutes.
+Target: 4-4.5 minutes.
 
 ## Slide 1 - Demo và thảo luận
 
@@ -28,9 +28,13 @@ Target: 3.5-4 minutes.
 
 > Slide này cho thấy khác biệt giữa intended path và unsafe path. Intended path là restricted user chỉ query qua `customers_for('restricted')` hoặc view đã mask. Unsafe path là user query thẳng bảng `customers`, khi đó dữ liệu gốc lộ ra. Đây là lý do em không nói macro/view là security boundary hoàn chỉnh.
 
-## Slide 7 - 3 điều cần nhớ
+## Slide 7 - Giới hạn của DuckDB
 
-> Em chốt lại bằng ba ý. Một là database security cần nhiều lớp. Hai là Dynamic Data Masking giúp giảm phơi lộ dữ liệu nhạy cảm mà không thay đổi dữ liệu gốc. Ba là DuckDB có building blocks để làm masking, nhưng DDM theo quyền thật sự cần access-control layer đáng tin cậy. Câu chốt là: masking logic trả lời "che như thế nào", access control trả lời "ai được xem gì".
+> Phần này đặt DuckDB vào so sánh với các database phổ biến hơn. DuckDB là embedded database, chạy trong application process, nên nó rất phù hợp cho analytics, local workflow và demo này. Nhưng khác với SQL Server, Oracle hay PostgreSQL, DuckDB không có một database server trung tâm để enforce user, role, privilege và policy cho nhiều user cuối. SQL Server có Dynamic Data Masking ở database layer; Oracle có Data Redaction; PostgreSQL có Row Level Security để enforce policy theo row. Với DuckDB, macro và view giúp tạo masking behavior, nhưng access context và đường query an toàn phải do application kiểm soát. Vì vậy nếu user đọc được file `.duckdb` hoặc chạy raw SQL vào bảng gốc, masking có thể bị bypass.
+
+## Slide 8 - Conclusion
+
+> Để kết lại toàn seminar, có bốn ý chính. Một là database security cần defense-in-depth: authentication, authorization, encryption, masking, audit và deployment phải phối hợp với nhau. Hai là data masking hữu ích vì nó giảm phơi lộ dữ liệu nhạy cảm trong khi user vẫn có thể làm việc với hệ thống. Ba là điểm dynamic nằm ở chỗ cùng dữ liệu gốc nhưng output thay đổi theo access context. Bốn là DuckDB cho thấy ta có thể xây behavior này bằng SQL primitives, nhưng security thực tế vẫn cần một access-control layer đáng tin cậy. Câu chốt là: masking trả lời "data nên hiển thị như thế nào", còn access control trả lời "ai được phép xem gì".
 
 ## Backup Q&A
 

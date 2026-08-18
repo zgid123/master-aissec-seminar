@@ -4,16 +4,17 @@ hideInToc: true
 transition: slide-left
 ---
 
-# 3 điều cần nhớ
+# Conclusion
 
 <div class="takeaways mt-6">
-  <div v-click><b>01</b><span>Database security cần nhiều lớp bảo vệ phối hợp với nhau.</span></div>
-  <div v-click><b>02</b><span>Dynamic Data Masking giảm phơi lộ mà không thay đổi dữ liệu gốc.</span></div>
-  <div v-click><b>03</b><span>DuckDB có đủ building blocks để mask dữ liệu, nhưng DDM theo quyền cần một access-control layer phù hợp.</span></div>
+  <div v-click><b>01</b><span>Database security cần nhiều lớp: authentication, authorization, encryption, masking, auditing và secure deployment.</span></div>
+  <div v-click><b>02</b><span>Data Masking giảm phơi lộ dữ liệu nhạy cảm khi user vẫn cần làm việc với dữ liệu.</span></div>
+  <div v-click><b>03</b><span>Dynamic Data Masking thay đổi output theo access context mà không sửa dữ liệu gốc.</span></div>
+  <div v-click><b>04</b><span>DuckDB minh họa tốt concept bằng SQL primitives, nhưng security thực tế cần access-control layer đáng tin cậy.</span></div>
 </div>
 
 <div v-click class="mt-6 text-center text-lg">
-<b class="text-[#88ffff]">Masking logic</b> trả lời “che như thế nào”; <b class="text-[#2efab0]">Access Control</b> trả lời “ai được xem gì”.
+<b class="text-[#88ffff]">Masking</b> trả lời “data nên hiển thị như thế nào”; <b class="text-[#2efab0]">Access Control</b> trả lời “ai được phép xem gì”.
 </div>
 
 <style scoped>
