@@ -6,8 +6,8 @@
   "scripts": {
     "dev": "slidev --open",
     "build": "slidev build",
-    "export": "slidev export",
-    "ppt": "slidev export --format pptx"
+    "export": "slidev export --dark",
+    "ppt": "slidev export --dark --format pptx"
   },
   "dependencies": {
     "@alphacifer/core-utils": "^0.0.9",

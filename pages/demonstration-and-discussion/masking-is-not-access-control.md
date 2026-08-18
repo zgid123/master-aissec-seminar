@@ -13,7 +13,7 @@ transition: slide-left
   <div v-click><b>Defense-in-depth</b><span>Masking không thay thế authorization, encryption, audit hay sandbox.</span></div>
 </div>
 
-<div v-click class="mt-6 rounded-lg border border-amber-300/35 bg-amber-500/8 p-4 text-center text-lg">
+<div v-click="6" class="mt-6 rounded-lg border border-amber-300/35 bg-amber-500/8 p-4 text-center text-lg">
 Security question thật sự: <b class="text-[#2efab0]">Who can query what, and who enforces the policy?</b>
 </div>
 

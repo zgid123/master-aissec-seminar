@@ -15,7 +15,7 @@ transition: slide-left
 Dynamic Data Masking nghe khá đơn giản trong một <b>DBMS truyền thống</b>.
 </div>
 
-<div v-click="4" class="mt-3 rounded-lg border border-cyan-300/35 bg-cyan-500/8 p-4 text-center text-lg transition-box">
+<div v-click="4" class="mt-3 rounded-lg border border-cyan-300/35 bg-cyan-500/8 p-4 text-lg transition-box">
 Nhưng trong một <b class="text-[#88ffff]">embedded analytical database như DuckDB</b> thì triển khai ra sao, và <b class="text-[#88ffff]">ai thực thi policy?</b>
 </div>
 

@@ -1,5 +1,6 @@
 ---
 layout: two-cols-header
+layoutClass: query-time-policy-demo
 hideInToc: true
 transition: slide-left
 ---
@@ -45,3 +46,9 @@ FROM customers;
 <div v-click class="mt-4 rounded-lg border border-[#2efab0]/35 bg-[#2efab0]/8 p-3 text-sm leading-6">
 Trong demo, <b>role</b> là access context. Trong hệ thống thật, context này phải do application xác thực và enforce.
 </div>
+
+<style>
+.query-time-policy-demo {
+  column-gap: 1.5rem;
+}
+</style>
