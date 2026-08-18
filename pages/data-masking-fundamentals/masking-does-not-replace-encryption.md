@@ -13,7 +13,8 @@ transition: slide-left
 | **Dùng để** | Kiểm soát ai được nhìn thấy gì | Bảo vệ khi lưu trữ / truyền tải |
 
 <div v-click class="mt-5 rounded-lg border border-green-300/30 bg-green-500/8 p-3 text-sm summary-box">
-Masking nằm trong câu <code>SELECT</code> nên chỉ chi phối <b class="text-[#ffda58]">kết quả truy vấn</b>, không phải ranh giới bảo mật — ai có file database hoặc connection string thì vẫn thấy dữ liệu gốc. Encryption đóng lỗ đó, nhưng đẩy câu hỏi sang <b class="text-[#ffda58]">khóa giải mã lưu ở đâu</b>. Nên hệ thống thực tế cần cả ba: <b class="text-[#2efab0]">che dữ liệu, mã hóa và kiểm soát truy cập</b>.
+<p class="m-0">Masking che ở <b class="text-[#ffda58]">kết quả truy vấn</b> → mở thẳng file CSDL thì không còn tác dụng.</p>
+<p class="m-0 mt-2">Encryption che ở <b class="text-[#ffda58]">bản thân dữ liệu</b> → chặn được, nhưng đổi lấy câu hỏi mới: <b class="text-[#2efab0]">khóa lưu ở đâu?</b></p>
 </div>
 
 <style scoped>
@@ -21,23 +22,29 @@ Masking nằm trong câu <code>SELECT</code> nên chỉ chi phối <b class="tex
 </style>
 
 <!--
-[NOTE NHẮC BÀI — Slide 3/4: Masking ≠ Encryption] (~45s)
+Mở: masking và encryption đi cùng nhau nhưng **không thay thế nhau**.
+Đọc bảng — **không đọc từng ô**, chỉ 3 dòng: Mục tiêu · Kết quả · Dùng để.
+Encryption bảo vệ lúc **lưu trữ / truyền tải** → ciphertext, phải có khóa. Masking bảo vệ phần **hiển thị** → vẫn đọc được, đã che bớt.
+Tóm: mã hóa chặn **người không có quyền**; masking kiểm soát **người đã có quyền** được thấy tới đâu.
+(Chậm giờ thì bỏ đoạn đọc bảng, click luôn.)
 
-LỜI THOẠI GỢI Ý (bảng hiện sẵn):
-"Masking và encryption thường đi cùng nhau, nhưng KHÔNG thay thế cho nhau.
-Encryption (mã hóa) tập trung bảo vệ dữ liệu khi LƯU TRỮ và TRUYỀN TẢI — kết quả là ciphertext, tức dữ liệu bị biến thành chuỗi vô nghĩa, phải có khóa mới đọc lại được.
-Masking (che dữ liệu) thì tập trung bảo vệ phần HIỂN THỊ: kết quả vẫn đọc được nhưng đã được che bớt, và thường không cần khôi phục lại."
-(Không cần đọc hết bảng — chỉ nhấn 3 dòng: Mục tiêu, Kết quả, Dùng để.)
+[click] **Phần đáng giá nhất — hạ tốc độ. 3 nhịp, KHÔNG bấm thêm.**
 
-[CLICK] → hiện box. ĐÂY LÀ PHẦN QUAN TRỌNG NHẤT SLIDE — nói chậm, chia làm 3 nhịp:
+**Nhịp 1 — dòng 1 (giới hạn của masking):** masking nằm trong `SELECT` → chỉ đổi **kết quả trả về**,
+dữ liệu trong database **vẫn là dữ liệu thật**. Cầm được file CSDL, hoặc connection string đủ quyền
+truy vấn thẳng bảng gốc → lớp che bị **bỏ qua hoàn toàn**.
 
-(1) Giới hạn: "Nhưng cần nói rõ một giới hạn: masking được thực hiện ngay trong câu lệnh SELECT, nên nó chỉ chi phối KẾT QUẢ TRUY VẤN — nó không phải một ranh giới bảo mật. Nếu ai đó cầm được file database, hoặc có connection string đủ quyền truy vấn thẳng bảng gốc, thì lớp che này bị bỏ qua hoàn toàn."
+**Nhịp 2 — dòng 2 (vấn đề khóa):** encryption che ở **bản thân dữ liệu** (nhấn cụm này để đối lại "kết quả truy vấn").
+Đóng được lỗ đó, nhưng **không xóa** rủi ro — **dịch chuyển** sang khóa: lưu ở đâu, ai giữ, xoay vòng thế nào.
+Khóa nằm cạnh file dữ liệu = chưa bảo vệ được gì.
 
-(2) Khóa: "Encryption đóng được lỗ đó — nhưng nó không xóa rủi ro, nó dịch chuyển rủi ro sang khóa: khóa giải mã lưu ở đâu, ai giữ, xoay vòng thế nào."
+**Nhịp 3 — chốt (nói miệng, không có trên slide):** masking xử lý người **ĐÃ vào hợp lệ** nhưng không nên thấy hết;
+encryption chống người **KHÔNG có quyền vào**. **Bổ sung cho nhau, không thay thế nhau.**
+→ ĐỪNG nói "hệ thống thực tế cần cả ba" (dễ bị vặn). Muốn nói thì theo điều kiện: masking cần khi có **nhiều mức quyền xem** trên cùng dữ liệu.
 
-(3) Chốt (nhấn giọng): "Nên hệ thống thực tế cần cả ba: che dữ liệu, mã hóa và kiểm soát truy cập — mỗi cơ chế giải quyết một vấn đề khác nhau. Đây gọi là phòng thủ nhiều lớp (defense in depth)."
+⚠️ Bypass view / direct table access là của **Section 4** — chỉ nêu vấn đề.
+Ai hỏi sâu: "Dạ đúng ạ, phần bốn của nhóm sẽ phân tích kỹ tình huống này."
 
-NHẮC: phần bypass view / direct table access sẽ được Section 4 phân tích sâu — mình chỉ nêu vấn đề, KHÔNG đi sâu ở đây.
-
-NẾU HỤT GIỜ: bỏ phần đọc bảng, click luôn rồi nói nhịp (1) + nhịp (3).
+Hỏi "masking khôi phục được không?" → partial/substitution/nulling: không · hash: một chiều, không · tokenization: **có**, nhưng vault lại thành thứ phải bảo vệ (giống vấn đề khóa).
+Hỏi "có encryption rồi cần masking làm gì?" → (a) không phải hệ thống nào cũng cần · (b) encryption không có chế độ "giải mã một nửa" nên vô dụng khi nhiều role xem một bảng · (c) masking không cứu được khi mất file. **Hai cái thất bại ở hai chỗ khác nhau.**
 -->
