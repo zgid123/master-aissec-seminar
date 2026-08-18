@@ -4,9 +4,9 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Bước 5 — Bind role vào DuckDB
+# Bước 5 — Liên kết quyền vào DuckDB
 
-Node.js validate role rồi bind vào <code>$viewer_role</code>; không nối role vào SQL string.{.op-60}
+Node.js xác thực quyền rồi liên kết vào <code>$viewer_role</code>; không nối quyền vào chuỗi SQL.{.op-60}
 
 <div class="cols bind mt-4">
 <div>

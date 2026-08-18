@@ -12,8 +12,8 @@ importers:
         specifier: ^0.0.9
         version: 0.0.9
       '@alphacifer/slidev-addon-theme':
-        specifier: ^0.0.4
-        version: 0.0.4(@slidev/client@52.19.0(@modelcontextprotocol/server@2.0.0)(@nuxt/kit@3.21.11)(@oxc-project/types@0.143.0)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.0.0)(cac@7.0.0)(srvx@0.12.5)(vite@8.2.1(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)))(@vue/compiler-sfc@3.5.41)(cac@7.0.0)(lightningcss@1.33.0)(oxc-parser@0.131.0)(rolldown@1.2.3)(srvx@0.12.5)(vite@8.2.1(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)))(vue@3.5.40(typescript@6.0.3))
+        specifier: ^0.0.5
+        version: 0.0.5(@slidev/client@52.19.0(@modelcontextprotocol/server@2.0.0)(@nuxt/kit@3.21.11)(@oxc-project/types@0.143.0)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.0.0)(cac@7.0.0)(srvx@0.12.5)(vite@8.2.1(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)))(@vue/compiler-sfc@3.5.41)(cac@7.0.0)(lightningcss@1.33.0)(oxc-parser@0.131.0)(rolldown@1.2.3)(srvx@0.12.5)(vite@8.2.1(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)))(vue@3.5.40(typescript@6.0.3))
       '@slidev/cli':
         specifier: 52.19.0
         version: 52.19.0(@nuxt/kit@3.21.11)(@oxc-project/types@0.143.0)(@types/markdown-it@14.1.2)(@types/node@22.20.1)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.0.0)(cac@7.0.0)(srvx@0.12.5)(vite@8.2.1(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)))(@vue/compiler-sfc@3.5.41)(cac@7.0.0)(hono@4.13.1)(lightningcss@1.33.0)(markdown-it@14.3.0)(oxc-parser@0.131.0)(playwright-chromium@1.61.1)(postcss@8.5.26)(rolldown@1.2.3)(srvx@0.12.5)
@@ -51,8 +51,8 @@ packages:
   '@alphacifer/core-utils@0.0.9':
     resolution: {integrity: sha512-1lF4WDRYv0gV4dwK/YRIxYlsC/zYt7v7fsjy8Ea7aWBbHATiKiNmlg6aDXfYzC1N4L/A/kytzCk0euIOYBMKiA==}
 
-  '@alphacifer/slidev-addon-theme@0.0.4':
-    resolution: {integrity: sha512-8YR8yckqL8fZDuqlDzP/1a5TY/qDz930uAo1HyxdxumwmV71J41YeLpeqTcDF2DtD7W5PE9ZTzDqx2DSgwgYaQ==}
+  '@alphacifer/slidev-addon-theme@0.0.5':
+    resolution: {integrity: sha512-IFQE/YhLyaxZ2KfdMwsqSt2KtkqzIp6vVssg6Z+Pvo7Vk2eIyDsRl5q76hr15hgkT1UIZgCUe4yAob2JU6ha8A==}
     peerDependencies:
       '@slidev/client': '>=52.18.0'
       vue: ^3.5.40
@@ -3109,7 +3109,7 @@ snapshots:
       slugify: 1.6.9
       uniqid: 5.4.0
 
-  '@alphacifer/slidev-addon-theme@0.0.4(@slidev/client@52.19.0(@modelcontextprotocol/server@2.0.0)(@nuxt/kit@3.21.11)(@oxc-project/types@0.143.0)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.0.0)(cac@7.0.0)(srvx@0.12.5)(vite@8.2.1(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)))(@vue/compiler-sfc@3.5.41)(cac@7.0.0)(lightningcss@1.33.0)(oxc-parser@0.131.0)(rolldown@1.2.3)(srvx@0.12.5)(vite@8.2.1(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)))(vue@3.5.40(typescript@6.0.3))':
+  '@alphacifer/slidev-addon-theme@0.0.5(@slidev/client@52.19.0(@modelcontextprotocol/server@2.0.0)(@nuxt/kit@3.21.11)(@oxc-project/types@0.143.0)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.0.0)(cac@7.0.0)(srvx@0.12.5)(vite@8.2.1(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)))(@vue/compiler-sfc@3.5.41)(cac@7.0.0)(lightningcss@1.33.0)(oxc-parser@0.131.0)(rolldown@1.2.3)(srvx@0.12.5)(vite@8.2.1(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)))(vue@3.5.40(typescript@6.0.3))':
     dependencies:
       '@alphacifer/core-utils': 0.0.10
       '@slidev/client': 52.19.0(@modelcontextprotocol/server@2.0.0)(@nuxt/kit@3.21.11)(@oxc-project/types@0.143.0)(@vitejs/devtools-kit@0.4.12(@modelcontextprotocol/server@2.0.0)(cac@7.0.0)(srvx@0.12.5)(vite@8.2.1(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0)))(@vue/compiler-sfc@3.5.41)(cac@7.0.0)(lightningcss@1.33.0)(oxc-parser@0.131.0)(rolldown@1.2.3)(srvx@0.12.5)(vite@8.2.1(@types/node@22.20.1)(jiti@2.7.0)(yaml@2.9.0))

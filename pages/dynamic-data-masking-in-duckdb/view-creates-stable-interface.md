@@ -4,7 +4,7 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Bước 4 — Node.js xác thực user
+# Bước 4 — Node.js xác thực người dùng
 
 Authentication middleware kiểm tra token và tạo <code>req.user</code> đáng tin cậy.{.op-60}
 

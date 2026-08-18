@@ -6,7 +6,7 @@ transition: slide-left
 
 # Bước 2 — Tạo hàm che dữ liệu
 
-Trong ví dụ này, Scalar Macro đóng gói phép che email để sử dụng lại trong các query.{.op-60}
+Trong ví dụ này, Scalar Macro đóng gói phép che email để sử dụng lại trong các truy vấn.{.op-60}
 
 <div class="cols mt-6">
 <div>
@@ -30,7 +30,7 @@ CREATE MACRO mask_email(email_value) AS
 </div>
 
 <div class="mt-7 rounded-lg border border-amber-300/30 bg-amber-500/8 p-4 text-center text-base">
-Hàm này chỉ biến đổi dữ liệu; nó chưa biết user nào đang query.
+Hàm này chỉ biến đổi dữ liệu; nó chưa biết người dùng nào đang truy vấn.
 </div>
 
 <style scoped>

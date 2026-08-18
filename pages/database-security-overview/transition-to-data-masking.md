@@ -44,7 +44,7 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
       <li>Tự động che giấu / làm mờ dữ liệu nhạy cảm theo vai trò.</li>
       <li>Giữ nguyên định dạng gốc giúp ứng dụng vận hành bình thường.</li>
       <li class="success-point">
-        <b class="text-emerald-300">HIỆU QUẢ:</b> Triệt tiêu nguy cơ lộ lọt dữ liệu mà không đổi dữ liệu gốc.
+        <b class="text-emerald-300">HIỆU QUẢ:</b> Triệt tiêu nguy cơ lộ dữ liệu mà không đổi dữ liệu gốc.
       </li>
     </ul>
   </div>
@@ -67,6 +67,10 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
 </div>
 
 <style scoped>
+.alpha-shifting-intro h1 {
+  width: 1041px;
+}
+
 .transition-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;

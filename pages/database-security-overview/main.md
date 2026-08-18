@@ -4,13 +4,7 @@ transition: fade
 background: ../../assets/heading.png
 ---
 
-<div class="flex flex-col items-center justify-center text-center">
-  <h1 class="text-3xl font-extrabold text-[#38edf6] uppercase tracking-wider">TỔNG QUAN BẢO MẬT CƠ SỞ DỮ LIỆU</h1>
-</div>
-
-<style scoped>
-.slidev-layout h1 { color: #38edf6; font-weight: 800; }
-</style>
+# Tổng quan bảo mật cơ sở dữ liệu
 
 ---
 src: ./what-is-database-security.md

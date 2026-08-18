@@ -35,11 +35,15 @@ Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn p
     </svg>
   </div>
   <div class="callout-text text-sm">
-    <strong class="text-[#38edf6] font-bold">Câu hỏi cốt lõi:</strong> Làm thế nào để cho phép truy cập dữ liệu phục vụ công việc mà <b class="text-white font-bold">không làm lộ thông tin nhạy cảm</b> không liên quan?
+    <strong class="text-[#38edf6] font-bold">Câu hỏi cốt lõi:</strong> Làm thế nào để người dùng chỉ thấy đúng dữ liệu cần thiết phục vụ công việc mà <b class="text-white">không nhìn thấy các thông tin nhạy cảm</b> khác?
   </div>
 </div>
 
 <style scoped>
+.alpha-shifting-intro h1 {
+  width: 1041px;
+}
+
 .exposure {
   display: grid;
   grid-template-columns: 1fr auto 1.15fr;

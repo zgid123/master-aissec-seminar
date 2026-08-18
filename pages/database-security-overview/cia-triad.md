@@ -6,7 +6,7 @@ transition: slide-left
 
 # Bảo vệ điều gì? Tam giác CIA
 
-CIA xác định **chúng ta cần bảo vệ điều gì**: giữ bí mật dữ liệu nhạy cảm, đảm bảo tính toàn vẹn và duy trì tính sẵn sàng của hệ thống.{.op-60}
+[CIA xác định]{.op-60} **chúng ta cần bảo vệ điều gì**: [giữ bí mật dữ liệu nhạy cảm, đảm bảo tính toàn vẹn và duy trì tính sẵn sàng của hệ thống.]{.op-60}
 
 <div class="principles mt-5">
   <div v-click="1">
@@ -20,7 +20,7 @@ CIA xác định **chúng ta cần bảo vệ điều gì**: giữ bí mật d�
     <b>I</b>
     <div>
       <strong>Integrity</strong>
-      <small>Dữ liệu không bị sửa đổi trái phép hoặc do lỗi — như sổ cái kế toán, mọi thay đổi phải có dấu vết.</small>
+      <small>Dữ liệu luôn chính xác và nguyên vẹn — như bản hợp đồng đã ký kết, không ai có thể tự ý chỉnh sửa hay tẩy xóa.</small>
     </div>
   </div>
   <div v-click="3">

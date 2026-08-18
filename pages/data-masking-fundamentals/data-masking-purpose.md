@@ -25,6 +25,10 @@ Masking thay dữ liệu nhạy cảm bằng một dạng hiển thị an toàn 
 </div>
 
 <style scoped>
+.alpha-shifting-intro h1 {
+  width: 1041px;
+}
+
 .mask-example { display:flex; align-items:center; justify-content:center; gap:1.4rem; }
 .mask-example > div { min-width:15rem; padding:1rem 1.2rem; border:1px solid rgba(136,255,255,.3); background:rgba(136,255,255,.055); }
 .mask-example > span { opacity:.55; font-size:1.5rem; }
