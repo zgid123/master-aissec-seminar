@@ -4,11 +4,11 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Demo bốn kiểu dữ liệu nhạy cảm
+# Dataset demo: khách hàng
 
 ::left::
 
-### Bản ghi khách hàng gốc
+### Original record
 
 ```text
 Alice Smith
@@ -20,7 +20,7 @@ alice@gmail.com
 
 ::right::
 
-### Kết quả sau Data Masking
+### Masked output
 
 ```text
 Alice Smith
@@ -30,6 +30,10 @@ a***@gmail.com
 ********
 ```
 
-<div v-click class="mt-5 rounded-lg border border-cyan-300/30 bg-cyan-500/8 p-3 text-sm">
-Email giữ domain, phone và credit card giữ bốn số cuối, salary bị ẩn hoàn toàn.
+<div v-click class="mt-5 rounded-lg border border-cyan-300/30 bg-cyan-500/8 p-3 text-sm leading-6">
+Một bản ghi nhỏ nhưng đủ bốn nhóm nhạy cảm: email, phone, credit card và salary.
+</div>
+
+<div v-click class="mt-3 rounded-lg border border-[#2efab0]/35 bg-[#2efab0]/8 p-3 text-sm leading-6">
+Mục tiêu: vẫn hỗ trợ nghiệp vụ, nhưng giảm phần dữ liệu nhạy cảm bị phơi lộ.
 </div>

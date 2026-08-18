@@ -4,23 +4,37 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Các công cụ nền tảng cho Data Masking
+# Bước 1 — Xác định output mong muốn
 
-<div class="primitives mt-6">
-  <div v-click><b>SQL expressions</b><span>substring, regexp, replace, concat, hash và CASE biến đổi output.</span></div>
-  <div v-click><b>Macros</b><span>Đóng gói logic như <code>mask_email()</code>, <code>mask_phone()</code>.</span></div>
-  <div v-click><b>Views</b><span>Tạo abstraction layer ổn định giữa bảng gốc và application.</span></div>
-  <div v-click><b>Host context</b><span>Ứng dụng xác thực user, quyết định role và giới hạn query path.</span></div>
+Dữ liệu của Alice được lưu một lần, nhưng mỗi vai trò nhìn thấy một kết quả khác nhau.{.op-60}
+
+<div class="results mt-8">
+  <div>
+    <small>NGƯỜI QUẢN LÝ</small>
+    <span>Alice Smith</span>
+    <strong>alice@gmail.com</strong>
+    <p>Cần email đầy đủ để xử lý nghiệp vụ.</p>
+  </div>
+  <div class="restricted">
+    <small>NHÂN VIÊN HỖ TRỢ</small>
+    <span>Alice Smith</span>
+    <strong>a***@gmail.com</strong>
+    <p>Chỉ cần nhận biết khách hàng, không cần xem toàn bộ email.</p>
+  </div>
 </div>
 
-<div v-click class="mt-6 text-center text-lg text-[#2efab0]">
-Masking logic nằm trong SQL; enforcement boundary phải nằm ở nơi kiểm soát được truy cập.
+<div v-click class="mt-8 text-center text-xl">
+<b class="text-[#88ffff]">Dữ liệu gốc không đổi</b>; chỉ <b class="text-[#2efab0]">kết quả truy vấn thay đổi</b>.
 </div>
 
 <style scoped>
-.primitives { display:grid; grid-template-columns:1fr 1fr; gap:.9rem; }
-.primitives > div { padding:1rem; border-left:4px solid #88ffff; background:rgba(255,255,255,.045); }
-.primitives b,.primitives span { display:block; }
-.primitives b { color:#88ffff; margin-bottom:.45rem; }
-.primitives span { opacity:.72; font-size:.76rem; line-height:1.35; }
+.results { display:grid; grid-template-columns:1fr 1fr; gap:1.4rem; }
+.results > div { padding:1.2rem; border-left:4px solid #88ffff; background:rgba(255,255,255,.045); }
+.results > .restricted { border-color:#2efab0; }
+.results small,.results span,.results strong { display:block; }
+.results small { color:#88ffff; margin-bottom:.7rem; }
+.results .restricted small,.results .restricted strong { color:#2efab0; }
+.results span { margin-bottom:.35rem; }
+.results strong { font-size:1.1rem; }
+.results p { margin:.8rem 0 0; opacity:.62; font-size:.73rem; }
 </style>
