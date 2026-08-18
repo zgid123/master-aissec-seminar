@@ -24,7 +24,7 @@ Dữ liệu của Alice được lưu một lần, nhưng mỗi vai trò nhìn t
 </div>
 
 <div v-click class="mt-8 text-center text-xl">
-<b class="text-[#88ffff]">Dữ liệu gốc không đổi</b>; chỉ <b class="text-[#2efab0]">kết quả truy vấn thay đổi</b>.
+<b class="text-[#88ffff]">Dữ liệu gốc không đổi</b>; chỉ có <b class="text-[#2efab0]">kết quả truy vấn thay đổi</b>.
 </div>
 
 <style scoped>

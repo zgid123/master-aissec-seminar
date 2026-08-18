@@ -4,7 +4,7 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Bước 3 — Tạo policy theo role
+# Bước 3 — Tạo policy theo quyền
 
 Role-aware Macro chọn dữ liệu gốc, dữ liệu đã che hoặc từ chối mặc định.{.op-60}
 
@@ -27,7 +27,7 @@ END;
 <div class="roles">
   <div v-click="2"><b>manager</b><span>→ <code>alice@gmail.com</code></span></div>
   <div v-click="3"><b>support</b><span>→ <code>a***@gmail.com</code></span></div>
-  <div v-click="4"><b>role khác</b><span>→ <code>NULL</code></span></div>
+  <div v-click="4"><b>quyền khác</b><span>→ <code>NULL</code></span></div>
 </div>
 </div>
 

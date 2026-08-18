@@ -4,9 +4,9 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Bước 6 — Kiểm tra kết quả động
+# Bước 6 — Kiểm tra kết quả
 
-Cùng endpoint, cùng query và cùng dữ liệu gốc; chỉ verified role khác nhau.{.op-60}
+Cùng endpoint, cùng truy vấn và cùng dữ liệu gốc; chỉ xác minh quyền khác nhau.{.op-60}
 
 <div class="trace mt-6">
   <div v-click="2" class="header"><span>USER</span><span>req.user.role</span><span>$viewer_role</span><span>MACRO BRANCH</span><span>OUTPUT</span></div>
@@ -23,7 +23,7 @@ Cùng endpoint, cùng query và cùng dữ liệu gốc; chỉ verified role kh�
 </div>
 
 <div v-click="4" class="mt-6 text-center text-lg">
-Đây là yếu tố “Dynamic”: policy được áp dụng <b class="text-[#2efab0]">tại thời điểm query</b>.
+Đây là yếu tố “Dynamic”: policy được áp dụng <b class="text-[#2efab0]">tại thời điểm truy vấn</b>.
 </div>
 
 <style scoped>

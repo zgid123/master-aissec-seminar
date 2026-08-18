@@ -1,0 +1,7 @@
+.slidev-layout h1 {
+  color: #38edf6;
+}
+
+.alpha-bg-center h1 {
+  @apply text-3xl font-extrabold text-[#38edf6] tracking-wider;
+}

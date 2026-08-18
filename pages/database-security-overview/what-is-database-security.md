@@ -6,7 +6,7 @@ transition: slide-left
 
 # Tại sao cần bảo vệ cơ sở dữ liệu?
 
-Một cơ sở dữ liệu không chỉ là nơi lưu trữ thông tin — đó là **hạ tầng dữ liệu cốt lõi** phục vụ toàn bộ hoạt động của tổ chức.{.op-60}
+[Một cơ sở dữ liệu không chỉ là nơi lưu trữ thông tin — đó là]{.op-60} **hạ tầng dữ liệu cốt lõi** [phục vụ toàn bộ hoạt động của tổ chức.]{.op-60}
 
 <div class="db-explain mt-6">
   <div v-click="1">

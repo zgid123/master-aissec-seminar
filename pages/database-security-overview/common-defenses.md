@@ -15,7 +15,7 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
   </div>
   <div v-click="2">
     <strong>Input Validation & Parameterization</strong>
-    <small>Kiểm tra và khử khuẩn dữ liệu đầu vào trước khi thực thi truy vấn — triệt tiêu <em class="threat-tag">SQL Injection</em> ngay từ gốc.</small>
+    <small>Kiểm tra và làm sạch dữ liệu đầu vào trước khi thực thi truy vấn — triệt tiêu <em class="threat-tag">SQL Injection</em> ngay từ gốc.</small>
   </div>
   <div v-click="3">
     <strong>Auditing & Monitoring</strong>

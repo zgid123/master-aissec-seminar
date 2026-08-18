@@ -19,11 +19,11 @@ Các hình thức tấn công và sơ suất bảo mật thường gặp đe d�
   </div>
   <div v-click="3">
     <strong>Privilege Abuse</strong>
-    <small>Cấp quyền vượt quá phạm vi công việc cần thiết (Excessive Privileges), dẫn đến rủi ro lộ lọt dữ liệu do vô tình sơ suất hoặc bị đánh cắp tài khoản.</small>
+    <small>Cấp quyền vượt quá phạm vi công việc cần thiết (Excessive Privileges), dẫn đến rủi ro lộ dữ liệu do vô tình sơ suất hoặc bị đánh cắp tài khoản.</small>
   </div>
   <div v-click="4">
     <strong>Ransomware</strong>
-    <small>Mã hóa toàn bộ tệp tin cơ sở dữ liệu và yêu cầu tiền chuộc — trực tiếp phá hủy tính Sẵn sàng (Availability) của hệ thống vận hành.</small>
+    <small>Mã hóa toàn bộ tệp tin cơ sở dữ liệu và yêu cầu tiền chuộc — trực tiếp phá hủy tính <span class="text-[#00e5ff]">sẵn sàng (Availability)</span> của hệ thống vận hành.</small>
   </div>
 </div>
 

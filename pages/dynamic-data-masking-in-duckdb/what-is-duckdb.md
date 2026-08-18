@@ -6,7 +6,7 @@ transition: slide-left
 
 # DuckDB là gì?
 
-DuckDB là một **hệ quản trị cơ sở dữ liệu quan hệ mã nguồn mở, dạng nhúng và lưu trữ theo cột**, được thiết kế chuyên biệt cho xử lý phân tích hiệu năng cao (OLAP).{.op-60}
+DuckDB là một **embedded database, mã nguồn mở và lưu trữ theo cột**, được thiết kế chuyên biệt cho xử lý phân tích hiệu năng cao (OLAP).{.op-60}
 
 <div class="mt-6 grid grid-cols-3 gap-4 text-sm">
 
