@@ -14,14 +14,14 @@ Masking thay dữ liệu nhạy cảm bằng một dạng hiển thị an toàn 
   <div class="result"><small>Sau khi che</small><strong>j***@gmail.com</strong></div>
 </div>
 
-<div v-click="2" class="mt-6 grid grid-cols-3 gap-5 text-sm info-grid">
-  <div><b class="text-[#88ffff]">Dữ liệu thường được che</b><br><span class="op-70">Email, số điện thoại, thẻ tín dụng, số định danh, địa chỉ, lương, thông tin y tế và tài chính.</span></div>
-  <div><b class="text-[#2efab0]">Người dùng điển hình</b><br><span class="op-70">Lập trình viên, kiểm thử viên, nhân viên phân tích và hỗ trợ — những người chỉ cần một phần dữ liệu.</span></div>
-  <div><b class="text-[#ffda58]">Kỹ thuật phổ biến</b><br><span class="op-70">Che một phần (partial redaction), thay thế (substitution), hash, tokenization,...</span></div>
+<div class="mt-6 grid grid-cols-3 gap-5 text-sm info-grid">
+  <div v-click="2"><b class="text-[#88ffff]">Dữ liệu thường được che</b><br><span class="op-70">Email, số điện thoại, thẻ tín dụng, số định danh, địa chỉ, lương, thông tin y tế và tài chính, ...</span></div>
+  <div v-click="3"><b class="text-[#2efab0]">Người dùng điển hình</b><br><span class="op-70">Lập trình viên, kiểm thử viên, nhân viên phân tích và hỗ trợ - những người chỉ cần một phần dữ liệu.</span></div>
+  <div v-click="4"><b class="text-[#ffda58]">Kỹ thuật phổ biến</b><br><span class="op-70">Che một phần (partial redaction), thay thế (substitution), hash, tokenization, ...</span></div>
 </div>
 
-<div v-click="3" class="mt-6 text-sm purpose-line">
-  <b class="text-[#ffda58]">Mục tiêu</b> · Giảm rủi ro lộ dữ liệu · Bảo vệ thông tin cá nhân (PII) · Chỉ cấp quyền ở mức tối thiểu cần thiết · Cho nhân viên dùng dữ liệu mà không thấy phần nhạy cảm.
+<div v-click="5" class="mt-6 text-sm purpose-line">
+  <b class="text-[#ffda58]">Mục tiêu:</b> Giảm rủi ro lộ dữ liệu · Bảo vệ thông tin cá nhân · Chỉ cấp quyền ở mức tối thiểu cần thiết · Cho nhân viên dùng dữ liệu mà không thấy phần nhạy cảm.
 </div>
 
 <style scoped>
@@ -38,32 +38,23 @@ Masking thay dữ liệu nhạy cảm bằng một dạng hiển thị an toàn 
 </style>
 
 <!--
-[NOTE NHẮC BÀI — Slide 1/4: Data Masking là gì] (~50s) — **3 CLICK**
+Đăng nhập đúng, có quyền, kết nối an toàn, CSDL đã mã hóa — **nhưng vẫn lộ quá mức cần thiết**.
+Định nghĩa: thay dữ liệu nhạy cảm bằng dạng an toàn hơn **nhưng vẫn đủ dùng**.
 
-[MỞ — chỉ có tiêu đề + câu định nghĩa hiện sẵn]
-"Ở phần 1, nhóm đã chỉ ra một vấn đề: người dùng có thể đã đăng nhập đúng, đã được cấp quyền, kết nối an toàn, và cơ sở dữ liệu cũng đã được mã hóa — nhưng dữ liệu nhạy cảm vẫn có thể bị lộ nhiều hơn mức cần thiết.
-Data Masking xử lý đúng điểm này: nó thay dữ liệu nhạy cảm bằng một dạng hiển thị an toàn hơn, nhưng vẫn đủ dùng cho công việc."
+[CLICK] Ví dụ — chỉ ô trái → kéo sang ô phải: `john.doe@gmail.com` → `j***@gmail.com`.
+Vẫn biết là email, **không còn danh tính đầy đủ**.
 
-[CLICK 1] → hiện ví dụ gốc → đã che. Chỉ tay vào ô bên trái rồi kéo sang ô bên phải:
-"Ví dụ: email gốc john.doe@gmail.com sau khi che chỉ còn j***@gmail.com — người xem vẫn biết đây là email dạng nào, nhưng không còn thấy được danh tính đầy đủ."
+[click] Trường thường che: email · SĐT · thẻ tín dụng · số định danh · địa chỉ · lương · y tế/tài chính.
 
-[CLICK 2] → hiện 3 cột thông tin. Lướt tay qua từng cột, không dừng lâu:
-"Các trường thường được che là email, số điện thoại, thẻ tín dụng, số định danh, địa chỉ, lương, thông tin y tế và tài chính. Những người làm việc trên dữ liệu đã che là lập trình viên, kiểm thử viên, phân tích và hỗ trợ — những người chỉ cần một phần dữ liệu.
-Về kỹ thuật thì có bốn cách hay dùng nhất: che một phần — partial redaction, đúng như ví dụ trên; thay thế bằng dữ liệu giả — substitution; hash; và tokenization. Ngoài ra còn một số biến thể khác. (DANH SÁCH ĐÃ RÚT CÒN 4 TÊN — đừng đọc thêm, để dành cho phần hỏi đáp.)"
+[click] Ai dùng: lập trình · kiểm thử · phân tích · hỗ trợ — **chỉ cần một phần dữ liệu**.
 
-[CLICK 3] → hiện dòng Mục tiêu, nhấn giọng:
-"Và mục tiêu cuối cùng là chỉ cấp quyền ở mức tối thiểu cần thiết: cho nhân viên (lập trình, kiểm thử, hỗ trợ) dùng được dữ liệu mà không thấy phần nhạy cảm."
+[click] 4 kỹ thuật: partial redaction (như ví dụ) · substitution · hash · tokenization.
+→ Nói đều, **đừng đọc thêm tên nào**. Chậm giờ thì bỏ cả đoạn này.
 
-NẾU HỤT GIỜ: bấm CLICK 2 rồi chỉ nói một câu “những trường thường được che và ai dùng chúng thì đã có trên slide”, bỏ đoạn liệt kê kỹ thuật.
+[click] Mục tiêu = **quyền tối thiểu**.
+CHỐT (hạ giọng): "mục đích là **GIẢM RỦI RO LỘ DỮ LIỆU**, chứ không làm dữ liệu vô dụng."
+→ Chuyển: "Vậy việc che này được làm VÀO LÚC NÀO?"
 
-CHỐT (nhấn giọng): "Mục đích là GIẢM RỦI RO LỘ DỮ LIỆU, chứ không làm dữ liệu trở nên vô dụng."
-
-NẾU BỊ HỎI SÂU — danh sách đầy đủ kèm tên tiếng Anh (để trả lời, KHÔNG đọc trên slide):
-- Che một phần (partial redaction) — giữ vài ký tự, phần còn lại thay bằng dấu sao. Không khôi phục được.
-- Thay thế (substitution) — thay bằng dữ liệu giả nhưng trông như thật. Không khôi phục được.
-- Làm rỗng (nulling) — trả về NULL hoặc chuỗi trống. Mất luôn khả năng join.
-- Xáo trộn (shuffling) — đảo giá trị giữa các dòng: thống kê tổng thể còn đúng, nhưng gán theo từng người thì sai.
-- Hash — một chiều và nhất quán (cùng input ra cùng output) nên vẫn join và đếm được, nhưng không đọc lại được.
-- Tokenization — giá trị thật giữ trong một token vault riêng nên CÓ thể tra lại (khác hash đúng ở điểm này).
-- Giữ nguyên định dạng (format-preserving) — giữ đúng định dạng để app phía sau không lỗi validate.
+Hỏi sâu — 3 kỹ thuật còn lại: nulling (mất join) · shuffling (thống kê đúng, cá nhân sai) · format-preserving.
+Khôi phục được: chỉ **tokenization** (có vault). Hash một chiều nhưng vẫn join/đếm được.
 -->

@@ -11,22 +11,22 @@ transition: slide-left
     <h3>Static Data Masking</h3>
     <p><b>Dữ liệu gốc</b> → Che → <b>Bản sao đã che</b></p>
     <p>Dữ liệu được che sẵn trên một bản sao, rồi mới đưa sang môi trường phát triển, kiểm thử hoặc huấn luyện.</p>
-    <p class="trade"><b>Đánh đổi</b> · An toàn cho môi trường không dùng dữ liệu thật, nhưng bản sao đã đổi cố định và phải làm mới định kỳ.</p>
+    <p class="trade"><b>Đánh giá:</b> An toàn vì môi trường không dùng dữ liệu thật, nhưng bản sao đã cố định và phải làm mới định kỳ.</p>
   </div>
   <div v-click="2">
     <h3>Dynamic Data Masking</h3>
     <p><b>Dữ liệu gốc</b> → Truy vấn + Quy tắc → <b>Kết quả theo quyền</b></p>
-    <p>Dữ liệu lưu trong database <b>không hề đổi</b>; việc che chỉ áp lên <b>kết quả trả về</b> ngay lúc truy vấn, tùy theo quyền của người truy vấn.</p>
-    <p class="trade"><b>Đánh đổi</b> · Giữ được một nguồn dữ liệu duy nhất và linh hoạt theo role, nhưng phụ thuộc vào việc xác định <b>đúng danh tính và quyền</b> của người truy vấn.</p>
+    <p>Dữ liệu lưu trong CSDL <b>không hề đổi</b>; việc che chỉ áp dụng lên <b>kết quả trả về</b> ngay lúc truy vấn, tùy theo quyền của người truy vấn.</p>
+    <p class="trade"><b>Đánh giá:</b> Giữ được một nguồn dữ liệu duy nhất và linh hoạt theo quyền, nhưng phụ thuộc vào việc xác định <b>đúng danh tính và quyền</b> của người truy vấn.</p>
   </div>
 </div>
 
-<div v-click="3" class="mt-7 text-center text-lg summary-box">
+<div v-click="3" class="mt-7 text-lg summary-box">
 Static không để <b class="text-[#88ffff]">dữ liệu thật</b> rời khỏi production; Dynamic không để <b class="text-[#2efab0]">dữ liệu thật</b> hiện ra sai người.
 </div>
 
-<div v-click="3" class="mt-3 text-center why-dynamic">
-Chỉ cần <b>một nguồn dữ liệu duy nhất</b> mà vẫn phục vụ được <b>nhiều role khác nhau</b> — không phải nhân bản và đồng bộ dữ liệu cho từng nhóm quyền.
+<div v-click="3" class="mt-3 why-dynamic">
+Chỉ cần <b>một nguồn dữ liệu duy nhất</b> mà vẫn phục vụ được <b>nhiều quyền khác nhau.</b> Không phải nhân bản và đồng bộ dữ liệu cho từng nhóm quyền.
 </div>
 
 <style scoped>
@@ -43,27 +43,17 @@ Chỉ cần <b>một nguồn dữ liệu duy nhất</b> mà vẫn phục vụ đ
 </style>
 
 <!--
-[NOTE NHẮC BÀI — Slide 2/4: Static vs Dynamic] (~50s) — **3 CLICK**
+Mở: hai hướng che, khác nhau ở đúng một điểm — **việc che diễn ra LÚC NÀO**.
 
-[MỞ — chỉ có tiêu đề hiện sẵn]
-"Có hai hướng che dữ liệu phổ biến, và chúng khác nhau ở đúng một điểm: việc che diễn ra LÚC NÀO."
+[click] **Static** (chỉ tay cột trái, giữ tay ở đó): che sẵn trên **bản sao** → mới đưa sang dev/test/training.
+Được: môi trường đó **không có dữ liệu thật để lộ**. Mất: bản sao đổi cố định, phải làm mới định kỳ.
 
-[CLICK 1] → hiện cột Static (bên trái). Chỉ tay vào cột đó:
-"Thứ nhất — Static Data Masking: dữ liệu được che SẴN trên một bản sao, rồi mới đưa sang môi trường phát triển, kiểm thử hay huấn luyện. Đánh đổi: rất an toàn cho các môi trường không dùng dữ liệu thật — vì ở đó đơn giản là KHÔNG CÓ dữ liệu thật để mà lộ — nhưng bản sao đã bị thay đổi cố định và phải làm mới định kỳ khi dữ liệu gốc đổi."
+[click] **Dynamic** (chuyển tay sang cột phải, nói mạnh hơn): dữ liệu trong CSDL **không đổi**,
+chỉ che **kết quả trả về** lúc truy vấn, tùy **ai** và **quyền gì**. Cùng một bảng: đủ quyền thấy thật, không đủ thấy đã che.
+Đánh đổi (dòng cuối cột — **bắt cầu sang Slide 3, đừng bỏ**): một nguồn duy nhất + linh hoạt,
+nhưng phụ thuộc **xác định đúng danh tính và quyền** — xác định sai là che sai.
 
-[CLICK 2] → hiện cột Dynamic (bên phải). Chuyển tay sang cột phải, nói mạnh hơn:
-"Thứ hai — Dynamic Data Masking, và đây mới là hướng seminar tập trung vào: dữ liệu lưu trong database KHÔNG hề đổi. Việc che chỉ áp lên KẾT QUẢ TRẢ VỀ, ngay tại thời điểm truy vấn, tùy theo vai trò hoặc quyền của người truy vấn."
-
-"Đánh đổi của Dynamic: giữ được MỘT nguồn dữ liệu duy nhất và linh hoạt theo role, nhưng đổi lại nó phụ thuộc vào việc hệ thống xác định ĐÚNG danh tính và quyền của người truy vấn — xác định sai là che sai."
-
-(Chi tiết "che áp lên kết quả trả về" + "phụ thuộc danh tính người truy vấn" rất quan trọng — hai ý này dẫn thẳng sang giới hạn của masking ở slide 3.)
-
-[CLICK 3] → hiện câu tổng kết + dòng lợi ích, nhấn giọng:
-"Static KHÔNG ĐỂ DỮ LIỆU THẬT RỜI KHỎI PRODUCTION; còn Dynamic KHÔNG ĐỂ DỮ LIỆU THẬT HIỆN RA SAI NGƯỜI."
-(Tách rõ hai vế, ngừng 1 giây ở dấu chấm phẩy. Hai vế cùng nói về DỮ LIỆU THẬT — khác nhau ở chỗ chặn ở khâu SAO CHÉP hay khâu TRUY VẤN.)
-
-[Dòng nhỏ bên dưới — giải thích VÌ SAO cách đó tốt, rồi mới chốt lựa chọn:]
-"Cái được của Dynamic là: chỉ cần giữ MỘT nguồn dữ liệu duy nhất mà vẫn phục vụ được nhiều role khác nhau. Không phải tạo và đồng bộ nhiều bản sao cho từng nhóm quyền — dữ liệu luôn mới, và quy tắc che nằm ở một chỗ duy nhất nên dễ kiểm soát hơn. Đó là lý do seminar đi theo hướng Dynamic."
-
-NHẮC: seminar của nhóm tập trung vào DYNAMIC — đây là nền tảng cho phần DuckDB ở section 3.
+[click] "**Static không để DỮ LIỆU THẬT rời khỏi production**; **Dynamic không để DỮ LIỆU THẬT hiện ra SAI NGƯỜI**."
+Dòng nhỏ bên dưới (nói luôn): một nguồn duy nhất phục vụ nhiều quyền → khỏi nhân bản và đồng bộ, quy tắc che nằm một chỗ.
+→ Chuyển: "Đã có mã hóa rồi thì còn cần che dữ liệu làm gì?"
 -->
