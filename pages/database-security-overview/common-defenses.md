@@ -11,19 +11,19 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
 <div class="defenses mt-5">
   <div v-click="1">
     <strong>Access Control & Least Privilege</strong>
-    <small>Chỉ cấp đúng quyền tối thiểu cần thiết — chặn trực tiếp <em class="threat-tag">Privilege abuse</em> và giới hạn thiệt hại từ <em class="threat-tag">Insider threat</em>.</small>
+    <small>Chỉ cấp đúng quyền tối thiểu cần thiết - chặn trực tiếp <em class="threat-tag">Privilege abuse</em> và giới hạn thiệt hại từ <em class="threat-tag">Insider threat</em>.</small>
   </div>
   <div v-click="2">
     <strong>Input Validation & Parameterization</strong>
-    <small>Kiểm tra và làm sạch dữ liệu đầu vào trước khi thực thi truy vấn — triệt tiêu <em class="threat-tag">SQL Injection</em> ngay từ gốc.</small>
+    <small>Kiểm tra và làm sạch dữ liệu đầu vào trước khi thực thi truy vấn - triệt tiêu <em class="threat-tag">SQL Injection</em> ngay từ gốc.</small>
   </div>
   <div v-click="3">
     <strong>Auditing & Monitoring</strong>
-    <small>Ghi log và giám sát hành vi bất thường theo thời gian thực — phát hiện sớm các dấu hiệu <em class="threat-tag">Insider threat</em>.</small>
+    <small>Ghi log và giám sát hành vi bất thường theo thời gian thực - phát hiện sớm các dấu hiệu <em class="threat-tag">Insider threat</em>.</small>
   </div>
   <div v-click="4">
     <strong>Backup & Disaster Recovery</strong>
-    <small>Sao lưu định kỳ và cô lập bản sao an toàn — đảm bảo khôi phục dữ liệu nguyên vẹn khi xảy ra <em class="threat-tag">Ransomware</em>.</small>
+    <small>Sao lưu định kỳ và cô lập bản sao an toàn - đảm bảo khôi phục dữ liệu nguyên vẹn khi xảy ra <em class="threat-tag">Ransomware</em>.</small>
   </div>
 </div>
 
@@ -35,7 +35,7 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
     </svg>
   </div>
   <div class="callout-text text-sm">
-    <strong class="text-emerald-300 font-bold">Nguyên tắc Defense-in-Depth:</strong> Không có giải pháp đơn lẻ nào bảo vệ toàn diện — <b class="text-white font-bold">chỉ khi phối hợp đa tầng</b> (phân quyền, mã hóa, giám sát, sao lưu), CSDL mới được bảo vệ an toàn trước mọi rủi ro.
+    <strong class="text-emerald-300 font-bold">Nguyên tắc Defense-in-Depth:</strong> Không có giải pháp đơn lẻ nào bảo vệ toàn diện - <b class="text-white font-bold">chỉ khi phối hợp đa tầng</b> (phân quyền, mã hóa, giám sát, sao lưu), CSDL mới được bảo vệ an toàn trước mọi rủi ro.
   </div>
 </div>
 

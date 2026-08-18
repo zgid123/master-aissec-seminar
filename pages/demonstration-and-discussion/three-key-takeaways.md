@@ -13,7 +13,7 @@ transition: slide-left
   <div v-click><b>04</b><span>DuckDB minh họa tốt concept bằng SQL primitives, nhưng security thực tế cần access-control layer đáng tin cậy.</span></div>
 </div>
 
-<div v-click class="mt-6 text-center text-lg">
+<div v-click="6" class="mt-6 text-lg">
 <b class="text-[#88ffff]">Masking</b> trả lời “data nên hiển thị như thế nào”; <b class="text-[#2efab0]">Access Control</b> trả lời “ai được phép xem gì”.
 </div>
 

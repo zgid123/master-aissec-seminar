@@ -38,7 +38,7 @@ export function LoginPage() {
         <div className="story-copy">
           <p className="eyebrow"><span /> AISSEC SEMINAR DEMO</p>
           <h1>Same rows.<br/><em>Different truth.</em></h1>
-          <p>Explore how application context changes what DuckDB returns—without changing the source data.</p>
+          <p>Explore how application context changes what DuckDB returns-without changing the source data.</p>
           <div className="flow-card">
             <div><span>01</span><b>Authenticate</b><small>Node.js validates identity</small></div>
             <ArrowIcon />

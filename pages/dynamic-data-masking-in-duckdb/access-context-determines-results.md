@@ -4,7 +4,7 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Bước 6 — Kiểm tra kết quả
+# Bước 6 - Kiểm tra kết quả
 
 Cùng endpoint, cùng truy vấn và cùng dữ liệu gốc; chỉ xác minh quyền khác nhau.{.op-60}
 

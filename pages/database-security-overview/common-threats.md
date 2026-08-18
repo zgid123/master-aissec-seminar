@@ -11,7 +11,7 @@ Các hình thức tấn công và sơ suất bảo mật thường gặp đe d�
 <div class="threats mt-6">
   <div v-click="1">
     <strong>SQL Injection</strong>
-    <small>Kẻ tấn công chèn mã độc vào truy vấn qua ô nhập liệu — có thể vượt qua bước kiểm tra đăng nhập hoặc trích xuất toàn bộ dữ liệu mà không cần tài khoản.</small>
+    <small>Kẻ tấn công chèn mã độc vào truy vấn qua ô nhập liệu - có thể vượt qua bước kiểm tra đăng nhập hoặc trích xuất toàn bộ dữ liệu mà không cần tài khoản.</small>
   </div>
   <div v-click="2">
     <strong>Insider Threats</strong>
@@ -23,7 +23,7 @@ Các hình thức tấn công và sơ suất bảo mật thường gặp đe d�
   </div>
   <div v-click="4">
     <strong>Ransomware</strong>
-    <small>Mã hóa toàn bộ tệp tin cơ sở dữ liệu và yêu cầu tiền chuộc — trực tiếp phá hủy tính <span class="text-[#00e5ff]">sẵn sàng (Availability)</span> của hệ thống vận hành.</small>
+    <small>Mã hóa toàn bộ tệp tin cơ sở dữ liệu và yêu cầu tiền chuộc - trực tiếp phá hủy tính <span class="text-[#00e5ff]">sẵn sàng (Availability)</span> của hệ thống vận hành.</small>
   </div>
 </div>
 

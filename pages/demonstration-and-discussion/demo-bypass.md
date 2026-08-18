@@ -1,5 +1,6 @@
 ---
 layout: two-cols-header
+layoutClass: demo-bypass
 hideInToc: true
 transition: slide-left
 ---
@@ -43,3 +44,9 @@ alice@gmail.com
 <div v-click class="mt-5 rounded-lg border border-amber-300/35 bg-amber-500/8 p-3 text-sm leading-6">
 Nếu user có thể query raw table, masking layer không còn là lớp bảo vệ.
 </div>
+
+<style>
+.demo-bypass {
+  column-gap: 1.5rem;
+}
+</style>

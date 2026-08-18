@@ -61,7 +61,7 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
     </svg>
   </div>
   <div class="callout-text text-sm">
-    <span class="text-emerald-300 font-bold uppercase tracking-wider text-xs block mb-0.5">BƯỚC TIẾP THEO — PHẦN 02</span>
+    <span class="text-emerald-300 font-bold uppercase tracking-wider text-xs block mb-0.5">BƯỚC TIẾP THEO - PHẦN 02</span>
     Tìm hiểu chi tiết các cơ chế <b class="text-white font-bold">Static Data Masking (SDM)</b> và <b class="text-white font-bold">Dynamic Data Masking (DDM)</b> trong cơ sở dữ liệu.
   </div>
 </div>

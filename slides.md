@@ -135,7 +135,7 @@ transition: slide-left
       </svg>
     </div>
     <div class="card-title">DEMO<br/>VÀ THẢO LUẬN</div>
-    <div class="card-desc">Minh họa thực tế và thảo luận cùng Q&A</div>
+    <div class="card-desc">Minh họa thực tế, thảo luận và Q&A</div>
   </div>
 </div>
 

@@ -18,7 +18,7 @@ transition: slide-left
   </div>
 </div>
 
-<div v-click class="mt-6 text-center text-lg">
+<div v-click="4" class="mt-6 text-center text-lg">
 “Dynamic” nghĩa là <b class="text-[#2efab0]">output thay đổi tại query time</b>, còn <b class="text-[#88ffff]">original data không đổi</b>.
 </div>
 

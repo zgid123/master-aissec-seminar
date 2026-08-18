@@ -1,8 +1,8 @@
 Mình đề xuất chốt seminar thành **4 sections chính**, tương ứng luôn với **4 members**. Mỗi section có scope đủ rõ để từng người tự research và làm slides mà ít bị overlap.
 
-# Mục lục — Table of Contents
+# Mục lục - Table of Contents
 
-## 01 — Database Security Overview
+## 01 - Database Security Overview
 
 **TỔNG QUAN BẢO MẬT CƠ SỞ DỮ LIỆU**
 
@@ -10,7 +10,7 @@ Những kiến thức nền tảng về bảo mật cơ sở dữ liệu, tam gi
 
 ---
 
-## 02 — Data Masking Fundamentals
+## 02 - Data Masking Fundamentals
 
 **NỀN TẢNG VỀ DATA MASKING**
 
@@ -18,7 +18,7 @@ Khái niệm, vai trò, nguyên tắc của Data Masking và bài toán bảo v�
 
 ---
 
-## 03 — Dynamic Data Masking in DuckDB
+## 03 - Dynamic Data Masking in DuckDB
 
 **DYNAMIC DATA MASKING TRONG DUCKDB**
 
@@ -26,7 +26,7 @@ Cơ chế hoạt động, kỹ thuật triển khai Dynamic Data Masking trong k
 
 ---
 
-## 04 — Demonstration & Discussion
+## 04 - Demonstration & Discussion
 
 **DEMO VÀ THẢO LUẬN**
 
@@ -34,7 +34,7 @@ Minh họa thực tế theo ngữ cảnh truy cập, đánh giá kết quả và
 
 ---
 
-# 01 — DATABASE SECURITY OVERVIEW
+# 01 - DATABASE SECURITY OVERVIEW
 
 ## **TỔNG QUAN BẢO MẬT CƠ SỞ DỮ LIỆU**
 
@@ -130,7 +130,7 @@ Câu hỏi chuyển section:
 
 ---
 
-# 02 — Data Masking Fundamentals
+# 02 - Data Masking Fundamentals
 
 **Những khái niệm nền tảng về Data Masking**
 
@@ -252,7 +252,7 @@ Kết section bằng:
 
 ---
 
-# 03 — Dynamic Data Masking in DuckDB
+# 03 - Dynamic Data Masking in DuckDB
 
 **Dynamic Data Masking trong DuckDB**
 
@@ -453,7 +453,7 @@ Nhưng đây là **optional**, không nên chiếm phần chính.
 
 ---
 
-# 04 — Demonstration & Discussion
+# 04 - Demonstration & Discussion
 
 **Demo và thảo luận**
 
@@ -638,25 +638,25 @@ Chỉ cần **3 takeaways**.
 Cuối cùng flow của toàn seminar sẽ rất rõ:
 
 ```text
-01 — DATABASE SECURITY
+01 - DATABASE SECURITY
         │
         │
         │ "We protected the database,
         │  but sensitive data can still
         │  be unnecessarily exposed."
         ▼
-02 — DATA MASKING
+02 - DATA MASKING
         │
         │
         │ "Dynamic masking solves this
         │  without changing original data."
         ▼
-03 — DYNAMIC DATA MASKING IN DUCKDB
+03 - DYNAMIC DATA MASKING IN DUCKDB
         │
         │
         │ "How can DuckDB implement it?"
         ▼
-04 — DEMONSTRATION & DISCUSSION
+04 - DEMONSTRATION & DISCUSSION
         │
         ▼
      TAKEAWAYS
@@ -664,10 +664,10 @@ Cuối cùng flow của toàn seminar sẽ rất rõ:
 
 ## Table of Contents chính thức mình nghĩ nên chốt
 
-> **01 — Database Security Overview**
-> **02 — Data Masking Fundamentals**
-> **03 — Dynamic Data Masking in DuckDB**
-> **04 — Demonstration & Discussion**
+> **01 - Database Security Overview**
+> **02 - Data Masking Fundamentals**
+> **03 - Dynamic Data Masking in DuckDB**
+> **04 - Demonstration & Discussion**
 
 Và scope từng member:
 

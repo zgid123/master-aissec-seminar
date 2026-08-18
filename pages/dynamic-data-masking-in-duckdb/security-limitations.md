@@ -11,7 +11,7 @@ Masking không bảo vệ dữ liệu gốc.
 </div>
 
 <div v-click="2" class="op-60">
-Việc che dữ liệu chỉ được bảo đảm khi user truy cập thông qua Node.js API.
+Việc che dữ liệu chỉ được bảo đảm khi người dùng truy cập thông qua API Node.js.
 </div>
 
 <div v-click="2" class="queries mt-5">
@@ -45,7 +45,7 @@ FROM customers;
 
 <div class="conditions mt-5">
   <div v-click="3"><b>1</b><span>Backend giữ file <code>.duckdb</code></span></div>
-  <div v-click="4"><b>2</b><span>OS permissions chặn direct access</span></div>
+  <div v-click="4"><b>2</b><span>Quyền của hệ điều hành chặn truy cập trực tiếp</span></div>
   <div v-click="5"><b>3</b><span>API không cho phép người dùng tự nhập câu lệnh SQL</span></div>
 </div>
 
@@ -65,19 +65,19 @@ FROM customers;
 Giới thiệu vấn đề: cơ chế vừa triển khai vẫn có một giới hạn bảo mật quan trọng.
 
 [click]
-Masking chỉ thay đổi kết quả query; dữ liệu gốc trong file DuckDB không bị thay đổi.
+Masking chỉ thay đổi kết quả truy vấn; dữ liệu gốc trong file DuckDB không bị thay đổi.
 
 [click]
-Đi qua Node.js API, policy trả về email đã che. Nhưng nếu mở trực tiếp file và query bảng gốc, chúng ta vẫn đọc được email đầy đủ.
+Khi truy cập qua API Node.js, chính sách trả về email đã che. Nhưng nếu mở trực tiếp file và truy vấn bảng gốc, chúng ta vẫn đọc được email đầy đủ.
 
 [click]
 Điều kiện thứ nhất: file DuckDB phải nằm trên server và do backend quản lý. Không được gửi file cho người dùng.
 
 [click]
-Điều kiện thứ hai: quyền của hệ điều hành phải bảo đảm chỉ tài khoản chạy backend được đọc file. Nếu user mở được file, họ có thể bỏ qua masking.
+Điều kiện thứ hai: quyền của hệ điều hành phải bảo đảm rằng chỉ tài khoản chạy backend mới được đọc file. Nếu người dùng mở được file, họ có thể bỏ qua masking.
 
 [click]
-Điều kiện thứ ba: API chỉ chạy các query đã định nghĩa trước. Nếu cho phép user tự nhập SQL, họ có thể query trực tiếp cột email để lấy dữ liệu gốc.
+Điều kiện thứ ba: API chỉ chạy các truy vấn đã được định nghĩa trước. Nếu cho phép người dùng tự nhập SQL, họ có thể truy vấn trực tiếp cột email để lấy dữ liệu gốc.
 
 Kết luận: đây là application-enforced masking, không phải native authorization của DuckDB.
 

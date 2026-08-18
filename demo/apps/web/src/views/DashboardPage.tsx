@@ -69,7 +69,7 @@ export function DashboardPage() {
           <div className="table-tools">
             <form className="search-box" onSubmit={handleSearch}><SearchIcon/><input aria-label="Search users" value={draftSearch} onChange={(e) => setDraftSearch(e.target.value)} placeholder="Search by name…"/><kbd>↵</kbd></form>
             <div className="query-meta">
-              <span>QUERY TIME <b>{response?.meta.queryMs ?? '—'} ms</b></span>
+              <span>QUERY TIME <b>{response?.meta.queryMs ?? '-'} ms</b></span>
               <label className="page-size-control">
                 ROWS
                 <select
@@ -109,10 +109,10 @@ export function DashboardPage() {
           </div>
 
           <footer className="table-footer">
-            <p>Showing <b>{response ? (response.meta.page - 1) * pageSize + 1 : 0}–{response ? Math.min(response.meta.page * pageSize, response.meta.total) : 0}</b> of <b>{response?.meta.total.toLocaleString() ?? '—'}</b></p>
+            <p>Showing <b>{response ? (response.meta.page - 1) * pageSize + 1 : 0}–{response ? Math.min(response.meta.page * pageSize, response.meta.total) : 0}</b> of <b>{response?.meta.total.toLocaleString() ?? '-'}</b></p>
             <div className="pagination">
               <button disabled={page <= 1 || usersQuery.isFetching} onClick={() => setPage((current) => current - 1)}>Previous</button>
-              <span>Page <b>{page}</b> of {response?.meta.totalPages.toLocaleString() ?? '—'}</span>
+              <span>Page <b>{page}</b> of {response?.meta.totalPages.toLocaleString() ?? '-'}</span>
               <button disabled={!response || page >= response.meta.totalPages || usersQuery.isFetching} onClick={() => setPage((current) => current + 1)}>Next</button>
             </div>
           </footer>

@@ -17,7 +17,7 @@ DuckDB là một **embedded database, mã nguồn mở và lưu trữ theo cột
 
 <div v-click class="rounded-lg border border-cyan-300/25 bg-cyan-500/8 p-4">
   <div class="mb-2 text-xl text-[#2efab0]">Không cần máy chủ</div>
-  Ứng dụng nạp DuckDB như một thư viện. Không cần cài đặt hay vận hành một database server riêng.
+  Ứng dụng nạp DuckDB như một thư viện, không cần cài đặt hay vận hành máy chủ cơ sở dữ liệu riêng.
 </div>
 
 <div v-click class="rounded-lg border border-cyan-300/25 bg-cyan-500/8 p-4">

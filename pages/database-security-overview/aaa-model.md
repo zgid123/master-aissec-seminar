@@ -27,7 +27,7 @@ CIA xác định **cần bảo vệ điều gì**; AAA xác định **ai đượ
     <b>Accounting / Auditing</b>
     <div>
       <strong>GHI NHẬN & TRUY VẾT</strong>
-      <small>Ghi log toàn bộ truy vết thao tác và thay đổi dữ liệu, hỗ trợ kiểm toán và xác minh trách nhiệm khi có sự cố.</small>
+      <small>Ghi lại toàn bộ thao tác và thay đổi dữ liệu, hỗ trợ kiểm toán, truy vết và xác minh trách nhiệm khi có sự cố.</small>
     </div>
   </div>
 </div>
@@ -41,7 +41,7 @@ CIA xác định **cần bảo vệ điều gì**; AAA xác định **ai đượ
     </svg>
   </div>
   <div class="callout-text text-sm">
-    <strong class="text-cyan-300">Điểm cần phân biệt rõ:</strong> <b class="text-white font-bold">Xác thực (Authentication)</b> thành công không đồng nghĩa được phép xem toàn bộ dữ liệu — quyền hạn cụ thể phụ thuộc hoàn toàn vào cơ chế <b class="text-white font-bold">Phân quyền (Authorization)</b>.
+    <strong class="text-cyan-300">Điểm cần phân biệt rõ:</strong> <b class="text-white font-bold">Xác thực (Authentication)</b> thành công không đồng nghĩa được phép xem toàn bộ dữ liệu - quyền hạn cụ thể phụ thuộc hoàn toàn vào cơ chế <b class="text-white font-bold">Phân quyền (Authorization)</b>.
   </div>
 </div>
 

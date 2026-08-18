@@ -4,12 +4,12 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Các bước triển khai Dynamic Data Masking
+# Quy trình triển khai
 
-Mục tiêu: cùng một bản ghi, nhưng output thay đổi theo quyền đã xác thực.{.op-60}
+Mục tiêu: cùng một bản ghi, nhưng kết quả thay đổi theo quyền đã được xác thực.{.op-60}
 
 <div class="roadmap mt-6">
-  <div v-click="2"><b>1</b><span>Xác định dữ liệu<br/>và output mong muốn</span></div>
+  <div v-click="2"><b>1</b><span>Xác định dữ liệu<br/>và kết quả mong muốn</span></div>
   <strong v-click="3">→</strong>
   <div v-click="3"><b>2</b><span>Tạo hàm<br/>che dữ liệu</span></div>
   <strong v-click="4">→</strong>
@@ -17,7 +17,7 @@ Mục tiêu: cùng một bản ghi, nhưng output thay đổi theo quyền đã 
   <strong v-click="5" class="down">↓</strong>
   <div v-click="5" class="step-4"><b>4</b><span>Node.js<br/>xác thực người dùng</span></div>
   <strong v-click="6" class="back-5">←</strong>
-  <div v-click="6" class="step-5"><b>5</b><span>Liên kết quyền<br/>vào DuckDB</span></div>
+  <div v-click="6" class="step-5"><b>5</b><span>Truyền quyền<br/>vào DuckDB</span></div>
   <strong v-click="7" class="back-6">←</strong>
   <div v-click="7" class="step-6"><b>6</b><span>Kiểm tra kết quả</span></div>
 </div>

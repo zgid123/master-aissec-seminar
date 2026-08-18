@@ -4,9 +4,9 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Bước 3 — Tạo policy theo quyền
+# Bước 3 - Tạo policy theo quyền
 
-Role-aware Macro chọn dữ liệu gốc, dữ liệu đã che hoặc từ chối mặc định.{.op-60}
+Macro nhận biết vai trò để chọn dữ liệu gốc, dữ liệu đã che hoặc mặc định từ chối truy cập.{.op-60}
 
 <div class="cols mt-5">
 <div>
@@ -45,7 +45,7 @@ DuckDB có policy, nhưng vẫn cần Node.js cung cấp <code>viewer_role</code
 </style>
 
 <!--
-Gợi ý trình bày: Bước 3 dùng role để chọn có gọi transformation hay không.
+Gợi ý trình bày: Bước 3 dùng vai trò để quyết định có áp dụng phép biến đổi hay không.
 
 [Sources]
 - https://duckdb.org/docs/current/sql/statements/create_macro

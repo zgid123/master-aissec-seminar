@@ -15,7 +15,7 @@ transition: slide-left
   <div v-click><span>Bypass risk</span><p>Đọc được file hoặc chạy raw SQL thì có thể bỏ qua masking.</p><p>Permission, schema privilege, RLS và audit giúp giảm rủi ro bypass.</p></div>
 </div>
 
-<div v-click class="mt-5 rounded-lg border border-amber-300/35 bg-amber-500/8 p-3 text-center text-sm leading-6">
+<div v-click="7" class="mt-5 rounded-lg border border-amber-300/35 bg-amber-500/8 p-3 text-sm leading-6">
 DuckDB phù hợp để xây <b class="text-[#2efab0]">masking behavior</b>, nhưng không nên xem macro/view là <b class="text-[#88ffff]">database-native security boundary</b>.
 </div>
 
