@@ -11,7 +11,7 @@ transition: slide-left
     <h3>Static Data Masking</h3>
     <p><b>Dữ liệu gốc</b> → Che → <b>Bản sao đã che</b></p>
     <p>Dữ liệu được che sẵn trên một bản sao, rồi mới đưa sang môi trường phát triển, kiểm thử hoặc huấn luyện.</p>
-    <p class="trade"><b>Đánh giá:</b> An toàn vì môi trường không dùng dữ liệu thật, nhưng bản sao đã cố định và phải làm mới định kỳ.</p>
+    <p class="trade"><b>Đánh giá:</b> An toàn hơn vì môi trường đích không dùng dữ liệu thật, nhưng bản sao đã cố định và phải được làm mới định kỳ.</p>
   </div>
   <div v-click="2">
     <h3>Dynamic Data Masking</h3>
@@ -43,15 +43,15 @@ Chỉ cần <b>một nguồn dữ liệu duy nhất</b> mà vẫn phục vụ đ
 </style>
 
 <!--
-Mở: hai hướng che, khác nhau ở đúng một điểm — **việc che diễn ra LÚC NÀO**.
+Mở: hai hướng che, khác nhau ở đúng một điểm - **việc che diễn ra LÚC NÀO**.
 
 [click] **Static** (chỉ tay cột trái, giữ tay ở đó): che sẵn trên **bản sao** → mới đưa sang dev/test/training.
 Được: môi trường đó **không có dữ liệu thật để lộ**. Mất: bản sao đổi cố định, phải làm mới định kỳ.
 
 [click] **Dynamic** (chuyển tay sang cột phải, nói mạnh hơn): dữ liệu trong CSDL **không đổi**,
 chỉ che **kết quả trả về** lúc truy vấn, tùy **ai** và **quyền gì**. Cùng một bảng: đủ quyền thấy thật, không đủ thấy đã che.
-Đánh đổi (dòng cuối cột — **bắt cầu sang Slide 3, đừng bỏ**): một nguồn duy nhất + linh hoạt,
-nhưng phụ thuộc **xác định đúng danh tính và quyền** — xác định sai là che sai.
+Đánh đổi (dòng cuối cột - **bắt cầu sang Slide 3, đừng bỏ**): một nguồn duy nhất + linh hoạt,
+nhưng phụ thuộc **xác định đúng danh tính và quyền** - xác định sai là che sai.
 
 [click] "**Static không để DỮ LIỆU THẬT rời khỏi production**; **Dynamic không để DỮ LIỆU THẬT hiện ra SAI NGƯỜI**."
 Dòng nhỏ bên dưới (nói luôn): một nguồn duy nhất phục vụ nhiều quyền → khỏi nhân bản và đồng bộ, quy tắc che nằm một chỗ.

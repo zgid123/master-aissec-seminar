@@ -15,9 +15,9 @@ Masking thay dữ liệu nhạy cảm bằng một dạng hiển thị an toàn 
 </div>
 
 <div class="mt-6 grid grid-cols-3 gap-5 text-sm info-grid">
-  <div v-click="2"><b class="text-[#88ffff]">Dữ liệu thường được che</b><br><span class="op-70">Email, số điện thoại, thẻ tín dụng, số định danh, địa chỉ, lương, thông tin y tế và tài chính, ...</span></div>
-  <div v-click="3"><b class="text-[#2efab0]">Người dùng điển hình</b><br><span class="op-70">Lập trình viên, kiểm thử viên, nhân viên phân tích và hỗ trợ - những người chỉ cần một phần dữ liệu.</span></div>
-  <div v-click="4"><b class="text-[#ffda58]">Kỹ thuật phổ biến</b><br><span class="op-70">Che một phần (partial redaction), thay thế (substitution), hash, tokenization, ...</span></div>
+  <div v-click="2"><b class="text-[#88ffff]">Dữ liệu thường được che</b><br><span class="op-70">Email, số điện thoại, thẻ tín dụng, số định danh, địa chỉ, lương, thông tin y tế và tài chính...</span></div>
+  <div v-click="3"><b class="text-[#2efab0]">Người dùng điển hình</b><br><span class="op-70">Lập trình viên, kiểm thử viên, chuyên viên phân tích và nhân viên hỗ trợ - những người chỉ cần một phần dữ liệu.</span></div>
+  <div v-click="4"><b class="text-[#ffda58]">Kỹ thuật phổ biến</b><br><span class="op-70">Che một phần (partial redaction), thay thế (substitution), băm (hashing), mã hóa token (tokenization)...</span></div>
 </div>
 
 <div v-click="5" class="mt-6 text-sm purpose-line">
@@ -42,15 +42,15 @@ Masking thay dữ liệu nhạy cảm bằng một dạng hiển thị an toàn 
 </style>
 
 <!--
-Đăng nhập đúng, có quyền, kết nối an toàn, CSDL đã mã hóa — **nhưng vẫn lộ quá mức cần thiết**.
+Đăng nhập đúng, có quyền, kết nối an toàn, CSDL đã mã hóa - **nhưng vẫn lộ quá mức cần thiết**.
 Định nghĩa: thay dữ liệu nhạy cảm bằng dạng an toàn hơn **nhưng vẫn đủ dùng**.
 
-[CLICK] Ví dụ — chỉ ô trái → kéo sang ô phải: `john.doe@gmail.com` → `j***@gmail.com`.
+[CLICK] Ví dụ - chỉ ô trái → kéo sang ô phải: `john.doe@gmail.com` → `j***@gmail.com`.
 Vẫn biết là email, **không còn danh tính đầy đủ**.
 
 [click] Trường thường che: email · SĐT · thẻ tín dụng · số định danh · địa chỉ · lương · y tế/tài chính.
 
-[click] Ai dùng: lập trình · kiểm thử · phân tích · hỗ trợ — **chỉ cần một phần dữ liệu**.
+[click] Ai dùng: lập trình · kiểm thử · phân tích · hỗ trợ - **chỉ cần một phần dữ liệu**.
 
 [click] 4 kỹ thuật: partial redaction (như ví dụ) · substitution · hash · tokenization.
 → Nói đều, **đừng đọc thêm tên nào**. Chậm giờ thì bỏ cả đoạn này.
@@ -59,6 +59,6 @@ Vẫn biết là email, **không còn danh tính đầy đủ**.
 CHỐT (hạ giọng): "mục đích là **GIẢM RỦI RO LỘ DỮ LIỆU**, chứ không làm dữ liệu vô dụng."
 → Chuyển: "Vậy việc che này được làm VÀO LÚC NÀO?"
 
-Hỏi sâu — 3 kỹ thuật còn lại: nulling (mất join) · shuffling (thống kê đúng, cá nhân sai) · format-preserving.
+Hỏi sâu - 3 kỹ thuật còn lại: nulling (mất join) · shuffling (thống kê đúng, cá nhân sai) · format-preserving.
 Khôi phục được: chỉ **tokenization** (có vault). Hash một chiều nhưng vẫn join/đếm được.
 -->

@@ -5,7 +5,7 @@ description: Built-in MCP server for AI agents to inspect, edit, reorder, and na
 
 # MCP Server
 
-Slidev ships a built-in MCP (Model Context Protocol) server exposing structured tools to read, edit, reorder, and navigate a deck. Prefer these tools over raw text edits for slide-level operations (update/insert/remove/move) — they handle Slidev's compound separators correctly and hot-reload the presentation.
+Slidev ships a built-in MCP (Model Context Protocol) server exposing structured tools to read, edit, reorder, and navigate a deck. Prefer these tools over raw text edits for slide-level operations (update/insert/remove/move) - they handle Slidev's compound separators correctly and hot-reload the presentation.
 
 ## Usage
 

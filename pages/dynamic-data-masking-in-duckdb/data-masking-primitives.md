@@ -4,7 +4,7 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Bước 1 — Xác định output mong muốn
+# Bước 1 - Xác định kết quả mong muốn
 
 Dữ liệu của Alice được lưu một lần, nhưng mỗi vai trò nhìn thấy một kết quả khác nhau.{.op-60}
 

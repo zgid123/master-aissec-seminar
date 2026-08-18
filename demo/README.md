@@ -59,4 +59,4 @@ pnpm build      # build the API and web app
 
 ## Security scope
 
-This demo intentionally uses two hard-coded accounts and fixed bearer tokens so the seminar can focus on the Node.js-to-DuckDB role boundary. It is not production authentication. In a real system, use a trusted identity provider, keep the DuckDB file readable only by the backend OS account, and expose only fixed parameterized queries—never arbitrary user-supplied SQL.
+This demo intentionally uses two hard-coded accounts and fixed bearer tokens so the seminar can focus on the Node.js-to-DuckDB role boundary. It is not production authentication. In a real system, use a trusted identity provider, keep the DuckDB file readable only by the backend OS account, and expose only fixed parameterized queries-never arbitrary user-supplied SQL.

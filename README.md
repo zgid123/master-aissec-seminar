@@ -31,12 +31,12 @@ pnpm ppt     # Export PowerPoint
 
 ## Project Structure
 
-- `slides.md` — deck entry point and global presentation settings
-- `pages/database-security-overview/` — database security overview
-- `pages/data-masking-fundamentals/` — Data Masking fundamentals
-- `pages/dynamic-data-masking-in-duckdb/` — DuckDB implementation approach
-- `pages/demonstration-and-discussion/` — Demo, limitations, and takeaways
-- `assets/` — local presentation images
+- `slides.md` - deck entry point and global presentation settings
+- `pages/database-security-overview/` - database security overview
+- `pages/data-masking-fundamentals/` - Data Masking fundamentals
+- `pages/dynamic-data-masking-in-duckdb/` - DuckDB implementation approach
+- `pages/demonstration-and-discussion/` - Demo, limitations, and takeaways
+- `assets/` - local presentation images
 
 Each section uses `main.md` as its section cover and imports individual slides
 from English kebab-case filenames. Visible slide content is primarily Vietnamese,

@@ -4,7 +4,7 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Bước 4 — Node.js xác thực người dùng
+# Bước 4 - Xác thực người dùng
 
 Authentication middleware kiểm tra token và tạo <code>req.user</code> đáng tin cậy.{.op-60}
 
@@ -33,7 +33,7 @@ async function requireAuth(
 </div>
 <div class="sources">
   <div class="bad" v-click="2"><small>KHÔNG TIN CẬY</small><code>req.body.role</code><span>Client có thể tự sửa thành <b>manager</b></span></div>
-  <div class="good" v-click="2"><small>TIN CẬY SAU KHI VERIFY</small><code>req.user.role</code><span>Được đọc từ token/session hợp lệ</span></div>
+  <div class="good" v-click="2"><small>TIN CẬY SAU KHI XÁC MINH</small><code>req.user.role</code><span>Được đọc từ token/session hợp lệ</span></div>
 </div>
 </div>
 

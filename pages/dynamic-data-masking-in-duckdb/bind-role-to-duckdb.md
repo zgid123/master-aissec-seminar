@@ -4,9 +4,9 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Bước 5 — Liên kết quyền vào DuckDB
+# Bước 5 - Truyền quyền vào DuckDB
 
-Node.js xác thực quyền rồi liên kết vào <code>$viewer_role</code>; không nối quyền vào chuỗi SQL.{.op-60}
+Node.js xác thực quyền rồi gán giá trị cho <code>$viewer_role</code>; không ghép quyền trực tiếp vào chuỗi SQL.{.op-60}
 
 <div class="cols bind mt-4">
 <div>
@@ -53,7 +53,7 @@ const reader = await connection.runAndReadAll(
 </style>
 
 <!--
-Gợi ý trình bày: đây là điểm role thật sự đi qua ranh giới Node.js → DuckDB. Prepared parameter giữ query structure cố định.
+Gợi ý trình bày: đây là điểm vai trò thực sự đi qua ranh giới Node.js → DuckDB. Tham số được chuẩn bị sẵn giúp giữ nguyên cấu trúc truy vấn.
 
 [Sources]
 - https://duckdb.org/docs/current/clients/node_neo/overview

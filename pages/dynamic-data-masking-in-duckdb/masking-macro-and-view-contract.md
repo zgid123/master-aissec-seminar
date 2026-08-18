@@ -4,9 +4,9 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Bước 2 — Tạo hàm che dữ liệu
+# Bước 2 - Tạo hàm che dữ liệu
 
-Trong ví dụ này, Scalar Macro đóng gói phép che email để sử dụng lại trong các truy vấn.{.op-60}
+Trong ví dụ này, scalar macro đóng gói thao tác che email để tái sử dụng trong các truy vấn.{.op-60}
 
 <div class="cols mt-6">
 <div>
@@ -45,7 +45,7 @@ Hàm này chỉ biến đổi dữ liệu; nó chưa biết người dùng nào 
 </style>
 
 <!--
-Gợi ý trình bày: Bước 2 tạo transformation có thể tái sử dụng. Policy theo role được bổ sung ở bước tiếp theo.
+Gợi ý trình bày: Bước 2 tạo phép biến đổi có thể tái sử dụng. Chính sách theo vai trò được bổ sung ở bước tiếp theo.
 
 [Sources]
 - https://duckdb.org/docs/current/sql/statements/create_macro

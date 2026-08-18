@@ -13,21 +13,21 @@ transition: slide-left
     <b>C</b>
     <div>
       <strong>Confidentiality</strong>
-      <small>Chỉ đúng người mới xem được dữ liệu nhạy cảm — như thư niêm phong, chỉ người nhận mới mở được.</small>
+      <small>Chỉ đúng người mới xem được dữ liệu nhạy cảm - như thư niêm phong, chỉ người nhận mới mở được.</small>
     </div>
   </div>
   <div v-click="2">
     <b>I</b>
     <div>
       <strong>Integrity</strong>
-      <small>Dữ liệu luôn chính xác và nguyên vẹn — như bản hợp đồng đã ký kết, không ai có thể tự ý chỉnh sửa hay tẩy xóa.</small>
+      <small>Dữ liệu luôn chính xác và nguyên vẹn - như bản hợp đồng đã ký kết, không ai có thể tự ý chỉnh sửa hay tẩy xóa.</small>
     </div>
   </div>
   <div v-click="3">
     <b>A</b>
     <div>
       <strong>Availability</strong>
-      <small>Hệ thống và dữ liệu luôn sẵn sàng khi cần — như máy ATM, không thể "nghỉ" giữa giờ cao điểm.</small>
+      <small>Hệ thống và dữ liệu luôn sẵn sàng khi cần - như máy ATM, không thể "nghỉ" giữa giờ cao điểm.</small>
     </div>
   </div>
 </div>
@@ -39,7 +39,7 @@ transition: slide-left
     </svg>
   </div>
   <div class="callout-text text-sm">
-    <strong class="text-amber-300">Nguyên tắc đánh đổi:</strong> Ba mục tiêu này đôi khi <b class="text-white font-bold">đánh đổi lẫn nhau</b> — bảo mật càng nghiêm ngặt (<b class="text-white">Confidentiality</b>) thường làm tăng độ trễ và giảm hiệu năng truy xuất (<b class="text-white">Availability</b>).
+    <strong class="text-amber-300">Nguyên tắc đánh đổi:</strong> Ba mục tiêu này đôi khi <b class="text-white font-bold">đòi hỏi sự đánh đổi</b> - tăng cường tính bí mật (<b class="text-white">Confidentiality</b>) có thể làm tăng độ trễ và ảnh hưởng đến tính sẵn sàng (<b class="text-white">Availability</b>).
   </div>
 </div>
 
