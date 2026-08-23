@@ -6,27 +6,34 @@ transition: slide-left
 
 # DuckDB là gì?
 
-DuckDB là một **embedded database, mã nguồn mở và lưu trữ theo cột**, được thiết kế chuyên biệt cho xử lý phân tích hiệu năng cao (OLAP).{.op-60}
+DuckDB là **embedded analytical database**: chạy ngay trong tiến trình Node.js và phù hợp với truy vấn phân tích trên dữ liệu dạng cột.{.op-60}
 
-<div class="mt-6 grid grid-cols-3 gap-4 text-sm">
-
-<div v-click class="rounded-lg border border-cyan-300/25 bg-cyan-500/8 p-4">
-  <div class="mb-2 text-xl text-[#2efab0]">Phân tích dữ liệu</div>
-  DuckDB được tối ưu cho các truy vấn đọc, tổng hợp và xử lý một lượng lớn dữ liệu bằng <b>SQL</b>.
-</div>
+<div class="mt-6 grid grid-cols-3 gap-4 text-base">
 
 <div v-click class="rounded-lg border border-cyan-300/25 bg-cyan-500/8 p-4">
-  <div class="mb-2 text-xl text-[#2efab0]">Không cần máy chủ</div>
-  Ứng dụng nạp DuckDB như một thư viện, không cần cài đặt hay vận hành máy chủ cơ sở dữ liệu riêng.
+  <div class="mb-2 text-lg text-[#2efab0]">Phân tích tại backend</div>
+  Truy vấn trực tiếp dữ liệu khách hàng bằng <b>SQL</b>, không cần vận hành database server riêng.
 </div>
 
 <div v-click class="rounded-lg border border-cyan-300/25 bg-cyan-500/8 p-4">
-  <div class="mb-2 text-xl text-[#2efab0]">Làm việc trực tiếp</div>
-  Có thể truy vấn file <b>CSV, JSON, Parquet</b>, DataFrame hoặc dữ liệu lưu trong file <code>.duckdb</code>.
+  <div class="mb-2 text-lg text-[#2efab0]">Một tiến trình ứng dụng</div>
+  Node.js nạp DuckDB như thư viện; query chạy với quyền của chính tiến trình backend.
+</div>
+
+<div v-click class="rounded-lg border border-cyan-300/25 bg-cyan-500/8 p-4">
+  <div class="mb-2 text-lg text-[#2efab0]">Một nguồn dữ liệu</div>
+  Giữ dữ liệu gốc trong file <b class="text-[#88ffff]">.duckdb</b>; masking chỉ thay đổi output theo <b class="text-[#88ffff]">role</b>.
 </div>
 
 </div>
 
-<div v-click="5" class="mt-3 rounded-lg border border-cyan-300/30 bg-cyan-500/8 p-3 text-base">
-DuckDB xử lý SQL ngay trong tiến trình của ứng dụng, vì vậy không có lớp máy chủ đứng giữa người dùng và dữ liệu. <b class="text-[#2efab0]">Ứng dụng phải quyết định ai được xem dữ liệu nào</b>.
+<div v-click="5" class="mt-4 rounded-lg border border-cyan-300/30 bg-cyan-500/8 p-3 text-lg">
+Kiến trúc này chỉ an toàn khi mọi truy cập dữ liệu đi qua backend; <b class="text-[#2efab0]">Node.js phải xác thực và truyền access context đáng tin cậy vào DuckDB</b>.
 </div>
+
+<!--
+[Sources]
+- https://duckdb.org/why_duckdb
+- https://duckdb.org/docs/current/operations_manual/securing_duckdb/overview
+[/Sources]
+-->

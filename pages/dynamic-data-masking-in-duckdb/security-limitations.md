@@ -57,8 +57,8 @@ FROM customers;
 .queries strong { display:block; margin-top:.55rem; color:#2efab0; text-align:center; }
 .queries .danger strong { color:#ff9a9a; }
 .conditions { display:grid; grid-template-columns:repeat(3,1fr); gap:.8rem; }
-.conditions > div { display:grid; grid-template-columns:1.8rem 1fr; gap:.55rem; align-items:center; min-height:4.4rem; padding:.9rem; background:rgba(255,255,255,.045); font-size:.78rem; line-height:1.4; }
-.conditions b { color:#2efab0; font-size:1.05rem; }
+.conditions > div { display:grid; grid-template-columns:1.8rem 1fr; gap:.55rem; align-items:center; min-height:4.4rem; padding:.9rem; background:rgba(255,255,255,.045); font-size:.88rem; line-height:1.4; }
+.conditions b { color:#2efab0; font-size:1.15rem; }
 </style>
 
 <!--

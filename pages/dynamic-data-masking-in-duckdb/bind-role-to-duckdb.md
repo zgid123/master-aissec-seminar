@@ -4,9 +4,9 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Bước 5 - Truyền quyền vào DuckDB
+# Bước 5 - Bind role vào DuckDB
 
-Node.js xác thực quyền rồi gán giá trị cho <code>$viewer_role</code>; không ghép quyền trực tiếp vào chuỗi SQL.{.op-60}
+Node.js bind <code>req.user.role</code> vào <code>$viewer_role</code>; client không gửi role và cấu trúc query không đổi.{.op-60}
 
 <div class="cols bind mt-4">
 <div>
@@ -49,7 +49,7 @@ const reader = await connection.runAndReadAll(
 .binding small { color:#88ffff; font-size:.54rem; }
 .binding .result small,.binding > strong { color:#2efab0; }
 .binding code { margin-top:.25rem; font-size:.68rem; }
-.binding > strong { font-size:.58rem; }
+.binding > strong { font-size:.9rem; }
 </style>
 
 <!--

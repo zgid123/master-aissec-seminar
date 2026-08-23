@@ -4,22 +4,22 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Same data, different output
+# Cùng dữ liệu, khác output
 
 <div class="roles mt-6">
   <div v-click>
-    <small>PRIVILEGED</small>
+    <small>MANAGER</small>
     <p>Alice Smith</p><p>alice@gmail.com</p><p>0901234567</p><p>4111 1111 1111 1234</p><p>50,000,000</p>
   </div>
-  <div class="context"><span>Same original data</span><b>Access Context</b><span>Query-time policy</span></div>
+  <div class="context"><span>Cùng dữ liệu gốc</span><b>Access Context</b><span>Policy tại query time</span></div>
   <div v-click class="restricted">
-    <small>RESTRICTED</small>
+    <small>SUPPORT</small>
     <p>Alice Smith</p><p>a***@gmail.com</p><p>******4567</p><p>**** **** **** 1234</p><p>********</p>
   </div>
 </div>
 
 <div v-click="4" class="mt-6 text-center text-lg">
-“Dynamic” nghĩa là <b class="text-[#2efab0]">output thay đổi tại query time</b>, còn <b class="text-[#88ffff]">original data không đổi</b>.
+“Dynamic” nghĩa là <b class="text-[#2efab0]">output thay đổi tại query time</b>, còn <b class="text-[#88ffff]">dữ liệu gốc không đổi</b>.
 </div>
 
 <style scoped>

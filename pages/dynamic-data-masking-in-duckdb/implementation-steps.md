@@ -4,39 +4,41 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Quy trình triển khai
+# Kiến trúc thực thi policy
 
-Mục tiêu: cùng một bản ghi, nhưng kết quả thay đổi theo quyền đã được xác thực.{.op-60}
+Node.js xác thực người dùng; DuckDB chỉ nhận <code>role</code> do backend xác định và biến đổi output.{.op-60}
 
-<div class="roadmap mt-6">
-  <div v-click="2"><b>1</b><span>Xác định dữ liệu<br/>và kết quả mong muốn</span></div>
+<div class="architecture mt-7">
+  <div v-click="2"><small>CLIENT</small><b>Bearer token</b><span>Không gửi <code>role</code></span></div>
   <strong v-click="3">→</strong>
-  <div v-click="3"><b>2</b><span>Tạo hàm<br/>che dữ liệu</span></div>
+  <div v-click="3"><small>NODE.JS</small><b>Xác thực token</b><span>Tạo <code>req.user.role</code></span></div>
   <strong v-click="4">→</strong>
-  <div v-click="4"><b>3</b><span>Tạo policy<br/>theo quyền</span></div>
-  <strong v-click="5" class="down">↓</strong>
-  <div v-click="5" class="step-4"><b>4</b><span>Node.js<br/>xác thực người dùng</span></div>
-  <strong v-click="6" class="back-5">←</strong>
-  <div v-click="6" class="step-5"><b>5</b><span>Truyền quyền<br/>vào DuckDB</span></div>
-  <strong v-click="7" class="back-6">←</strong>
-  <div v-click="7" class="step-6"><b>6</b><span>Kiểm tra kết quả</span></div>
+  <div v-click="4"><small>FIXED QUERY</small><b>Bind theo tên</b><span><code>$viewer_role</code></span></div>
+  <strong v-click="5">→</strong>
+  <div v-click="5"><small>DUCKDB</small><b>Thực thi macro</b><span>Trả output theo policy</span></div>
 </div>
 
-<div v-click="8" class="mt-6 rounded-lg border border-cyan-300/30 bg-cyan-500/8 p-3 text-center text-base">
-DuckDB thực thi masking logic; Node.js cung cấp <code>viewer_role</code> đáng tin cậy.
+<div v-click="6" class="boundary mt-7">
+  <b>RANH GIỚI TIN CẬY</b>
+  <span>Node.js giữ file <code>.duckdb</code>, chỉ chạy query định sẵn và không nhận <code>role</code> từ request body.</span>
 </div>
 
 <style scoped>
-.roadmap { display:grid; grid-template-columns:minmax(0,1fr) auto minmax(0,1fr) auto minmax(0,1fr); grid-template-rows:auto 1.4rem auto; gap:.6rem; align-items:center; }
-.roadmap > div { display:flex; min-width:0; height:6.25rem; box-sizing:border-box; flex-direction:column; justify-content:center; padding:1rem .7rem; border-top:3px solid #2efab0; background:rgba(255,255,255,.045); text-align:center; }
-.roadmap b,.roadmap span { display:block; }
-.roadmap b,.roadmap > strong { color:#2efab0; }
-.roadmap b { font-size:1.1rem; }
-.roadmap span { margin-top:.4rem; font-size:.72rem; line-height:1.4; opacity:.75; }
-.roadmap > .down { grid-column:5; grid-row:2; text-align:center; }
-.roadmap > .step-4 { grid-column:5; grid-row:3; }
-.roadmap > .back-5 { grid-column:4; grid-row:3; text-align:center; }
-.roadmap > .step-5 { grid-column:3; grid-row:3; }
-.roadmap > .back-6 { grid-column:2; grid-row:3; text-align:center; }
-.roadmap > .step-6 { grid-column:1; grid-row:3; }
+.architecture { display:grid; grid-template-columns:1fr auto 1.08fr auto 1fr auto 1.08fr; gap:.55rem; align-items:center; }
+.architecture > div { display:flex; min-width:0; min-height:6.6rem; flex-direction:column; justify-content:center; padding:.8rem .65rem; border-top:4px solid #2efab0; background:rgba(255,255,255,.045); text-align:center; }
+.architecture small,.architecture b,.architecture span { display:block; }
+.architecture small { color:#88ffff; font-size:.62rem; }
+.architecture b { margin-top:.45rem; color:#2efab0; font-size:.82rem; }
+.architecture span { margin-top:.4rem; font-size:.7rem; line-height:1.35; opacity:.75; }
+.architecture > strong { color:#2efab0; font-size:1.1rem; }
+.boundary { display:grid; grid-template-columns:7.6rem 1fr; gap:1rem; align-items:center; padding:1rem 1.2rem; border:1px solid rgba(136,255,255,.3); background:rgba(136,255,255,.05); }
+.boundary b { color:#88ffff; font-size:.72rem; }
+.boundary span { font-size:.78rem; line-height:1.45; }
 </style>
+
+<!--
+[Sources]
+- https://duckdb.org/docs/current/operations_manual/securing_duckdb/overview
+- https://duckdb.org/docs/current/sql/query_syntax/prepared_statements
+[/Sources]
+-->

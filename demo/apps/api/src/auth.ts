@@ -1,28 +1,8 @@
 import type { Identity, LoginRequest, Session } from '@demo/shared'
+import { compare } from 'bcryptjs'
+import { findAccountByUsername, findIdentityByToken, type DemoAccountRecord } from './database.js'
 
-interface DemoAccount extends Identity {
-  password: string
-  token: string
-}
-
-const accounts: DemoAccount[] = [
-  {
-    username: 'admin',
-    password: 'admin',
-    token: 'demo-admin',
-    displayName: 'Admin User',
-    role: 'admin',
-  },
-  {
-    username: 'user',
-    password: 'user',
-    token: 'demo-user',
-    displayName: 'Standard User',
-    role: 'user',
-  },
-]
-
-function toSession(account: DemoAccount): Session {
+function toSession(account: DemoAccountRecord): Session {
   return {
     username: account.username,
     displayName: account.displayName,
@@ -31,21 +11,17 @@ function toSession(account: DemoAccount): Session {
   }
 }
 
-export function login(credentials: LoginRequest): Session | null {
-  const account = accounts.find(
-    ({ username, password }) =>
-      username === credentials.username && password === credentials.password,
-  )
-  return account ? toSession(account) : null
+export async function login(credentials: LoginRequest): Promise<Session | null> {
+  const account = await findAccountByUsername(credentials.username)
+  if (!account) return null
+
+  const passwordMatches = await compare(credentials.password, account.passwordHash)
+  return passwordMatches ? toSession(account) : null
 }
 
-export function authenticate(authorization?: string): Identity | null {
+export async function authenticate(authorization?: string): Promise<Identity | null> {
   const [scheme, token] = authorization?.split(' ') ?? []
   if (scheme !== 'Bearer' || !token) return null
 
-  const account = accounts.find((candidate) => candidate.token === token)
-  if (!account) return null
-
-  const { username, displayName, role } = account
-  return { username, displayName, role }
+  return findIdentityByToken(token)
 }

@@ -4,9 +4,9 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Bước 1 - Xác định kết quả mong muốn
+# Bước 1 - Bài toán hỗ trợ khách hàng
 
-Dữ liệu của Alice được lưu một lần, nhưng mỗi vai trò nhìn thấy một kết quả khác nhau.{.op-60}
+Cùng một hồ sơ: quản lý xử lý khiếu nại cần email đầy đủ; nhân viên hỗ trợ chỉ cần đủ thông tin để nhận diện khách hàng.{.op-60}
 
 <div class="results mt-8">
   <div>
@@ -23,8 +23,8 @@ Dữ liệu của Alice được lưu một lần, nhưng mỗi vai trò nhìn t
   </div>
 </div>
 
-<div v-click class="mt-8 text-center text-xl">
-<b class="text-[#88ffff]">Dữ liệu gốc không đổi</b>; chỉ có <b class="text-[#2efab0]">kết quả truy vấn thay đổi</b>.
+<div v-click class="mt-4 text-center text-lg">
+Một nguồn dữ liệu: <b class="text-[#88ffff]">manager thấy email gốc</b>, <b class="text-[#2efab0]">support thấy output đã che</b>.
 </div>
 
 <style scoped>
@@ -36,5 +36,5 @@ Dữ liệu của Alice được lưu một lần, nhưng mỗi vai trò nhìn t
 .results .restricted small,.results .restricted strong { color:#2efab0; }
 .results span { margin-bottom:.35rem; }
 .results strong { font-size:1.1rem; }
-.results p { margin:.8rem 0 0; opacity:.62; font-size:.73rem; }
+.results p { margin:.8rem 0 0; opacity:.62; font-size:.9rem; }
 </style>

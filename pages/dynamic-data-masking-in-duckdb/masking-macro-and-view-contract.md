@@ -11,7 +11,7 @@ Trong ví dụ này, scalar macro đóng gói thao tác che email để tái s�
 <div class="cols mt-6">
 <div>
 
-```sql {1|2-3|4-6|all}
+```sql {1|2-6|4-6|all}
 CREATE MACRO mask_email(email_value) AS
   CASE
     WHEN email_value IS NULL THEN NULL
@@ -24,13 +24,13 @@ CREATE MACRO mask_email(email_value) AS
 </div>
 <div class="transform">
   <div v-click="2"><small>INPUT</small><code>alice@gmail.com</code></div>
-  <strong v-click="3">↓ <code>SELECT mask_email('alice@gmail.com')</code></strong>
+  <strong v-click="3">↓ <code>SELECT mask_email('alice@gmail.com')</code>↓</strong>
   <div v-click="4" class="masked"><small>OUTPUT</small><code>a***@gmail.com</code></div>
 </div>
 </div>
 
-<div class="mt-7 rounded-lg border border-amber-300/30 bg-amber-500/8 p-4 text-center text-base">
-Hàm này chỉ biến đổi dữ liệu; nó chưa biết người dùng nào đang truy vấn.
+<div v-click="5" class="mt-7 rounded-lg border border-amber-300/30 bg-amber-500/8 p-4 text-base">
+Macro tập trung logic che email để tái sử dụng; <b>nó chưa quyết định ai được xem dữ liệu gốc</b>.
 </div>
 
 <style scoped>
@@ -41,7 +41,7 @@ Hàm này chỉ biến đổi dữ liệu; nó chưa biết người dùng nào 
 .transform small,.transform code { display:block; }
 .transform small { color:#88ffff; margin-bottom:.4rem; font-size:.58rem; }
 .transform .masked small,.transform > strong { color:#2efab0; }
-.transform > strong { font-size:.64rem; }
+.transform > strong { font-size:.9rem; }
 </style>
 
 <!--

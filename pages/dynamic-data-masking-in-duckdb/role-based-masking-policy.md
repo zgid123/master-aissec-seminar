@@ -4,7 +4,7 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Bước 3 - Tạo policy theo quyền
+# Bước 3 - Policy theo role
 
 Macro nhận biết vai trò để chọn dữ liệu gốc, dữ liệu đã che hoặc mặc định từ chối truy cập.{.op-60}
 
@@ -31,8 +31,8 @@ END;
 </div>
 </div>
 
-<div v-click="5" class="mt-6 rounded-lg border border-cyan-300/30 bg-cyan-500/8 p-4 text-center text-base">
-DuckDB có policy, nhưng vẫn cần Node.js cung cấp <code>viewer_role</code> đã được xác thực.
+<div v-click="5" class="mt-6 rounded-lg border border-cyan-300/30 bg-cyan-500/8 p-4 text-base">
+Policy nằm tại một nơi và được dùng lại cho mọi query; Node.js phải cung cấp <code>viewer_role</code> đáng tin cậy.
 </div>
 
 <style scoped>
