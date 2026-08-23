@@ -1,10 +1,12 @@
+import { createReadStream } from 'node:fs'
 import { serve } from '@hono/node-server'
 import { Hono } from 'hono'
 import { cors } from 'hono/cors'
 import { logger } from 'hono/logger'
-import type { ErrorResponse, Identity, LoginRequest } from '@demo/shared'
+import { stream as streamResponse } from 'hono/streaming'
+import { EXPORT_ENVIRONMENTS, type ErrorResponse, type ExportEnvironment, type Identity, type LoginRequest } from '@demo/shared'
 import { authenticate, login } from './auth.js'
-import { initializeDatabase, listUsers } from './database.js'
+import { exportUsers, initializeDatabase, listUsers } from './database.js'
 
 type Variables = { identity: Identity }
 const app = new Hono<{ Variables: Variables }>()
@@ -18,14 +20,14 @@ app.post('/api/session', async (c) => {
   const credentials = await c.req.json<LoginRequest>().catch(() => null)
   if (!credentials) return c.json<ErrorResponse>({ error: 'Invalid request body' }, 400)
 
-  const session = login(credentials)
-  if (!session) return c.json<ErrorResponse>({ error: 'Invalid username or password' }, 401)
+  const session = await login(credentials)
+  if (!session) return c.json<ErrorResponse>({ error: 'Tên đăng nhập hoặc mật khẩu không hợp lệ' }, 401)
   return c.json(session)
 })
 
 app.use('/api/users/*', async (c, next) => {
-  const identity = authenticate(c.req.header('Authorization'))
-  if (!identity) return c.json<ErrorResponse>({ error: 'Authentication required' }, 401)
+  const identity = await authenticate(c.req.header('Authorization'))
+  if (!identity) return c.json<ErrorResponse>({ error: 'Cần xác thực để truy cập' }, 401)
   c.set('identity', identity)
   await next()
 })
@@ -40,6 +42,35 @@ app.get('/api/users', async (c) => {
   const result = await listUsers({ role: identity.role, page, pageSize, search })
   c.header('Cache-Control', 'no-store')
   return c.json(result)
+})
+
+app.get('/api/users/export', async (c) => {
+  const identity = c.get('identity')
+  const requestedEnvironment = c.req.query('environment')
+  if (!EXPORT_ENVIRONMENTS.includes(requestedEnvironment as ExportEnvironment)) {
+    return c.json<ErrorResponse>({ error: 'Môi trường export không hợp lệ' }, 400)
+  }
+
+  const environment = requestedEnvironment as ExportEnvironment
+  if (environment === 'production' && identity.role !== 'manager') {
+    return c.json<ErrorResponse>({ error: 'Chỉ manager được export dữ liệu production' }, 403)
+  }
+
+  const search = (c.req.query('search') ?? '').trim().slice(0, 80)
+  const exported = await exportUsers({ environment, search })
+  c.header('Cache-Control', 'no-store')
+  c.header('Content-Type', 'text/csv; charset=utf-8')
+  c.header('Content-Disposition', `attachment; filename="${exported.fileName}"`)
+
+  return streamResponse(c, async (bodyStream) => {
+    try {
+      for await (const chunk of createReadStream(exported.filePath)) {
+        await bodyStream.write(chunk)
+      }
+    } finally {
+      await exported.cleanup()
+    }
+  })
 })
 
 app.onError((error, c) => {

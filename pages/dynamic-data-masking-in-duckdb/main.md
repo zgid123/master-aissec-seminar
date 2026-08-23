@@ -43,5 +43,13 @@ src: ./access-context-determines-results.md
 ---
 
 ---
+src: ./query-performance-and-inference.md
+---
+
+---
+src: ./demo.md
+---
+
+---
 src: ./security-limitations.md
 ---

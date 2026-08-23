@@ -17,7 +17,7 @@ fonts:
 duration: 10min
 ---
 
-# Dynamic Data Masking trong DuckDB
+# Dynamic Data Masking
 
 <style scoped>
 .slidev-page-1 > .slidev-layout h1 {

@@ -26,25 +26,29 @@ Macro giúp tái sử dụng logic masking cho nhiều query hoặc view.
 
 ::right::
 
-### Dynamic result
+### Kết quả theo role
 
-```sql {all|4-7|8-11|all}
+```sql {all|4-8|9-13|all}
 CREATE MACRO customers_for(role) AS TABLE
 SELECT
   name,
-  CASE WHEN role = 'privileged'
+  CASE WHEN role = 'manager'
        THEN email
-       ELSE mask_email(email)
+       WHEN role = 'support'
+       THEN mask_email(email)
+       ELSE NULL
   END AS email,
-  CASE WHEN role = 'privileged'
+  CASE WHEN role = 'manager'
        THEN salary
-       ELSE mask_salary(salary)
+       WHEN role = 'support'
+       THEN mask_salary(salary)
+       ELSE NULL
   END AS salary
 FROM customers;
 ```
 
 <div v-click class="mt-4 rounded-lg border border-[#2efab0]/35 bg-[#2efab0]/8 p-3 text-sm leading-6">
-Trong demo, <b>role</b> là access context. Trong hệ thống thật, context này phải do application xác thực và enforce.
+Trong demo, <b>role</b> là access context do Node.js xác thực; client không được tự gửi giá trị này.
 </div>
 
 <style>

@@ -8,6 +8,14 @@ CREATE TABLE IF NOT EXISTS users (
   created_at TIMESTAMP NOT NULL
 );
 
+CREATE TABLE IF NOT EXISTS demo_accounts (
+  username VARCHAR PRIMARY KEY,
+  password_hash VARCHAR NOT NULL,
+  token VARCHAR NOT NULL UNIQUE,
+  display_name VARCHAR NOT NULL,
+  role VARCHAR NOT NULL CHECK (role IN ('manager', 'support'))
+);
+
 CREATE OR REPLACE MACRO mask_email(value) AS
   CASE
     WHEN value IS NULL THEN NULL
@@ -30,17 +38,17 @@ CREATE OR REPLACE MACRO users_for_role(viewer_role) AS TABLE
   SELECT
     id,
     full_name,
-    CASE WHEN viewer_role = 'admin' THEN email
-         WHEN viewer_role = 'user' THEN mask_email(email)
+    CASE WHEN viewer_role = 'manager' THEN email
+         WHEN viewer_role = 'support' THEN mask_email(email)
          ELSE NULL END AS email,
-    CASE WHEN viewer_role = 'admin' THEN phone
-         WHEN viewer_role = 'user' THEN mask_phone(phone)
+    CASE WHEN viewer_role = 'manager' THEN phone
+         WHEN viewer_role = 'support' THEN mask_phone(phone)
          ELSE NULL END AS phone,
-    CASE WHEN viewer_role = 'admin' THEN address
-         WHEN viewer_role = 'user' THEN mask_address(address)
+    CASE WHEN viewer_role = 'manager' THEN address
+         WHEN viewer_role = 'support' THEN mask_address(address)
          ELSE NULL END AS address,
-    CASE WHEN viewer_role = 'admin' THEN national_id
-         WHEN viewer_role = 'user' THEN mask_national_id(national_id)
+    CASE WHEN viewer_role = 'manager' THEN national_id
+         WHEN viewer_role = 'support' THEN mask_national_id(national_id)
          ELSE NULL END AS national_id,
     created_at
   FROM users;

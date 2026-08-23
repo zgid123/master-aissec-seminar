@@ -70,7 +70,7 @@ button { color: inherit; }
 .topbar-right { display: flex; align-items: center; gap: 22px; }
 .role-pill { display: flex; align-items: center; gap: 8px; padding: 7px 10px; color: var(--amber); border: 1px solid #544725; background: #221e10; font: 500 9px "SFMono-Regular", Consolas, monospace; letter-spacing: .09em; }
 .role-pill > span { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 8px currentColor; }
-.role-pill.admin { color: var(--mint); border-color: #285240; background: #0f241c; }
+.role-pill.manager { color: var(--mint); border-color: #285240; background: #0f241c; }
 .profile { display: flex; align-items: center; gap: 10px; }
 .profile .avatar { width: 32px; height: 32px; }
 .profile b, .profile small { display: block; }
@@ -88,14 +88,23 @@ button { color: inherit; }
 .row-count span { grid-column: 2; grid-row: 1 / span 2; color: #698078; font: 9px "SFMono-Regular", Consolas, monospace; }
 .row-count i { display: inline-block; width: 6px; height: 6px; margin-right: 5px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 7px var(--mint); }
 .policy-banner { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; margin-bottom: 16px; padding: 15px 18px; border: 1px solid #4d4325; border-left: 3px solid var(--amber); background: linear-gradient(90deg, #211d10, #111812); }
-.policy-banner.admin { border-color: #23523f; border-left-color: var(--mint); background: linear-gradient(90deg, #0e251c, #0e1915); }
+.policy-banner.manager { border-color: #23523f; border-left-color: var(--mint); background: linear-gradient(90deg, #0e251c, #0e1915); }
 .policy-icon { display: grid; place-items: center; width: 34px; height: 34px; color: var(--amber); background: #332c15; }
-.policy-banner.admin .policy-icon { color: var(--mint); background: #143a2c; }
+.policy-banner.manager .policy-icon { color: var(--mint); background: #143a2c; }
 .policy-banner b { font-size: 12px; }
 .policy-banner p { margin: 3px 0 0; color: #8b9a95; font-size: 11px; }
 .policy-banner code { padding: 8px 10px; color: #aab9b4; border: 1px solid #2a3b36; background: #09120f; font-size: 10px; }
 .table-card { border: 1px solid #1d332d; background: #0a1613; box-shadow: 0 20px 60px rgba(0, 0, 0, .18); }
 .table-tools { height: 66px; display: flex; align-items: center; justify-content: space-between; padding: 0 18px; border-bottom: 1px solid #1b302a; }
+.table-actions { display: flex; align-items: center; gap: 22px; }
+.export-control { display: flex; align-items: center; gap: 7px; }
+.export-control select, .export-control button { height: 32px; color: #a9b9b3; border: 1px solid #294039; background: #0a1613; font: 500 9px "SFMono-Regular", Consolas, monospace; }
+.export-control select { padding: 0 25px 0 9px; cursor: pointer; }
+.export-control button { display: flex; align-items: center; gap: 6px; padding: 0 10px; color: var(--mint); cursor: pointer; }
+.export-control button:hover { border-color: #3e806a; background: #10231d; }
+.export-control button:disabled { opacity: .5; cursor: wait; }
+.export-control button svg { width: 13px; height: 13px; }
+.export-error { margin: 0; padding: 8px 18px; color: #ff9a9a; border-bottom: 1px solid #422929; background: #211313; font-size: 10px; }
 .search-box { width: 330px; display: flex; align-items: center; gap: 10px; padding: 0 11px; border: 1px solid #243b35; background: #08120f; }
 .search-box svg { color: #597069; }
 .search-box input { width: 100%; height: 36px; color: var(--text); outline: 0; border: 0; background: transparent; font-size: 11px; }

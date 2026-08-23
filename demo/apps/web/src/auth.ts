@@ -1,6 +1,6 @@
 import type { LoginRequest, Session } from '@demo/shared'
 
-const storageKey = 'duckdb-masking-session'
+const storageKey = 'duckdb-masking-session-v2'
 
 export function getSession(): Session | null {
   const raw = localStorage.getItem(storageKey)
@@ -20,7 +20,7 @@ export async function createSession(credentials: LoginRequest): Promise<Session>
     body: JSON.stringify(credentials),
   })
   const body = (await response.json()) as Session | { error: string }
-  if (!response.ok) throw new Error('error' in body ? body.error : 'Login failed')
+  if (!response.ok) throw new Error('error' in body ? body.error : 'Đăng nhập thất bại')
   const session = body as Session
   localStorage.setItem(storageKey, JSON.stringify(session))
   return session

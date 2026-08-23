@@ -27,3 +27,7 @@ export function ArrowIcon(props: IconProps) {
 export function LogOutIcon(props: IconProps) {
   return <svg {...base} {...props}><path d="M10 17l5-5-5-5M15 12H3"/><path d="M14 3h5a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-5"/></svg>
 }
+
+export function DownloadIcon(props: IconProps) {
+  return <svg {...base} {...props}><path d="M12 3v12m0 0 4-4m-4 4-4-4"/><path d="M5 19h14"/></svg>
+}

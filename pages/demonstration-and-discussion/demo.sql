@@ -62,17 +62,25 @@ CREATE OR REPLACE MACRO customers_for(access_role) AS TABLE
 SELECT
     id,
     name,
-    CASE WHEN access_role = 'privileged' THEN email ELSE mask_email(email) END AS email,
-    CASE WHEN access_role = 'privileged' THEN phone ELSE mask_phone(phone) END AS phone,
-    CASE WHEN access_role = 'privileged' THEN credit_card ELSE mask_credit_card(credit_card) END AS credit_card,
-    CASE WHEN access_role = 'privileged' THEN salary ELSE mask_salary(salary) END AS salary
+    CASE WHEN access_role = 'manager' THEN email
+         WHEN access_role = 'support' THEN mask_email(email)
+         ELSE NULL END AS email,
+    CASE WHEN access_role = 'manager' THEN phone
+         WHEN access_role = 'support' THEN mask_phone(phone)
+         ELSE NULL END AS phone,
+    CASE WHEN access_role = 'manager' THEN credit_card
+         WHEN access_role = 'support' THEN mask_credit_card(credit_card)
+         ELSE NULL END AS credit_card,
+    CASE WHEN access_role = 'manager' THEN salary
+         WHEN access_role = 'support' THEN mask_salary(salary)
+         ELSE NULL END AS salary
 FROM customers;
 
-SELECT 'PRIVILEGED USER - ORIGINAL DATA' AS demo_step;
-SELECT * FROM customers_for('privileged');
+SELECT 'MANAGER - DU LIEU GOC' AS demo_step;
+SELECT * FROM customers_for('manager');
 
-SELECT 'RESTRICTED USER - MASKED DATA' AS demo_step;
-SELECT * FROM customers_for('restricted');
+SELECT 'SUPPORT - DU LIEU DA CHE' AS demo_step;
+SELECT * FROM customers_for('support');
 
 SELECT 'LIMITATION - DIRECT TABLE ACCESS BYPASSES MASKING' AS demo_step;
 SELECT * FROM customers;

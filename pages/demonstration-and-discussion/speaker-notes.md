@@ -14,11 +14,11 @@ Target: 4-4.5 minutes.
 
 ## Slide 3 - Query-time policy
 
-> Phần SQL bên trái là masking logic, đóng gói bằng macro để tái sử dụng. Phần bên phải là table macro nhận một access context là `role`. Nếu role là `privileged`, query trả dữ liệu gốc. Nếu không, query gọi các masking macro. Trong demo, role là tham số để minh họa; trong hệ thống thật, role phải đến từ application authentication và authorization.
+> Phần SQL bên trái là masking logic, đóng gói bằng macro để tái sử dụng. Phần bên phải là table macro nhận một access context là `role`. Nếu role là `manager`, query trả dữ liệu gốc; nếu là `support`, query gọi các masking macro. Role phải đến từ bước xác thực tại application, không đến từ input của client.
 
-## Slide 4 - Same data, different output
+## Slide 4 - Cùng dữ liệu, khác output
 
-> Đây là điểm làm cho nó dynamic. Cùng database, cùng dữ liệu gốc, nhưng output thay đổi ở query time theo access context. Privileged user thấy raw values; restricted user thấy masked values. Original data không bị sửa, chỉ kết quả query thay đổi.
+> Đây là điểm làm cho nó dynamic. Cùng database, cùng dữ liệu gốc, nhưng output thay đổi ở query time theo access context. Manager thấy dữ liệu gốc; support thấy dữ liệu đã che. Dữ liệu gốc không bị sửa, chỉ kết quả query thay đổi.
 
 ## Slide 5 - Data Masking không phải Access Control
 
@@ -26,7 +26,7 @@ Target: 4-4.5 minutes.
 
 ## Slide 6 - Khi policy bị bypass
 
-> Slide này cho thấy khác biệt giữa intended path và unsafe path. Intended path là restricted user chỉ query qua `customers_for('restricted')` hoặc view đã mask. Unsafe path là user query thẳng bảng `customers`, khi đó dữ liệu gốc lộ ra. Đây là lý do em không nói macro/view là security boundary hoàn chỉnh.
+> Slide này cho thấy khác biệt giữa đường truy cập dự kiến và đường không an toàn. Support chỉ query qua `customers_for('support')` hoặc view đã mask. Nếu query thẳng bảng `customers`, dữ liệu gốc sẽ lộ ra. Đây là lý do em không nói macro/view là security boundary hoàn chỉnh.
 
 ## Slide 7 - Giới hạn của DuckDB
 
@@ -44,7 +44,7 @@ Q: DuckDB có native Dynamic Data Masking không?
 
 Q: View có đủ bảo mật không?
 
-> Chỉ khi restricted user không có quyền truy cập raw table hoặc raw file. Nếu còn direct access, view bị bypass.
+> Chỉ khi support không có quyền truy cập bảng gốc hoặc file gốc. Nếu còn direct access, view bị bypass.
 
 Q: Macro có phải security boundary không?
 

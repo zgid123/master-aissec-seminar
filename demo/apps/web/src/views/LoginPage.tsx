@@ -5,13 +5,13 @@ import { createSession, getSession } from '../auth'
 import { ArrowIcon, DatabaseIcon, LockIcon, ShieldIcon } from '../icons'
 
 const personas: Array<{ role: Role; title: string; detail: string }> = [
-  { role: 'admin', title: 'Administrator', detail: 'Can view original personal data' },
-  { role: 'user', title: 'Standard user', detail: 'Sees policy-masked personal data' },
+  { role: 'manager', title: 'Quản lý', detail: 'Được xem dữ liệu cá nhân đầy đủ' },
+  { role: 'support', title: 'Nhân viên hỗ trợ', detail: 'Chỉ thấy dữ liệu đã được che theo policy' },
 ]
 
 export function LoginPage() {
   const navigate = useNavigate()
-  const [selectedRole, setSelectedRole] = useState<Role>('user')
+  const [selectedRole, setSelectedRole] = useState<Role>('support')
   const [error, setError] = useState('')
   const [submitting, setSubmitting] = useState(false)
 
@@ -25,7 +25,7 @@ export function LoginPage() {
       await createSession({ username: selectedRole, password: selectedRole })
       await navigate({ to: '/' })
     } catch (cause) {
-      setError(cause instanceof Error ? cause.message : 'Login failed')
+      setError(cause instanceof Error ? cause.message : 'Đăng nhập thất bại')
     } finally {
       setSubmitting(false)
     }
@@ -36,26 +36,26 @@ export function LoginPage() {
       <section className="login-story">
         <div className="brand"><span className="brand-mark"><DatabaseIcon /></span><span>DuckDB <b>Masking Lab</b></span></div>
         <div className="story-copy">
-          <p className="eyebrow"><span /> AISSEC SEMINAR DEMO</p>
-          <h1>Same rows.<br/><em>Different truth.</em></h1>
-          <p>Explore how application context changes what DuckDB returns-without changing the source data.</p>
+          <p className="eyebrow"><span /> DEMO SEMINAR AISSEC</p>
+          <h1>Cùng dữ liệu.<br/><em>Khác output.</em></h1>
+          <p>Quan sát access context thay đổi kết quả DuckDB mà không sửa dữ liệu gốc.</p>
           <div className="flow-card">
-            <div><span>01</span><b>Authenticate</b><small>Node.js validates identity</small></div>
+            <div><span>01</span><b>Xác thực</b><small>Node.js kiểm tra identity</small></div>
             <ArrowIcon />
-            <div><span>02</span><b>Bind role</b><small>Prepared SQL parameter</small></div>
+            <div><span>02</span><b>Bind role</b><small>Named SQL parameter</small></div>
             <ArrowIcon />
-            <div><span>03</span><b>Apply policy</b><small>DuckDB masks output</small></div>
+            <div><span>03</span><b>Áp dụng policy</b><small>DuckDB che output</small></div>
           </div>
         </div>
-        <p className="story-foot">Application-enforced dynamic data masking · Built for demonstration</p>
+        <p className="story-foot">Dynamic Data Masking do application thực thi · Chỉ dùng để minh họa</p>
       </section>
 
       <section className="login-panel">
         <form className="login-card" onSubmit={handleSubmit}>
           <span className="lock-badge"><LockIcon /></span>
-          <p className="eyebrow">CHOOSE A DEMO IDENTITY</p>
-          <h2>Enter the data room</h2>
-          <p className="muted">Switch roles to compare results from the same million-row table.</p>
+          <p className="eyebrow">CHỌN ROLE ĐỂ DEMO</p>
+          <h2>Truy cập kho dữ liệu</h2>
+          <p className="muted">Đổi role để so sánh output từ cùng bảng một triệu hàng.</p>
           <div className="persona-list">
             {personas.map((persona) => (
               <button
@@ -64,7 +64,7 @@ export function LoginPage() {
                 onClick={() => setSelectedRole(persona.role)}
                 type="button"
               >
-                <span className="avatar">{persona.role === 'admin' ? 'A' : 'U'}</span>
+                <span className="avatar">{persona.role === 'manager' ? 'M' : 'S'}</span>
                 <span><b>{persona.title}</b><small>{persona.detail}</small></span>
                 <span className="radio" />
               </button>
@@ -72,9 +72,9 @@ export function LoginPage() {
           </div>
           {error && <p className="form-error">{error}</p>}
           <button className="primary-button" disabled={submitting} type="submit">
-            {submitting ? 'Authenticating…' : `Continue as ${selectedRole}`} <ArrowIcon />
+            {submitting ? 'Đang xác thực…' : `Tiếp tục với role ${selectedRole}`} <ArrowIcon />
           </button>
-          <div className="credentials"><ShieldIcon/><span>Demo credentials are filled automatically<br/><code>{selectedRole} / {selectedRole}</code></span></div>
+          <div className="credentials"><ShieldIcon/><span>Thông tin demo được điền tự động<br/><code>{selectedRole} / {selectedRole}</code></span></div>
         </form>
       </section>
     </main>

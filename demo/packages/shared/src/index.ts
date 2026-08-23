@@ -1,6 +1,8 @@
-export const ROLES = ['admin', 'user'] as const
+export const ROLES = ['manager', 'support'] as const
+export const EXPORT_ENVIRONMENTS = ['production', 'staging', 'dev'] as const
 
 export type Role = (typeof ROLES)[number]
+export type ExportEnvironment = (typeof EXPORT_ENVIRONMENTS)[number]
 
 export interface Identity {
   username: string
