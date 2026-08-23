@@ -4,23 +4,25 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Data Masking ≠ Access Control
+# Mỗi giới hạn cần một lớp kiểm soát tương ứng
 
-<div class="limits mt-5">
-  <div v-click><b>Direct table access</b><span>View bị bypass nếu raw table hoặc raw file vẫn query được.</span></div>
-  <div v-click><b>Identity & role</b><span>Application phải xác thực user và gán context đáng tin cậy.</span></div>
-  <div v-click><b>Arbitrary SQL</b><span>Macro không ngăn người dùng tự viết query đọc dữ liệu gốc.</span></div>
-  <div v-click><b>Defense-in-depth</b><span>Masking không thay thế authorization, encryption, audit hay sandbox.</span></div>
+<div class="control-map mt-7">
+  <div class="head"><b>GIỚI HẠN</b><b>RỦI RO</b><b>KIỂM SOÁT CẦN CÓ</b></div>
+  <div v-click="1"><span>Role do client gửi</span><em>Privilege escalation</em><strong>Verify token/session và whitelist role</strong></div>
+  <div v-click="2"><span>Truy cập raw table/file</span><em>Bypass masking</em><strong>Backend-only access, OS permission, encryption</strong></div>
+  <div v-click="3"><span>User tự nhập SQL</span><em>Đọc dữ liệu hoặc file ngoài dự kiến</em><strong>Fixed query, sandbox và giới hạn external access</strong></div>
+  <div v-click="4"><span>Masking không tạo audit trail</span><em>Khó phát hiện lạm dụng</em><strong>Logging, monitoring và review quyền</strong></div>
 </div>
 
-<div v-click class="mt-6 rounded-lg border border-amber-300/35 bg-amber-500/8 p-4 text-center text-lg">
-Security question thật sự: <b class="text-[#2efab0]">Who can query what, and who enforces the policy?</b>
+<div v-click="5" class="takeaway-strip mt-6 p-4 text-center">
+Masking giảm phơi lộ; Access Control, Encryption và Auditing mới hoàn thiện ranh giới bảo mật.
 </div>
 
 <style scoped>
-.limits { display:grid; grid-template-columns:1fr 1fr; gap:.9rem; }
-.limits > div { padding:1rem; border-left:4px solid #88ffff; background:rgba(255,255,255,.045); }
-.limits b,.limits span { display:block; }
-.limits b { color:#88ffff; margin-bottom:.45rem; }
-.limits span { opacity:.72; font-size:.75rem; line-height:1.35; }
+.control-map { display:grid; gap:.45rem; }
+.control-map > div { display:grid; grid-template-columns:1fr 1.05fr 1.6fr; gap:1rem; align-items:center; min-height:4rem; padding:.7rem 1rem; border-left:4px solid #38edf6; background:rgba(255,255,255,.05); }
+.control-map > .head { min-height:2rem; padding:.2rem 1rem; border:0; background:transparent; color:#38edf6; font-size:.74rem; letter-spacing:.08em; }
+.control-map span { color:#fff; font-size:.89rem; font-weight:650; }
+.control-map em { color:#ffaaa9; font-size:.86rem; font-style:normal; }
+.control-map strong { color:#98f6d4; font-size:.86rem; line-height:1.4; }
 </style>

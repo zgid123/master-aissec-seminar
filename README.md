@@ -10,7 +10,7 @@ application-level access-control layer is still required.
 1. Database Security Overview
 2. Data Masking Fundamentals
 3. Dynamic Data Masking in DuckDB
-4. Demo and Discussion
+4. Demo, Limitations, and Conclusion
 
 ## Run the Presentation
 

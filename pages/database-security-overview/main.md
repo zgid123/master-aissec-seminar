@@ -4,12 +4,15 @@ transition: fade
 background: ../../assets/heading.png
 ---
 
-<div class="flex flex-col items-center justify-center text-center">
-  <h1 class="text-3xl font-extrabold text-[#38edf6] uppercase tracking-wider">TỔNG QUAN BẢO MẬT CƠ SỞ DỮ LIỆU</h1>
+<div class="section-cover">
+  <div class="section-number">01</div>
+  <h1>Tổng quan bảo mật cơ sở dữ liệu</h1>
 </div>
 
 <style scoped>
-.slidev-layout h1 { color: #38edf6; font-weight: 800; }
+.section-cover { width:100%; text-align:center; }
+.section-number { color:#2efab0; font-size:1rem; font-weight:800; letter-spacing:.2em; }
+.slidev-layout h1 { margin:.45rem 0 .7rem; color:#38edf6; font-size:2.7rem; font-weight:800; text-transform:none; }
 </style>
 
 ---

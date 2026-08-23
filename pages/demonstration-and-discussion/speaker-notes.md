@@ -1,51 +1,57 @@
-# Speaker Notes - Section 4
+# Speaker Notes — Section 4
 
 ## Timing
 
-Target: 3.5-4 minutes.
+Target: 6.5–7 minutes, gồm demo, limitations và conclusion.
 
-## Slide 1 - Demo và thảo luận
+## Slide 1 — Demo, giới hạn và kết luận
 
-> Sau khi section 3 đã nói DuckDB có thể dùng SQL expression, macro và view để mask dữ liệu, phần này sẽ cho thấy output thực tế. Em dùng một bảng khách hàng nhỏ để minh họa bốn trường nhạy cảm: email, phone, credit card và salary. Mục tiêu là chứng minh dynamic behavior, sau đó nói rõ giới hạn security.
+> Section 3 đã xây dựng được đường đi từ verified role đến masked output. Phần này kiểm tra kết quả, sau đó đánh giá điều demo đã chứng minh và điều nó chưa thể bảo đảm.
 
-## Slide 2 - Dataset demo
+## Slide 2 — Cùng record, hai mức hiển thị
 
-> Đây là bản ghi gốc. Tên được giữ nguyên vì thường vẫn cần cho nghiệp vụ. Email được giữ ký tự đầu và domain, phone và credit card giữ bốn số cuối, salary bị ẩn hoàn toàn. Như vậy dữ liệu vẫn có ích ở mức nhận diện hoặc đối soát, nhưng giảm phần nhạy cảm bị lộ.
+> Tên được giữ nguyên để phục vụ nghiệp vụ. Email giữ ký tự đầu và domain; phone và card giữ bốn số cuối; salary bị ẩn hoàn toàn. Mục tiêu là giảm phần nhạy cảm nhưng không phá hỏng khả năng nhận diện và đối soát.
 
-## Slide 3 - Query-time policy
+## Slide 3 — Role được áp dụng tại query time
 
-> Phần SQL bên trái là masking logic, đóng gói bằng macro để tái sử dụng. Phần bên phải là table macro nhận một access context là `role`. Nếu role là `privileged`, query trả dữ liệu gốc. Nếu không, query gọi các masking macro. Trong demo, role là tham số để minh họa; trong hệ thống thật, role phải đến từ application authentication và authorization.
+> Cùng một query structure, `$viewer_role` chọn nhánh policy. Privileged nhận email gốc; restricted nhận email đã che. Trong demo role là access context; trong hệ thống thật context phải được application xác thực và enforce.
 
-## Slide 4 - Same data, different output
+## Slide 4 — Demo chứng minh behavior, chưa chứng minh security
 
-> Đây là điểm làm cho nó dynamic. Cùng database, cùng dữ liệu gốc, nhưng output thay đổi ở query time theo access context. Privileged user thấy raw values; restricted user thấy masked values. Original data không bị sửa, chỉ kết quả query thay đổi.
+> Demo chứng minh masking rule hoạt động, output thay đổi theo role và dữ liệu gốc không bị sửa. Nó chưa chứng minh role luôn đáng tin, raw data không thể truy cập hay untrusted SQL đã được cô lập.
 
-## Slide 5 - Data Masking không phải Access Control
+## Slide 5 — Trust boundary
 
-> Đây là giới hạn quan trọng nhất. Macro chỉ trả lời dữ liệu được che như thế nào. View có thể làm abstraction layer tốt, nhưng nếu user vẫn truy cập trực tiếp raw table hoặc raw file, họ bypass được masking. Vì DuckDB thường chạy embedded trong application process, SQL chạy với quyền của process đó. Vì vậy untrusted SQL cần được kiểm soát bằng application policy, sandbox hoặc kiến trúc triển khai phù hợp.
+> Ranh giới bảo mật trải từ identity, Node.js API, DuckDB đến file và hệ điều hành. DuckDB thực thi SQL bằng quyền của process, vì vậy macro hoặc view không tự ngăn được một đường truy cập khác.
 
-## Slide 6 - Khi policy bị bypass
+## Slide 6 — Ba đường bypass
 
-> Slide này cho thấy khác biệt giữa intended path và unsafe path. Intended path là restricted user chỉ query qua `customers_for('restricted')` hoặc view đã mask. Unsafe path là user query thẳng bảng `customers`, khi đó dữ liệu gốc lộ ra. Đây là lý do em không nói macro/view là security boundary hoàn chỉnh.
+> Raw table bỏ qua macro; raw file cho phép mở database bằng process khác; arbitrary SQL có thể đọc dữ liệu hoặc file ngoài dự kiến. Masking chỉ bảo vệ intended path, nên các đường song song phải bị loại bỏ hoặc sandbox.
 
-## Slide 7 - 3 điều cần nhớ
+## Slide 7 — Limitation và control
 
-> Em chốt lại bằng ba ý. Một là database security cần nhiều lớp. Hai là Dynamic Data Masking giúp giảm phơi lộ dữ liệu nhạy cảm mà không thay đổi dữ liệu gốc. Ba là DuckDB có building blocks để làm masking, nhưng DDM theo quyền thật sự cần access-control layer đáng tin cậy. Câu chốt là: masking logic trả lời "che như thế nào", access control trả lời "ai được xem gì".
+> Mỗi giới hạn cần một lớp kiểm soát tương ứng: verified identity cho role giả mạo, OS permission và encryption cho raw file, fixed query hoặc sandbox cho arbitrary SQL, logging và monitoring cho hành vi lạm dụng.
+
+## Slide 8 — Application phải kiểm soát access path
+
+> Cách tiếp cận này phù hợp khi backend đáng tin cậy kiểm soát file, query và role. Nó không đủ nếu phát file cho user, cho chạy SQL tùy ý hoặc cần isolation mạnh giữa nhiều tenant.
+
+## Slide 9 — Production hardening
+
+> Hardening phải diễn ra ở ba lớp. Application xác thực và dùng prepared query; DuckDB runtime giới hạn external access và extension; OS bảo vệ file, khóa mã hóa, audit và cô lập process.
+
+## Slide 10 — Kết luận
+
+> DuckDB có thể tạo Dynamic Data Masking behavior bằng SQL, macro và verified access context. Tuy nhiên application mới là nơi enforce ai được xem gì. Câu chốt: masking logic trả lời “che như thế nào”; Access Control trả lời “ai được xem gì”.
 
 ## Backup Q&A
 
-Q: DuckDB có native Dynamic Data Masking không?
+- **Macro hoặc view có phải security boundary không?** Không nếu user còn raw table, raw file hoặc arbitrary SQL.
+- **Prepared statement có bảo vệ khi user tự gửi cả query không?** Không. Prepared statement chỉ bảo vệ value khi application kiểm soát query structure.
+- **DuckDB có thể harden external access không?** Có các setting giới hạn file system, extension và configuration; nhưng tài liệu vẫn khuyến nghị sandbox cho untrusted SQL.
+- **Masking có thay encryption không?** Không. Encryption bảo vệ dữ liệu lưu trữ; masking kiểm soát output sau khi dữ liệu được đọc.
 
-> Không theo dạng built-in policy như một số enterprise DBMS. Seminar này demo cách xây behavior bằng macro, view và application context.
-
-Q: View có đủ bảo mật không?
-
-> Chỉ khi restricted user không có quyền truy cập raw table hoặc raw file. Nếu còn direct access, view bị bypass.
-
-Q: Macro có phải security boundary không?
-
-> Không. Macro là reusable SQL expression, không tự enforce quyền.
-
-Q: Masking có thay encryption không?
-
-> Không. Encryption bảo vệ dữ liệu khi lưu/truyền; masking kiểm soát dữ liệu được hiển thị khi query.
+[Sources]
+- https://duckdb.org/docs/current/operations_manual/securing_duckdb/overview
+- https://duckdb.org/2025/11/19/encryption-in-duckdb
+[/Sources]

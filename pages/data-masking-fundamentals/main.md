@@ -4,10 +4,15 @@ transition: fade
 background: ../../assets/heading.png
 ---
 
-# Nền tảng về Data Masking
+<div class="section-cover">
+  <div class="section-number">02</div>
+  <h1>Nền tảng về Data Masking</h1>
+</div>
 
 <style scoped>
-.slidev-layout h1 { color: #88ffff; }
+.section-cover { width:100%; text-align:center; }
+.section-number { color:#2efab0; font-size:1rem; font-weight:800; letter-spacing:.2em; }
+.slidev-layout h1 { margin:.45rem 0 .7rem; color:#38edf6; font-size:2.7rem; font-weight:800; }
 </style>
 
 ---
