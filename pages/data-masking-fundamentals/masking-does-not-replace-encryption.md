@@ -4,47 +4,49 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Data Masking ≠ Encryption
+# Data Masking ≠ Mã hóa
 
-| | Data Masking | Encryption |
-|---|---|---|
-| **Mục tiêu** | Giảm rủi ro lộ dữ liệu | Bảo vệ tính bí mật |
-| **Kết quả** | Vẫn đọc được nhưng đã che bớt | Ciphertext (dữ liệu đã mã hóa) |
-| **Dùng để** | Kiểm soát ai được nhìn thấy gì | Bảo vệ khi lưu trữ / truyền tải |
+Hai cơ chế làm việc ở hai vị trí khác nhau.{.op-90}
 
-<div v-click class="mt-5 rounded-lg border border-green-300/30 bg-green-500/8 p-3 text-sm summary-box">
-<p class="m-0">Masking chỉ che <b class="text-[#ffda58]">kết quả truy vấn</b> → nếu mở trực tiếp file CSDL, cơ chế này không còn tác dụng.</p>
-<p class="m-0 mt-2">Encryption bảo vệ <b class="text-[#ffda58]">bản thân dữ liệu</b> → nhưng đặt ra câu hỏi mới: <b class="text-[#2efab0]">khóa được lưu ở đâu?</b></p>
+<div class="layers mt-6">
+  <div v-click="1">
+    <small>LƯU TRỮ VÀ TRUYỀN TẢI</small>
+    <h3>Mã hóa</h3>
+    <p>Biến dữ liệu thành dạng không đọc được nếu không có khóa giải mã.</p>
+    <p class="target">Rủi ro không mất đi mà dịch chuyển sang việc quản lý khóa giải mã.</p>
+  </div>
+  <div v-click="2" class="masking">
+    <small>KẾT QUẢ TRUY VẤN</small>
+    <h3>Data Masking</h3>
+    <p>Kiểm soát dữ liệu được hiển thị trong kết quả truy vấn.</p>
+    <p class="target">Giảm phần dữ liệu nhạy cảm mà người dùng nhìn thấy khi làm việc.</p>
+  </div>
+</div>
+
+<div class="conclude mt-5" v-click="3">
+<p>Hai cơ chế giải quyết hai vấn đề khác nhau, bổ sung cho nhau và không thay thế nhau.</p>
+<p class="scope">Người dùng đã truy cập hợp lệ vẫn có thể nhìn thấy nhiều hơn mức cần thiết, và đó là phần mà Data Masking xử lý.</p>
 </div>
 
 <style scoped>
-.summary-box { line-height:1.55; min-height:6.2rem; }
+.layers { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; align-items:start; }
+.layers > div { min-height:11.4rem; padding:1.1rem; border-top:4px solid #88ffff; background:rgba(255,255,255,.05); }
+.layers > .masking { border-top-color:#2efab0; }
+.layers small { display:block; color:#88ffff; font-size:.85rem; font-weight:700; letter-spacing:.02em; }
+.layers > .masking small { color:#2efab0; }
+.layers h3 { margin:.5rem 0 .7rem; color:#88ffff; font-size:1.05rem; }
+.layers > .masking h3 { color:#2efab0; }
+.layers p { margin:.5rem 0 0; font-size:.98rem; line-height:1.45; opacity:.92; }
+.layers .target { margin-top:.7rem; padding-top:.55rem; border-top:1px dashed rgba(255,255,255,.25); font-size:.93rem; opacity:.88; }
+.conclude { padding:.85rem 1rem; border-left:4px solid #ffda58; background:rgba(255,218,88,.06); }
+.conclude p { margin:0; font-size:1rem; line-height:1.5; }
+.conclude .scope { margin-top:.5rem; font-size:.95rem; opacity:.9; }
 </style>
 
-<!--
-Mở: masking và encryption đi cùng nhau nhưng **không thay thế nhau**.
-Đọc bảng - **không đọc từng ô**, chỉ 3 dòng: Mục tiêu · Kết quả · Dùng để.
-Encryption bảo vệ lúc **lưu trữ / truyền tải** → ciphertext, phải có khóa. Masking bảo vệ phần **hiển thị** → vẫn đọc được, đã che bớt.
-Tóm: mã hóa chặn **người không có quyền**; masking kiểm soát **người đã có quyền** được thấy tới đâu.
-(Chậm giờ thì bỏ đoạn đọc bảng, click luôn.)
+<!--Nghe tới đây chắc có bạn sẽ hỏi, đã mã hóa dữ liệu rồi thì có cần che nữa không. Câu này hay gặp nên mình tách riêng một slide để nói cho rõ.
 
-[click] **Phần đáng giá nhất - hạ tốc độ. 3 nhịp, KHÔNG bấm thêm.**
+[CLICK] Mã hóa bảo vệ dữ liệu ở phần lưu trữ và truyền tải. Dữ liệu được biến thành dạng không đọc được nếu không có khóa giải mã, nên nó giúp giảm rủi ro khi file CSDL bị lấy đi hoặc đường truyền bị nghe. Nhưng nói mã hóa xong là hết rủi ro thì không đúng. Rủi ro không mất đi, nó dịch chuyển sang việc quản lý khóa giải mã, vì ai giữ được khóa thì đọc được dữ liệu.
 
-**Nhịp 1 - dòng 1 (giới hạn của masking):** masking nằm trong `SELECT` → chỉ đổi **kết quả trả về**,
-dữ liệu trong database **vẫn là dữ liệu thật**. Cầm được file CSDL, hoặc connection string đủ quyền
-truy vấn thẳng bảng gốc → lớp che bị **bỏ qua hoàn toàn**.
+[CLICK] Data Masking thì làm việc ở một vị trí khác. Nó quyết định dữ liệu nào được hiển thị trong kết quả truy vấn. Người dùng vẫn đọc được kết quả để làm việc, chỉ là phần nhạy cảm đã được che lại.
 
-**Nhịp 2 - dòng 2 (vấn đề khóa):** encryption che ở **bản thân dữ liệu** (nhấn cụm này để đối lại "kết quả truy vấn").
-Đóng được lỗ đó, nhưng **không xóa** rủi ro - **dịch chuyển** sang khóa: lưu ở đâu, ai giữ, xoay vòng thế nào.
-Khóa nằm cạnh file dữ liệu = chưa bảo vệ được gì.
-
-**Nhịp 3 - chốt (nói miệng, không có trên slide):** masking xử lý người **ĐÃ vào hợp lệ** nhưng không nên thấy hết;
-encryption chống người **KHÔNG có quyền vào**. **Bổ sung cho nhau, không thay thế nhau.**
-→ ĐỪNG nói "hệ thống thực tế cần cả ba" (dễ bị vặn). Muốn nói thì theo điều kiện: masking cần khi có **nhiều mức quyền xem** trên cùng dữ liệu.
-
-⚠️ Bypass view / direct table access là của **Section 4** - chỉ nêu vấn đề.
-Ai hỏi sâu: "Dạ đúng ạ, phần bốn của nhóm sẽ phân tích kỹ tình huống này."
-
-Hỏi "masking khôi phục được không?" → partial/substitution/nulling: không · hash: một chiều, không · tokenization: **có**, nhưng vault lại thành thứ phải bảo vệ (giống vấn đề khóa).
-Hỏi "có encryption rồi cần masking làm gì?" → (a) không phải hệ thống nào cũng cần · (b) encryption không có chế độ "giải mã một nửa" nên vô dụng khi nhiều role xem một bảng · (c) masking không cứu được khi mất file. **Hai cái thất bại ở hai chỗ khác nhau.**
--->
+[CLICK] Hai cơ chế này giải quyết hai vấn đề khác nhau và bổ sung cho nhau. Mã hóa không có cách nào giải mã một nửa, nên khi nhiều quyền cùng đọc một bảng thì vẫn cần Data Masking. Ngược lại, Data Masking cũng không giúp gì nếu người khác đọc được trực tiếp bảng gốc, và phần bốn sẽ nói thêm về giới hạn này. Trường hợp mình quan tâm ở đây là người dùng đã truy cập hợp lệ nhưng không nên nhìn thấy toàn bộ dữ liệu nhạy cảm. Phần khái niệm tới đây là tương đối đủ, còn lại là chuyện triển khai.-->

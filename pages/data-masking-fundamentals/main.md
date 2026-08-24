@@ -15,6 +15,10 @@ src: ./data-masking-purpose.md
 ---
 
 ---
+src: ./masking-techniques.md
+---
+
+---
 src: ./static-vs-dynamic-masking.md
 ---
 
