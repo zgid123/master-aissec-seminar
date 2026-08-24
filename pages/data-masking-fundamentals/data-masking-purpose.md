@@ -4,61 +4,78 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Data Masking giúp ẩn phần không cần thiết
+# Data Masking giới hạn dữ liệu hiển thị
 
-Masking thay dữ liệu nhạy cảm bằng một dạng hiển thị an toàn hơn nhưng vẫn đủ dùng cho công việc.{.op-60}
+Giảm rủi ro lộ dữ liệu nhưng vẫn đủ dùng cho công việc.{.op-90}
 
-<div v-click="1" class="mask-example mt-7">
-  <div><small>Dữ liệu gốc</small><strong>john.doe@gmail.com</strong></div>
-  <span>→</span>
-  <div class="result"><small>Sau khi che</small><strong>j***@gmail.com</strong></div>
+<div class="flow mt-5">
+  <div class="flow-head">
+    <span>Dữ liệu gốc</span>
+    <span></span>
+    <span>Cách che</span>
+    <span></span>
+    <span>Kết quả</span>
+  </div>
+  <div class="flow-row" v-click="1">
+    <code>alice@gmail.com</code>
+    <b>→</b>
+    <em>Che một phần</em>
+    <b>→</b>
+    <code class="out">a***@gmail.com</code>
+  </div>
+  <div class="flow-row" v-click="1">
+    <code>50,000,000</code>
+    <b>→</b>
+    <em>Che toàn bộ</em>
+    <b>→</b>
+    <code class="out">********</code>
+  </div>
 </div>
 
-<div class="mt-6 grid grid-cols-3 gap-5 text-sm info-grid">
-  <div v-click="2"><b class="text-[#88ffff]">Dữ liệu thường được che</b><br><span class="op-70">Email, số điện thoại, thẻ tín dụng, số định danh, địa chỉ, lương, thông tin y tế và tài chính...</span></div>
-  <div v-click="3"><b class="text-[#2efab0]">Người dùng điển hình</b><br><span class="op-70">Lập trình viên, kiểm thử viên, chuyên viên phân tích và nhân viên hỗ trợ - những người chỉ cần một phần dữ liệu.</span></div>
-  <div v-click="4"><b class="text-[#ffda58]">Kỹ thuật phổ biến</b><br><span class="op-70">Che một phần (partial redaction), thay thế (substitution), băm (hashing), mã hóa token (tokenization)...</span></div>
+<div class="viewers mt-5" v-click="2">
+  <div><small>Người quản lý</small><span>Xem được email đầy đủ</span></div>
+  <div class="restricted"><small>Nhân viên hỗ trợ</small><span>Chỉ thấy dữ liệu đã che</span></div>
 </div>
 
-<div v-click="5" class="mt-6 text-sm purpose-line">
-  <b class="text-[#ffda58]">Mục tiêu:</b> Giảm rủi ro lộ dữ liệu · Bảo vệ thông tin cá nhân · Chỉ cấp quyền ở mức tối thiểu cần thiết · Cho nhân viên dùng dữ liệu mà không thấy phần nhạy cảm.
+<div class="note mt-5" v-click="3">
+Dữ liệu gốc trong CSDL không bị thay đổi. Chỉ kết quả hiển thị được biến đổi.
 </div>
 
 <style scoped>
 .alpha-shifting-intro h1 {
-  width: 1041px;
+  width: auto;
+  max-width: 100%;
+  white-space: normal;
+  overflow: visible;
+  text-overflow: clip;
+  line-height: 1.15;
 }
 
-.mask-example { display:flex; align-items:center; justify-content:center; gap:1.4rem; }
-.mask-example > div { min-width:15rem; padding:1rem 1.2rem; border:1px solid rgba(136,255,255,.3); background:rgba(136,255,255,.055); }
-.mask-example > span { opacity:.55; font-size:1.5rem; }
-.mask-example small,.mask-example strong { display:block; }
-.mask-example small { margin-bottom:.45rem; opacity:.58; }
-.mask-example .result { border-color:rgba(46,250,176,.55); }
-.mask-example .result strong { color:#2efab0; }
-.info-grid { font-size:.78rem; }
-.info-grid > div { padding:.75rem .85rem; border-left:3px solid rgba(136,255,255,.45); background:rgba(255,255,255,.035); min-height:5.2rem; }
-.purpose-line { padding:.6rem .85rem; border-left:3px solid rgba(255,218,88,.6); background:rgba(255,218,88,.05); line-height:1.5; min-height:3.1rem; }
+.flow { display:grid; gap:.6rem; }
+.flow-head,
+.flow-row { display:grid; grid-template-columns:1fr auto 1fr auto 1fr; gap:.8rem; align-items:center; }
+.flow-head { padding:0 1rem; color:#88ffff; font-size:.82rem; }
+.flow-head span { text-align:center; }
+.flow-row { padding:.8rem 1rem; border-left:4px solid rgba(136,255,255,.55); background:rgba(255,255,255,.05); }
+.flow-row code { font-size:1rem; text-align:center; }
+.flow-row .out { color:#2efab0; }
+.flow-row em { font-style:normal; font-size:.95rem; text-align:center; opacity:.9; }
+.flow-row b { color:#2efab0; font-size:1.1rem; text-align:center; }
+.viewers { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; }
+.viewers > div { padding:.8rem 1rem; border-left:4px solid #88ffff; background:rgba(255,255,255,.045); }
+.viewers > .restricted { border-color:#2efab0; }
+.viewers small,
+.viewers span { display:block; }
+.viewers small { margin-bottom:.35rem; color:#88ffff; font-size:.85rem; font-weight:700; }
+.viewers .restricted small { color:#2efab0; }
+.viewers span { font-size:.95rem; line-height:1.4; opacity:.9; }
+.note { padding:.75rem 1rem; border-left:4px solid #ffda58; background:rgba(255,218,88,.06); font-size:.98rem; line-height:1.45; }
 </style>
 
-<!--
-Đăng nhập đúng, có quyền, kết nối an toàn, CSDL đã mã hóa - **nhưng vẫn lộ quá mức cần thiết**.
-Định nghĩa: thay dữ liệu nhạy cảm bằng dạng an toàn hơn **nhưng vẫn đủ dùng**.
+<!--Cảm ơn Trâm. Ở phần một, mình vừa thấy một tình huống rất quen. Người dùng đăng nhập đúng, được cấp quyền đầy đủ, nhưng lại nhìn thấy nhiều dữ liệu hơn mức công việc của họ cần. Data Masking sinh ra để xử lý đúng chỗ đó, bằng cách giới hạn dữ liệu mà người dùng nhìn thấy. Nó không làm dữ liệu trở nên vô dụng, cũng không phải để tăng tốc truy vấn hay để sao lưu. Nó giúp giảm rủi ro lộ dữ liệu, trong khi người dùng vẫn đủ thông tin để làm việc.
 
-[CLICK] Ví dụ - chỉ ô trái → kéo sang ô phải: `john.doe@gmail.com` → `j***@gmail.com`.
-Vẫn biết là email, **không còn danh tính đầy đủ**.
+[CLICK] Với email, mình giữ lại ký tự đầu và tên miền, phần giữa được che lại. Nhân viên hỗ trợ vẫn nhận ra đúng khách hàng mà không cần thấy địa chỉ đầy đủ. Còn với lương thì không cần nhìn một phần nào cả, nên mình che toàn bộ.
 
-[click] Trường thường che: email · SĐT · thẻ tín dụng · số định danh · địa chỉ · lương · y tế/tài chính.
+[CLICK] Cùng một hồ sơ khách hàng, người quản lý xem được email đầy đủ, còn nhân viên hỗ trợ chỉ thấy dữ liệu đã che. Tình huống này phần ba sẽ nói kỹ hơn.
 
-[click] Ai dùng: lập trình · kiểm thử · phân tích · hỗ trợ - **chỉ cần một phần dữ liệu**.
-
-[click] 4 kỹ thuật: partial redaction (như ví dụ) · substitution · hash · tokenization.
-→ Nói đều, **đừng đọc thêm tên nào**. Chậm giờ thì bỏ cả đoạn này.
-
-[click] Mục tiêu = **quyền tối thiểu**.
-CHỐT (hạ giọng): "mục đích là **GIẢM RỦI RO LỘ DỮ LIỆU**, chứ không làm dữ liệu vô dụng."
-→ Chuyển: "Vậy việc che này được làm VÀO LÚC NÀO?"
-
-Hỏi sâu - 3 kỹ thuật còn lại: nulling (mất join) · shuffling (thống kê đúng, cá nhân sai) · format-preserving.
-Khôi phục được: chỉ **tokenization** (có vault). Hash một chiều nhưng vẫn join/đếm được.
--->
+[CLICK] Và điều quan trọng nhất ở đây là dữ liệu gốc trong CSDL không hề bị thay đổi. Chỉ có kết quả hiển thị ra là được biến đổi. Vậy có những cách che nào?-->
