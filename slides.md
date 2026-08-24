@@ -1,6 +1,7 @@
 ---
 title: "Dynamic Data Masking trong DuckDB"
 theme: seriph
+colorSchema: dark
 addons:
   - '@alphacifer/slidev-addon-theme'
 background: ./assets/main.png
@@ -11,8 +12,8 @@ mdc: true
 comark: true
 hideInToc: true
 fonts:
-  sans: Roboto Mono
-  serif: Roboto Mono
+  sans: Roboto
+  serif: Roboto
   mono: Roboto Mono
 duration: 10min
 ---
@@ -21,12 +22,14 @@ duration: 10min
 
 <style scoped>
 .slidev-page-1 > .slidev-layout h1 {
-  font-size: 2rem;
-  /* color: #88ffff; */
-  /* color: #2b90b6; */
+  max-width: 48rem;
+  font-size: 3.15rem;
+  line-height: 1.08;
+  letter-spacing: -0.035em;
   color: #2efab0;
-  /* color: #ffda58; */
+  text-shadow: 0 0 28px rgba(46, 250, 176, 0.2);
 }
+
 </style>
 
 <Speaker
@@ -135,7 +138,7 @@ transition: slide-left
       </svg>
     </div>
     <div class="card-title">DEMO<br/>VÀ THẢO LUẬN</div>
-    <div class="card-desc">Minh họa thực tế, thảo luận và Q&A</div>
+    <div class="card-desc">Demo, giới hạn, hardening và kết luận</div>
   </div>
 </div>
 
@@ -199,7 +202,7 @@ transition: slide-left
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 1.25rem 1rem 1.1rem;
+  padding: 1.35rem 1.05rem 1.2rem;
   border-radius: 1.1rem;
   background: radial-gradient(circle at 50% 0%, rgba(0, 229, 255, 0.06), rgba(6, 18, 28, 0.85));
   border: 1.5px solid rgba(0, 229, 255, 0.38);
@@ -262,7 +265,7 @@ transition: slide-left
 }
 
 .card-title {
-  font-size: 0.95rem;
+  font-size: 1.02rem;
   font-weight: 800;
   color: #ffffff;
   line-height: 1.35;
@@ -276,8 +279,8 @@ transition: slide-left
 }
 
 .card-desc {
-  font-size: 0.78rem;
-  color: #94a3b8;
+  font-size: 0.84rem;
+  color: #b6c5d2;
   line-height: 1.45;
   margin-top: auto;
 }
@@ -300,7 +303,40 @@ src: ./pages/demonstration-and-discussion/main.md
 ---
 
 ---
-layout: thanks
+layout: bg-center
+background: ./assets/heading.png
 preload: false
 transition: fade
 ---
+
+<div class="qa-wrap">
+  <div class="qa-kicker">THẢO LUẬN</div>
+  <h1>Q&amp;A</h1>
+  <p>Masking logic trả lời <b>“che như thế nào”</b>.<br/>Access Control trả lời <b>“ai được xem gì”</b>.</p>
+</div>
+
+<style scoped>
+.qa-wrap {
+  width: 100%;
+  text-align: center;
+}
+.qa-kicker {
+  color: #2efab0;
+  font-size: .9rem;
+  font-weight: 800;
+  letter-spacing: .22em;
+}
+.qa-wrap h1 {
+  margin: .35rem 0 .9rem;
+  color: #38edf6;
+  font-size: 4.5rem;
+  line-height: 1;
+}
+.qa-wrap p {
+  margin: 0 auto;
+  color: #d8e6ee;
+  font-size: 1.2rem;
+  line-height: 1.55;
+  opacity: .86;
+}
+</style>

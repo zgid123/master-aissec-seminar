@@ -40,6 +40,7 @@ async function requireAuth(
 </div>
 
 <style scoped>
+.alpha-shifting-intro h1 { font-size:1.95rem; }
 .cols { display:grid; grid-template-columns:1.08fr .92fr; gap:1.4rem; }
 .sources { display:grid; gap:1rem; align-content:center; }
 .sources > div { padding:1rem; border-left:4px solid #ff8080; background:rgba(255,255,255,.045); }

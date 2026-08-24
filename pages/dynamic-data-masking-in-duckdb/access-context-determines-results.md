@@ -27,6 +27,7 @@ Cùng endpoint, cùng truy vấn và cùng dữ liệu gốc; chỉ xác minh qu
 </div>
 
 <style scoped>
+.slidev-layout h1 { font-size: 2rem; }
 .trace { display:grid; gap:.5rem; }
 .trace > div { display:grid; grid-template-columns:.65fr .9fr .9fr 1.35fr 1.15fr; gap:.5rem; align-items:center; padding:.85rem; border-left:4px solid #88ffff; background:rgba(255,255,255,.045); font-size:.8rem; }
 .trace > .header { padding:.3rem .85rem; border:0; background:transparent; color:#88ffff; font-size:.66rem; }

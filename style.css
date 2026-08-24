@@ -1,5 +1,69 @@
+:root {
+  --slidev-theme-primary: #2efab0;
+  --deck-cyan: #38edf6;
+  --deck-green: #2efab0;
+  --deck-amber: #ffda58;
+  --deck-red: #ff8b8b;
+  --deck-text: #e5eef5;
+  --deck-muted: #a9bbc8;
+  --deck-surface: rgba(255, 255, 255, 0.055);
+  --deck-border: rgba(255, 255, 255, 0.14);
+}
+
+.slidev-layout {
+  color: var(--deck-text);
+  font-family: Roboto, "Segoe UI", Arial, sans-serif;
+  padding: 2.45rem 3rem;
+}
+
 .slidev-layout h1 {
+  margin-bottom: .45rem;
   color: #38edf6;
+  font-size: 2.2rem;
+  font-weight: 650;
+  line-height: 1.12;
+  letter-spacing: -.025em;
+}
+
+.slidev-layout h2,
+.slidev-layout h3 {
+  font-weight: 650;
+}
+
+.slidev-layout p,
+.slidev-layout li,
+.slidev-layout small,
+.slidev-layout span {
+  text-align: left;
+}
+
+.slidev-layout code,
+.slidev-layout pre {
+  font-family: "Roboto Mono", "Cascadia Code", Consolas, monospace;
+}
+
+.slidev-layout .op-60,
+.slidev-layout .opacity-60 {
+  opacity: .78;
+}
+
+.slidev-layout .text-sm {
+  font-size: .9rem;
+}
+
+.slidev-layout .text-base {
+  font-size: 1rem;
+}
+
+.slidev-layout .text-lg {
+  font-size: 1.16rem;
+}
+
+.slidev-layout .takeaway-strip {
+  border: 1px solid rgba(46, 250, 176, .3);
+  border-left: 4px solid var(--deck-green);
+  background: rgba(46, 250, 176, .07);
+  color: var(--deck-text);
 }
 
 .alpha-bg-center h1 {

@@ -1,58 +1,45 @@
 ---
-layout: two-cols-header
-layoutClass: query-time-policy-demo
+layout: shifting-intro
 hideInToc: true
 transition: slide-left
 ---
 
-# Query-time policy bằng SQL
+# Role được áp dụng ngay tại query time
 
-::left::
+<div class="query-demo mt-7">
+<div>
 
-### Masking macros
-
-```sql {all|1-4|6-9|all}
-CREATE MACRO mask_email(value) AS
-  left(value, 1) || '***@'
-  || split_part(value, '@', 2);
-
-CREATE MACRO mask_salary(value) AS
-  '********';
-```
-
-<div v-click class="mt-4 text-sm opacity-75 leading-6">
-Macro giúp tái sử dụng logic masking cho nhiều query hoặc view.
-</div>
-
-::right::
-
-### Kết quả theo role
-
-```sql {all|4-8|9-13|all}
-CREATE MACRO customers_for(role) AS TABLE
-SELECT
-  name,
-  CASE WHEN role = 'manager'
-       THEN email
-       WHEN role = 'support'
-       THEN mask_email(email)
-       ELSE NULL
-  END AS email,
-  CASE WHEN role = 'manager'
-       THEN salary
-       WHEN role = 'support'
-       THEN mask_salary(salary)
-       ELSE NULL
-  END AS salary
+```sql {1|3-5|6-8|all}
+SELECT name,
+  CASE
+    WHEN $viewer_role = 'privileged'
+      THEN email
+    ELSE mask_email(email)
+  END AS email
 FROM customers;
 ```
 
-<div v-click class="mt-4 rounded-lg border border-[#2efab0]/35 bg-[#2efab0]/8 p-3 text-sm leading-6">
-Trong demo, <b>role</b> là access context do Node.js xác thực; client không được tự gửi giá trị này.
+</div>
+<div class="outputs">
+  <div v-click="2"><small>ROLE = PRIVILEGED</small><strong>alice@gmail.com</strong></div>
+  <div class="restricted" v-click="3"><small>ROLE = RESTRICTED</small><strong>a***@gmail.com</strong></div>
+</div>
 </div>
 
-<style>
-.query-time-policy-demo {
-  column-gap: 1.5rem;
-}
+<div v-click="4" class="context mt-7">
+Trong demo, role là access context; trong hệ thống thật, application phải xác thực và enforce context này.
+</div>
+
+<style scoped>
+.query-demo { display:grid; grid-template-columns:1.08fr .92fr; gap:1.6rem; align-items:center; }
+.query-demo :deep(pre) { font-size:.85rem; line-height:1.52; }
+.outputs { display:grid; gap:1.15rem; }
+.outputs > div { min-height:7.2rem; padding:1.15rem; border-left:4px solid #38edf6; background:rgba(255,255,255,.05); }
+.outputs > .restricted { border-color:#2efab0; }
+.outputs small,.outputs strong { display:block; }
+.outputs small { color:#38edf6; font-size:.76rem; font-weight:800; letter-spacing:.07em; }
+.outputs .restricted small { color:#2efab0; }
+.outputs strong { margin-top:1.25rem; color:#fff; font-size:1.2rem; }
+.outputs .restricted strong { color:#2efab0; }
+.context { padding:1rem 1.15rem; border-left:4px solid #ffda58; background:rgba(255,218,88,.07); color:#f6edc3; font-size:.95rem; line-height:1.45; text-align:center; }
 </style>

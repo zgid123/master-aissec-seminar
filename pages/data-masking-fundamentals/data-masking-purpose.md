@@ -44,11 +44,12 @@ Dữ liệu gốc trong CSDL không bị thay đổi. Chỉ kết quả hiển t
 <style scoped>
 .alpha-shifting-intro h1 {
   width: auto;
-  max-width: 100%;
-  white-space: normal;
+  max-width: none;
+  white-space: nowrap;
   overflow: visible;
   text-overflow: clip;
-  line-height: 1.15;
+  font-size: 1.9rem;
+  line-height: 1.1;
 }
 
 .flow { display:grid; gap:.6rem; }

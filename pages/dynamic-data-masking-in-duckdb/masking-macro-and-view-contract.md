@@ -34,6 +34,7 @@ Macro tập trung logic che email để tái sử dụng; <b>nó chưa quyết �
 </div>
 
 <style scoped>
+.alpha-shifting-intro h1 { font-size:1.95rem; }
 .cols { display:grid; grid-template-columns:1.1fr .9fr; gap:1.5rem; align-items:center; }
 .transform { display:grid; gap:.6rem; text-align:center; }
 .transform > div { padding:1rem; border-left:4px solid #88ffff; background:rgba(255,255,255,.045); }
