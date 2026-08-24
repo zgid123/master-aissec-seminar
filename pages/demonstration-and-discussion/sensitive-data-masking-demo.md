@@ -44,6 +44,7 @@ Tên vẫn phục vụ nghiệp vụ; bốn trường nhạy cảm chỉ hiển 
 .records .masked pre { color:#b9f7de; }
 .mask-arrow { display:flex; flex-direction:column; gap:.25rem; color:#2efab0; font-size:2rem; text-align:center; }
 .mask-arrow span { color:#9eb5c3; font-size:.65rem; font-weight:800; letter-spacing:.08em; }
-.fields { display:flex; justify-content:center; gap:1rem; }
+.fields { display:flex; justify-content:center; gap:1rem; margin-top:1rem !important; }
 .fields span { min-width:8rem; padding:.55rem .8rem; border-bottom:2px solid #2efab0; color:#bdebdc; font-size:.78rem; font-weight:700; text-align:center; }
+.takeaway-strip { margin-top:1rem !important; padding:.75rem 1rem !important; }
 </style>

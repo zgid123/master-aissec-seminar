@@ -44,11 +44,12 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: clamp(0.45rem, 1.1vw, 0.75rem);
-  margin-top: 0.55rem;
+  margin-top: 1.15rem;
 }
 
 .defenses > div {
-  padding: clamp(0.45rem, 1vh, 0.7rem) clamp(0.65rem, 1.2vw, 0.95rem);
+  min-height: 6.5rem;
+  padding: 0.75rem 0.95rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-left-width: 3.5px;
@@ -69,10 +70,10 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
 .defenses small {
   display: block;
   color: #e2e8f0;
-  font-size: clamp(0.7rem, 0.92vw, 0.76rem);
+  font-size: clamp(0.73rem, 0.92vw, 0.78rem);
   line-height: 1.36;
   opacity: 0.95;
-  text-align: justify;
+  text-align: left;
 }
 
 .threat-tag {
@@ -89,7 +90,8 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
   border-radius: 0.65rem;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
-  margin-top: 0.55rem !important;
+  min-height: 3.6rem;
+  margin-top: 0.9rem !important;
 }
 
 .callout-box.emerald {
@@ -117,6 +119,6 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
   color: #d1fae5;
   font-size: clamp(0.72rem, 1vw, 0.78rem);
   line-height: 1.38;
-  text-align: justify;
+  text-align: left;
 }
 </style>
