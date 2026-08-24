@@ -37,13 +37,15 @@ transition: slide-left
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(0.6rem, 1.3vw, 1rem);
-  margin-top: 0.8rem;
+  margin-top: 1.9rem;
 }
 
 .db-explain > div {
   display: flex;
+  align-items: flex-start;
   gap: 0.85rem;
-  padding: clamp(0.7rem, 1.5vh, 1.1rem) clamp(0.75rem, 1.3vw, 1.05rem);
+  min-height: 11.5rem;
+  padding: 1.1rem 1.05rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-top-width: 3.5px;
@@ -71,9 +73,9 @@ transition: slide-left
 .db-explain small {
   display: block;
   color: #e2e8f0;
-  font-size: clamp(0.74rem, 1vw, 0.82rem);
+  font-size: clamp(0.78rem, 1vw, 0.84rem);
   line-height: 1.45;
   opacity: 0.95;
-  text-align: justify;
+  text-align: left;
 }
 </style>

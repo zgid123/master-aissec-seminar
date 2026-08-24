@@ -68,18 +68,21 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
 
 <style scoped>
 .alpha-shifting-intro h1 {
-  width: 1041px;
+  width: auto;
+  max-width: none;
+  white-space: nowrap;
 }
 
 .transition-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(0.6rem, 1.5vw, 1rem);
-  margin-top: 0.6rem;
+  margin-top: 1.2rem;
 }
 
 .t-card {
-  padding: clamp(0.55rem, 1.2vh, 0.85rem) clamp(0.75rem, 1.4vw, 1.1rem);
+  min-height: 11.5rem;
+  padding: 1rem 1.1rem;
   border-radius: 0.65rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -142,7 +145,7 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
   font-size: clamp(0.72rem, 1vw, 0.8rem);
   line-height: 1.4;
   color: #e2e8f0;
-  text-align: justify;
+  text-align: left;
 }
 
 .t-list li:last-child {
@@ -175,7 +178,8 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
   border-radius: 0.65rem;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
-  margin-top: 0.55rem !important;
+  min-height: 4rem;
+  margin-top: 1rem !important;
 }
 
 .callout-box.next-section {
@@ -200,6 +204,6 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
   color: #d1fae5;
   font-size: clamp(0.72rem, 1vw, 0.78rem);
   line-height: 1.4;
-  text-align: justify;
+  text-align: left;
 }
 </style>

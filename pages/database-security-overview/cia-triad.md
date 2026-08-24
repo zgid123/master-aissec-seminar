@@ -48,13 +48,14 @@ transition: slide-left
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(0.5rem, 1.2vw, 0.85rem);
-  margin-top: 0.6rem;
+  margin-top: 1.4rem;
 }
 
 .principles > div {
   display: flex;
   gap: 0.75rem;
-  padding: clamp(0.55rem, 1.2vh, 0.85rem) clamp(0.65rem, 1.2vw, 0.95rem);
+  min-height: 8.8rem;
+  padding: 0.95rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-top-width: 3.5px;
@@ -82,10 +83,10 @@ transition: slide-left
 .principles small {
   display: block;
   color: #e2e8f0;
-  font-size: clamp(0.72rem, 0.95vw, 0.78rem);
+  font-size: clamp(0.75rem, 0.95vw, 0.8rem);
   line-height: 1.4;
   opacity: 0.95;
-  text-align: justify;
+  text-align: left;
 }
 
 .callout-box {
@@ -96,7 +97,8 @@ transition: slide-left
   border-radius: 0.65rem;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
-  margin-top: 0.55rem !important;
+  min-height: 3.6rem;
+  margin-top: 1rem !important;
 }
 
 .callout-box.amber {
@@ -124,6 +126,6 @@ transition: slide-left
   color: #fef3c7;
   font-size: clamp(0.72rem, 1vw, 0.78rem);
   line-height: 1.4;
-  text-align: justify;
+  text-align: left;
 }
 </style>

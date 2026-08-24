@@ -32,11 +32,12 @@ Các hình thức tấn công và sơ suất bảo mật thường gặp đe d�
   display: grid;
   grid-template-columns: repeat(2, 1fr);
   gap: clamp(0.55rem, 1.2vw, 0.9rem);
-  margin-top: 0.7rem;
+  margin-top: 1.4rem;
 }
 
 .threats > div {
-  padding: clamp(0.6rem, 1.3vh, 0.95rem) clamp(0.75rem, 1.3vw, 1.1rem);
+  min-height: 7.5rem;
+  padding: 0.95rem 1.05rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-left-width: 3.5px;
@@ -57,9 +58,9 @@ Các hình thức tấn công và sơ suất bảo mật thường gặp đe d�
 .threats small {
   display: block;
   color: #e2e8f0;
-  font-size: clamp(0.72rem, 0.98vw, 0.8rem);
+  font-size: clamp(0.76rem, 0.98vw, 0.82rem);
   line-height: 1.45;
   opacity: 0.95;
-  text-align: justify;
+  text-align: left;
 }
 </style>

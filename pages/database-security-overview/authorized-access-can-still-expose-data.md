@@ -41,7 +41,9 @@ Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn p
 
 <style scoped>
 .alpha-shifting-intro h1 {
-  width: 1041px;
+  width: auto;
+  max-width: none;
+  white-space: nowrap;
 }
 
 .exposure {
@@ -49,11 +51,12 @@ Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn p
   grid-template-columns: 1fr auto 1.15fr;
   gap: clamp(0.6rem, 1.3vw, 1rem);
   align-items: center;
-  margin-top: 0.6rem;
+  margin-top: 1.3rem;
 }
 
 .exposure .card {
-  padding: clamp(0.6rem, 1.2vh, 0.85rem) clamp(0.75rem, 1.3vw, 1.1rem);
+  min-height: 8.8rem;
+  padding: 1rem 1.1rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.06);
   border-radius: 0.65rem;
@@ -103,7 +106,8 @@ Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn p
   border-radius: 0.65rem;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
-  margin-top: 0.55rem !important;
+  min-height: 4rem;
+  margin-top: 1rem !important;
 }
 
 .callout-box.cyan {
@@ -131,6 +135,6 @@ Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn p
   color: #cffafe;
   font-size: clamp(0.72rem, 1vw, 0.78rem);
   line-height: 1.4;
-  text-align: justify;
+  text-align: left;
 }
 </style>
