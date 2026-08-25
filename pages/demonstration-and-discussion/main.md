@@ -17,9 +17,14 @@ background: ../../assets/heading.png
 .section-cover p { text-align:center; color:#c5d5df; font-size:1rem; opacity:.78; }
 </style>
 
-<!-- Temporarily disabled slides:
-  sensitive-data-masking-demo.md
-  query-time-policy-demo.md
+<!--
+Ở phần trước, nhóm em đã trình bày cách xây dựng Dynamic Data Masking trong DuckDB và minh họa rằng cùng một dữ liệu gốc có thể cho ra kết quả khác nhau tùy theo quyền của người đang truy cập.
+
+Tuy nhiên, một câu query trả về đúng kết quả chưa có nghĩa là toàn bộ hệ thống đã an toàn. Masking chỉ là một phần trong kiến trúc bảo mật. Nếu người dùng vẫn có thể đi theo một đường khác để truy cập bảng gốc, mở trực tiếp file DuckDB hoặc tự chạy câu lệnh SQL, họ vẫn có thể bỏ qua cơ chế masking.
+
+Vì vậy, trong phần cuối này, nhóm em sẽ không tập trung thêm vào cách viết hàm che dữ liệu. Thay vào đó, nhóm em sẽ trả lời ba câu hỏi: demo vừa rồi thực sự chứng minh được điều gì, những giới hạn và rủi ro nào vẫn còn tồn tại, và cần bổ sung các lớp kiểm soát nào nếu muốn đưa cách tiếp cận này vào một hệ thống thực tế.
+
+Sau cùng, nhóm em sẽ tổng kết lại thông điệp chính của toàn bộ seminar: Data Masking có vai trò gì trong bảo mật cơ sở dữ liệu và vì sao nó phải được kết hợp với Access Control, Encryption và Auditing.
 -->
 
 ---
@@ -32,6 +37,10 @@ src: ./trust-boundary.md
 
 ---
 src: ./demo-bypass.md
+---
+
+---
+src: ./inference-and-runtime-cost.md
 ---
 
 ---

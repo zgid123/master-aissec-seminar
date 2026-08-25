@@ -38,6 +38,23 @@ DuckDB thực thi SQL với quyền của process đang chạy; macro hoặc vie
 </style>
 
 <!--
+Để trả lời câu hỏi ai kiểm soát đường đi đến dữ liệu, chúng ta cần nhìn vào trust boundary, tức là ranh giới mà bên trong đó các thành phần được tin cậy để thực thi policy. Trong kiến trúc demo này, ranh giới đó không chỉ nằm trong DuckDB mà trải dài qua bốn lớp.
+
+[click]
+Lớp đầu tiên là Identity. Token hoặc session phải cho hệ thống biết người đang gửi request là ai và họ có role gì. Điểm quan trọng là role phải được suy ra từ thông tin đã được server xác thực. Nếu client có thể tự gửi một chuỗi như `admin` hoặc `support` và backend tin ngay chuỗi đó, người dùng có thể tự nâng quyền mà không cần tấn công DuckDB.
+
+[click]
+Lớp thứ hai là Node.js API, đóng vai trò policy enforcer. Backend quyết định endpoint nào được gọi, cấu trúc query nào được sử dụng và role nào được bind vào query. Đây là lớp thực sự enforce việc ai được xem dữ liệu gì. Prepared statement giúp bind giá trị an toàn, nhưng vẫn cần backend kiểm soát toàn bộ cấu trúc câu query.
+
+[click]
+Lớp thứ ba là DuckDB. DuckDB nhận query đã được backend xây dựng, sau đó thực thi macro, view hoặc SQL expression để tạo output đã che. DuckDB chịu trách nhiệm thực hiện masking logic, nhưng trong mô hình này DuckDB không tự xác thực end user và cũng không tự biết token của họ có đáng tin hay không.
+
+[click]
+Lớp cuối cùng là storage, cụ thể là file `.duckdb`. File này cần được bảo vệ bằng quyền của hệ điều hành, service account và encryption khi phù hợp. Nếu một người có thể sao chép hoặc mở trực tiếp file, họ không cần đi qua macro hay API nữa.
+
+[click]
+Điểm cần ghi nhớ là DuckDB thực thi SQL bằng quyền của process đang chạy. Vì vậy, macro và view là công cụ để tạo behavior, nhưng tự thân chúng không phải một security boundary hoàn chỉnh. Từ ranh giới này, slide tiếp theo sẽ chỉ ra ba đường bypass cụ thể nhất.
+
 [Sources]
 - https://duckdb.org/docs/current/operations_manual/securing_duckdb/overview
 [/Sources]
