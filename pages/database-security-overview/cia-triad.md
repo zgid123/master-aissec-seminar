@@ -6,7 +6,7 @@ transition: slide-left
 
 # Bảo vệ điều gì? Tam giác CIA
 
-[CIA xác định]{.op-60} **chúng ta cần bảo vệ điều gì**: [giữ bí mật dữ liệu nhạy cảm, đảm bảo tính toàn vẹn và duy trì tính sẵn sàng của hệ thống.]{.op-60}
+<p class="cia-summary"><span>CIA xác định</span> <strong>chúng ta cần bảo vệ điều gì</strong>: <span>giữ bí mật dữ liệu nhạy cảm, đảm bảo tính toàn vẹn và duy trì tính sẵn sàng của hệ thống.</span></p>
 
 <div class="principles mt-5">
   <div v-click="1">
@@ -34,7 +34,7 @@ transition: slide-left
 
 <div v-click="4" class="callout-box amber mt-4">
   <div class="callout-icon amber">
-    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
       <path d="M12 9v4m0 4h.01M10.29 3.86L1.82 18a2 2 0 001.71 3h16.94a2 2 0 001.71-3L13.71 3.86a2 2 0 00-3.42 0z"/>
     </svg>
   </div>
@@ -47,15 +47,25 @@ transition: slide-left
 .principles {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  gap: clamp(0.5rem, 1.2vw, 0.85rem);
-  margin-top: 1.4rem;
+  gap: clamp(0.75rem, 1.4vw, 1.05rem);
+  margin-top: 1.4rem !important;
 }
+
+.cia-summary {
+  margin: 0.35rem 0 0;
+  color: #dce5ea;
+  font-size: clamp(1.05rem, 1.55vw, 1.28rem);
+  line-height: 1.45;
+}
+
+.cia-summary span { opacity: 0.82; }
+.cia-summary strong { color: #ffffff; font-weight: 750; }
 
 .principles > div {
   display: flex;
-  gap: 0.75rem;
-  min-height: 8.8rem;
-  padding: 0.95rem;
+  gap: 0.9rem;
+  min-height: 11.2rem;
+  padding: 1.2rem 1.15rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-top-width: 3.5px;
@@ -66,25 +76,25 @@ transition: slide-left
 
 .principles b {
   color: #2efab0;
-  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-size: clamp(1.9rem, 2.5vw, 2.25rem);
   line-height: 1;
   font-weight: 900;
 }
 
 .principles strong {
   display: block;
-  font-size: clamp(0.82rem, 1.1vw, 0.92rem);
+  font-size: clamp(1rem, 1.35vw, 1.12rem);
   color: #ffffff;
   font-weight: 700;
   line-height: 1.3;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.4rem;
 }
 
 .principles small {
   display: block;
   color: #e2e8f0;
-  font-size: clamp(0.75rem, 0.95vw, 0.8rem);
-  line-height: 1.4;
+  font-size: clamp(0.88rem, 1.15vw, 0.98rem);
+  line-height: 1.48;
   opacity: 0.95;
   text-align: left;
 }
@@ -92,13 +102,13 @@ transition: slide-left
 .callout-box {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  padding: clamp(0.35rem, 0.8vh, 0.55rem) clamp(0.65rem, 1.2vw, 0.95rem);
+  gap: 0.9rem;
+  padding: clamp(0.7rem, 1.1vh, 0.9rem) clamp(0.9rem, 1.4vw, 1.2rem);
   border-radius: 0.65rem;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
-  min-height: 3.6rem;
-  margin-top: 1rem !important;
+  min-height: 4.8rem;
+  margin-top: 1.4rem !important;
 }
 
 .callout-box.amber {
@@ -111,7 +121,7 @@ transition: slide-left
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.35rem;
+  padding: 0.55rem;
   border-radius: 0.45rem;
   flex-shrink: 0;
 }
@@ -124,8 +134,8 @@ transition: slide-left
 
 .callout-text {
   color: #fef3c7;
-  font-size: clamp(0.72rem, 1vw, 0.78rem);
-  line-height: 1.4;
+  font-size: clamp(0.88rem, 1.15vw, 0.98rem);
+  line-height: 1.48;
   text-align: left;
 }
 </style>

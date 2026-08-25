@@ -42,14 +42,14 @@ async function requireAuth(
 <style scoped>
 .alpha-shifting-intro h1 { font-size:1.95rem; }
 .cols { display:grid; grid-template-columns:1.08fr .92fr; gap:1.4rem; }
-.sources { display:grid; gap:1rem; align-content:center; }
-.sources > div { padding:1rem; border-left:4px solid #ff8080; background:rgba(255,255,255,.045); }
+.sources { display:grid; gap:1.15rem; align-content:center; }
+.sources > div { min-height:7.2rem; padding:1.15rem 1.2rem; border-left:4px solid #ff8080; background:rgba(255,255,255,.045); }
 .sources > .good { border-color:#2efab0; }
 .sources small,.sources code,.sources span { display:block; }
-.sources small { color:#ff9a9a; font-size:.57rem; }
+.sources small { color:#ff9a9a; font-size:clamp(.7rem, .9vw, .78rem); }
 .sources .good small { color:#2efab0; }
-.sources code { margin:.45rem 0; }
-.sources span { opacity:.68; font-size:.66rem; }
+.sources code { margin:.55rem 0; font-size:clamp(.96rem, 1.2vw, 1.08rem); }
+.sources span { opacity:.78; font-size:clamp(.8rem, 1vw, .9rem); line-height:1.4; }
 </style>
 
 <!--

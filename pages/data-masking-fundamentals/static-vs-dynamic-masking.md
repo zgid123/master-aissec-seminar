@@ -32,8 +32,8 @@ Hai hướng phục vụ hai bài toán khác nhau. Nhóm chọn <b class="text-
 </div>
 
 <style scoped>
-.compare { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; align-items:start; }
-.compare > div { min-height:12.6rem; padding:1.1rem; border-left:4px solid #88ffff; background:rgba(255,255,255,.05); }
+.compare { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:1.25rem; align-items:stretch; }
+.compare > div { box-sizing:border-box; width:100%; height:100%; min-height:12.6rem; padding:1.1rem; border-left:4px solid #88ffff; background:rgba(255,255,255,.05); }
 .compare > div:last-child { border-color:#2efab0; }
 .compare h3 { margin:0 0 .8rem; color:#88ffff; font-size:1.05rem; }
 .compare > div:last-child h3 { color:#2efab0; }

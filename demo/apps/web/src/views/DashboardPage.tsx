@@ -77,7 +77,7 @@ export function DashboardPage() {
 
         <div className={`policy-banner ${isManager ? 'manager' : ''}`}>
           <span className="policy-icon">{isManager ? <ShieldIcon /> : <LockIcon />}</span>
-          <div><b>{isManager ? 'Policy trả dữ liệu gốc' : 'Dynamic masking policy đang hoạt động'}</b><p>{isManager ? 'Role manager nhận giá trị đầy đủ của các cột được bảo vệ.' : 'Email, số điện thoại, địa chỉ và CCCD được DuckDB che trước khi trả khỏi database.'}</p></div>
+          <div><b>{isManager ? 'Policy trả dữ liệu gốc' : 'Bốn kỹ thuật masking đang hoạt động'}</b><p>{isManager ? 'Role manager nhận giá trị đầy đủ của các cột được bảo vệ.' : 'Email che một phần · điện thoại che toàn bộ · địa chỉ substitution · CCCD hash.'}</p></div>
           <code>viewer_role = '{session.role}'</code>
         </div>
 
@@ -116,7 +116,7 @@ export function DashboardPage() {
 
           <div className="table-wrap">
             <table>
-              <thead><tr><th>ID</th><th>KHÁCH HÀNG</th><th>EMAIL</th><th>ĐIỆN THOẠI</th><th>ĐỊA CHỈ</th><th>CCCD</th><th>NGÀY TẠO</th></tr></thead>
+              <thead><tr><th>ID</th><th>KHÁCH HÀNG</th><th>EMAIL<small>CHE MỘT PHẦN</small></th><th>ĐIỆN THOẠI<small>CHE TOÀN BỘ</small></th><th>ĐỊA CHỈ<small>SUBSTITUTION</small></th><th>CCCD<small>HASH</small></th><th>NGÀY TẠO</th></tr></thead>
               <tbody>
                 {usersQuery.isPending && Array.from({ length: 8 }, (_, index) => <tr className="skeleton-row" key={index}><td colSpan={7}><span /></td></tr>)}
                 {usersQuery.isError && <tr><td colSpan={7} className="table-message">{usersQuery.error.message}</td></tr>}

@@ -10,11 +10,11 @@ Masking chỉ được bảo đảm khi mọi đường truy cập đều đi qu
 
 <div class="boundary-chain mt-8">
   <div v-click="1"><small>IDENTITY</small><strong>Token / session</strong><span>Xác định user và role</span></div>
-  <b>→</b>
+  <b v-click="2">→</b>
   <div class="enforcer" v-click="2"><small>POLICY ENFORCER</small><strong>Node.js API</strong><span>Chọn query và bind role</span></div>
-  <b>→</b>
+  <b v-click="3">→</b>
   <div v-click="3"><small>QUERY ENGINE</small><strong>DuckDB</strong><span>Thực thi masking logic</span></div>
-  <b>→</b>
+  <b v-click="4">→</b>
   <div class="storage" v-click="4"><small>STORAGE</small><strong>.duckdb file</strong><span>Được OS và encryption bảo vệ</span></div>
 </div>
 

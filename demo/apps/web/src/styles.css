@@ -118,6 +118,7 @@ button { color: inherit; }
 .table-wrap { min-height: 540px; overflow-x: auto; }
 table { width: 100%; border-collapse: collapse; table-layout: auto; }
 th { height: 42px; padding: 0 15px; color: #61766f; background: #0c1916; font: 500 9px "SFMono-Regular", Consolas, monospace; letter-spacing: .08em; text-align: left; white-space: nowrap; }
+th small { display: block; margin-top: 3px; color: #967f43; font-size: 7px; letter-spacing: .05em; }
 td { height: 47px; padding: 0 15px; color: #a9b7b2; border-top: 1px solid #172923; font-size: 10px; white-space: nowrap; }
 tbody tr:hover td { background: #0e1c18; }
 td.mono { color: #789088; font-size: 9px; }

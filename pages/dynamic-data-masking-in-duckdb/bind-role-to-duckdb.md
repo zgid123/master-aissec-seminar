@@ -42,14 +42,14 @@ const reader = await connection.runAndReadAll(
 
 <style scoped>
 .cols { display:grid; grid-template-columns:1.2fr .8fr; gap:1.2rem; }
-.binding { display:grid; gap:.35rem; align-content:center; text-align:center; }
-.binding > div { padding:.65rem; border-left:3px solid #88ffff; background:rgba(255,255,255,.045); }
+.binding { display:grid; gap:.5rem; align-content:center; text-align:center; }
+.binding > div { padding:.85rem .8rem; border-left:3px solid #88ffff; background:rgba(255,255,255,.045); }
 .binding > .result { border-color:#2efab0; }
 .binding small,.binding code { display:block; }
-.binding small { color:#88ffff; font-size:.54rem; }
+.binding small { color:#88ffff; font-size:clamp(.66rem, .85vw, .74rem); }
 .binding .result small,.binding > strong { color:#2efab0; }
-.binding code { margin-top:.25rem; font-size:.68rem; }
-.binding > strong { font-size:.9rem; }
+.binding code { margin-top:.35rem; font-size:clamp(.84rem, 1.05vw, .94rem); }
+.binding > strong { font-size:clamp(1rem, 1.25vw, 1.12rem); }
 </style>
 
 <!--

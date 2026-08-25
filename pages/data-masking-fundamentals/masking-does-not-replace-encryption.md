@@ -29,8 +29,8 @@ Hai cơ chế làm việc ở hai vị trí khác nhau.{.op-90}
 </div>
 
 <style scoped>
-.layers { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; align-items:start; }
-.layers > div { min-height:11.4rem; padding:1.1rem; border-top:4px solid #88ffff; background:rgba(255,255,255,.05); }
+.layers { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:1.25rem; align-items:stretch; }
+.layers > div { box-sizing:border-box; width:100%; height:100%; min-height:11.4rem; padding:1.1rem; border-top:4px solid #88ffff; background:rgba(255,255,255,.05); }
 .layers > .masking { border-top-color:#2efab0; }
 .layers small { display:block; color:#88ffff; font-size:.85rem; font-weight:700; letter-spacing:.02em; }
 .layers > .masking small { color:#2efab0; }

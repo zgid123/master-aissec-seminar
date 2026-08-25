@@ -28,15 +28,15 @@ The API starts on <http://localhost:3000>. The first API start also creates and 
 
 | Username | Password | Role | Result |
 | --- | --- | --- | --- |
-| `admin` | `admin` | `admin` | Original email, phone, address, and national ID |
-| `user` | `user` | `user` | Those four fields are masked by DuckDB |
+| `manager` | `manager` | `manager` | Original email, phone, address, and national ID |
+| `support` | `support` | `support` | Partial email, fully masked phone, substituted address, and hashed national ID |
 
 The login screen fills these credentials automatically when a persona is selected.
 
 ## Suggested seminar flow
 
-1. Sign in as `admin` and point out the original protected values.
-2. Log out, sign in as `user`, and compare the same first record ID.
+1. Sign in as `manager` and point out the original protected values.
+2. Log out, sign in as `support`, and compare the same first record ID across all four techniques.
 3. Highlight the `viewer_role` banner and query time.
 4. Open `apps/api/src/schema.sql` to show the reusable scalar macros and the `users_for_role` table macro.
 5. Open `apps/api/src/database.ts` to show that the validated role is bound as `$viewer_role`; it is never concatenated into SQL.

@@ -25,15 +25,15 @@ Node.js xác thực người dùng; DuckDB chỉ nhận <code>role</code> do bac
 
 <style scoped>
 .architecture { display:grid; grid-template-columns:1fr auto 1.08fr auto 1fr auto 1.08fr; gap:.55rem; align-items:center; }
-.architecture > div { display:flex; min-width:0; min-height:8rem; flex-direction:column; justify-content:center; padding:1rem .75rem; border-top:4px solid #2efab0; background:rgba(255,255,255,.045); text-align:center; }
+.architecture > div { display:flex; min-width:0; min-height:9rem; flex-direction:column; justify-content:center; padding:1.1rem .85rem; border-top:4px solid #2efab0; background:rgba(255,255,255,.045); text-align:center; }
 .architecture small,.architecture b,.architecture span { display:block; }
-.architecture small { color:#88ffff; font-size:.62rem; }
-.architecture b { margin-top:.45rem; color:#2efab0; font-size:.82rem; }
-.architecture span { margin-top:.4rem; font-size:.7rem; line-height:1.35; opacity:.75; }
-.architecture > strong { color:#2efab0; font-size:1.1rem; }
-.boundary { display:grid; grid-template-columns:7.6rem 1fr; gap:1rem; align-items:center; min-height:4.4rem; margin-top:2rem !important; padding:1rem 1.2rem; border:1px solid rgba(136,255,255,.3); background:rgba(136,255,255,.05); }
-.boundary b { color:#88ffff; font-size:.72rem; }
-.boundary span { font-size:.78rem; line-height:1.45; }
+.architecture small { color:#88ffff; font-size:clamp(.72rem, .9vw, .8rem); }
+.architecture b { margin-top:.55rem; color:#2efab0; font-size:clamp(.92rem, 1.15vw, 1.02rem); text-align:left; }
+.architecture span { margin-top:.5rem; font-size:clamp(.8rem, 1vw, .9rem); line-height:1.4; opacity:.82; }
+.architecture > strong { color:#2efab0; font-size:1.4rem; }
+.boundary { display:grid; grid-template-columns:9.2rem 1fr; gap:1.15rem; align-items:center; min-height:5rem; margin-top:2rem !important; padding:1.1rem 1.3rem; border:1px solid rgba(136,255,255,.3); background:rgba(136,255,255,.05); }
+.boundary b { color:#88ffff; font-size:clamp(.8rem, 1vw, .88rem); }
+.boundary span { font-size:clamp(.86rem, 1.05vw, .94rem); line-height:1.45; }
 </style>
 
 <!--

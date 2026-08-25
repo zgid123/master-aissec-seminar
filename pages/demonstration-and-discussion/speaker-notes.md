@@ -4,7 +4,7 @@
 
 Target: 6.5–7 minutes, gồm demo, limitations và conclusion.
 
-## Slide 1 — Demo, giới hạn và kết luận
+## Slide 1 — Giới hạn và kết luận
 
 > Section 3 đã xây dựng được đường đi từ verified role đến masked output. Phần này kiểm tra kết quả, sau đó đánh giá điều demo đã chứng minh và điều nó chưa thể bảo đảm.
 

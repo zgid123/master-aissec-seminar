@@ -42,6 +42,6 @@ transition: slide-left
 .fit h3 { margin:1.1rem 0; color:#fff; font-size:1.3rem; }
 .fit ul { margin:0; padding-left:1.15rem; }
 .fit li { margin:.7rem 0; color:#cbd7e0; font-size:.9rem; line-height:1.42; }
-.fit-rule { color:#dce7ed; font-size:1.02rem; line-height:1.5; text-align:center; }
+.fit-rule { color:#dce7ed; font-size:clamp(1.12rem, 1.35vw, 1.24rem); line-height:1.5; text-align:left; }
 .fit-rule b { color:#38edf6; }
 </style>

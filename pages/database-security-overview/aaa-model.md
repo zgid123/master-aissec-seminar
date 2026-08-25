@@ -6,7 +6,7 @@ transition: slide-left
 
 # Kiểm soát quyền truy cập: Mô hình AAA
 
-CIA xác định **cần bảo vệ điều gì**; AAA xác định **ai được truy cập, được làm những gì và được ghi nhận ra sao**.{.op-60}
+<p class="aaa-summary"><span>CIA xác định</span> <strong>cần bảo vệ điều gì</strong>; <span>AAA xác định</span> <strong>ai được truy cập, được làm những gì và được ghi nhận ra sao</strong>.</p>
 
 <div class="principles mt-5">
   <div v-click="1">
@@ -34,7 +34,7 @@ CIA xác định **cần bảo vệ điều gì**; AAA xác định **ai đượ
 
 <div v-click="4" class="callout-box cyan mt-4">
   <div class="callout-icon cyan">
-    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
       <circle cx="12" cy="12" r="10"/>
       <line x1="12" y1="8" x2="12" y2="12"/>
       <line x1="12" y1="16" x2="12.01" y2="16"/>
@@ -50,14 +50,24 @@ CIA xác định **cần bảo vệ điều gì**; AAA xác định **ai đượ
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: clamp(0.5rem, 1.2vw, 0.85rem);
-  margin-top: 1.4rem;
+  margin-top: 1.4rem !important;
 }
+
+.aaa-summary {
+  margin: 0.35rem 0 0;
+  color: #dce5ea;
+  font-size: clamp(1.05rem, 1.55vw, 1.28rem);
+  line-height: 1.45;
+}
+
+.aaa-summary span { opacity: 0.82; }
+.aaa-summary strong { color: #ffffff; font-weight: 750; }
 
 .principles > div {
   display: flex;
   flex-direction: column;
-  min-height: 8.8rem;
-  padding: 0.95rem;
+  min-height: 11.2rem;
+  padding: 1.2rem 1.15rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-top-width: 3.5px;
@@ -68,26 +78,26 @@ CIA xác định **cần bảo vệ điều gì**; AAA xác định **ai đượ
 
 .principles b {
   color: #38edf6;
-  font-size: clamp(0.92rem, 1.2vw, 1.05rem);
+  font-size: clamp(1.05rem, 1.4vw, 1.18rem);
   line-height: 1.25;
   font-weight: 700;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.4rem;
 }
 
 .principles strong {
   display: block;
-  font-size: clamp(0.76rem, 1vw, 0.85rem);
+  font-size: clamp(0.9rem, 1.15vw, 1rem);
   color: #ffffff;
   font-weight: 700;
   line-height: 1.3;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.4rem;
 }
 
 .principles small {
   display: block;
   color: #e2e8f0;
-  font-size: clamp(0.75rem, 0.95vw, 0.8rem);
-  line-height: 1.4;
+  font-size: clamp(0.86rem, 1.1vw, 0.94rem);
+  line-height: 1.48;
   opacity: 0.95;
   text-align: left;
 }
@@ -95,13 +105,13 @@ CIA xác định **cần bảo vệ điều gì**; AAA xác định **ai đượ
 .callout-box {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  padding: clamp(0.35rem, 0.8vh, 0.55rem) clamp(0.65rem, 1.2vw, 0.95rem);
+  gap: 0.9rem;
+  padding: clamp(0.7rem, 1.1vh, 0.9rem) clamp(0.9rem, 1.4vw, 1.2rem);
   border-radius: 0.65rem;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
-  min-height: 3.6rem;
-  margin-top: 1rem !important;
+  min-height: 4.8rem;
+  margin-top: 1.4rem !important;
 }
 
 .callout-box.cyan {
@@ -114,7 +124,7 @@ CIA xác định **cần bảo vệ điều gì**; AAA xác định **ai đượ
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.35rem;
+  padding: 0.55rem;
   border-radius: 0.45rem;
   flex-shrink: 0;
 }
@@ -127,8 +137,8 @@ CIA xác định **cần bảo vệ điều gì**; AAA xác định **ai đượ
 
 .callout-text {
   color: #cffafe;
-  font-size: clamp(0.72rem, 1vw, 0.78rem);
-  line-height: 1.4;
+  font-size: clamp(0.86rem, 1.1vw, 0.94rem);
+  line-height: 1.48;
   text-align: left;
 }
 </style>

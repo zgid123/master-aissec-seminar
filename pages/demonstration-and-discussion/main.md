@@ -6,7 +6,7 @@ background: ../../assets/heading.png
 
 <div class="section-cover">
   <div class="section-number">04</div>
-  <h1>Demo, giới hạn và kết luận</h1>
+  <h1>Giới hạn và kết luận</h1>
   <p>Từ kết quả đúng đến một kiến trúc thực sự an toàn</p>
 </div>
 
@@ -17,13 +17,10 @@ background: ../../assets/heading.png
 .section-cover p { text-align:center; color:#c5d5df; font-size:1rem; opacity:.78; }
 </style>
 
----
-src: ./sensitive-data-masking-demo.md
----
-
----
-src: ./query-time-policy-demo.md
----
+<!-- Temporarily disabled slides:
+  sensitive-data-masking-demo.md
+  query-time-policy-demo.md
+-->
 
 ---
 src: ./demo-scope.md

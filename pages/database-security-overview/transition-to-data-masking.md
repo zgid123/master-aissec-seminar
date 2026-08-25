@@ -6,7 +6,7 @@ transition: slide-left
 
 # Giải pháp: Kiểm soát dữ liệu được hiển thị
 
-Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập sang kiểm soát mức độ hiển thị dữ liệu.{.op-60}
+<p class="transition-summary">Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập sang kiểm soát mức độ hiển thị dữ liệu.</p>
 
 <div class="transition-grid mt-5">
 
@@ -54,7 +54,7 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
 <!-- Banner chuyển tiếp sang Section 2 -->
 <div v-click="3" class="callout-box next-section mt-4">
   <div class="callout-icon next-icon">
-    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
       <circle cx="12" cy="12" r="10"/>
       <polyline points="12 16 16 12 12 8"/>
       <line x1="8" y1="12" x2="16" y2="12"/>
@@ -77,12 +77,20 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: clamp(0.6rem, 1.5vw, 1rem);
-  margin-top: 1.2rem;
+  margin-top: 1.4rem !important;
+}
+
+.transition-summary {
+  margin: 0.35rem 0 0;
+  color: #dce5ea;
+  font-size: clamp(1.05rem, 1.55vw, 1.28rem);
+  line-height: 1.45;
+  opacity: 0.86;
 }
 
 .t-card {
-  min-height: 11.5rem;
-  padding: 1rem 1.1rem;
+  min-height: 12.2rem;
+  padding: 1.15rem 1.25rem;
   border-radius: 0.65rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
@@ -100,12 +108,12 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
 .t-badge {
   display: inline-flex;
   align-items: center;
-  font-size: clamp(0.64rem, 0.9vw, 0.72rem);
+  font-size: clamp(0.76rem, 1vw, 0.84rem);
   font-weight: 700;
   letter-spacing: 0.04em;
-  padding: 0.15rem 0.55rem;
+  padding: 0.2rem 0.65rem;
   border-radius: 9999px;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.5rem;
 }
 
 .t-badge.problem {
@@ -121,10 +129,10 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
 }
 
 .t-question {
-  font-size: clamp(0.82rem, 1.1vw, 0.92rem);
+  font-size: clamp(0.96rem, 1.25vw, 1.08rem);
   font-weight: 700;
   color: #fca5a5;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.45rem;
   line-height: 1.3;
 }
 
@@ -140,10 +148,10 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
 
 .t-list li {
   position: relative;
-  padding-left: 0.95rem;
-  margin-bottom: 0.25rem;
-  font-size: clamp(0.72rem, 1vw, 0.8rem);
-  line-height: 1.4;
+  padding-left: 1.05rem;
+  margin-bottom: 0.32rem;
+  font-size: clamp(0.82rem, 1.08vw, 0.92rem);
+  line-height: 1.45;
   color: #e2e8f0;
   text-align: left;
 }
@@ -173,13 +181,13 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
 .callout-box {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  padding: clamp(0.35rem, 0.8vh, 0.55rem) clamp(0.65rem, 1.2vw, 0.95rem);
+  gap: 0.9rem;
+  padding: clamp(0.65rem, 1vh, 0.85rem) clamp(0.9rem, 1.4vw, 1.2rem);
   border-radius: 0.65rem;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
-  min-height: 4rem;
-  margin-top: 1rem !important;
+  min-height: 4.8rem;
+  margin-top: 1.4rem !important;
 }
 
 .callout-box.next-section {
@@ -195,15 +203,19 @@ Chuyển dịch trọng tâm bảo mật: Từ kiểm soát quyền truy cập s
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.35rem;
+  padding: 0.5rem;
   border-radius: 0.45rem;
   flex-shrink: 0;
 }
 
 .callout-text {
   color: #d1fae5;
-  font-size: clamp(0.72rem, 1vw, 0.78rem);
-  line-height: 1.4;
+  font-size: clamp(0.84rem, 1.08vw, 0.92rem);
+  line-height: 1.45;
   text-align: left;
+}
+
+.callout-text > span {
+  font-size: clamp(0.76rem, 1vw, 0.84rem);
 }
 </style>
