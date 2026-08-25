@@ -34,17 +34,17 @@ DDM giảm lộ qua <code>SELECT</code>; policy phải kiểm soát cả <b>các
 .limits { display:grid; grid-template-columns:1fr 1fr; gap:1.35rem; }
 .limits section { min-height:18rem; padding:1.1rem 1.2rem; border-top:4px solid #ff8b8b; background:rgba(255,255,255,.05); }
 .limits .performance { border-color:#ffda58; }
-.limits small { color:#ff9f9f; font-size:.74rem; font-weight:800; letter-spacing:.08em; }
+.limits small { color:#ff9f9f; font-size:.86rem; font-weight:800; letter-spacing:.08em; }
 .limits .performance small { color:#ffda58; }
-.limits h3 { margin:.65rem 0 .8rem; color:#fff; font-size:1.08rem; line-height:1.3; }
+.limits h3 { margin:.65rem 0 .8rem; color:#fff; font-size:1.25rem; line-height:1.3; }
 .limits pre { margin:0; padding:.75rem .85rem; background:rgba(0,0,0,.28); }
-.limits pre code { font-size:.7rem; line-height:1.5; }
-.limits p { margin:.8rem 0; color:#cbd7e0; font-size:.82rem; line-height:1.45; }
+.limits pre code { font-size:.84rem; line-height:1.5; }
+.limits p { margin:.8rem 0; color:#cbd7e0; font-size:.96rem; line-height:1.45; }
 .limits section > div:last-child { display:grid; grid-template-columns:auto 1fr; gap:.65rem; align-items:start; margin-top:.75rem; padding-top:.75rem; border-top:1px solid rgba(255,255,255,.13); }
-.limits section > div:last-child b { color:#2efab0; font-size:.7rem; letter-spacing:.06em; }
-.limits section > div:last-child span { color:#dce7ed; font-size:.76rem; line-height:1.4; }
+.limits section > div:last-child b { color:#2efab0; font-size:.82rem; letter-spacing:.06em; }
+.limits section > div:last-child span { color:#dce7ed; font-size:.88rem; line-height:1.4; }
 .cost { display:grid; grid-template-columns:1fr auto 1.35fr auto 1fr; gap:.45rem; align-items:center; min-height:5.15rem; padding:.8rem; background:rgba(255,218,88,.06); text-align:center; }
-.cost strong { color:#fff; font-size:.78rem; line-height:1.3; }
+.cost strong { color:#fff; font-size:.9rem; line-height:1.3; }
 .cost i { color:#ffda58; font-size:1rem; font-style:normal; }
 .takeaway-strip { font-size:.95rem; }
 .takeaway-strip code,.takeaway-strip b { color:#2efab0; }

@@ -71,6 +71,8 @@ button { color: inherit; }
 .role-pill { display: flex; align-items: center; gap: 8px; padding: 7px 10px; color: var(--amber); border: 1px solid #544725; background: #221e10; font: 500 9px "SFMono-Regular", Consolas, monospace; letter-spacing: .09em; }
 .role-pill > span { width: 6px; height: 6px; border-radius: 50%; background: var(--amber); box-shadow: 0 0 8px currentColor; }
 .role-pill.manager { color: var(--mint); border-color: #285240; background: #0f241c; }
+.role-pill.bi { color: var(--cyan); border-color: #28515a; background: #102126; }
+.role-pill.tester { color: #c6a7ff; border-color: #4a3c68; background: #1d172b; }
 .profile { display: flex; align-items: center; gap: 10px; }
 .profile .avatar { width: 32px; height: 32px; }
 .profile b, .profile small { display: block; }
@@ -89,8 +91,12 @@ button { color: inherit; }
 .row-count i { display: inline-block; width: 6px; height: 6px; margin-right: 5px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 7px var(--mint); }
 .policy-banner { display: grid; grid-template-columns: auto 1fr auto; gap: 16px; align-items: center; margin-bottom: 16px; padding: 15px 18px; border: 1px solid #4d4325; border-left: 3px solid var(--amber); background: linear-gradient(90deg, #211d10, #111812); }
 .policy-banner.manager { border-color: #23523f; border-left-color: var(--mint); background: linear-gradient(90deg, #0e251c, #0e1915); }
+.policy-banner.bi { border-color: #28515a; border-left-color: var(--cyan); background: linear-gradient(90deg, #102126, #0d1718); }
+.policy-banner.tester { border-color: #4a3c68; border-left-color: #c6a7ff; background: linear-gradient(90deg, #1d172b, #121419); }
 .policy-icon { display: grid; place-items: center; width: 34px; height: 34px; color: var(--amber); background: #332c15; }
 .policy-banner.manager .policy-icon { color: var(--mint); background: #143a2c; }
+.policy-banner.bi .policy-icon { color: var(--cyan); background: #163039; }
+.policy-banner.tester .policy-icon { color: #c6a7ff; background: #2b2040; }
 .policy-banner b { font-size: 12px; }
 .policy-banner p { margin: 3px 0 0; color: #8b9a95; font-size: 11px; }
 .policy-banner code { padding: 8px 10px; color: #aab9b4; border: 1px solid #2a3b36; background: #09120f; font-size: 10px; }
