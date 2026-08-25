@@ -33,8 +33,8 @@ Quyền của người dùng được xác thực và truyền vào <b class="te
 </div>
 
 <style scoped>
-.cases { display:grid; grid-template-columns:1fr 1fr; gap:1.25rem; align-items:start; }
-.cases > div { min-height:9.2rem; padding:1.05rem; border-left:4px solid #88ffff; background:rgba(255,255,255,.05); }
+.cases { display:grid; grid-template-columns:repeat(2, minmax(0, 1fr)); gap:1.25rem; align-items:stretch; }
+.cases > div { box-sizing:border-box; width:100%; height:100%; min-height:9.2rem; padding:1.05rem; border-left:4px solid #88ffff; background:rgba(255,255,255,.05); }
 .cases > .duckdb { border-color:#2efab0; }
 .cases small { display:block; margin-bottom:.5rem; color:#88ffff; font-size:.85rem; font-weight:700; letter-spacing:.02em; }
 .cases > .duckdb small { color:#2efab0; }

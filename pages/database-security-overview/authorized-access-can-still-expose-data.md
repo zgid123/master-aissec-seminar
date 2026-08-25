@@ -6,7 +6,7 @@ transition: slide-left
 
 # Truy cập hợp lệ vẫn có thể làm lộ dữ liệu
 
-Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn phạm vi công việc cần thiết.{.op-60}
+<p class="exposure-summary">Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn phạm vi công việc cần thiết.</p>
 
 <div class="exposure mt-5">
   <div class="card" v-click="1">
@@ -28,7 +28,7 @@ Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn p
 
 <div v-click="3" class="callout-box cyan mt-4">
   <div class="callout-icon cyan">
-    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
       <circle cx="12" cy="12" r="10"/>
       <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/>
       <line x1="12" y1="17" x2="12.01" y2="17"/>
@@ -51,12 +51,20 @@ Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn p
   grid-template-columns: 1fr auto 1.15fr;
   gap: clamp(0.6rem, 1.3vw, 1rem);
   align-items: center;
-  margin-top: 1.3rem;
+  margin-top: 1.4rem !important;
+}
+
+.exposure-summary {
+  margin: 0.35rem 0 0;
+  color: #dce5ea;
+  font-size: clamp(1.05rem, 1.55vw, 1.28rem);
+  line-height: 1.45;
+  opacity: 0.86;
 }
 
 .exposure .card {
-  min-height: 8.8rem;
-  padding: 1rem 1.1rem;
+  min-height: 11rem;
+  padding: 1.25rem 1.35rem;
   border: 1px solid rgba(255, 255, 255, 0.15);
   background: rgba(255, 255, 255, 0.06);
   border-radius: 0.65rem;
@@ -65,22 +73,22 @@ Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn p
 
 .exposure .arrow {
   color: #38edf6;
-  font-size: clamp(1.4rem, 2vw, 1.8rem);
+  font-size: clamp(1.9rem, 2.5vw, 2.3rem);
 }
 
 .exposure .card-title {
   display: block;
   color: #38edf6;
-  font-size: clamp(0.82rem, 1.1vw, 0.92rem);
+  font-size: clamp(1.02rem, 1.35vw, 1.16rem);
   font-weight: 700;
-  margin-bottom: 0.35rem;
+  margin-bottom: 0.6rem;
 }
 
 .exposure p {
   display: flex;
   justify-content: space-between;
-  margin: 0.25rem 0;
-  font-size: clamp(0.72rem, 0.98vw, 0.8rem);
+  margin: 0.38rem 0;
+  font-size: clamp(0.88rem, 1.12vw, 0.98rem);
   color: #e2e8f0;
   line-height: 1.4;
 }
@@ -101,13 +109,13 @@ Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn p
 .callout-box {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  padding: clamp(0.35rem, 0.8vh, 0.55rem) clamp(0.65rem, 1.2vw, 0.95rem);
+  gap: 0.9rem;
+  padding: clamp(0.7rem, 1.1vh, 0.9rem) clamp(0.9rem, 1.4vw, 1.2rem);
   border-radius: 0.65rem;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
-  min-height: 4rem;
-  margin-top: 1rem !important;
+  min-height: 4.8rem;
+  margin-top: 1.4rem !important;
 }
 
 .callout-box.cyan {
@@ -120,7 +128,7 @@ Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn p
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.35rem;
+  padding: 0.55rem;
   border-radius: 0.45rem;
   flex-shrink: 0;
 }
@@ -133,8 +141,8 @@ Kịch bản người dùng hợp lệ nhận được nhiều thông tin hơn p
 
 .callout-text {
   color: #cffafe;
-  font-size: clamp(0.72rem, 1vw, 0.78rem);
-  line-height: 1.4;
+  font-size: clamp(0.86rem, 1.1vw, 0.94rem);
+  line-height: 1.48;
   text-align: left;
 }
 </style>

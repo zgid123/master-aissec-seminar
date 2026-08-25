@@ -137,8 +137,8 @@ transition: slide-left
         <line x1="8" y1="20" x2="16" y2="20"/>
       </svg>
     </div>
-    <div class="card-title">DEMO<br/>VÀ THẢO LUẬN</div>
-    <div class="card-desc">Demo, giới hạn, hardening và kết luận</div>
+    <div class="card-title">GIỚI HẠN<br/>VÀ KẾT LUẬN</div>
+    <div class="card-desc">Giới hạn, hardening và các kết luận chính</div>
   </div>
 </div>
 

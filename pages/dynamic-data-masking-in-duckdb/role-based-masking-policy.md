@@ -37,6 +37,7 @@ Policy nằm tại một nơi và được dùng lại cho mọi query; Node.js 
 
 <style scoped>
 .cols { display:grid; grid-template-columns:1.12fr .88fr; gap:1.4rem; }
+.cols > div:first-child { align-self:center; }
 .roles { display:grid; gap:.75rem; align-content:center; }
 .roles > div { padding:.85rem; border-left:3px solid #2efab0; background:rgba(255,255,255,.045); }
 .roles b,.roles span { display:block; }

@@ -42,7 +42,7 @@ transition: slide-left
 .hardening p { margin:1rem 0; color:#cbd7e0; font-size:.88rem; line-height:1.45; }
 .hardening p b { color:#2efab0; }
 .config { display:flex; justify-content:center; gap:.8rem; color:#2efab0; }
-.config code { color:#dff8ef; font-size:.79rem; }
+.config code { color:#dff8ef; font-size:1rem; }
 </style>
 
 <!--

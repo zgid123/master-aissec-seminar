@@ -6,7 +6,7 @@ transition: slide-left
 
 # Mô hình phòng thủ chiều sâu (Defense-in-Depth)
 
-Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô hiệu hóa từng loại nguy cơ.{.op-60}
+<p class="defenses-summary">Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô hiệu hóa từng loại nguy cơ.</p>
 
 <div class="defenses mt-5">
   <div v-click="1">
@@ -29,7 +29,7 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
 
 <div v-click="5" class="callout-box emerald mt-4">
   <div class="callout-icon emerald">
-    <svg class="w-5 h-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
+    <svg class="w-6 h-6" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2">
       <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
       <path d="M9 12l2 2 4-4"/>
     </svg>
@@ -43,13 +43,21 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
 .defenses {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(0.45rem, 1.1vw, 0.75rem);
-  margin-top: 1.15rem;
+  gap: clamp(0.75rem, 1.35vw, 1rem);
+  margin-top: 1.4rem !important;
+}
+
+.defenses-summary {
+  margin: 0.35rem 0 0;
+  color: #dce5ea;
+  font-size: clamp(1.05rem, 1.55vw, 1.28rem);
+  line-height: 1.45;
+  opacity: 0.86;
 }
 
 .defenses > div {
-  min-height: 6.5rem;
-  padding: 0.75rem 0.95rem;
+  min-height: 8.6rem;
+  padding: 1.05rem 1.2rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-left-width: 3.5px;
@@ -60,18 +68,18 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
 
 .defenses strong {
   display: block;
-  font-size: clamp(0.82rem, 1.1vw, 0.92rem);
+  font-size: clamp(1rem, 1.3vw, 1.12rem);
   color: #2efab0;
   font-weight: 700;
   line-height: 1.25;
-  margin-bottom: 0.2rem;
+  margin-bottom: 0.45rem;
 }
 
 .defenses small {
   display: block;
   color: #e2e8f0;
-  font-size: clamp(0.73rem, 0.92vw, 0.78rem);
-  line-height: 1.36;
+  font-size: clamp(0.86rem, 1.1vw, 0.94rem);
+  line-height: 1.48;
   opacity: 0.95;
   text-align: left;
 }
@@ -85,13 +93,13 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
 .callout-box {
   display: flex;
   align-items: center;
-  gap: 0.7rem;
-  padding: clamp(0.35rem, 0.8vh, 0.55rem) clamp(0.65rem, 1.2vw, 0.95rem);
+  gap: 0.9rem;
+  padding: clamp(0.7rem, 1.1vh, 0.9rem) clamp(0.9rem, 1.4vw, 1.2rem);
   border-radius: 0.65rem;
   box-shadow: 0 4px 18px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(10px);
-  min-height: 3.6rem;
-  margin-top: 0.9rem !important;
+  min-height: 4.8rem;
+  margin-top: 1.4rem !important;
 }
 
 .callout-box.emerald {
@@ -104,7 +112,7 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 0.35rem;
+  padding: 0.55rem;
   border-radius: 0.45rem;
   flex-shrink: 0;
 }
@@ -117,8 +125,8 @@ Triển khai nhiều lớp kiểm soát tương ứng nhằm bao quát và vô h
 
 .callout-text {
   color: #d1fae5;
-  font-size: clamp(0.72rem, 1vw, 0.78rem);
-  line-height: 1.38;
+  font-size: clamp(0.86rem, 1.1vw, 0.94rem);
+  line-height: 1.48;
   text-align: left;
 }
 </style>

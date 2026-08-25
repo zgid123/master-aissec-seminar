@@ -6,7 +6,7 @@ transition: slide-left
 
 # Các mối đe dọa cơ sở dữ liệu phổ biến
 
-Các hình thức tấn công và sơ suất bảo mật thường gặp đe dọa an toàn dữ liệu của tổ chức.{.op-60}
+<p class="threats-summary">Các hình thức tấn công và sơ suất bảo mật thường gặp đe dọa an toàn dữ liệu của tổ chức.</p>
 
 <div class="threats mt-6">
   <div v-click="1">
@@ -31,13 +31,21 @@ Các hình thức tấn công và sơ suất bảo mật thường gặp đe d�
 .threats {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: clamp(0.55rem, 1.2vw, 0.9rem);
-  margin-top: 1.4rem;
+  gap: clamp(0.8rem, 1.4vw, 1.1rem);
+  margin-top: 1.6rem !important;
+}
+
+.threats-summary {
+  margin: 0.35rem 0 0;
+  color: #dce5ea;
+  font-size: clamp(1.05rem, 1.55vw, 1.28rem);
+  line-height: 1.45;
+  opacity: 0.86;
 }
 
 .threats > div {
-  min-height: 7.5rem;
-  padding: 0.95rem 1.05rem;
+  min-height: 10rem;
+  padding: 1.2rem 1.3rem;
   background: rgba(255, 255, 255, 0.06);
   border: 1px solid rgba(255, 255, 255, 0.12);
   border-left-width: 3.5px;
@@ -48,18 +56,18 @@ Các hình thức tấn công và sơ suất bảo mật thường gặp đe d�
 
 .threats strong {
   display: block;
-  font-size: clamp(0.86rem, 1.15vw, 0.98rem);
+  font-size: clamp(1.05rem, 1.4vw, 1.2rem);
   color: #fca5a5;
   font-weight: 700;
   line-height: 1.3;
-  margin-bottom: 0.25rem;
+  margin-bottom: 0.55rem;
 }
 
 .threats small {
   display: block;
   color: #e2e8f0;
-  font-size: clamp(0.76rem, 0.98vw, 0.82rem);
-  line-height: 1.45;
+  font-size: clamp(0.9rem, 1.15vw, 1rem);
+  line-height: 1.5;
   opacity: 0.95;
   text-align: left;
 }
