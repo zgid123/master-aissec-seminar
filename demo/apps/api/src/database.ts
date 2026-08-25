@@ -23,6 +23,20 @@ const demoAccounts = [
     role: 'manager',
   },
   {
+    username: 'bi',
+    password: 'bi',
+    token: 'demo-bi',
+    displayName: 'Bình - BI',
+    role: 'bi',
+  },
+  {
+    username: 'tester',
+    password: 'tester',
+    token: 'demo-tester',
+    displayName: 'Trang - Kiểm thử',
+    role: 'tester',
+  },
+  {
     username: 'support',
     password: 'support',
     token: 'demo-support',
@@ -139,8 +153,12 @@ export interface UsersExport {
 export async function exportUsers({ environment, search }: ExportUsersInput): Promise<UsersExport> {
   await initializeDatabase()
   const exportDirectory = await mkdtemp(join(tmpdir(), 'duckdb-masking-export-'))
-  const masked = environment !== 'production'
-  const fileName = `customers-${environment}-${masked ? 'masked' : 'raw'}.csv`
+  const exportRole: Role = environment === 'production'
+    ? 'manager'
+    : environment === 'dev'
+      ? 'tester'
+      : 'support'
+  const fileName = `customers-${environment}-${exportRole}.csv`
   const filePath = join(exportDirectory, fileName)
   const escapedFilePath = filePath.replaceAll("'", "''")
   const searchPattern = `%${search.toLowerCase()}%`
@@ -162,7 +180,7 @@ export async function exportUsers({ environment, search }: ExportUsersInput): Pr
            ORDER BY id
          ) TO '${escapedFilePath}' (FORMAT CSV, HEADER)`,
         {
-          viewer_role: masked ? 'support' : 'manager',
+          viewer_role: exportRole,
           search,
           search_pattern: searchPattern,
         },

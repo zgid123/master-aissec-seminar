@@ -1,12 +1,49 @@
 import { keepPreviousData, useQuery } from '@tanstack/react-query'
 import { Navigate, useNavigate } from '@tanstack/react-router'
 import { useState, type FormEvent } from 'react'
-import type { ExportEnvironment } from '@demo/shared'
+import type { ExportEnvironment, Role } from '@demo/shared'
 import { downloadUsersExport, fetchUsers } from '../api'
 import { clearSession, getSession } from '../auth'
 import { DatabaseIcon, DownloadIcon, LockIcon, LogOutIcon, SearchIcon, ShieldIcon } from '../icons'
 
 const pageSizeOptions = [50, 100, 200, 500] as const
+
+const rolePresentation: Record<Role, {
+  avatar: string
+  pill: string
+  title: string
+  detail: string
+  columnMethods: [string, string, string, string]
+}> = {
+  manager: {
+    avatar: 'M',
+    pill: 'MANAGER · DỮ LIỆU GỐC',
+    title: 'Policy trả dữ liệu gốc',
+    detail: 'Role manager nhận giá trị đầy đủ của các cột được bảo vệ.',
+    columnMethods: ['DỮ LIỆU GỐC', 'DỮ LIỆU GỐC', 'DỮ LIỆU GỐC', 'DỮ LIỆU GỐC'],
+  },
+  bi: {
+    avatar: 'B',
+    pill: 'BI · DỮ LIỆU ĐÃ BĂM',
+    title: 'Hash ổn định cho phân tích dữ liệu',
+    detail: 'Các định danh được băm một chiều để BI có thể đếm và join mà không thấy giá trị thật.',
+    columnMethods: ['HASH', 'HASH', 'HASH', 'HASH'],
+  },
+  tester: {
+    avatar: 'T',
+    pill: 'TESTER · DỮ LIỆU THAY THẾ',
+    title: 'Substitution cho môi trường kiểm thử',
+    detail: 'Giá trị thật được thay bằng dữ liệu giả đúng định dạng để ứng dụng vẫn hoạt động.',
+    columnMethods: ['SUBSTITUTION', 'SUBSTITUTION', 'SUBSTITUTION', 'SUBSTITUTION'],
+  },
+  support: {
+    avatar: 'S',
+    pill: 'SUPPORT · DỮ LIỆU ĐÃ CHE',
+    title: 'Partial và full masking cho hỗ trợ',
+    detail: 'Email chỉ lộ phần cần nhận diện; các trường không cần thiết được che toàn bộ.',
+    columnMethods: ['CHE MỘT PHẦN', 'CHE TOÀN BỘ', 'CHE TOÀN BỘ', 'CHE TOÀN BỘ'],
+  },
+}
 
 export function DashboardPage() {
   const navigate = useNavigate()
@@ -53,14 +90,15 @@ export function DashboardPage() {
 
   const response = usersQuery.data
   const isManager = session.role === 'manager'
+  const presentation = rolePresentation[session.role]
 
   return (
     <main className="dashboard">
       <header className="topbar">
         <div className="brand"><span className="brand-mark"><DatabaseIcon /></span><span>DuckDB <b>Masking Lab</b></span></div>
         <div className="topbar-right">
-          <span className={`role-pill ${isManager ? 'manager' : ''}`}><span /> {isManager ? 'MANAGER · DỮ LIỆU GỐC' : 'SUPPORT · DỮ LIỆU ĐÃ CHE'}</span>
-          <div className="profile"><span className="avatar">{isManager ? 'M' : 'S'}</span><span><b>{session.displayName}</b><small>@{session.username}</small></span></div>
+          <span className={`role-pill ${session.role}`}><span /> {presentation.pill}</span>
+          <div className="profile"><span className="avatar">{presentation.avatar}</span><span><b>{session.displayName}</b><small>@{session.username}</small></span></div>
           <button className="icon-button" aria-label="Log out" onClick={logout}><LogOutIcon /></button>
         </div>
       </header>
@@ -75,24 +113,26 @@ export function DashboardPage() {
           <div className="row-count"><small>TỔNG SỐ BẢN GHI</small><strong>{(response?.meta.total ?? 1_000_000).toLocaleString()}</strong><span><i /> DuckDB đang hoạt động</span></div>
         </div>
 
-        <div className={`policy-banner ${isManager ? 'manager' : ''}`}>
+        <div className={`policy-banner ${session.role}`}>
           <span className="policy-icon">{isManager ? <ShieldIcon /> : <LockIcon />}</span>
-          <div><b>{isManager ? 'Policy trả dữ liệu gốc' : 'Bốn kỹ thuật masking đang hoạt động'}</b><p>{isManager ? 'Role manager nhận giá trị đầy đủ của các cột được bảo vệ.' : 'Email che một phần · điện thoại che toàn bộ · địa chỉ substitution · CCCD hash.'}</p></div>
+          <div><b>{presentation.title}</b><p>{presentation.detail}</p></div>
           <code>viewer_role = '{session.role}'</code>
         </div>
 
         <div className="table-card">
           <div className="table-tools">
-            <form className="search-box" onSubmit={handleSearch}><SearchIcon/><input aria-label="Tìm khách hàng" value={draftSearch} onChange={(e) => setDraftSearch(e.target.value)} placeholder="Tìm theo tên…"/><kbd>↵</kbd></form>
+            <form className="search-box" onSubmit={handleSearch}><SearchIcon /><input aria-label="Tìm khách hàng" value={draftSearch} onChange={(e) => setDraftSearch(e.target.value)} placeholder="Tìm theo tên…" /><kbd>↵</kbd></form>
             <div className="table-actions">
-              <div className="export-control">
-                <select aria-label="Export environment" value={exportEnvironment} onChange={(event) => setExportEnvironment(event.target.value as ExportEnvironment)}>
-                  {isManager && <option value="production">PRODUCTION · RAW</option>}
-                  <option value="staging">STAGING · MASKED</option>
-                  <option value="dev">DEV · MASKED</option>
-                </select>
-                <button type="button" onClick={handleExport} disabled={isExporting}><DownloadIcon />{isExporting ? 'ĐANG XUẤT…' : 'XUẤT CSV'}</button>
-              </div>
+              {isManager && (
+                <div className="export-control">
+                  <select aria-label="Export environment" value={exportEnvironment} onChange={(event) => setExportEnvironment(event.target.value as ExportEnvironment)}>
+                    <option value="production">PRODUCTION · RAW</option>
+                    <option value="staging">STAGING · MASKED</option>
+                    <option value="dev">DEV · SUBSTITUTED</option>
+                  </select>
+                  <button type="button" onClick={handleExport} disabled={isExporting}><DownloadIcon />{isExporting ? 'ĐANG XUẤT…' : 'XUẤT CSV'}</button>
+                </div>
+              )}
               <div className="query-meta">
                 <span>QUERY TIME <b>{response?.meta.queryMs ?? '-'} ms</b></span>
                 <label className="page-size-control">
@@ -116,7 +156,7 @@ export function DashboardPage() {
 
           <div className="table-wrap">
             <table>
-              <thead><tr><th>ID</th><th>KHÁCH HÀNG</th><th>EMAIL<small>CHE MỘT PHẦN</small></th><th>ĐIỆN THOẠI<small>CHE TOÀN BỘ</small></th><th>ĐỊA CHỈ<small>SUBSTITUTION</small></th><th>CCCD<small>HASH</small></th><th>NGÀY TẠO</th></tr></thead>
+              <thead><tr><th>ID</th><th>KHÁCH HÀNG</th><th>EMAIL<small>{presentation.columnMethods[0]}</small></th><th>ĐIỆN THOẠI<small>{presentation.columnMethods[1]}</small></th><th>ĐỊA CHỈ<small>{presentation.columnMethods[2]}</small></th><th>CCCD<small>{presentation.columnMethods[3]}</small></th><th>NGÀY TẠO</th></tr></thead>
               <tbody>
                 {usersQuery.isPending && Array.from({ length: 8 }, (_, index) => <tr className="skeleton-row" key={index}><td colSpan={7}><span /></td></tr>)}
                 {usersQuery.isError && <tr><td colSpan={7} className="table-message">{usersQuery.error.message}</td></tr>}
@@ -145,7 +185,7 @@ export function DashboardPage() {
             </div>
           </footer>
         </div>
-        <p className="security-note"><LockIcon /> Browser không nhận dữ liệu gốc khi role là <b>support</b>; masking được áp dụng trong fixed DuckDB query.</p>
+        <p className="security-note"><LockIcon /> Browser chỉ nhận output của policy dành cho role <b>{session.role}</b>; dữ liệu gốc không rời fixed DuckDB query.</p>
       </section>
     </main>
   )

@@ -52,8 +52,8 @@ app.get('/api/users/export', async (c) => {
   }
 
   const environment = requestedEnvironment as ExportEnvironment
-  if (environment === 'production' && identity.role !== 'manager') {
-    return c.json<ErrorResponse>({ error: 'Chỉ manager được export dữ liệu production' }, 403)
+  if (identity.role !== 'manager') {
+    return c.json<ErrorResponse>({ error: 'Chỉ manager được export dữ liệu' }, 403)
   }
 
   const search = (c.req.query('search') ?? '').trim().slice(0, 80)

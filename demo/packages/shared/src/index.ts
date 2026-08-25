@@ -1,4 +1,4 @@
-export const ROLES = ['manager', 'support'] as const
+export const ROLES = ['manager', 'bi', 'tester', 'support'] as const
 export const EXPORT_ENVIRONMENTS = ['production', 'staging', 'dev'] as const
 
 export type Role = (typeof ROLES)[number]

@@ -6,8 +6,17 @@ import { ArrowIcon, DatabaseIcon, LockIcon, ShieldIcon } from '../icons'
 
 const personas: Array<{ role: Role; title: string; detail: string }> = [
   { role: 'manager', title: 'Quản lý', detail: 'Được xem dữ liệu cá nhân đầy đủ' },
-  { role: 'support', title: 'Nhân viên hỗ trợ', detail: 'Chỉ thấy dữ liệu đã được che theo policy' },
+  { role: 'bi', title: 'Phân tích BI', detail: 'Nhận mã băm ổn định để đếm và join' },
+  { role: 'tester', title: 'Kiểm thử', detail: 'Nhận dữ liệu giả đúng định dạng' },
+  { role: 'support', title: 'Nhân viên hỗ trợ', detail: 'Chỉ thấy một phần dữ liệu cần nhận diện' },
 ]
+
+const roleInitials: Record<Role, string> = {
+  manager: 'M',
+  bi: 'B',
+  tester: 'T',
+  support: 'S',
+}
 
 export function LoginPage() {
   const navigate = useNavigate()
@@ -37,7 +46,7 @@ export function LoginPage() {
         <div className="brand"><span className="brand-mark"><DatabaseIcon /></span><span>DuckDB <b>Masking Lab</b></span></div>
         <div className="story-copy">
           <p className="eyebrow"><span /> DEMO SEMINAR AISSEC</p>
-          <h1>Cùng dữ liệu.<br/><em>Khác output.</em></h1>
+          <h1>Cùng dữ liệu.<br /><em>Khác output.</em></h1>
           <p>Quan sát access context thay đổi kết quả DuckDB mà không sửa dữ liệu gốc.</p>
           <div className="flow-card">
             <div><span>01</span><b>Xác thực</b><small>Node.js kiểm tra identity</small></div>
@@ -64,7 +73,7 @@ export function LoginPage() {
                 onClick={() => setSelectedRole(persona.role)}
                 type="button"
               >
-                <span className="avatar">{persona.role === 'manager' ? 'M' : 'S'}</span>
+                <span className="avatar">{roleInitials[persona.role]}</span>
                 <span><b>{persona.title}</b><small>{persona.detail}</small></span>
                 <span className="radio" />
               </button>
@@ -74,7 +83,7 @@ export function LoginPage() {
           <button className="primary-button" disabled={submitting} type="submit">
             {submitting ? 'Đang xác thực…' : `Tiếp tục với role ${selectedRole}`} <ArrowIcon />
           </button>
-          <div className="credentials"><ShieldIcon/><span>Thông tin demo được điền tự động<br/><code>{selectedRole} / {selectedRole}</code></span></div>
+          <div className="credentials"><ShieldIcon /><span>Thông tin demo được điền tự động<br /><code>{selectedRole} / {selectedRole}</code></span></div>
         </form>
       </section>
     </main>
