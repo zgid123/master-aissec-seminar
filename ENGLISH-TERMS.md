@@ -13,20 +13,30 @@ Phạm vi rà soát:
 
 | Thuật ngữ | Nghĩa hoặc cách dùng trong seminar |
 | --- | --- |
-| AAA | Authentication, Authorization, Accounting |
-| API | Xuất hiện trong cụm `Node.js API` |
-| ART | Xuất hiện trong cụm `ART index scan` |
-| CIA | Confidentiality, Integrity, Availability |
-| CPU | Chi phí xử lý tăng thêm khi dùng biểu thức masking |
-| DBMS | Hệ quản trị cơ sở dữ liệu |
-| DDM | Dynamic Data Masking |
-| DuckDB | Tên hệ quản trị cơ sở dữ liệu dùng trong demo |
-| MFA | Một ví dụ về cơ chế xác thực người dùng trên slide |
-| Node.js | Runtime của backend trong demo |
-| OS | Hệ điều hành; một lớp bảo vệ file và process trong mô hình Defense-in-Depth |
-| SDM | Static Data Masking |
-| SQL | Ngôn ngữ truy vấn được dùng trong các ví dụ trên slide |
-| Zone Map / ZONEMAP | Giúp giảm số hàng cần đọc trong query path trên slide |
+| AAA | Authentication, Authorization, Accounting (ba bước kiểm soát truy cập) |
+| API | Application Programming Interface; xuất hiện trong cụm `Application / API` |
+| Azure SQL | Dịch vụ CSDL đám mây của Microsoft có tính năng Dynamic Data Masking |
+| BigQuery | Dịch vụ CSDL đám mây của Google hỗ trợ DDM qua data policy |
+| BI | Business Intelligence; tên một role phân tích dữ liệu trên slide |
+| CIA | Confidentiality, Integrity, Availability (ba mục tiêu an toàn thông tin) |
+| C / I / A | Ký hiệu viết tắt phân loại tác động lên Confidentiality, Integrity, Availability trên slide mối đe dọa |
+| DBA | Database Administrator; người quản trị cơ sở dữ liệu |
+| DBMS | Database Management System; hệ quản trị cơ sở dữ liệu |
+| DBMS_REDACT | Gói PL/SQL quản trị Data Redaction trong Oracle Database |
+| DDM | Dynamic Data Masking; che dữ liệu động |
+| DiD | Defense-in-Depth; mô hình phòng thủ nhiều lớp |
+| DLP | Data Loss Prevention; giải pháp chống thất thoát dữ liệu |
+| DuckDB | Hệ quản trị cơ sở dữ liệu phân tích dạng nhúng dùng trong demo |
+| MFA | Multi-Factor Authentication; cơ chế xác thực đa yếu tố |
+| Oracle / Oracle Database | Hệ quản trị cơ sở dữ liệu có tính năng Data Redaction |
+| RBAC | Role-Based Access Control; kiểm soát truy cập dựa trên vai trò |
+| RLS | Row-Level Security; bảo mật dữ liệu ở cấp độ dòng |
+| Snowflake | Nền tảng cơ sở dữ liệu đám mây có tính năng Dynamic Data Masking |
+| SQL | Structured Query Language; ngôn ngữ truy vấn dùng trong các ví dụ trên slide |
+| SQL Server | Hệ quản trị cơ sở dữ liệu của Microsoft có tính năng Dynamic Data Masking |
+| SYS_CONTEXT | Hàm đọc ngữ cảnh session dùng trong masking policy của Oracle |
+| TDE | Transparent Data Encryption; mã hóa dữ liệu trong suốt ở tầng lưu trữ |
+| TLS | Transport Layer Security; giao thức bảo mật dữ liệu khi truyền tải |
 
 ## 2. Thuật ngữ xuất hiện trên slide
 
@@ -35,294 +45,260 @@ Các biến thể số ít, số nhiều hoặc khác cách viết hoa được 
 | Thuật ngữ | Cách hiểu trong bài |
 | --- | --- |
 | Access | Truy cập |
-| Access path | Đường truy cập từ user đến dữ liệu |
-| Access Context | Ngữ cảnh truy cập |
 | Access Control | Kiểm soát truy cập |
-| Accounting | Ghi nhận hoạt động |
-| Address | Địa chỉ |
-| Analytical / Analytics | Phân tích dữ liệu |
+| Access path | Đường truy cập từ client/user đến dữ liệu |
+| Accounting | Ghi nhận hoạt động truy vấn (chữ A thứ ba trong mô hình AAA) |
+| Aggregate | Gom nhóm và tính toán tổng hợp trên dữ liệu dạng cột |
+| Analytical | Xử lý phân tích dữ liệu |
 | Application | Ứng dụng |
-| Arbitrary SQL | Câu lệnh SQL tùy ý do user kiểm soát |
-| At-Rest | Trạng thái dữ liệu đang lưu trữ |
-| Audit / Auditing | Kiểm toán, ghi nhận hoạt động |
-| Audit trail | Dấu vết kiểm toán phục vụ phát hiện lạm dụng |
-| Authentication / Authenticated | Xác thực / đã xác thực |
-| Authorization / Authorized | Phân quyền / đã được cấp quyền |
-| Auto-install / Auto-load | Cơ chế tự cài hoặc tự nạp extension của DuckDB |
-| Availability | Tính sẵn sàng |
-| Backend | Lớp xử lý phía server |
-| Backend-only access | Chỉ cho phép backend truy cập dữ liệu gốc |
-| Backup | Sao lưu |
-| Bearer token | Token xác thực được gửi theo cơ chế Bearer |
-| Behavior | Hành vi |
-| Bind / Binding | Gắn một giá trị vào parameter |
-| Boundary | Ranh giới kiểm soát hoặc tin cậy |
+| Application policy | Chính sách kiểm soát do tầng ứng dụng thực thi |
+| Approach | Hướng tiếp cận giải pháp (custom DuckDB vs native DDM) |
+| Arbitrary SQL | Câu lệnh SQL tùy ý do người dùng đưa vào |
+| Audit log | Nhật ký kiểm toán ghi nhận các truy vấn |
+| Auditing | Kiểm toán và giám sát truy vết hoạt động |
+| Authentication | Xác thực danh tính người dùng (chữ A đầu tiên trong mô hình AAA) |
+| Authorization | Phân quyền thao tác và dữ liệu (chữ A thứ hai trong mô hình AAA) |
+| Availability | Tính sẵn sàng của dữ liệu và dịch vụ (chữ A trong mô hình CIA) |
+| Backend | Lớp xử lý phía máy chủ (`trusted backend`) |
+| Backup | Sao lưu dữ liệu |
+| Baseline | Điểm mốc đối chiếu (`raw baseline`) |
+| Behavior | Hành vi xử lý hoặc che dữ liệu của hệ thống |
+| Bind / Binding | Gắn giá trị tham số vào truy vấn (`bind parameter`) |
+| Boundary | Ranh giới kiểm soát hoặc tin cậy (`trust boundary`, `client boundary`) |
 | Bypass | Đi vòng qua cơ chế kiểm soát |
-| Client | Phía gửi request đến server |
-| Confidentiality | Tính bí mật |
-| Condition | Điều kiện để cơ chế bảo mật có hiệu lực |
-| Configuration | Cấu hình của DuckDB runtime |
-| Context | Ngữ cảnh |
-| Credit card | Thẻ tín dụng |
-| Customer | Khách hàng |
-| Data | Dữ liệu |
-| Data Masking | Che dữ liệu |
+| Central governance | Quản trị chính sách bảo mật tập trung |
+| Client | Phía gửi yêu cầu đến server |
+| Client boundary | Ranh giới ngăn client can thiệp trực tiếp vào role hoặc câu lệnh SQL |
+| Column | Cột trong bảng dữ liệu |
+| Confidentiality | Tính bí mật của dữ liệu (chữ C trong mô hình CIA) |
+| Consumer | Phía tiếp nhận hoặc tiêu thụ dữ liệu đầu ra |
+| Context | Ngữ cảnh truy cập hoặc thực thi |
 | Database | Cơ sở dữ liệu |
-| Database server | Tiến trình server quản lý cơ sở dữ liệu |
-| Defense-in-Depth | Phòng thủ chiều sâu |
-| Demo | Bản minh họa |
+| Database principal | Thực thể người dùng hoặc role trong CSDL được phân quyền |
+| Database server | Tiến trình máy chủ quản lý cơ sở dữ liệu độc lập |
+| Data Masking | Che dữ liệu nhạy cảm |
+| Data policy | Chính sách dữ liệu (cơ chế cấu hình DDM trong BigQuery) |
+| Data Redaction | Tên tính năng che dữ liệu động trong Oracle Database |
+| Default-deny | Mặc định từ chối (trả NULL cho mọi role không hợp lệ) |
+| Defense-in-depth | Phòng thủ nhiều lớp |
+| Demo | Bản minh họa hoạt động |
+| Deployment | Mô hình triển khai hệ thống |
 | Disaster Recovery | Khôi phục sau thảm họa |
-| Dynamic | Thay đổi theo ngữ cảnh tại thời điểm xử lý |
-| Dynamic Data Masking | Che dữ liệu động |
+| Domain | Phần tên miền trong địa chỉ email |
+| Dynamic | Động; thay đổi theo vai trò hoặc ngữ cảnh khi truy vấn |
+| Dynamic Data Masking | Che dữ liệu động tại thời điểm truy vấn |
 | Embedded | Nhúng trực tiếp vào tiến trình ứng dụng |
-| Embedded analytical database | Cơ sở dữ liệu phân tích dạng nhúng |
-| Encryption / Encrypted | Mã hóa / đã được mã hóa |
-| Endpoint | Điểm truy cập API |
-| Enforce | Thực thi bắt buộc |
-| Execution | Môi trường hoặc quá trình thực thi câu lệnh |
-| Expression | Biểu thức SQL dùng để tạo giá trị đã che |
-| Export | Xuất dữ liệu ra khỏi hệ thống |
-| Extension | Phần mở rộng có thể được DuckDB nạp khi chạy |
-| External access | Quyền truy cập file hoặc tài nguyên bên ngoài DuckDB |
-| Filter | Điều kiện lọc |
-| Fixed / Prepared query | Truy vấn cố định hoặc được tham số hóa, không cho user tự thay cấu trúc |
-| Hash / Hashing | Băm dữ liệu |
-| Hardening | Gia cố cấu hình và các lớp bảo vệ cho môi trường production |
-| Email | Địa chỉ thư điện tử |
-| Identity | Danh tính đã xác minh |
-| Index / Indexing | Chỉ mục / lập chỉ mục |
-| Input | Dữ liệu đầu vào |
-| Input Validation | Kiểm tra dữ liệu đầu vào |
-| Insider Threat / Insider Threats | Mối đe dọa từ người nội bộ |
-| In-Transit | Trạng thái dữ liệu đang truyền tải |
-| Intended path | Đường truy cập dự kiến đi qua đầy đủ lớp kiểm soát |
-| Integrity | Tính toàn vẹn |
-| Isolation | Cô lập tiến trình hoặc tenant |
-| Join | Ghép các bảng theo giá trị chung |
-| Least Privilege | Đặc quyền tối thiểu |
+| Encryption | Mã hóa dữ liệu |
+| Enforcement | Thực thi bắt buộc chính sách (`native enforcement`) |
+| Exempt privilege | Quyền miễn trừ áp dụng masking để xem dữ liệu gốc |
+| Execution context | Ngữ cảnh thực thi khi câu truy vấn chạy |
+| File | Tệp tin cơ sở dữ liệu (`.duckdb`) |
+| File permission | Quyền truy cập tệp tin ở tầng hệ điều hành |
+| Filter | Điều kiện lọc dữ liệu |
+| Fixed / Parameterized query | Truy vấn cố định hoặc được tham số hóa |
+| Full Masking | Che toàn bộ giá trị dữ liệu |
+| Functional masking | Khả năng che dữ liệu về mặt chức năng |
+| Hash / Hashing | Băm dữ liệu thành chuỗi cố định một chiều |
+| Identity | Danh tính người dùng đã được xác thực |
+| In-memory | Chạy hoàn toàn trên bộ nhớ RAM |
+| Input | Dữ liệu đầu vào do client gửi lên |
+| Insider Threat | Mối đe dọa từ người dùng nội bộ |
+| Integrity | Tính toàn vẹn của dữ liệu (chữ I trong mô hình CIA) |
+| Join | Ghép nối các bảng dữ liệu theo khóa |
+| Local analytics | Phân tích dữ liệu cục bộ |
 | Log / Logging | Nhật ký hệ thống / hoạt động ghi nhật ký |
-| Macro | Cấu trúc SQL tái sử dụng biểu thức hoặc truy vấn |
-| Manager | Role quản lý, được xem dữ liệu gốc trong demo |
+| Macro | Cấu trúc hàm SQL đóng gói biểu thức (`scalar macro`) hoặc bảng (`table macro`) trong DuckDB |
+| Manager | Role quản lý trong demo, xem dữ liệu gốc (`raw baseline`) |
 | Mask / Masked | Che / đã được che |
-| Masking | Cơ chế che dữ liệu |
-| Masking behavior | Hành vi che dữ liệu |
-| Masking logic | Logic tạo ra giá trị đã che |
-| Masking rule | Quy tắc biến đổi dữ liệu hiển thị |
-| Monitoring | Giám sát |
-| Output | Dữ liệu đầu ra |
-| Parameter / Parameterization | Tham số / tham số hóa |
-| Permission | Quyền truy cập |
-| Phone | Số điện thoại |
-| Policy | Chính sách |
-| Policy Enforcer | Lớp chọn query và bind role đã được xác minh |
-| Process | Tiến trình |
-| Privilege / Privileges | Đặc quyền |
-| Privilege Abuse | Lạm dụng đặc quyền |
-| Privilege escalation | Leo thang đặc quyền do role không đáng tin cậy |
+| Masked value | Giá trị dữ liệu sau khi áp dụng quy tắc che |
+| Masking | Kỹ thuật hoặc cơ chế che dữ liệu |
+| Masking policy | Chính sách quy định quy tắc che dữ liệu |
+| Masking rule | Quy tắc biến đổi giá trị dữ liệu hiển thị |
+| Native | Tích hợp sẵn trong engine cơ sở dữ liệu |
+| Native DDM | Cơ chế DDM có sẵn do chính DBMS cung cấp |
+| Nullification | Làm rỗng; thay giá trị hiển thị bằng `NULL` |
+| Output | Dữ liệu đầu ra trả về cho người dùng hoặc ứng dụng |
+| Parameter | Tham số truyền vào truy vấn (`$viewer_role`) |
+| Partial Masking | Che một phần dữ liệu (giữ lại phần nhận diện) |
+| Plaintext | Dữ liệu dạng văn bản rõ chưa mã hóa hoặc sau khi giải mã |
+| Policy | Chính sách bảo mật hoặc che dữ liệu |
+| Policy tag | Nhãn chính sách dùng để gắn data policy trong BigQuery |
+| Portable | Khả năng di động, dễ chạy và sao chép của CSDL |
+| Principal | Thực thể danh tính được phân quyền |
+| Privilege | Đặc quyền truy cập |
+| Privilege Abuse | Lạm dụng đặc quyền được cấp |
 | Production | Môi trường vận hành thật |
-| Query | Truy vấn |
-| Query Engine | Thành phần thực thi truy vấn; trên slide là DuckDB |
-| Query path | Đường đi của truy vấn |
-| Query plan | Kế hoạch thực thi truy vấn |
-| Query time | Thời điểm truy vấn |
-| Ransomware | Mã độc tống tiền |
-| Raw | Dữ liệu hoặc tài nguyên gốc, chưa che |
-| Record | Bản ghi |
-| Recovery | Khôi phục |
-| Request | Yêu cầu gửi đến server |
-| Response | Phản hồi từ server |
-| Review | Rà soát quyền truy cập |
-| Role | Vai trò của người dùng |
-| Role-aware query | Truy vấn thay đổi output theo role |
-| Runtime | Môi trường thực thi DuckDB trong process ứng dụng |
-| Sandbox | Môi trường thực thi bị giới hạn |
-| Salary | Lương |
-| Scalar macro | Đóng gói thao tác che email để tái sử dụng trong truy vấn |
-| Secure | An toàn |
-| Security | Bảo mật |
+| Pseudonymization | Giả danh hóa; thay định danh thật bằng bí danh |
+| Query | Truy vấn cơ sở dữ liệu |
+| Query-result layer | Tầng kết quả truy vấn (nơi DDM can thiệp) |
+| Ransomware | Mã độc tống tiền (mã hóa phá hoại dữ liệu) |
+| Raw | Dữ liệu hoặc tài nguyên gốc chưa che (`raw baseline`, `raw table`, `raw file`, `raw SQL`) |
+| Record | Bản ghi dữ liệu |
+| Redaction | Biên tập/che dữ liệu (`Data Redaction`) |
+| Role | Vai trò của người dùng trong hệ thống |
+| Role-aware | Nhận biết và thay đổi theo vai trò |
+| Role-aware output | Kết quả đầu ra biến đổi linh hoạt theo vai trò |
+| Rule | Quy tắc |
+| Sandbox | Môi trường thực thi cô lập hoặc bị giới hạn |
+| Scan | Quét đọc dữ liệu trong bảng dạng cột |
+| Schema | Cấu trúc lược đồ bảng hoặc kết quả truy vấn |
+| Security | An toàn, bảo mật |
 | Server | Máy chủ hoặc tiến trình phục vụ |
-| Service account | Tài khoản hệ điều hành sở hữu file và chạy service |
-| Session | Phiên đăng nhập |
-| Static | Được tạo cố định trước khi sử dụng |
-| Static Data Masking | Che dữ liệu tĩnh |
-| Storage | Lớp lưu trữ file `.duckdb` |
-| Substitution | Thay thế bằng dữ liệu khác |
-| Support | Role hỗ trợ, nhận dữ liệu đã che trong demo |
+| Service account | Tài khoản hệ điều hành chạy tiến trình backend |
+| Session | Phiên làm việc của người dùng |
+| SQL Injection | Tấn công chèn mã SQL trái phép |
+| Stable hash | Giá trị băm ổn định dùng để đối chiếu/join mà không lộ dữ liệu gốc |
+| Static | Tĩnh; thực hiện theo đợt trước khi sử dụng |
+| Static Data Masking | Che dữ liệu tĩnh; tạo bản sao ngoài production |
+| Storage | Tầng lưu trữ tệp tin CSDL |
+| Substitution | Thay thế dữ liệu thật bằng dữ liệu giả hợp lệ |
+| Support | Role hỗ trợ khách hàng trong demo, nhận dữ liệu che một phần |
 | Table | Bảng dữ liệu |
-| Tenant | Đối tượng thuê hoặc miền người dùng cần được cô lập |
-| Token | Mã đại diện cho phiên hoặc dữ liệu |
-| Trusted / Untrusted | Đáng tin cậy / không đáng tin cậy trong access path |
+| Tester | Role kiểm thử trong demo, nhận dữ liệu thay thế (`substitution`) |
+| Token | Mã đại diện xác thực trong request |
+| Trust boundary | Ranh giới tin cậy giữa các thành phần hệ thống |
+| Trusted | Đáng tin cậy (`trusted backend`, `trusted policy`, `trusted context`) |
 | User | Người dùng |
-| Validation | Kiểm tra tính hợp lệ |
-| Verified | Đã được xác minh |
-| View | Giao diện truy vấn ổn định trên dữ liệu |
-| Whitelist | Danh sách role được phép chấp nhận |
 
 ## 3. Cụm từ và nhãn tiếng Anh đang hiển thị
 
-- `Access Control & Least Privilege`
-- `Access Context`
-- `Access path`
-- `Accounting / Auditing`
-- `Address`
-- `Arbitrary SQL`
-- `ART index scan`
-- `Audit trail`
-- `Auditing & Monitoring`
-- `Backup & Disaster Recovery`
-- `Backend-only access`
-- `Bind by name`
-- `Customer Record`
-- `Customer Support`
-- `Database encrypted`
-- `Defense-in-Depth`
-- `DuckDB Parameter`
-- `DuckDB Runtime`
+- `Access Control`
+- `Accounting`
+- `Application / API`
+- `Audit log`
+- `Auditing · Logging · DLP`
+- `Authentication`
+- `Authentication · MFA · Authorization · RBAC · RLS`
+- `Authorization`
+- `Availability`
+- `Backup · Disaster Recovery`
+- `BI · Stable hash`
+- `Bind parameter`
+- `Central governance`
+- `Client boundary`
+- `Confidentiality`
+- `Data Masking`
+- `Data Redaction`
+- `Database principal`
+- `DBA (Database Administrator)`
+- `default-deny`
+- `Defense-in-depth - DiD`
+- `DuckDB + storage`
 - `Dynamic Data Masking`
-- `Embedded analytical database`
-- `Excessive Privileges`
-- `External file access`
-- `Fixed query`
-- `Input Validation & Parameterization`
-- `Intended path`
-- `Insider Threats`
-- `Masking behavior`
-- `Masking logic`
-- `Masking rule`
-- `Masked output`
-- `Node.js API`
-- `Node.js Value`
-- `Original record`
-- `OS & Storage`
-- `OS permission`
-- `OS sandbox`
-- `Policy Enforcer`
-- `Policy macro`
-- `Prepared/fixed queries`
+- `Encryption · TDE · TLS · Data Masking · Redaction`
+- `EXPLAIN ANALYZE`
+- `Fixed/parameterized query`
+- `Full Masking`
+- `Functional masking`
+- `Identity → server role → bind parameter → masking policy`
+- `Insider Threat`
+- `Integrity`
+- `Manager · Raw baseline`
+- `MASKED VALUE`
+- `MASKING RULE`
+- `Native DDM`
+- `Native enforcement`
+- `Nullification`
+- `Partial Masking`
 - `Privilege Abuse`
-- `Privilege escalation`
-- `Query Engine`
-- `Query Output`
-- `Query path`
-- `Query plan`
-- `Query time`
-- `Raw file access`
-- `Raw file`
+- `Pseudonymization`
+- `query-result layer`
+- `Ransomware`
+- `Raw baseline`
 - `Raw SQL`
-- `Raw table access`
-- `Raw table`
-- `Role-aware query`
-- `Secure connection`
-- `Security configuration`
-- `Service account`
+- `Role-aware output`
+- `Server role`
 - `SQL Injection`
-- `SQL expression`
-- `SQL text`
+- `SQL Server · Azure SQL`
 - `Static Data Masking`
-- `Trusted backend`
+- `Support · Partial + full mask`
+- `Tester · Substitution`
 - `Trust boundary`
-- `Untrusted execution`
-- `Untrusted SQL`
-- `Verified access context`
-- `Verify identity`
-- `Verify token/session`
-- `Whitelist role`
+- `Trusted backend`
 
-## 4. Giá trị role và môi trường xuất hiện trên slide
+## 4. Giá trị role và ngữ cảnh môi trường xuất hiện trên slide
 
-- `manager`
-- `support`
-- `privileged`
-- `restricted`
-- `production`
+- `manager`: Role quản lý, baseline xem dữ liệu gốc
+- `support`: Role hỗ trợ khách hàng, xem email che một phần và các trường khác bị che
+- `tester`: Role kiểm thử, xem dữ liệu giả thay thế (`substitution`)
+- `bi`: Role phân tích nghiệp vụ, xem giá trị băm ổn định (`stable hash`)
+- `role khác` / `default-deny`: Bất kỳ role nào ngoài 4 role trên đều nhận `NULL`
+- `production`: Môi trường vận hành thực tế (phân biệt với môi trường chia sẻ bản sao SDM)
 
-## 5. SQL keywords và hàm xuất hiện trong slide
+## 5. SQL keywords, hàm và định danh xuất hiện trong slide
 
 ### Keywords
 
 - `AS`
 - `CASE`
-- `CREATE MACRO`
+- `CREATE OR REPLACE MACRO`
 - `ELSE`
 - `END`
 - `EXPLAIN ANALYZE`
 - `FROM`
 - `IS`
-- `LIMIT`
+- `MASKED WITH`
 - `NULL`
 - `SELECT`
+- `TABLE`
 - `THEN`
+- `UNMASK`
 - `WHEN`
-- `WHERE`
 
 ### Hàm, macro, parameter và identifier
 
 - `concat(...)`
+- `hash_value(...)`
 - `left(...)`
-- `split_part(...)`
-- `email_for_role(...)`
 - `mask_email(...)`
-- `customers`
+- `sha256(...)`
+- `split_part(...)`
+- `substitute_email(...)`
+- `users_for_role(...)`
+- `DBMS_REDACT`
+- `SYS_CONTEXT`
 - `email`
-- `email_value`
+- `full_name`
 - `id`
-- `name`
+- `users`
+- `value`
 - `viewer_role`
 - `$viewer_role`
-- `$email`
-- `$id`
-- `$page_size`
 
 ## 6. TypeScript, Node.js và HTTP identifiers xuất hiện trong slide
 
-- `async`
 - `authenticate(...)`
-- `AuthenticatedRequest`
+- `'Authorization'` (HTTP header)
 - `await`
-- `Authorization`
-- `Bearer`
-- `connection.runAndReadAll(...)`
+- `c.req.header(...)`
+- `connection.run(...)`
 - `const`
-- `CUSTOMER_QUERY`
-- `function`
 - `identity`
 - `identity.role`
-- `identity.username`
 - `if`
-- `next`
-- `NextFunction`
-- `Promise<void>`
-- `reader`
-- `req`
-- `_res`
-- `req.body.role`
-- `req.header(...)`
-- `req.user`
-- `req.user.role`
-- `requireAuth(...)`
+- `listUsers(...)`
+- `page`
+- `pageSize`
 - `return`
-- `res`
-- `res.sendStatus(...)`
-- `Response`
-- `Role`
 - `role`
-- `type`
-- `username`
-- `401`
-- `403`
+- `search`
+- `unauthorized()`
+- `validatedInput`
+- `viewer_role`
 
 ## 7. Quy ước nên dùng thống nhất
 
 - Giữ nguyên tên công nghệ, chữ viết tắt, SQL keywords, API/HTTP identifiers và tên role.
-- Khi đã dùng thuật ngữ tiếng Anh trên slide, không đổi sang một từ tiếng Anh đồng nghĩa ở slide khác. Ví dụ: dùng thống nhất `masking`, không xen kẽ `redaction` nếu không nói về một cơ chế khác.
-- Với thuật ngữ có bản dịch ngay trên slide, lần đầu nên viết theo dạng `tiếng Việt (English)`, sau đó có thể dùng một dạng thống nhất.
-- Không dùng English cho từ phổ thông nếu bản dịch tiếng Việt ngắn và rõ. Ví dụ: ưu tiên “kết quả” thay cho `result`, “truy vấn” thay cho `query` trong câu văn; giữ `query` khi nó là một phần của code hoặc cụm kỹ thuật đã thống nhất như `query time`.
+- Khi đã dùng thuật ngữ tiếng Anh trên slide, không đổi sang một từ tiếng Anh đồng nghĩa ở slide khác. Ví dụ: dùng thống nhất `masking`, không xen kẽ `redaction` (ngoại trừ tên tính năng `Data Redaction` của Oracle Database).
+- Với thuật ngữ có bản dịch ngay trên slide, ưu tiên định dạng chuẩn: `tiếng Việt (English)`. Ví dụ: `Phòng thủ nhiều lớp (Defense-in-depth - DiD)`, `Che toàn bộ (Full Masking)`, `Che một phần (Partial Masking)`, `Làm rỗng (Nullification)`, `Giả danh hóa (Pseudonymization)`, `DBA (Database Administrator)`.
+- Không dùng English cho từ phổ thông nếu bản dịch tiếng Việt ngắn và rõ (ví dụ: dùng “kết quả” thay cho `result`, “truy vấn” thay cho `query` trong văn xuôi; giữ `query` khi là từ khóa hoặc cụm kỹ thuật như `query time`, `query-result layer`, `Fixed/parameterized query`).
 
 ## 8. Các mục cần rà soát khi nội dung thay đổi
 
 - Thêm thuật ngữ mới vào file này khi thêm hoặc sửa nội dung hiển thị trên slide.
-- Không bổ sung thuật ngữ chỉ vì nó xuất hiện trong speaker notes, source code của demo hoặc tài liệu tham khảo.
-- Kiểm tra cách viết hoa: `Node.js`, `DuckDB`, `Dynamic Data Masking`, `Access Control`, `Defense-in-Depth`.
-- Kiểm tra dấu gạch nối: `role-aware`, `backend-only`, `auto-install`, `auto-load`.
-- Kiểm tra cách viết môi trường: dùng thống nhất `production`.
-- Kiểm tra role: phần triển khai dùng `manager` / `support`; slide minh họa query-time dùng `privileged` / `restricted`.
+- Không bổ sung thuật ngữ chỉ vì nó xuất hiện trong speaker notes, source code của demo hoặc tài liệu tham khảo bên ngoài.
+- Rà soát các bộ chữ viết tắt: `CIA` (C/I/A), `AAA`, `DiD`, `RBAC`, `RLS`, `TDE`, `TLS`, `DLP`, `DBA`, `DDM`.
+- Rà soát tên các DBMS: `DuckDB`, `SQL Server`, `Azure SQL`, `Oracle Database`, `Snowflake`, `BigQuery`.
+- Rà soát danh sách 4 role trong demo: `manager`, `support`, `tester`, `bi` cùng cơ chế mặc định từ chối `default-deny` (`NULL`).
+- Rà soát các định danh trong code DuckDB SQL: `mask_email`, `users_for_role`, `substitute_email`, `hash_value`, `sha256`, `users`, `full_name`, `$viewer_role`.
+- Rà soát các định danh trong code backend: `authenticate`, `'Authorization'`, `unauthorized`, `validatedInput`, `listUsers`, `connection.run`.
