@@ -4,7 +4,7 @@ hideInToc: true
 transition: slide-left
 ---
 
-# AAA — Ba bước kiểm soát truy cập
+# AAA - Ba bước kiểm soát truy cập
 
 <ArrowTriad :animation="false" :height="440">
   <ArrowTriadCallout v-click="1">

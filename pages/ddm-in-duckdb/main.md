@@ -8,11 +8,11 @@ background: ../../assets/heading.png
 # DDM trong DuckDB
 
 ---
-src: ./01-why-duckdb.md
+src: ./01-what-is-duckdb.md
 ---
 
 ---
-src: ./02-architecture.md
+src: ./02-trust-boundary.md
 ---
 
 ---
@@ -20,15 +20,15 @@ src: ./03-define-masking-level.md
 ---
 
 ---
-src: ./04-trusted-policy.md
+src: ./04-transform-by-role.md
 ---
 
 ---
-src: ./05-trusted-context.md
+src: ./05-bind-authenticated-role.md
 ---
 
 ---
-src: ./06-live-demo.md
+src: ./06-verify-role-outputs.md
 ---
 
 ---

@@ -16,7 +16,7 @@ src: ./02-cia-triad.md
 ---
 
 ---
-src: ./03-common-threats.md
+src: ./03-dbms-threats.md
 ---
 
 ---
@@ -24,7 +24,7 @@ src: ./04-aaa-model.md
 ---
 
 ---
-src: ./05-common-defenses.md
+src: ./05-defense-in-depth.md
 ---
 
 ---

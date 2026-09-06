@@ -4,7 +4,7 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Live demo - một record, bốn policy
+# Kiểm chứng: mỗi role thấy dữ liệu khác nhau
 
 Đăng nhập 4 vai trò và so sánh record <code>#0000001</code> trên danh sách.
 
@@ -101,7 +101,7 @@ transition: slide-left
 Demo command:
 cd demo && pnpm dev
 
-[CLICK] Chuyển từ phần triển khai sang live demo. Nêu mục tiêu trước khi thao tác: đăng nhập bằng 4 vai trò và luôn quan sát cùng record #0000001 trên danh sách, để identity là biến duy nhất thay đổi.
+[CLICK] Ba bước triển khai đã hoàn tất: định nghĩa mức che, chọn policy và bind role đã xác thực. Bây giờ giữ nguyên record #0000001, chỉ thay đổi role đăng nhập để kiểm chứng dữ liệu trả về có thay đổi đúng policy hay không.
 
 [CLICK] Hiện đồng thời bốn kết quả cần kiểm chứng. Manager là baseline với dữ liệu gốc. Support thấy email dạng a***@example.com và các trường còn lại bị che toàn bộ. Tester nhận dữ liệu giả đúng định dạng, như tester+0000001@example.test và 0900000000. BI nhận hash ổn định dài 12 ký tự để vẫn có thể đếm và join. Thực hiện lần lượt 4 lần đăng nhập trong ứng dụng và so sánh cùng record #0000001 trên danh sách.
 

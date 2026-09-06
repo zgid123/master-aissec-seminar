@@ -8,7 +8,7 @@ transition: slide-left
 
 <ArcCompare :count="4" :height="400" vs-text="VS">
   <ArcCompareLeft color="#168793">
-    <ArcCompareTitle>Static Data<br />Masking</ArcCompareTitle>
+    <ArcCompareTitle>Static Data Masking<br />(SDM)</ArcCompareTitle>
     <ArcCompareContents>
       <ArcCompareCallout>
         <ArcCompareBadge>01</ArcCompareBadge>
@@ -34,7 +34,7 @@ transition: slide-left
   </ArcCompareLeft>
 
   <ArcCompareRight color="#0b7658">
-    <ArcCompareTitle>Dynamic Data<br />Masking</ArcCompareTitle>
+    <ArcCompareTitle>Dynamic Data Masking<br />(DDM)</ArcCompareTitle>
     <ArcCompareContents>
       <ArcCompareCallout>
         <ArcCompareBadge>01</ArcCompareBadge>
@@ -72,9 +72,9 @@ transition: slide-left
 </style>
 
 <!--
-Static và Dynamic Data Masking khác nhau chủ yếu ở thời điểm biến đổi dữ liệu và loại đầu ra được tạo ra.
+Static Data Masking (SDM) và Dynamic Data Masking (DDM) khác nhau chủ yếu ở thời điểm biến đổi dữ liệu và loại đầu ra được tạo ra.
 
-[CLICK] Về kiến trúc, Static Data Masking đi theo luồng: Production, qua một masking job, rồi tạo ra masked copy. Dynamic Data Masking đi theo luồng: User cùng context, qua query policy, rồi tạo ra masked output.
+[CLICK] Về kiến trúc, SDM đi theo luồng: Production, qua một masking job, rồi tạo ra masked copy. DDM đi theo luồng: User cùng context, qua query policy, rồi tạo ra masked output.
 
 Nhìn vào bốn tiêu chí trên sơ đồ.
 

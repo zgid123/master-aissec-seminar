@@ -11,7 +11,7 @@ Policy được khai báo và thực thi ngay trong database engine khi truy v�
 <div class="mt-5 grid grid-cols-2 gap-8 h-72 w-full">
   <div v-click="[1, 2]" class="entry col-start-1 row-start-1 min-w-0">
     <h2>SQL Server · Azure SQL</h2>
-    <p class="feature">Dynamic Data Masking</p>
+    <p class="feature">DDM</p>
     <ul class="points">
       <li>DBA gắn <code>MASKED WITH</code> vào cột nhạy cảm.</li>
       <li>Mỗi <code>SELECT</code> được đánh giá theo database principal.</li>
@@ -41,7 +41,7 @@ Policy được khai báo và thực thi ngay trong database engine khi truy v�
 
   <div v-click="2" class="entry col-start-1 row-start-1 min-w-0">
     <h2>Snowflake</h2>
-    <p class="feature">Dynamic Data Masking</p>
+    <p class="feature">DDM</p>
     <ul class="points">
       <li>DBA viết masking policy bằng SQL và gắn vào column.</li>
       <li>Policy đọc role và execution context khi query chạy.</li>
@@ -56,7 +56,7 @@ Policy được khai báo và thực thi ngay trong database engine khi truy v�
 
   <div v-click="2" class="entry col-start-2 row-start-1 min-w-0">
     <h2>BigQuery</h2>
-    <p class="feature">Dynamic Data Masking</p>
+    <p class="feature">DDM</p>
     <ul class="points">
       <li>DBA tạo data policy chứa masking rule.</li>
       <li>Policy được gắn trực tiếp vào column hoặc qua policy tag.</li>
@@ -142,7 +142,7 @@ Policy được khai báo và thực thi ngay trong database engine khi truy v�
 <!--
 Native DDM nghĩa là database engine cung cấp sẵn policy layer và áp dụng policy khi truy vấn chạy; dữ liệu lưu trữ không bị thay đổi.
 
-[CLICK] SQL Server và Azure SQL gọi tính năng này là Dynamic Data Masking: mask được gắn với column và quyền UNMASK quyết định ai có thể thấy dữ liệu gốc. Oracle Database dùng tên Data Redaction: policy được đánh giá tại runtime và có thể dựa trên session context.
+[CLICK] SQL Server và Azure SQL gọi tính năng này là DDM: mask được gắn với column và quyền UNMASK quyết định ai có thể thấy dữ liệu gốc. Oracle Database dùng tên Data Redaction: policy được đánh giá tại runtime và có thể dựa trên session context.
 [CLICK] Snowflake dùng masking policy để chọn giá trị trả về theo role và execution context. BigQuery dùng data policy kết hợp policy tag và IAM principal để quyết định cách che dữ liệu ở query runtime.
 
 [Sources]
