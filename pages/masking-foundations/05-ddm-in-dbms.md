@@ -85,7 +85,7 @@ Policy được khai báo và thực thi ngay trong database engine khi truy v�
 }
 
 .definition li::before {
-  content: "–";
+  content: "-";
   margin-right: 0.5rem;
   color: #0b7658;
   font-weight: 700;
@@ -114,7 +114,7 @@ Policy được khai báo và thực thi ngay trong database engine khi truy v�
 }
 
 .points > li::before {
-  content: "–";
+  content: "-";
   margin-right: 0.5rem;
   color: #0b7658;
   font-weight: 700;

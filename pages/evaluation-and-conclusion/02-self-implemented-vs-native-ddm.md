@@ -5,7 +5,7 @@ transition: slide-left
 
 <ComparisonTable dense :spacing="3" row-header-width="110px">
   <ComparisonTableCols>
-    <ComparisonTableCol color="#354f82">Vòng đời chính sách</ComparisonTableCol>
+    <ComparisonTableCol color="#354f82">Vòng đời policy</ComparisonTableCol>
     <ComparisonTableCol color="#5b8bb3">Ranh giới thực thi</ComparisonTableCol>
     <ComparisonTableCol color="#00a8a8">Chi phí khi query</ComparisonTableCol>
   </ComparisonTableCols>
@@ -74,10 +74,21 @@ transition: slide-left
   </ComparisonTableRows>
 </ComparisonTable>
 
+<style scoped>
+:deep(.alpha-comparison-table-row-title) {
+  font-size: 0.8rem !important;
+  letter-spacing: 0.02em !important;
+}
+
+:deep(.alpha-comparison-table-row-title p) {
+  font-size: 0.8rem !important;
+}
+</style>
+
 <!--
 Key takeaway: Mọi DDM đều có chi phí khi query. Native DDM chủ yếu cải thiện quản trị, thực thi và lan truyền thay đổi - không tự động nhanh hơn.
 
-Slide này so sánh vòng đời chính sách, ranh giới thực thi và chi phí khi query. Điểm cần tránh là đồng nhất “native” với “không có chi phí”.
+Slide này so sánh vòng đời policy, ranh giới thực thi và chi phí khi query. Điểm cần tránh là đồng nhất “native” với “không có chi phí”.
 
 Với DuckDB, team sửa macro hoặc view và tự kiểm tra policy coverage. Identity, query path và raw file nằm trong boundary của application và hệ điều hành. Mask là SQL expression trong query plan.
 
@@ -89,7 +100,7 @@ Snowflake quản lý masking policy như schema object, tái sử dụng trên n
 
 BigQuery dùng data policy hoặc custom routine và IAM. Masking vẫn chạy tại query time; một số execution path không được BI Engine accelerate hoặc có thể tăng query cost.
 
-Kết luận: native DDM chủ yếu thắng ở quản trị, thực thi chính sách và khả năng lan truyền thay đổi. Về hiệu năng, mọi cách tiếp cận đều phải được đánh giá trên workload thực tế.
+Kết luận: native DDM chủ yếu thắng ở quản trị, thực thi policy và khả năng lan truyền thay đổi. Về hiệu năng, mọi cách tiếp cận đều phải được đánh giá trên workload thực tế.
 
 [Sources]
 - https://duckdb.org/docs/current/sql/statements/create_macro

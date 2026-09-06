@@ -8,7 +8,7 @@ transition: slide-left
 
 <QuadHub class="h-[380px] overflow-hidden" v-click="1">
   <QuadHubCallout color="#e9717a" icon="i-lucide-shield-off">
-    <QuadHubHeading>Chính sách không chuyên biệt</QuadHubHeading>
+    <QuadHubHeading>Policy không chuyên biệt</QuadHubHeading>
     <QuadHubContent>Macro và view không có vòng đời, privilege hoặc catalog riêng cho DDM.</QuadHubContent>
   </QuadHubCallout>
   <QuadHubCallout color="#f29e4b" icon="i-lucide-user-cog">
@@ -26,7 +26,7 @@ transition: slide-left
 </QuadHub>
 
 <!--
-Phần trước đã chứng minh chúng ta có thể tự triển khai DDM trên DuckDB để tạo kết quả khác nhau theo vai trò. Vì vậy, việc DuckDB không có DDM tích hợp sẵn không phải là giới hạn về khả năng che dữ liệu. Các giới hạn trên slide này xuất hiện khi đội ngũ phải tự xây dựng, quản lý và bảo đảm thực thi chính sách DDM.
+Phần trước đã chứng minh chúng ta có thể tự triển khai DDM trên DuckDB để tạo kết quả khác nhau theo vai trò. Vì vậy, việc DuckDB không có DDM tích hợp sẵn không phải là giới hạn về khả năng che dữ liệu. Các giới hạn trên slide này xuất hiện khi đội ngũ phải tự xây dựng, quản lý và bảo đảm thực thi policy DDM.
 
 [CLICK] QuadHub cho thấy bốn giới hạn chính của việc tự triển khai DDM.
 
@@ -38,7 +38,7 @@ Thứ ba, khi đổi format hiển thị, team tự sửa macro hoặc view, reg
 
 Thứ tư, application và hệ điều hành phải giữ toàn bộ access path. Người có thể đọc raw table, mở file DuckDB hoặc chạy arbitrary SQL có thể bypass masking. Macro tự nó không tạo security boundary.
 
-Kết luận triển khai: DDM tự xây dựng phù hợp khi một ứng dụng đáng tin cậy kiểm soát toàn bộ danh tính, truy vấn và tệp dữ liệu gốc. Khi nhiều người dùng, công cụ BI hoặc ứng dụng cùng truy cập, việc quản lý và bảo đảm thực thi trở nên khó hơn; chính sách DDM tích hợp sẵn trong hệ quản trị cơ sở dữ liệu thường phù hợp hơn.
+Kết luận triển khai: DDM tự xây dựng phù hợp khi một ứng dụng đáng tin cậy kiểm soát toàn bộ danh tính, truy vấn và tệp dữ liệu gốc. Khi nhiều người dùng, công cụ BI hoặc ứng dụng cùng truy cập, việc quản lý và bảo đảm thực thi trở nên khó hơn; policy DDM tích hợp sẵn trong hệ quản trị cơ sở dữ liệu thường phù hợp hơn.
 
 [Sources]
 - https://duckdb.org/docs/current/operations_manual/securing_duckdb/overview
