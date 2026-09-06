@@ -18,12 +18,13 @@ Phạm vi rà soát:
 | ART | Xuất hiện trong cụm `ART index scan` |
 | CIA | Confidentiality, Integrity, Availability |
 | CPU | Chi phí xử lý tăng thêm khi dùng biểu thức masking |
+| DBA | Database Administrator; người quản trị cơ sở dữ liệu, chịu trách nhiệm cấu hình policy và phân quyền liên quan |
 | DBMS | Hệ quản trị cơ sở dữ liệu |
 | DDM | Dynamic Data Masking |
 | DuckDB | Tên hệ quản trị cơ sở dữ liệu dùng trong demo |
 | MFA | Một ví dụ về cơ chế xác thực người dùng trên slide |
 | Node.js | Runtime của backend trong demo |
-| OS | Hệ điều hành; một lớp bảo vệ file và process trong mô hình Defense-in-Depth |
+| OS | Hệ điều hành; một lớp bảo vệ file và process trong mô hình Defense-in-depth (DiD) |
 | SDM | Static Data Masking |
 | SQL | Ngôn ngữ truy vấn được dùng trong các ví dụ trên slide |
 | Zone Map / ZONEMAP | Giúp giảm số hàng cần đọc trong query path trên slide |
@@ -68,8 +69,9 @@ Các biến thể số ít, số nhiều hoặc khác cách viết hoa được 
 | Data | Dữ liệu |
 | Data Masking | Che dữ liệu |
 | Database | Cơ sở dữ liệu |
+| Database principal | Chủ thể bảo mật trong cơ sở dữ liệu, chẳng hạn user hoặc role |
 | Database server | Tiến trình server quản lý cơ sở dữ liệu |
-| Defense-in-Depth | Phòng thủ chiều sâu |
+| Defense-in-depth (DiD) | Phòng thủ nhiều lớp |
 | Demo | Bản minh họa |
 | Disaster Recovery | Khôi phục sau thảm họa |
 | Dynamic | Thay đổi theo ngữ cảnh tại thời điểm xử lý |
@@ -91,6 +93,7 @@ Các biến thể số ít, số nhiều hoặc khác cách viết hoa được 
 | Email | Địa chỉ thư điện tử |
 | Identity | Danh tính đã xác minh |
 | Index / Indexing | Chỉ mục / lập chỉ mục |
+| Inference | Kỹ thuật suy diễn giá trị gốc qua cách thay đổi điều kiện truy vấn |
 | Input | Dữ liệu đầu vào |
 | Input Validation | Kiểm tra dữ liệu đầu vào |
 | Insider Threat / Insider Threats | Mối đe dọa từ người nội bộ |
@@ -109,12 +112,17 @@ Các biến thể số ít, số nhiều hoặc khác cách viết hoa được 
 | Masking logic | Logic tạo ra giá trị đã che |
 | Masking rule | Quy tắc biến đổi dữ liệu hiển thị |
 | Monitoring | Giám sát |
+| Native DDM | DDM được tích hợp sẵn trong hệ quản trị cơ sở dữ liệu |
+| Non-production | Môi trường ngoài production như dev, test, staging |
 | Output | Dữ liệu đầu ra |
+| Output control | Kiểm soát ở lớp kết quả truy vấn, không phải lớp truy cập |
 | Parameter / Parameterization | Tham số / tham số hóa |
 | Permission | Quyền truy cập |
 | Phone | Số điện thoại |
 | Policy | Chính sách |
 | Policy Enforcer | Lớp chọn query và bind role đã được xác minh |
+| Predicate | Điều kiện lọc trong mệnh đề WHERE; có thể bị khai thác để suy diễn giá trị gốc |
+| Principal | Chủ thể bảo mật (user, role, service account) có quyền truy cập database |
 | Process | Tiến trình |
 | Privilege / Privileges | Đặc quyền |
 | Privilege Abuse | Lạm dụng đặc quyền |
@@ -122,6 +130,7 @@ Các biến thể số ít, số nhiều hoặc khác cách viết hoa được 
 | Production | Môi trường vận hành thật |
 | Query | Truy vấn |
 | Query Engine | Thành phần thực thi truy vấn; trên slide là DuckDB |
+| Query Output | Lớp kết quả truy vấn nơi DDM hoạt động |
 | Query path | Đường đi của truy vấn |
 | Query plan | Kế hoạch thực thi truy vấn |
 | Query time | Thời điểm truy vấn |
@@ -149,8 +158,11 @@ Các biến thể số ít, số nhiều hoặc khác cách viết hoa được 
 | Substitution | Thay thế bằng dữ liệu khác |
 | Support | Role hỗ trợ, nhận dữ liệu đã che trong demo |
 | Table | Bảng dữ liệu |
+| TDE | Transparent Data Encryption; mã hóa file database và backup khi lưu trữ |
 | Tenant | Đối tượng thuê hoặc miền người dùng cần được cô lập |
+| TLS | Transport Layer Security; mã hóa dữ liệu khi truyền tải |
 | Token | Mã đại diện cho phiên hoặc dữ liệu |
+| Tokenization | Kỹ thuật thay thế dữ liệu nhạy cảm bằng token không có nghĩa; dùng cho non-production |
 | Trusted / Untrusted | Đáng tin cậy / không đáng tin cậy trong access path |
 | User | Người dùng |
 | Validation | Kiểm tra tính hợp lệ |
@@ -175,7 +187,7 @@ Các biến thể số ít, số nhiều hoặc khác cách viết hoa được 
 - `Customer Record`
 - `Customer Support`
 - `Database encrypted`
-- `Defense-in-Depth`
+- `Defense-in-depth (DiD)`
 - `DuckDB Parameter`
 - `DuckDB Runtime`
 - `Dynamic Data Masking`
@@ -322,7 +334,7 @@ Các biến thể số ít, số nhiều hoặc khác cách viết hoa được 
 
 - Thêm thuật ngữ mới vào file này khi thêm hoặc sửa nội dung hiển thị trên slide.
 - Không bổ sung thuật ngữ chỉ vì nó xuất hiện trong speaker notes, source code của demo hoặc tài liệu tham khảo.
-- Kiểm tra cách viết hoa: `Node.js`, `DuckDB`, `Dynamic Data Masking`, `Access Control`, `Defense-in-Depth`.
+- Kiểm tra cách viết hoa: `Node.js`, `DuckDB`, `Dynamic Data Masking`, `Access Control`, `Defense-in-depth (DiD)`.
 - Kiểm tra dấu gạch nối: `role-aware`, `backend-only`, `auto-install`, `auto-load`.
 - Kiểm tra cách viết môi trường: dùng thống nhất `production`.
 - Kiểm tra role: phần triển khai dùng `manager` / `support`; slide minh họa query-time dùng `privileged` / `restricted`.
