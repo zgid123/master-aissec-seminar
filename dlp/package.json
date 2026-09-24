@@ -1,0 +1,27 @@
+{
+  "name": "dlp-big-data-seminar",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export --with-clicks",
+    "ppt": "slidev export --format pptx --with-clicks"
+  },
+  "dependencies": {
+    "@alphacifer/core-utils": "^0.0.9",
+    "@alphacifer/slidev-academic-theme": "0.0.2",
+    "@alphacifer/slidev-addon-theme": "0.0.8",
+    "@slidev/cli": "52.19.0",
+    "@slidev/theme-default": "0.25.0",
+    "@slidev/types": "52.18.0",
+    "@vueuse/motion": "3.0.3",
+    "shiki": "4.3.1",
+    "shiki-magic-move": "1.4.0",
+    "vue": "3.5.40"
+  },
+  "devDependencies": {
+    "playwright-chromium": "1.61.1"
+  }
+}
