@@ -1,9 +1,9 @@
 ---
 title: "DLP trong Big Data"
-theme: '@alphacifer/slidev-academic-theme'
+theme: "@alphacifer/slidev-academic-theme"
 colorSchema: light
 addons:
-  - '@alphacifer/slidev-addon-theme'
+  - "@alphacifer/slidev-addon-theme"
 background: ./assets/main.png
 drawings:
   persist: false
@@ -43,6 +43,13 @@ duration: 15min
   class="!left-[30px] !right-auto !bottom-[64px] [&_.alpha-date]:hidden"
 />
 
+<style>
+.alpha-academic-cover {
+  background-color: #606060;
+  background-blend-mode: multiply;
+}
+</style>
+
 ---
 layout: arc-toc
 hideInToc: true
@@ -57,11 +64,7 @@ src: ./pages/problem-and-foundations/main.md
 ---
 
 ---
-src: ./pages/dlp-foundations/main.md
----
-
----
-src: ./pages/architecture-and-detection/main.md
+src: ./pages/dlp-mechanisms/main.md
 ---
 
 ---
