@@ -29,7 +29,7 @@ duration: 15min
     '25C12016 - Trần Huy Vũ',
     '25C12031 - Dương Tấn Huỳnh Phong',
   ]"
-  :date="'2026-09-24'"
+  :date="'2026-09-29'"
 />
 
 <Speaker
@@ -39,7 +39,7 @@ duration: 15min
     'TS. Phạm Thị Bạch Huệ',
     'ThS. Lương Vĩ Minh',
   ]"
-  :date="'2026-09-24'"
+  :date="'2026-09-29'"
   class="!left-[30px] !right-auto !bottom-[64px] [&_.alpha-date]:hidden"
 />
 
