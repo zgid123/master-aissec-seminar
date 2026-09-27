@@ -3,23 +3,27 @@ const props = withDefaults(defineProps<{
   focus?: 'ingest' | 'lake' | 'process' | 'derived' | 'export' | 'none'
   outcome?: 'risk' | 'allow' | 'block' | 'neutral'
   compact?: boolean
+  prominent?: boolean
+  derivedTag?: string
 }>(), {
   focus: 'none',
   outcome: 'neutral',
   compact: false,
+  prominent: false,
+  derivedTag: 'Chứa PII',
 })
 
 const stages = [
   { id: 'ingest', label: 'Thu thập', sub: 'customer.csv', icon: '↓' },
-  { id: 'lake', label: 'Data lake', sub: 'dữ liệu gốc', icon: '▤' },
-  { id: 'process', label: 'Xử lý', sub: 'công việc phân tích', icon: '⚙' },
-  { id: 'derived', label: 'Dẫn xuất', sub: 'customer_segments', icon: '◇' },
-  { id: 'export', label: 'Xuất dữ liệu', sub: 'đích đến?', icon: '↗' },
+  { id: 'lake', label: 'Data Lake', sub: 'Lưu trữ gốc', icon: '▤' },
+  { id: 'process', label: 'Xử lý', sub: 'Truy vấn / ETL', icon: '⚙' },
+  { id: 'derived', label: 'Bản phân tích', sub: 'customer_segments', icon: '◇' },
+  { id: 'export', label: 'Xuất dữ liệu', sub: 'Gửi ra ngoài', icon: '↗' },
 ] as const
 </script>
 
 <template>
-  <div class="pipeline" :class="[`outcome-${props.outcome}`, { compact: props.compact }]">
+  <div class="pipeline" :class="[`outcome-${props.outcome}`, { compact: props.compact, prominent: props.prominent }]">
     <template v-for="(stage, index) in stages" :key="stage.id">
       <div
         class="stage"
@@ -31,13 +35,16 @@ const stages = [
         <div class="stage-icon">{{ stage.icon }}</div>
         <div class="stage-label">{{ stage.label }}</div>
         <div class="stage-sub">{{ stage.sub }}</div>
-        <div v-if="stage.id === 'derived'" class="tag">Nhạy?</div>
+        <div v-if="stage.id === 'derived' && props.derivedTag" class="tag">{{ props.derivedTag }}</div>
         <div v-if="stage.id === 'export' && props.outcome === 'block'" class="decision block">CHẶN</div>
         <div v-if="stage.id === 'export' && props.outcome === 'allow'" class="decision allow">CHO PHÉP</div>
         <div v-if="stage.id === 'export' && props.outcome === 'risk'" class="decision risk">RÒ RỈ</div>
       </div>
-      <div v-if="index < stages.length - 1" class="connector">
-        <span></span><b>›</b>
+      <div v-if="index < stages.length - 1" class="connector" aria-hidden="true">
+        <svg class="connector-arrow" viewBox="0 0 32 12" fill="none" xmlns="http://www.w3.org/2000/svg">
+          <line x1="0" y1="6" x2="25" y2="6" stroke="#406783" stroke-width="2.5" stroke-linecap="round" />
+          <path d="M19 2L26 6L19 10" stroke="#54809f" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" />
+        </svg>
       </div>
     </template>
   </div>
@@ -49,7 +56,7 @@ const stages = [
   align-items: center;
   width: 100%;
   gap: 8px;
-  padding: 14px 0;
+  padding: 4px 0;
 }
 .stage {
   position: relative;
@@ -96,17 +103,14 @@ const stages = [
 .connector {
   display: flex;
   align-items: center;
-  width: 34px;
-  color: #54809f;
+  justify-content: center;
+  width: 32px;
+  flex-shrink: 0;
 }
-.connector span {
-  height: 2px;
-  flex: 1;
-  background: #406783;
-}
-.connector b {
-  font-size: 25px;
-  line-height: 1;
+.connector-arrow {
+  width: 100%;
+  height: 12px;
+  display: block;
 }
 .tag {
   position: absolute;
@@ -118,6 +122,8 @@ const stages = [
   color: #17202a;
   font-size: 10px;
   font-weight: 800;
+  white-space: nowrap;
+  box-shadow: 0 2px 6px #00000040;
 }
 .decision {
   position: absolute;
@@ -150,4 +156,12 @@ const stages = [
 .compact .stage-sub {
   font-size: 9px;
 }
+</style>
+
+<style scoped>
+.prominent .stage { height: 108px; }
+.prominent .stage-icon { font-size: 27px; }
+.prominent .stage-label { font-size: 18px; }
+.prominent .stage-sub { font-size: 13px; color: #d5e1eb; }
+.prominent .tag, .prominent .decision { font-size: 13px; }
 </style>

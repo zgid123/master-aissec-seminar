@@ -4,49 +4,62 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Rò rỉ từ bản dữ liệu dẫn xuất
+# Đọc đúng quyền, nhưng gửi sai đích?
 
+<div class="-mt-3 text-[15px] text-slate-600 leading-snug">
+  Tình huống thực tế: Người dùng thực hiện thao tác nghiệp vụ hợp lệ nhưng vẫn tạo ra nguy cơ rò rỉ dữ liệu.
+</div>
 
-<PipelineFlow focus="export" outcome="risk" />
+<div class="mt-1">
+  <PipelineFlow focus="export" outcome="risk" prominent derived-tag="Chứa PII" />
+</div>
 
-<div class="grid grid-cols-2 gap-4 mt-3 text-[12px] leading-snug">
-  <div class="rounded-xl border border-slate-200 bg-slate-50 p-4">
-    <b>Người thực hiện:</b>
-    chuyên viên phân tích có quyền đọc hợp lệ
-    <br />
-    <b>Dữ liệu:</b>
-    hồ sơ khách hàng: mã khách hàng, email, lịch sử mua hàng
-    <br />
-    <b>Bản sao mới:</b> <code>customer_segments</code> do pipeline tạo, vẫn giữ mã và email<br />
-    <b>Vì sao quyền truy cập chưa đủ?</b>
-    Quyền đọc hợp lệ không xét đích gửi của bản xuất.
+<div class="grid grid-cols-2 gap-3.5 mt-3 text-[15px] leading-snug">
+  <div v-click="2" class="rounded-lg border border-slate-200 bg-slate-50 p-3.5">
+    <div class="font-bold text-slate-900 text-[16px] flex items-center gap-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 inline-block"></span>
+      1. Thao tác nghiệp vụ hợp lệ
+    </div>
+    <div class="mt-2 text-slate-700">Chuyên viên dữ liệu được cấp quyền đọc thông tin khách hàng từ Data Lake.</div>
+    <div class="mt-1.5 text-slate-700">Chạy truy vấn tạo bảng tổng hợp <code>customer_segments</code> để phục vụ công việc.</div>
+    <div class="mt-2 text-[13px] text-amber-800 bg-amber-50 p-2 rounded border border-amber-200">
+      ⚠️ Bảng kết quả sau xử lý vô tình vẫn còn thông tin định danh cá nhân: <b>Mã KH, Email, SĐT (PII)</b>.
+    </div>
   </div>
-  <div class="rounded-xl border border-rose-300 bg-rose-50 p-4">
-    <b>Điểm thử xuất cụ thể:</b>
-    gửi tập dữ liệu dẫn xuất tới đích bên ngoài chưa được phê duyệt
-    <br />
-    <b>Hệ quả:</b>
-    xâm phạm quyền riêng tư, mất niềm tin, phát sinh điều tra và xử lý sự cố
+
+  <div v-click="3" class="rounded-lg border-2 border-rose-500 bg-rose-50 p-3.5">
+    <div class="font-bold text-rose-800 text-[16px] flex items-center gap-2">
+      <span class="w-2.5 h-2.5 rounded-full bg-rose-500 inline-block"></span>
+      2. Nguy cơ khi chia sẻ ra ngoài
+    </div>
+    <div class="mt-2 text-slate-700">Tệp dữ liệu này được xuất và gửi sang <b>kênh bên ngoài chưa được kiểm duyệt</b> (đám mây cá nhân, đối tác).</div>
+    <div class="mt-2 text-[13px] text-rose-900 bg-rose-100/70 p-2 rounded border border-rose-300 font-semibold">
+      Điểm mù bảo mật: Hệ thống chỉ kiểm soát quyền lúc đọc vào, nhưng bỏ ngỏ nội dung tệp khi xuất ra ngoài!
+    </div>
   </div>
 </div>
 
-<div class="mt-3 text-[10px] text-slate-500">
-  Động cơ pháp lý: Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15, ban hành 26/06/2025, hiệu lực
-  01/01/2026. Luật không chỉ định một sản phẩm DLP cụ thể. Nguồn: Cổng văn bản Chính phủ.
+<div v-click="4" class="mt-3 px-4 py-2 rounded-lg bg-sky-50 border border-sky-300 text-center text-sky-900 font-medium text-[15px]">
+  Làm sao tự động nhận diện PII trong tệp gửi đi để ngăn chặn kịp thời? → Đó là vai trò của <b>DLP</b>.
 </div>
-<div class="mt-3 rounded-lg bg-cyan-50 px-4 py-2 text-center text-[15px] font-bold text-cyan-800">
-  Làm sao nhận diện dữ liệu nhạy cảm trong bản gốc hoặc bản dẫn xuất, rồi ngăn xuất tới đích chưa
-  được duyệt?
+
+<div class="absolute bottom-2.5 left-12 right-12 text-[11px] text-slate-400">
+  Tình huống giả định điển hình trong môi trường phân tích dữ liệu lớn của doanh nghiệp.
 </div>
 
 <!--
-Mục tiêu: 1:00
+[Click 1 - Mở đầu tình huống]:
+- Đặt vấn đề: Một nhân sự thao tác hoàn toàn đúng quyền hạn thì có thể gây rò rỉ dữ liệu hay không?
 
-Chuyên viên phân tích có quyền đọc dữ liệu khách hàng để chạy phân tích hợp lệ. Pipeline tạo bảng customer_segments nhưng vẫn giữ mã khách hàng và email. Kiểm soát truy cập cho phép thao tác đọc theo quyền; nó không tự đánh giá đích đến của một bản xuất hợp lệ về quyền.
+[Click 2 - Cột trái: Thao tác hợp lệ]:
+- Chuyên viên dữ liệu có quyền đọc Data Lake, trích xuất bảng customer_segments.
+- Bảng tổng hợp sau xử lý này vô tình vẫn chứa thông tin định danh cá nhân (PII: Email, SĐT).
 
-Điểm rò rỉ là lúc bảng được xuất tới đích ngoài chưa duyệt. Rủi ro là lộ dữ liệu cá nhân, mất niềm tin và phát sinh ứng phó sự cố.
+[Click 3 - Cột phải: Nguy cơ khi chia sẻ]:
+- Tệp kết quả bị chia sẻ hoặc gửi ra kênh bên ngoài chưa qua kiểm duyệt.
+- Kiểm soát truy cập chỉ bảo vệ ở cổng vào (lúc đọc), hoàn toàn bỏ ngỏ nội dung tệp ở cổng ra (lúc gửi đi).
 
-Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15 có hiệu lực từ 1/1/2026, là động cơ để xử lý dữ liệu cá nhân thận trọng; luật không chỉ định sản phẩm DLP.
-
-Chuyển ý: Câu hỏi nghiên cứu dẫn đến khái niệm Data Leakage Prevention.
+[Click 4 - Chốt vấn đề & Chuyển giao]:
+- Cần giải pháp tự động soi nội dung PII tại cổng xuất và chủ động ngăn chặn luồng gửi đi.
+- Bàn giao: "Và đó chính là lý do cần đến DLP. Sau đây xin mời anh Phong trình bày phần cơ chế nền tảng của DLP."
 -->
