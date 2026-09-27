@@ -1,4 +1,6 @@
 <script setup lang="ts">
+import { computed } from 'vue'
+
 const props = withDefaults(defineProps<{
   focus?: 'ingest' | 'lake' | 'process' | 'derived' | 'export' | 'none'
   outcome?: 'risk' | 'allow' | 'block' | 'neutral'
@@ -13,13 +15,23 @@ const props = withDefaults(defineProps<{
   derivedTag: 'Chứa PII',
 })
 
-const stages = [
+const scenarioStages = [
   { id: 'ingest', label: 'Thu thập', sub: 'customer.csv', icon: '↓' },
   { id: 'lake', label: 'Data Lake', sub: 'Lưu trữ gốc', icon: '▤' },
   { id: 'process', label: 'Xử lý', sub: 'Truy vấn / ETL', icon: '⚙' },
   { id: 'derived', label: 'Bản phân tích', sub: 'customer_segments', icon: '◇' },
   { id: 'export', label: 'Xuất dữ liệu', sub: 'Gửi ra ngoài', icon: '↗' },
 ] as const
+
+const genericStages = [
+  { id: 'ingest', label: 'Nguồn dữ liệu', sub: '', icon: '↓' },
+  { id: 'lake', label: 'Lưu trữ', sub: '', icon: '▤' },
+  { id: 'process', label: 'Xử lý và biến đổi', sub: '', icon: '⚙' },
+  { id: 'derived', label: 'Dữ liệu dẫn xuất', sub: '', icon: '◇' },
+  { id: 'export', label: 'Chia sẻ hoặc xuất', sub: '', icon: '↗' },
+] as const
+
+const stages = computed(() => props.generic ? genericStages : scenarioStages)
 </script>
 
 <template>
@@ -99,6 +111,12 @@ const stages = [
   font-size: 10px;
   margin-top: 2px;
   white-space: nowrap;
+}
+.generic .stage-label {
+  font-size: 12px;
+  line-height: 1.15;
+  text-align: center;
+  padding: 0 4px;
 }
 .connector {
   display: flex;

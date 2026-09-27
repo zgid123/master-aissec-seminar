@@ -12,7 +12,7 @@
   "dependencies": {
     "@alphacifer/core-utils": "^0.0.9",
     "@alphacifer/slidev-academic-theme": "0.0.2",
-    "@alphacifer/slidev-addon-theme": "0.0.8",
+    "@alphacifer/slidev-addon-theme": "0.0.10",
     "@slidev/cli": "52.19.0",
     "@slidev/theme-default": "0.25.0",
     "@slidev/types": "52.18.0",

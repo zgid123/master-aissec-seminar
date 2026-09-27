@@ -6,26 +6,18 @@ transition: slide-left
 
 # Giải pháp DLP hiện nay
 
-<div class="rounded-lg border-l-4 border-sky-500 bg-sky-50 p-3 text-[11px] leading-snug">
-  <b>DBMS hỗ trợ, tùy sản phẩm:</b>
-  phân quyền, masking, audit. Với
-  <code>customer_segments</code>
-  trong data lake hoặc tệp xuất, DLP còn cần tìm nội dung → phân loại → quyết định chính sách → thực
-  thi tại các đường xuất được kiểm soát.
+<div class="rounded-lg border-l-4 border-sky-500 bg-sky-50 p-3 text-[12px] leading-snug">
+  DBMS thường có phân quyền, masking và audit; phạm vi DLP phụ thuộc sản phẩm và đường dữ liệu được tích hợp.
 </div>
 
 <div class="grid grid-cols-3 gap-3 mt-3 text-[11px] leading-snug">
   <div class="rounded-xl border border-amber-300 bg-amber-50 p-4">
     <div class="text-[15px] font-bold">Amazon Macie</div>
     <div class="mt-1 text-[10px] font-bold uppercase text-amber-800">Data lake · Amazon S3</div>
-    <div class="mt-3">
-      <b>Phát hiện / báo cáo:</b>
-      tự động khám phá hoặc chạy tác vụ để nhận diện dữ liệu nhạy cảm trong đối tượng S3 và ghi kết
-      quả phát hiện.
-    </div>
-    <div class="mt-3 rounded bg-white/70 p-2">
-      <b>Không phải:</b>
-      bộ chặn mọi lần xuất khỏi S3.
+    <div class="mt-3 space-y-2">
+      <div><b>Phạm vi:</b> Đối tượng S3 thuộc storage class và định dạng được hỗ trợ.</div>
+      <div><b>Hỗ trợ:</b> Khám phá tự động hoặc quét theo job, rồi tạo finding cho đối tượng có dữ liệu nhạy cảm.</div>
+      <div><b>Giới hạn:</b> Finding phục vụ điều tra; không tự động chặn mọi lần xuất.</div>
     </div>
   </div>
   <div class="rounded-xl border border-cyan-300 bg-cyan-50 p-4">
@@ -33,48 +25,33 @@ transition: slide-left
     <div class="mt-1 text-[10px] font-bold uppercase text-cyan-800">
       Mục được hỗ trợ trong Fabric
     </div>
-    <div class="mt-3">
-      <b>Chính sách trên mục dữ liệu:</b>
-      như lakehouse và warehouse; có thể hiện gợi ý chính sách, gửi cảnh báo, và hạn chế truy cập
-      theo cấu hình.
-    </div>
-    <div class="mt-3 rounded bg-white/70 p-2">
-      <b>Phạm vi:</b>
-      chỉ loại mục được hỗ trợ; hạn chế truy cập đang ở bản xem trước; không mặc định chặn mọi luồng
-      xuất.
+    <div class="mt-3 space-y-2">
+      <div><b>Phạm vi:</b> Áp dụng cho các mục Fabric được hỗ trợ và dữ liệu trong bảng Delta.</div>
+      <div><b>Hỗ trợ:</b> Policy tips và cảnh báo khi policy phát hiện nội dung phù hợp.</div>
+      <div><b>Giới hạn:</b> Restrict access đang ở preview; chỉ áp dụng cho mục, định dạng được hỗ trợ và không chặn mọi đường xuất.</div>
     </div>
   </div>
   <div class="rounded-xl border border-violet-300 bg-violet-50 p-4">
     <div class="text-[15px] font-bold">Google Cloud Sensitive Data Protection</div>
     <div class="mt-1 text-[10px] font-bold uppercase text-violet-800">BigQuery · Cloud Storage</div>
-    <div class="mt-3">
-      <b>Khám phá / kiểm tra:</b>
-      lập hồ sơ và quét dữ liệu; có thể tạo bản đã loại định danh (de-identification).
-    </div>
-    <div class="mt-3 rounded bg-white/70 p-2">
-      <b>Phân biệt:</b>
-      biến đổi dữ liệu khác với chặn hành động xuất.
+    <div class="mt-3 space-y-2">
+      <div><b>Phạm vi:</b> Quét Cloud Storage và BigQuery theo loại dữ liệu, định dạng được hỗ trợ.</div>
+      <div><b>Hỗ trợ:</b> Kiểm tra dữ liệu nhạy cảm và tạo bản đã khử định danh.</div>
+      <div><b>Giới hạn:</b> Kiểm tra hoặc khử định danh không đồng nghĩa chặn xuất.</div>
     </div>
   </div>
 </div>
 
-<div class="mt-3 text-[10px] text-slate-500">
-  Khả năng DBMS và sản phẩm DLP phụ thuộc dịch vụ, cấu hình và loại dữ liệu được hỗ trợ; không mặc
-  định bao phủ mọi tệp dẫn xuất hay đường xuất.
-</div>
 <div class="absolute bottom-4 left-12 right-12 text-[9px] leading-tight text-slate-400">
-  Tài liệu chính thức: AWS Macie sensitive data discovery · Microsoft Purview DLP for Fabric ·
-  Google Cloud Sensitive Data Protection inspection and de-identification.
+  Tài liệu chính thức: <a href="https://docs.aws.amazon.com/macie/latest/user/discovery-asdd-results-s3-findings.html">AWS Macie</a> ·
+  <a href="https://learn.microsoft.com/en-us/purview/dlp-powerbi-get-started">Microsoft Purview</a> ·
+  <a href="https://docs.cloud.google.com/sensitive-data-protection/docs">Google Cloud</a>.
 </div>
-
 <!--
-Mục tiêu: 1:30
-
-DBMS không đồng nghĩa với DLP toàn hệ thống. Tùy sản phẩm, phân quyền, masking và audit bảo vệ dữ liệu trong phạm vi DBMS. Nhưng customer_segments có thể thành tệp dẫn xuất trong data lake rồi đi qua đường xuất khác. Khi đó cần tìm và phân loại nội dung, kết hợp nhãn với người, hành động, đích, rồi thực thi tại từng đường được tích hợp.
-
-Ba ví dụ giải quyết các phần khác nhau: Macie khám phá dữ liệu nhạy cảm trong S3; Purview DLP áp chính sách cho loại mục Fabric được hỗ trợ; Google Cloud Sensitive Data Protection kiểm tra hoặc khử định danh dữ liệu. Không nên suy ra một công cụ chặn mọi đường xuất.
+- Macie tạo sensitive data finding cho từng đối tượng S3 có dữ liệu nhạy cảm được phát hiện.
+- Purview Fabric DLP có policy tips và alerts; Restrict access được ghi là preview và áp dụng trong phạm vi mục dữ liệu được hỗ trợ.
+- Google Cloud Sensitive Data Protection kiểm tra dữ liệu và có thể tạo bản khử định danh; đây là tác vụ dữ liệu, không phải chặn lần xuất.
+- Tài liệu được kiểm tra: AWS Macie, Microsoft Learn về Fabric DLP, Google Cloud Sensitive Data Protection.
 
 Chuyển ý: AI có thể hỗ trợ bước phát hiện khi quy tắc đơn giản khó nhận ra nội dung.
-
-Nguồn tra cứu, không đọc: SQL Server security overview https://learn.microsoft.com/en-us/sql/relational-databases/security/secure-sql-server ; tài liệu sản phẩm đầy đủ ở slide tham khảo.
 -->
