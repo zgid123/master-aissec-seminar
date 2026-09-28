@@ -40,7 +40,7 @@ transition: slide-left
   </div>
 </div>
 
-<div class="mt-5 bg-slate-900 px-5 py-2.5 text-center text-[14px] font-semibold text-white">
+<div class="mt-4 max-w-[760px] mx-auto rounded-lg bg-slate-900 px-5 py-2.5 text-center text-[14px] font-semibold text-white shadow-sm">
   Demo chứng minh một điểm kiểm soát tại đường xuất. Access control, mã hóa và các lớp bảo vệ khác vẫn cần thiết.
 </div>
 
