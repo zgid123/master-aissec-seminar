@@ -16,7 +16,7 @@ import MachineLearningIcon from '~icons/carbon/machine-learning-model'
   class="detection-gear"
   :height="390"
   :clicks="Math.min(3, Math.max(0, $clicks - 1))"
-  @click="$clicks = Math.min($clicks + 1, 5)"
+  @click="$clicks = Math.min($clicks + 1, 4)"
 >
   <GearTriadCallout
     title="Quy tắc định dạng"
@@ -52,20 +52,22 @@ import MachineLearningIcon from '~icons/carbon/machine-learning-model'
     <GearTriadDescription>Phân loại theo ngữ cảnh</GearTriadDescription>
   </GearTriadCallout>
 
-  <GearTriadContents option="1" class="method-detail method-detail--cyan">
+  <GearTriadContents :option="1" class="method-detail method-detail--cyan">
     <GearTriadContent><strong>Cơ chế:</strong>&nbsp;Tìm chuỗi khớp mẫu định sẵn.</GearTriadContent>
-    <GearTriadContent><strong>Ví dụ:</strong>&nbsp;Địa chỉ email theo mẫu ký tự.</GearTriadContent>
+    <GearTriadContent><strong>Ví dụ:</strong>&nbsp;lan@example.com → khớp mẫu email.</GearTriadContent>
     <GearTriadContent><strong>Giới hạn:</strong>&nbsp;Có thể báo nhầm hoặc bỏ sót khi mẫu không phù hợp.</GearTriadContent>
   </GearTriadContents>
-  <GearTriadContents option="2" class="method-detail method-detail--amber">
+  <GearTriadContents :option="2" class="method-detail method-detail--amber">
     <GearTriadContent><strong>Cơ chế:</strong>&nbsp;So khớp dấu vân tay với nội dung tham chiếu.</GearTriadContent>
-    <GearTriadContent><strong>Ví dụ:</strong>&nbsp;Đoạn trích từ tài liệu nhạy cảm đã đăng ký.</GearTriadContent>
+    <GearTriadContent><strong>Ví dụ:</strong>&nbsp;Một đoạn sao chép từ tài liệu nội bộ đã đăng ký.</GearTriadContent>
     <GearTriadContent><strong>Giới hạn:</strong>&nbsp;Phụ thuộc nội dung tham chiếu và mức độ chỉnh sửa.</GearTriadContent>
   </GearTriadContents>
-  <GearTriadContents option="3" class="method-detail method-detail--violet">
+  <GearTriadContents :option="3" class="method-detail method-detail--violet">
     <GearTriadContent><strong>Cơ chế:</strong>&nbsp;Dùng mô hình để đánh giá nội dung trong ngữ cảnh.</GearTriadContent>
-    <GearTriadContent><strong>Ví dụ:</strong>&nbsp;Câu tiết lộ thông tin sức khỏe.</GearTriadContent>
-    <GearTriadContent><strong>Giới hạn:</strong>&nbsp;Có thể báo nhầm hoặc bỏ sót; cần đánh giá trên dữ liệu thực tế.</GearTriadContent>
+    <GearTriadContent><strong>Ví dụ minh họa:</strong>&nbsp;‘Lan đang điều trị bệnh X.’ → thông tin sức khỏe gắn với cá nhân.</GearTriadContent>
+    <GearTriadContent>
+      <strong>Giới hạn:</strong>&nbsp;Có thể báo nhầm/bỏ sót; cần kiểm thử trên dữ liệu thực tế.
+    </GearTriadContent>
   </GearTriadContents>
 </GearTriad>
 
@@ -90,12 +92,18 @@ import MachineLearningIcon from '~icons/carbon/machine-learning-model'
 }
 
 .method-detail :deep(.alpha-gear-triad-content__body) {
-  font-size: 16px;
+  font-size: 19px;
+  line-height: 1.45;
 }
+
+.method-detail { width: 520px; }
+.method-detail :deep(.alpha-gear-triad-contents__items) { gap: 0.5rem; }
 
 .method-detail--cyan { --method-color: #0e7490; }
 .method-detail--amber { --method-color: #b45309; }
 .method-detail--violet { --method-color: #6d28d9; }
+.method-detail--violet :deep(.alpha-gear-triad-contents__desc) { margin-bottom: 0.75rem; }
+.method-detail--violet :deep(.alpha-gear-triad-contents__items) { gap: 0.5rem; }
 
 .detection-takeaway {
   margin-top: -16px;
@@ -108,9 +116,23 @@ import MachineLearningIcon from '~icons/carbon/machine-learning-model'
 </style>
 
 <!--
-- Ba cách phát hiện bổ sung cho nhau, không biểu diễn một chuỗi xử lý bắt buộc.
-- Quy tắc tìm chuỗi khớp mẫu định sẵn; email là ví dụ, nhưng mẫu không phù hợp có thể gây báo nhầm hoặc bỏ sót.
-- Fingerprinting so khớp với nội dung tham chiếu đã đăng ký; khả năng khớp phụ thuộc nội dung tham chiếu và mức độ chỉnh sửa.
-- AI/ML đánh giá nội dung trong ngữ cảnh; cần kiểm tra sai sót trên dữ liệu thực tế.
-- Phát hiện cung cấp đầu vào cho policy. Chặn một hành động xuất đòi hỏi điểm thực thi trên đường xuất tương ứng.
+Ba cách phát hiện nội dung nhạy cảm gồm các tín hiệu khác nhau.
+
+[click]
+
+Ba nhóm kỹ thuật minh họa những tín hiệu khác nhau để nhận diện nội dung nhạy cảm và có thể được kết hợp.
+
+[click]
+
+Quy tắc định dạng tìm chuỗi phù hợp với mẫu, chẳng hạn cấu trúc địa chỉ email. Một địa chỉ khớp mẫu cung cấp tín hiệu phát hiện nhưng chưa tự quyết định dữ liệu có được chia sẻ hay không.
+
+[click]
+
+Fingerprinting sử dụng biểu diễn của nội dung tham chiếu để tìm sự trùng khớp hoặc tương đồng. Một ví dụ là phát hiện đoạn văn được sao chép từ tài liệu nội bộ đã đăng ký. Khả năng xử lý nội dung chỉnh sửa phụ thuộc kỹ thuật; không nên đồng nhất mọi phương pháp fingerprinting với việc so sánh hash của toàn bộ file.
+
+[click]
+
+Phân loại theo ngữ cảnh dùng mô hình để đánh giá ý nghĩa trong văn bản. Câu “Lan đang điều trị bệnh X” minh họa thông tin sức khỏe gắn với một cá nhân. Đây là ví dụ giải thích, không phải kết quả thực nghiệm của một mô hình cụ thể. Cả ba nhóm đều có thể báo nhầm hoặc bỏ sót. Kết quả phát hiện cần được đưa vào quá trình xét policy và thực thi tại điểm kiểm soát phù hợp.
+
+Nguồn tham khảo: [Shapira et al. (2013), “Content-based data leakage detection using extended fingerprinting”](https://arxiv.org/abs/1302.2028); [Ahmed et al. (2021), “Automated detection of unstructured context-dependent sensitive information using deep learning”](https://doi.org/10.1016/j.iot.2021.100444).
 -->
