@@ -43,7 +43,7 @@ transition: slide-left
 </div>
 
 <div v-click="3" class="adv-scale">
-  <div class="adv-scale-label">CÁC MỨC HÀNH ĐỘNG - VÍ DỤ MICROSOFT PURVIEW</div>
+  <div class="adv-scale-label">CÁC MỨC XỬ LÝ ĐIỂN HÌNH - VÍ DỤ MICROSOFT PURVIEW</div>
   <div class="adv-scale-flow">
     <div class="adv-scale-stage"><strong>Ghi log</strong><small>chỉ theo dõi</small></div>
     <span class="adv-scale-arrow">→</span>
@@ -52,20 +52,16 @@ transition: slide-left
     <div class="adv-scale-stage"><strong>Chặn + override</strong><small>bỏ qua được, kèm lý do</small></div>
     <span class="adv-scale-arrow">→</span>
     <div class="adv-scale-stage"><strong>Chặn hẳn</strong><small>không cho bỏ qua</small></div>
-    <span class="adv-scale-arrow">→</span>
-    <div class="adv-scale-stage"><strong>Cách ly</strong><small>cho dữ liệu đang lưu</small></div>
+    <span class="adv-scale-arrow">+</span>
+    <div class="adv-scale-stage"><strong>Cách ly</strong><small>riêng cho dữ liệu đang lưu</small></div>
   </div>
 </div>
 
 <div v-click="4" class="adv-evidence">
-  <b>Big Data:</b> quét phân tán là khả thi; prototype MapReduce trên 24 node đạt thông lượng 225 Mbps (Liu et al., 2015) - mới là nghiên cứu, chưa phải sản phẩm.
+  <b>Big Data:</b> quét rò rỉ phân tán là khả thi; prototype MapReduce/Hadoop trên 24 node đạt 225 Mbps (Liu et al., 2015) - mới là nghiên cứu, chưa phải sản phẩm.
 </div>
 
 <div v-click="5" class="adv-takeaway">DLP bổ sung cho phân quyền, mã hóa và masking, chứ không thay thế chúng.</div>
-
-<div class="absolute bottom-2.5 left-12 right-12 text-[11px] text-slate-400">
-  Nguồn: NIST CSRC Glossary - Microsoft Learn (Purview DLP) - Liu et al. (2015).
-</div>
 
 <style scoped>
 .adv-intro { margin: 5px 0 0; padding: 8px 12px; border-left: 3px solid #0ea5e9; border-radius: 5px; background: #f0f9ff; color: #18334f; font-size: 13.5px; line-height: 1.3; }
@@ -118,17 +114,17 @@ Phân quyền, hay access control, trả lời câu hỏi: ai được đọc d�
 Còn DLP trả lời thêm một câu hỏi nữa: nội dung này được phép gửi đi đâu?
 
 [click:2]
-Theo NIST, DLP xét cả nội dung lẫn ngữ cảnh. Nghĩa là: dữ liệu gì, ai gửi, gửi bằng cách nào, và gửi tới đâu.
+Theo định nghĩa CNSSI 4009 mà NIST đưa vào glossary, DLP xét cả nội dung lẫn ngữ cảnh. Nghĩa là: dữ liệu gì, ai gửi, gửi bằng cách nào, và gửi tới đâu.
 
 DLP bao phủ cả ba trạng thái của dữ liệu. Một là đang dùng, trên máy người dùng. Hai là đang truyền, trên mạng. Ba là đang lưu, trong kho lưu trữ.
 
 Mức xử lý cũng tăng dần theo rủi ro. Và mọi sự kiện đều được ghi lại, để điều tra hoặc để chứng minh tuân thủ.
 
 [click:3]
-Lấy Microsoft Purview làm ví dụ. Purview có năm mức hành động.
+Các tổng quan về DLP mô tả một dải xử lý điển hình, từ ghi log đến chặn. Microsoft Purview là ví dụ cụ thể, và Purview ghi mọi sự kiện vào audit log theo mặc định.
 Nhẹ nhất là chỉ ghi log. Sau đó là cảnh báo người dùng.
 Cao hơn là chặn nhưng vẫn cho bỏ qua, nếu người dùng nêu lý do. Rồi đến chặn hẳn.
-Riêng dữ liệu đang lưu thì có thể được cách ly.
+Cách ly là hành động riêng cho dữ liệu đang lưu, không phải mức cao hơn chặn hẳn.
 
 [click:4]
 Với Big Data, nhóm Liu năm 2015 cho thấy việc quét rò rỉ có thể chạy phân tán bằng MapReduce.
@@ -139,8 +135,11 @@ Tuy nhiên, đây mới là nghiên cứu, chưa phải sản phẩm.
 Vì vậy, điều cần nhớ là: DLP bổ sung cho phân quyền, mã hóa và masking, tức là che dữ liệu. DLP không thay thế những lớp đó.
 Nhưng DLP cũng không phải rào chắn tuyệt đối. Đó là nội dung của slide tiếp theo.
 
+Nếu bị hỏi: 225 Mbps ≈ 28 MB/s ≈ 2,4 TB/ngày (quy đổi thô) - đủ chứng minh tính khả thi, không phải con số cho hàng PB dữ liệu.
+
 Tham khảo (không đọc):
 - NIST CSRC Glossary: https://csrc.nist.gov/glossary/term/data_loss_prevention
 - Microsoft Learn: https://learn.microsoft.com/purview/dlp-learn-about-dlp
 - Liu et al. (2015): https://vtechworks.lib.vt.edu/items/2652b4c0-305d-4b03-b463-e16d1cd8ad4e
+- Herrera Montano et al. (2022): https://doi.org/10.1007/s10586-022-03668-2
 -->

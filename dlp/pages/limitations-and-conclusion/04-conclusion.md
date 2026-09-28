@@ -42,9 +42,6 @@ transition: slide-left
 
 <div v-click="4" class="con-punch">Quyền đọc hợp lệ ≠ quyền gửi đi bất cứ đâu.</div>
 
-<div class="absolute bottom-2.5 left-12 right-12 text-[11px] text-slate-400">
-  DLP = Data Loss Prevention (NIST, Microsoft, Google); tài liệu học thuật thường viết Data Leakage Prevention. Egress path = đường để dữ liệu rời khỏi hệ thống.
-</div>
 
 <style scoped>
 .con-chips { margin-top: 10px; display: flex; flex-wrap: wrap; justify-content: center; gap: 8px; }
