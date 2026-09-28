@@ -11,16 +11,16 @@ transition: slide-left
     <article class="ai-research-card ai-research-card--training">
       <div class="ai-research-category">HỖ TRỢ HUẤN LUYỆN</div>
       <h2>Tạo dữ liệu tổng hợp</h2>
-      <p>LLM tạo văn bản tiếng Ý để huấn luyện mô hình phát hiện dữ liệu nhạy cảm.</p>
+      <p>LLM tạo văn bản tổng hợp tiếng Ý để huấn luyện bộ phát hiện dữ liệu nhạy cảm.</p>
       <div class="ai-research-sequence">LLM <span>→</span> Văn bản tổng hợp <span>→</span> Huấn luyện bộ phát hiện</div>
-      <div class="ai-research-source">De Renzis, Dosso &amp; Testolin · 2024 <sup>[1]</sup></div>
+      <div class="ai-research-source"><a href="https://www.research.unipd.it/handle/11577/3524608">De Renzis et al. (2024)</a></div>
     </article>
     <article class="ai-research-card ai-research-card--detection">
       <div class="ai-research-category">HỖ TRỢ PHÁT HIỆN</div>
       <h2>Nhận diện theo ngữ cảnh</h2>
       <p>Nhận diện thông tin nhạy cảm phụ thuộc ngữ cảnh trong văn bản phi cấu trúc.</p>
-      <div class="ai-research-support">Trọng tâm: nội dung nhạy cảm trong ngữ cảnh sử dụng.</div>
-      <div class="ai-research-source">Qawara &amp; Alhindi · 2026 <sup>[2]</sup></div>
+      <div class="ai-research-support">So sánh các mô hình ML và transformer cho bài toán phát hiện.</div>
+      <div class="ai-research-source"><a href="https://www.mdpi.com/2078-2489/17/7/663">Qawara &amp; Alhindi (2026)</a></div>
     </article>
   </div>
 
@@ -54,7 +54,7 @@ transition: slide-left
 .ai-research-sequence, .ai-research-support { margin-top: 11px; font-size: 12px; font-weight: 650; line-height: 1.28; }
 .ai-research-sequence span { padding: 0 3px; color: #0891b2; }
 .ai-research-source { margin-top: auto; padding-top: 12px; font-size: 11px; color: #53677c; }
-.ai-research-source sup { font-size: 10px; font-weight: 700; }
+.ai-research-source a { color: inherit; text-decoration: underline; text-decoration-color: #9badbb; text-underline-offset: 2px; }
 .ai-integration { margin-top: 16px; }
 .ai-integration-label { margin-bottom: 8px; color: #415a72; font-size: 11px; font-weight: 800; letter-spacing: .045em; }
 .ai-integration-flow { display: grid; grid-template-columns: 1fr 19px 1.13fr 19px 1.23fr 19px 1fr; align-items: center; gap: 4px; }
@@ -66,15 +66,11 @@ transition: slide-left
 </style>
 
 <!--
-- AI có thể hỗ trợ cả việc chuẩn bị dữ liệu huấn luyện và việc phát hiện nội dung nhạy cảm.
-- De Renzis và cộng sự dùng LLM tạo văn bản tổng hợp tiếng Ý để huấn luyện bộ phát hiện; LLM tạo dữ liệu không đồng nghĩa với thành phần trực tiếp chặn xuất.
-- Qawara và Alhindi nghiên cứu phát hiện dữ liệu nhạy cảm phụ thuộc ngữ cảnh trong văn bản phi cấu trúc.
-- Hai nghiên cứu minh họa những đóng góp khác nhau; không phải hai bước của cùng một hệ thống đã được kiểm chứng.
-- Luồng phía dưới là minh họa tích hợp: kết quả phát hiện được dùng khi xét policy, rồi quyết định được áp dụng tại điểm thực thi. Tùy bộ phát hiện, kết quả có thể là nhãn, vị trí hoặc điểm số.
-- Khi chuyển sang dữ liệu tiếng Việt hoặc triển khai trong Big Data, cần đánh giá lại báo nhầm, bỏ sót, độ trễ và khả năng mở rộng.
-- Không suy diễn kết quả phát hiện thành bằng chứng về hiệu quả chặn rò rỉ đầu cuối.
+AI có thể hỗ trợ DLP ở cả giai đoạn chuẩn bị dữ liệu huấn luyện và giai đoạn phát hiện. De Renzis, Dosso và Testolin sử dụng LLM để tạo văn bản tổng hợp tiếng Ý nhằm huấn luyện các bộ phát hiện dữ liệu nhạy cảm. Vai trò tạo dữ liệu huấn luyện cần được phân biệt với vai trò của mô hình chạy khi phân tích dữ liệu thực tế.
 
-Nguồn:
-[1] https://www.research.unipd.it/handle/11577/3524608
-[2] https://www.mdpi.com/2078-2489/17/7/663
+Qawara và Alhindi nghiên cứu phát hiện thông tin nhạy cảm phụ thuộc ngữ cảnh trong văn bản phi cấu trúc, xem xét các phương pháp ML và transformer. Hai công trình là những ví dụ nghiên cứu riêng biệt, không phải hai bước của một hệ thống chung đã được kiểm chứng.
+
+Luồng phía dưới minh họa cách tích hợp kết quả phát hiện vào DLP: bộ phát hiện tạo kết quả, policy xét kết quả cùng bối cảnh hành động, rồi điểm thực thi áp dụng quyết định. Các nghiên cứu về phát hiện không tự chứng minh hiệu quả chặn rò rỉ đầu cuối. Khi chuyển sang dữ liệu tiếng Việt hoặc triển khai trong pipeline Big Data, cần đánh giá lại báo nhầm, bỏ sót, độ trễ và khả năng mở rộng.
+
+Nguồn tham khảo: [De Renzis, Dosso & Testolin (2024), “Exploiting Large Language Models to Train Automatic Detectors of Sensitive Data”](https://www.research.unipd.it/handle/11577/3524608); [Qawara & Alhindi (2026), “Detecting Context-Dependent Sensitive Data in Unstructured Text”](https://www.mdpi.com/2078-2489/17/7/663).
 -->

@@ -43,23 +43,15 @@ transition: slide-left
   Làm sao tự động nhận diện PII trong tệp gửi đi để ngăn chặn kịp thời? → Đó là vai trò của <b>DLP</b>.
 </div>
 
-<div class="absolute bottom-2.5 left-12 right-12 text-[11px] text-slate-400">
-  Tình huống giả định điển hình trong môi trường phân tích dữ liệu lớn của doanh nghiệp.
-</div>
-
 <!--
-[Click 1 - Mở đầu tình huống]:
-- Đặt vấn đề: Một nhân sự thao tác hoàn toàn đúng quyền hạn thì có thể gây rò rỉ dữ liệu hay không?
+Đọc đúng quyền, nhưng gửi sai đích? Nghe có vẻ nghịch lý, nhưng đây lại là kịch bản rò rỉ dữ liệu xảy ra thường xuyên nhất.
 
-[Click 2 - Cột trái: Thao tác hợp lệ]:
-- Chuyên viên dữ liệu có quyền đọc Data Lake, trích xuất bảng customer_segments.
-- Bảng tổng hợp sau xử lý này vô tình vẫn chứa thông tin định danh cá nhân (PII: Email, SĐT).
+[CLICK] Cùng xem một quy trình nghiệp vụ điển hình trên pipeline:
 
-[Click 3 - Cột phải: Nguy cơ khi chia sẻ]:
-- Tệp kết quả bị chia sẻ hoặc gửi ra kênh bên ngoài chưa qua kiểm duyệt.
-- Kiểm soát truy cập chỉ bảo vệ ở cổng vào (lúc đọc), hoàn toàn bỏ ngỏ nội dung tệp ở cổng ra (lúc gửi đi).
+[CLICK] Thao tác nghiệp vụ hợp lệ: Chuyên viên dữ liệu có quyền đọc hợp lệ trong Data Lake, trích xuất bảng customer_segments. Tuy nhiên bảng tổng hợp sau xử lý này vô tình vẫn còn giữ nguyên PII (Mã KH, Email, SĐT).
 
-[Click 4 - Chốt vấn đề & Chuyển giao]:
-- Cần giải pháp tự động soi nội dung PII tại cổng xuất và chủ động ngăn chặn luồng gửi đi.
-- Bàn giao: "Và đó chính là lý do cần đến DLP. Sau đây xin mời anh Phong trình bày phần cơ chế nền tảng của DLP."
+[CLICK] Nguy cơ khi chia sẻ: Tệp dữ liệu này được xuất và gửi ra kênh ngoài chưa kiểm duyệt (cloud cá nhân, đối tác). Điểm mù bảo mật: Access Control chỉ kiểm soát cổng vào lúc đọc, hoàn toàn bỏ ngỏ nội dung tệp ở cổng ra!
+
+[CLICK] Chốt vấn đề: Cần giải pháp tự động soi nội dung PII ngay tại cổng xuất và chủ động ngăn chặn luồng gửi ra ngoài -> Đó là vai trò của DLP.
+Bàn giao: "Sau đây xin mời anh Phong trình bày tiếp về cơ chế nền tảng của DLP."
 -->

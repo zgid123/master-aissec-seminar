@@ -16,7 +16,7 @@ let observer: ResizeObserver | null = null
 let animationObserver: MutationObserver | null = null
 
 function updateWidth() {
-  const dot = connector.value?.querySelector<HTMLElement>('.alpha-circular-pyramid-stack-title__dot')
+  const dot = connector.value?.querySelector<HTMLElement>('.alpha-square-pyramid-stack-title__dot')
   if (!connector.value || !dot) return
 
   // Both offsets are in the connector's own coordinate system, so Slidev's
@@ -25,15 +25,15 @@ function updateWidth() {
 }
 
 onMounted(() => {
-  title = label.value?.closest<HTMLElement>('.alpha-circular-pyramid-stack-title') ?? null
-  connector.value = title?.querySelector<HTMLElement>('.alpha-circular-pyramid-stack-title__connector') ?? null
+  title = label.value?.closest<HTMLElement>('.alpha-square-pyramid-stack-title') ?? null
+  connector.value = title?.querySelector<HTMLElement>('.alpha-square-pyramid-stack-title__connector') ?? null
   title?.style.setProperty('--did-title-offset', `${props.offsetY}px`)
   updateWidth()
 
-  const line = connector.value?.querySelector<HTMLElement>('.alpha-circular-pyramid-stack-title__line')
+  const line = connector.value?.querySelector<HTMLElement>('.alpha-square-pyramid-stack-title__line')
   if (line) {
     const updateAnimation = () => {
-      animated.value = line.classList.contains('alpha-circular-pyramid-stack-title__line--animated')
+      animated.value = line.classList.contains('alpha-square-pyramid-stack-title__line--animated')
     }
     updateAnimation()
     animationObserver = new MutationObserver(updateAnimation)

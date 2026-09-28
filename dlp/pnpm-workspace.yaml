@@ -1,2 +1,5 @@
 allowBuilds:
   playwright-chromium: false
+
+patchedDependencies:
+  "@alphacifer/slidev-addon-theme@0.0.10": patches/@alphacifer__slidev-addon-theme@0.0.10.patch
