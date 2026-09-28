@@ -8,9 +8,17 @@ background: ../../assets/heading.png
 # Demo và đánh giá
 
 ---
-src: ./01-policy-walkthrough.md
+src: ./00-system-context.md
 ---
 
 ---
-src: ./02-evaluation.md
+src: ./02-multi-detector-results.md
+---
+
+---
+src: ./03-policy-enforcement.md
+---
+
+---
+src: ./05-coverage-and-limits.md
 ---

@@ -1,0 +1,29 @@
+[build-system]
+requires = ["setuptools>=69"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "big-data-dlp-demo"
+version = "0.1.0"
+description = "A seminar demo of Data Loss Prevention at a controlled Big Data export path"
+requires-python = ">=3.11"
+dependencies = [
+  "pandas>=2.2,<3",
+  "pyspark>=4.0,<5",
+  "PyYAML>=6.0,<7",
+  "streamlit>=1.45,<2",
+]
+
+[project.optional-dependencies]
+dev = ["pytest>=8,<10"]
+
+[tool.setuptools]
+package-dir = {"" = "src"}
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = "-q"

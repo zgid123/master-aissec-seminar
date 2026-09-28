@@ -6,7 +6,7 @@ transition: slide-left
 
 # DLP là gì?
 
-Data Leakage Prevention (DLP){.font-bold} nhận diện dữ liệu nhạy cảm và áp dụng policy để kiểm soát việc sử dụng, chia sẻ hoặc xuất dữ liệu.
+Data Loss Prevention (DLP){.font-bold} nhận diện dữ liệu nhạy cảm và áp dụng policy để kiểm soát việc sử dụng, chia sẻ hoặc xuất dữ liệu.
 
 <div v-click="2" class="mt-6 grid grid-cols-3 gap-5 pl-5 [&_svg.absolute_path]:opacity-10">
   <VertCard step="01" title="Vấn đề" color="#b45309" card-bg="#fffbeb" :dots="false" class="h-[220px] w-full">

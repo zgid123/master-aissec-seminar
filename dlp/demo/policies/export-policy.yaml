@@ -1,0 +1,50 @@
+version: 1
+
+destinations:
+  internal_analytics:
+    trust: approved
+    description: Kho phân tích nội bộ đã được duyệt
+  external_drive:
+    trust: unapproved
+    description: Ổ đĩa ngoài chưa được duyệt trong kịch bản demo
+
+rules:
+  - id: BLOCK-PII-EXTERNAL
+    when:
+      actions: [export]
+      actor_roles: ["*"]
+      destination_trust: [unapproved, unknown]
+      labels_any: [PII, DIRECT_IDENTIFIER, CONTACT_INFORMATION, HEALTH_INFORMATION, CONFIDENTIAL_CAMPAIGN, SENSITIVE]
+    decision: BLOCK
+    reason: File có dữ liệu nhạy cảm nên không được gửi tới nơi chưa được duyệt.
+
+  - id: BLOCK-CONTRACTOR-PII
+    when:
+      actions: [export]
+      actor_roles: [external_contractor]
+      destination_trust: [approved]
+      labels_any: [PII]
+    decision: BLOCK
+    reason: Tài khoản đối tác không được xuất dữ liệu có thể nhận diện khách hàng.
+
+  - id: ALLOW-APPROVED-INTERNAL
+    when:
+      actions: [export]
+      actor_roles: [data_analyst, manager]
+      destination_trust: [approved]
+    decision: ALLOW
+    reason: Vai trò người gửi và kho nội bộ đều phù hợp với policy.
+
+  - id: ALLOW-NON-SENSITIVE-EXTERNAL
+    when:
+      actions: [export]
+      actor_roles: [data_analyst, manager]
+      destination_trust: [unapproved]
+      labels_none: [PII, DIRECT_IDENTIFIER, CONTACT_INFORMATION, PERSONAL_INFORMATION, HEALTH_INFORMATION, CONFIDENTIAL_CAMPAIGN, SENSITIVE]
+    decision: ALLOW
+    reason: Bảng tổng hợp không còn nhãn nhạy cảm đã cấu hình và có thể gửi cho đối tác.
+
+default:
+  id: DEFAULT-DENY
+  decision: BLOCK
+  reason: Không có rule cho phép phù hợp nên cổng xuất từ chối yêu cầu.

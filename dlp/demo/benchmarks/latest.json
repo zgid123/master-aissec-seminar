@@ -1,0 +1,26 @@
+[
+  {
+    "rows": 100000,
+    "partitions": 8,
+    "trials_ms": [
+      563.96,
+      294.23,
+      176.16
+    ],
+    "median_scan_ms": 294.23,
+    "min_scan_ms": 176.16,
+    "max_scan_ms": 563.96
+  },
+  {
+    "rows": 1000000,
+    "partitions": 8,
+    "trials_ms": [
+      597.81,
+      338.05,
+      319.59
+    ],
+    "median_scan_ms": 338.05,
+    "min_scan_ms": 319.59,
+    "max_scan_ms": 597.81
+  }
+]

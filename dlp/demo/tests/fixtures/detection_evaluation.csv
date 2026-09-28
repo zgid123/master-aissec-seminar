@@ -1,0 +1,13 @@
+text,expected_detector
+alice@example.test,email-pattern
+student.name+seminar@hcmus.edu.vn,email-pattern
+not-an-email,NONE
+alice@example,NONE
+0912345678,vn-phone-pattern
++84987654321,vn-phone-pattern
+0212345678,NONE
+098765432,vn-phone-pattern
+079203001234,vn-national-id-pattern
+001099123456,vn-national-id-pattern
+123456789012,NONE
+CUS-00000001,NONE

@@ -1,0 +1,14 @@
+.venv/
+__pycache__/
+.pytest_cache/
+build/
+*.egg-info/
+*.py[cod]
+data/raw/*
+data/derived/*
+data/destinations/*
+audit/*.jsonl
+!data/raw/.gitkeep
+!data/derived/.gitkeep
+!data/destinations/.gitkeep
+!data/destinations/.gitkeep
