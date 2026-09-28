@@ -16,7 +16,7 @@ pnpm export
 
 Use Slidev presenter view to see the notes and target duration on each timed slide. `slides-export.pdf` is the exported deck.
 
-The current export is `dlp-seminar.pdf`. The demo story occupies slides 15–18.
+The export creates a PDF page for each reveal step, so one numbered slide can span several PDF pages. Rehearse against those page transitions for the 15-minute slot; some transitions reveal a heading before the slide content. The two export cases are a policy illustration, and the evaluation slide describes proposed measurements rather than experimental results.
 
 ## Runnable demonstration
 
@@ -32,4 +32,6 @@ See [`demo/README.md`](demo/README.md) for setup, tests, benchmark commands, and
 
 ## Scope and limitations
 
-The implementation classifies a derived dataset and enforces policy at one controlled export path. It does not claim to protect browser uploads, direct storage access, scripts, privileged routes, or transfers that bypass the monitored path. The included labeled fixture is intentionally small and demonstrates how to measure false positives and misses; it is not evidence of production accuracy. Backup and recovery from deletion remain outside this seminar's scope.
+Seminar tập trung vào phòng chống rò rỉ dữ liệu nhạy cảm, đặc biệt tại các đường chia sẻ hoặc xuất đã tích hợp kiểm soát. Đây là mô tả trọng tâm của seminar; bằng chứng và giải thích về lựa chọn thuật ngữ nằm trong presenter notes của slide “DLP là gì?”.
+
+The proposed design classifies sensitive information in original and derived datasets, then enforces policy at one controlled export path. It does not claim to protect browser uploads, direct storage access, scripts, privileged routes, or transfers that bypass the monitored path. False positives, misses, classification changes after data transformations, product-specific coverage, and scan/decision latency require evaluation. Backup and recovery from deletion are outside this seminar's scope.

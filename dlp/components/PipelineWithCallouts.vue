@@ -20,10 +20,11 @@ const callouts = [
   {
     badge: 'A', tone: 'amber', step: 2, heading: 'Phát hiện và gắn nhãn',
     description: 'Quét file, bảng để nhận diện dữ liệu nhạy cảm.',
+    source: 'Liu et al. (2015) · quét quy mô lớn',
   },
   {
     badge: 'B', tone: 'cyan', step: 3, heading: 'Kiểm tra sau biến đổi',
-    description: 'Dùng lineage hỗ trợ cập nhật nhãn; quét lại khi cần.',
+    description: 'Xác minh nhãn sau biến đổi; dùng lineage và quét lại khi cần.',
   },
   {
     badge: 'C', tone: 'violet', step: 4, heading: 'Thực thi policy',
@@ -68,6 +69,7 @@ const callouts = [
           <strong>{{ callout.heading }}</strong>
         </div>
         <p>{{ callout.description }}</p>
+        <small v-if="'source' in callout" class="callout-source">{{ callout.source }}</small>
         <div v-if="'outcome' in callout" class="outcome">{{ callout.outcome }}</div>
       </div>
     </div>
@@ -167,7 +169,8 @@ const callouts = [
 .pipeline-extras { min-height: 55px; margin-top: 11px; text-align: center; }
 .pipeline-extras p { margin: 0; line-height: 1.35; }
 .qualification { color: #5b3aa2; font-size: 13px; font-weight: 700; }
-.challenges { display: inline-block; margin-top: 5px !important; padding: 3px 10px; border-radius: 6px; background: #eef2f7; color: #334b63; font-size: 12px; }
+.challenges { display: inline-block; margin-top: 5px !important; padding: 5px 12px; border-radius: 6px; background: #eef2f7; color: #334b63; font-size: 13px; }
+.callout-source { display: block; margin-top: 7px; color: #64788c; font-size: 10px; font-weight: 650; line-height: 1.2; }
 @media (prefers-reduced-motion: reduce) {
   .stage, .stage-icon, .stage-label, .callout, .reveal { transition: none; }
 }

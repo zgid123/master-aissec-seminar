@@ -9,15 +9,19 @@ transition: slide-left
 <PipelineWithCallouts />
 
 <!--
+Pipeline minh họa dữ liệu đi từ nguồn, qua lưu trữ và xử lý, đến dữ liệu dẫn xuất và chia sẻ. Ba điểm A, B và C là các vị trí kiểm soát đại diện, không phải danh sách đầy đủ của mọi kiến trúc DLP.
+
 [click]
-- Đây là pipeline tổng quát: dữ liệu đi từ nguồn, qua lưu trữ và xử lý, đến đầu ra và chia sẻ. A, B, C là các điểm kiểm soát tiêu biểu, không phải toàn bộ kiến trúc triển khai.
+
+Tại A, hệ thống quét file hoặc bảng để nhận diện dữ liệu nhạy cảm và tạo nhãn phục vụ quản lý. Liu và cộng sự nghiên cứu kỹ thuật quét nội dung nhạy cảm có khả năng mở rộng trên MapReduce; công trình hỗ trợ phần quét quy mô lớn, không phải toàn bộ kiến trúc pipeline minh họa.
+
 [click]
-- Đầu tiên, nhận diện và gắn nhãn dữ liệu nhạy cảm tại nơi lưu trữ. Phát hiện và phân loại không tự động chặn hoạt động xuất.
+
+Tại B, nhãn cần được xác minh sau biến đổi vì đầu ra có thể giữ lại, loại bỏ hoặc kết hợp thông tin từ nhiều nguồn. Lineage thể hiện quan hệ nguồn gốc và quá trình biến đổi dữ liệu, hỗ trợ truy vết và cập nhật nhãn; riêng lineage không bảo đảm nhãn đầu ra luôn chính xác.
+
 [click]
-- Sau biến đổi, cần xác minh nhãn còn phù hợp. Lineage hỗ trợ truy vết và cập nhật nhãn; quét lại khi cần. Chỉ lineage không chứng minh nhãn nhạy cảm của đầu ra vẫn đúng.
-[click]
-- Khi chia sẻ hoặc xuất, policy xét nhãn, người thực hiện, hành động và đích. Khả năng chặn chỉ có hiệu lực tại đường đã tích hợp kiểm soát; các đường khác không tự động bị chặn.
-- Quy mô lớn, nhiều định dạng, dữ liệu biến đổi và nhiều đường xuất làm việc kiểm soát khó hơn.
-- Atlas hỗ trợ metadata/lineage, Ranger hỗ trợ policy/audit trong dịch vụ tích hợp; ứng dụng vẫn phải thực thi kiểm soát ở đường xuất của mình.
-- Liu et al. (2015) nghiên cứu quét dữ liệu nhạy cảm quy mô lớn bằng MapReduce, không phải toàn bộ kiến trúc minh họa.
+
+Tại C, policy xét kết quả phân loại cùng người thực hiện, hành động và đích để đưa ra quyết định. Quyết định chỉ có tác dụng khi được áp dụng tại điểm thực thi đã tích hợp. Quy mô lớn, nhiều định dạng, dữ liệu biến đổi và nhiều đường xuất làm tăng khó khăn trong việc duy trì kiểm soát.
+
+Nguồn tham khảo: [Liu et al. (2015), “Privacy-Preserving Scanning of Big Content for Sensitive Data Exposure with MapReduce”](https://vtechworks.lib.vt.edu/items/2652b4c0-305d-4b03-b463-e16d1cd8ad4e).
 -->
