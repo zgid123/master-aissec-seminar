@@ -4,73 +4,70 @@ hideInToc: true
 transition: slide-left
 ---
 
-# AI hỗ trợ DLP ở đâu?
+# <span class="ai-page-title">Phát hiện dữ liệu nhạy cảm theo ngữ cảnh bằng AI</span>
 
-<div class="ai-research-body">
-  <div class="ai-research-cards">
-    <article class="ai-research-card ai-research-card--training">
-      <div class="ai-research-category">HỖ TRỢ HUẤN LUYỆN</div>
-      <h2>Tạo dữ liệu tổng hợp</h2>
-      <p>LLM tạo văn bản tổng hợp tiếng Ý để huấn luyện bộ phát hiện dữ liệu nhạy cảm.</p>
-      <div class="ai-research-sequence">LLM <span>→</span> Văn bản tổng hợp <span>→</span> Huấn luyện bộ phát hiện</div>
-      <div class="ai-research-source"><a href="https://www.research.unipd.it/handle/11577/3524608">De Renzis et al. (2024)</a></div>
-    </article>
-    <article class="ai-research-card ai-research-card--detection">
-      <div class="ai-research-category">HỖ TRỢ PHÁT HIỆN</div>
-      <h2>Nhận diện theo ngữ cảnh</h2>
-      <p>Nhận diện thông tin nhạy cảm phụ thuộc ngữ cảnh trong văn bản phi cấu trúc.</p>
-      <div class="ai-research-support">So sánh các mô hình ML và transformer cho bài toán phát hiện.</div>
-      <div class="ai-research-source"><a href="https://www.mdpi.com/2078-2489/17/7/663">Qawara &amp; Alhindi (2026)</a></div>
-    </article>
-  </div>
-
-  <div class="ai-integration">
-    <div class="ai-integration-label">Minh họa tích hợp trong DLP</div>
-    <div class="ai-integration-flow">
-      <div class="ai-integration-stage"><strong>Bộ phát hiện</strong><small>Quy tắc / AI</small></div>
-      <span class="ai-integration-arrow">→</span>
-      <div class="ai-integration-stage"><strong>Kết quả phát hiện</strong><small>Nhãn, vị trí hoặc điểm số</small></div>
-      <span class="ai-integration-arrow">→</span>
-      <div class="ai-integration-stage"><strong>Xét policy</strong><small>Người thực hiện · hành động · đích</small></div>
-      <span class="ai-integration-arrow">→</span>
-      <div class="ai-integration-stage"><strong>Điểm thực thi</strong><small>Áp dụng quyết định</small></div>
+<div class="ai-worked-example">
+  <section class="ai-input-card">
+    <div class="ai-kicker">Ví dụ giả định</div>
+    <blockquote>“Nhà An ở số 12 đường X. Gia đình thường vắng nhà từ 8 giờ đến 17 giờ.”</blockquote>
+    <div class="ai-context">
+      <strong>Quan hệ ngữ cảnh:</strong> địa chỉ gắn với An và lịch vắng nhà có thể làm tăng rủi ro an toàn cá nhân.
     </div>
-  </div>
+    <div class="ai-ambiguity"><strong>Ngữ cảnh khác nhau:</strong> cùng một địa chỉ có thể xuất hiện trong quảng cáo bất động sản.</div>
+  </section>
 
-  <div class="ai-evaluation">Cần đánh giá lại trên dữ liệu đích: báo nhầm, bỏ sót và độ trễ.</div>
+  <section class="ai-model-card">
+    <div class="ai-kicker">CƠ CHẾ</div>
+    <h2>Phân loại toàn văn bản</h2>
+    <p>Học từ văn bản đã gán nhãn; dự đoán nhãn cho toàn văn bản mới.</p>
+    <div class="ai-output-label">Label có thể có</div>
+    <div class="ai-output-options"><span>0 · Không nhạy cảm</span><span>1 · Nhạy cảm</span></div>
+  </section>
+</div>
+
+<div class="ai-evaluation">
+  <strong>Đánh giá:</strong>
+  <span>Báo nhầm</span><b>·</b><span>Bỏ sót</span><b>·</b><span>Độ trễ</span>
 </div>
 
 <style scoped>
-.ai-research-body { margin-top: 8px; color: #18334f; }
-.ai-research-cards { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
-.ai-research-card { min-height: 207px; padding: 17px 19px 14px; border: 1px solid; border-radius: 13px; display: flex; flex-direction: column; }
-.ai-research-card--training { background: #effbfc; border-color: #a7e3e8; }
-.ai-research-card--detection { background: #f6f3ff; border-color: #d8c9f5; }
-.ai-research-category { font-size: 11px; font-weight: 800; letter-spacing: .08em; line-height: 1.2; }
-.ai-research-card--training .ai-research-category { color: #0e7490; }
-.ai-research-card--detection .ai-research-category { color: #7651a8; }
-.ai-research-card h2 { margin: 9px 0 7px; font-size: 22px; font-weight: 750; line-height: 1.14; color: #142d49; }
-.ai-research-card p { margin: 0; font-size: 14px; line-height: 1.34; }
-.ai-research-sequence, .ai-research-support { margin-top: 11px; font-size: 12px; font-weight: 650; line-height: 1.28; }
-.ai-research-sequence span { padding: 0 3px; color: #0891b2; }
-.ai-research-source { margin-top: auto; padding-top: 12px; font-size: 11px; color: #53677c; }
-.ai-research-source a { color: inherit; text-decoration: underline; text-decoration-color: #9badbb; text-underline-offset: 2px; }
-.ai-integration { margin-top: 16px; }
-.ai-integration-label { margin-bottom: 8px; color: #415a72; font-size: 11px; font-weight: 800; letter-spacing: .045em; }
-.ai-integration-flow { display: grid; grid-template-columns: 1fr 19px 1.13fr 19px 1.23fr 19px 1fr; align-items: center; gap: 4px; }
-.ai-integration-stage { min-height: 62px; padding: 9px 8px; border: 1px solid #dbe5ee; border-radius: 9px; background: #f8fafc; text-align: center; }
-.ai-integration-stage strong { display: block; font-size: 12px; line-height: 1.2; color: #18334f; }
-.ai-integration-stage small { display: block; margin-top: 5px; font-size: 10px; line-height: 1.2; color: #53677c; }
-.ai-integration-arrow { color: #8296aa; font-size: 20px; text-align: center; }
-.ai-evaluation { margin-top: 15px; padding-left: 10px; border-left: 3px solid #0ea5e9; color: #1c5068; font-size: 12px; font-weight: 650; line-height: 1.3; }
+.ai-page-title { display: inline-block; max-width: 100%; font-size: 33px; line-height: 1.08; }
+.ai-worked-example { display: grid; grid-template-columns: 1.15fr 1fr; gap: 16px; margin-top: 10px; color: #18334f; }
+.ai-input-card, .ai-model-card { min-height: 306px; padding: 19px 21px 17px; border: 1px solid; border-radius: 13px; }
+.ai-input-card { background: #effbfc; border-color: #a7e3e8; }
+.ai-model-card { background: #f6f3ff; border-color: #d8c9f5; }
+.ai-kicker { color: #526b82; font-size: 11px; font-weight: 800; letter-spacing: .055em; line-height: 1.25; }
+.ai-input-card .ai-kicker { color: #0e7490; }
+.ai-model-card .ai-kicker { color: #7651a8; }
+.ai-input-card blockquote { margin: 18px 0 15px; padding: 0 0 0 14px; border-left: 3px solid #18a3b8; color: #142d49; font-size: 20px; font-weight: 650; line-height: 1.42; }
+.ai-context { padding: 11px 12px; border-radius: 8px; background: #fff; color: #334b63; font-size: 14px; line-height: 1.38; }
+.ai-context strong, .ai-ambiguity strong { color: #18334f; }
+.ai-ambiguity { margin-top: 13px; color: #52677b; font-size: 13px; line-height: 1.35; }
+.ai-model-card h2 { margin: 14px 0 9px; color: #142d49; font-size: 23px; font-weight: 750; line-height: 1.16; }
+.ai-model-card p { margin: 0; color: #334b63; font-size: 15px; line-height: 1.4; }
+.ai-output-label { margin-top: 17px; color: #52677b; font-size: 11px; font-weight: 800; letter-spacing: .045em; text-transform: uppercase; }
+.ai-output-options { display: flex; gap: 8px; margin-top: 7px; }
+.ai-output-options span { flex: 1; padding: 8px 7px; border: 1px solid #d8c9f5; border-radius: 7px; background: #fff; color: #5b3aa2; font-size: 12px; font-weight: 700; line-height: 1.25; text-align: center; }
+.ai-study-scope { margin-top: 12px; color: #64788c; font-size: 12px; line-height: 1.3; }
+.ai-evaluation { margin: 12px auto 0; padding: 10px 13px; border-left: 4px solid #0ea5e9; border-radius: 5px; background: #f0f9ff; color: #1c5068; font-size: 14px; line-height: 1.3; text-align: center; }
+.ai-evaluation strong { margin-right: 8px; }
+.ai-evaluation b { margin: 0 8px; color: #8296aa; }
+.ai-source { margin-top: 8px; color: #64788c; font-size: 11px; line-height: 1.25; text-align: center; }
+.ai-source a { color: inherit; text-decoration: underline; text-decoration-color: #9badbb; text-underline-offset: 2px; }
 </style>
 
 <!--
-AI có thể hỗ trợ DLP ở cả giai đoạn chuẩn bị dữ liệu huấn luyện và giai đoạn phát hiện. De Renzis, Dosso và Testolin sử dụng LLM để tạo văn bản tổng hợp tiếng Ý nhằm huấn luyện các bộ phát hiện dữ liệu nhạy cảm. Vai trò tạo dữ liệu huấn luyện cần được phân biệt với vai trò của mô hình chạy khi phân tích dữ liệu thực tế.
+**Vì sao cần ngữ cảnh.** Một chuỗi hoặc danh mục đơn lẻ không phải lúc nào cũng cho biết mức độ nhạy cảm. Câu giả định “Nhà An ở số 12 đường X. Gia đình thường vắng nhà từ 8 giờ đến 17 giờ” liên hệ một địa chỉ với một cá nhân và lịch vắng nhà; công khai sự kết hợp này có thể tạo rủi ro riêng tư và an toàn. Đây là ví dụ hư cấu để minh họa rủi ro phụ thuộc ngữ cảnh. Ví dụ chưa được đánh giá bằng mô hình trong bài báo được trích dẫn và không phải kết quả thực nghiệm được chứng minh trong nghiên cứu. Không có label dự đoán hay điểm số nào được gán cho câu này.
 
-Qawara và Alhindi nghiên cứu phát hiện thông tin nhạy cảm phụ thuộc ngữ cảnh trong văn bản phi cấu trúc, xem xét các phương pháp ML và transformer. Hai công trình là những ví dụ nghiên cứu riêng biệt, không phải hai bước của một hệ thống chung đã được kiểm chứng.
+**Cơ chế phân loại.** AI/ML (Artificial Intelligence/Machine Learning, trí tuệ nhân tạo/học máy) có thể học từ văn bản đã gán nhãn rồi dự đoán label cho toàn văn bản mới. Trong slide, “không nhạy cảm” và “nhạy cảm” chỉ là các nhóm label đầu ra có thể có; chúng không phải dự đoán cho ví dụ về An. Phân loại toàn văn bản cũng khác với việc xác định chính xác đoạn hoặc vị trí của thông tin nhạy cảm.
 
-Luồng phía dưới minh họa cách tích hợp kết quả phát hiện vào DLP: bộ phát hiện tạo kết quả, policy xét kết quả cùng bối cảnh hành động, rồi điểm thực thi áp dụng quyết định. Các nghiên cứu về phát hiện không tự chứng minh hiệu quả chặn rò rỉ đầu cuối. Khi chuyển sang dữ liệu tiếng Việt hoặc triển khai trong pipeline Big Data, cần đánh giá lại báo nhầm, bỏ sót, độ trễ và khả năng mở rộng.
+**Nghiên cứu được chọn.** Qawara và Alhindi (2026) nghiên cứu bài toán phân loại tweet tiếng Anh theo độ nhạy cảm phụ thuộc ngữ cảnh, tập trung vào chủ đề chính trị và sắc tộc/chủng tộc. Đây là miền nghiên cứu được mô tả trong bài báo, không phải thử nghiệm về địa chỉ nhà ở hoặc lịch sinh hoạt. Bài báo không đánh giá ví dụ hư cấu trên slide, nên không thể dùng làm bằng chứng thực nghiệm cho khả năng phát hiện rủi ro riêng tư liên quan nơi ở.
 
-Nguồn tham khảo: [De Renzis, Dosso & Testolin (2024), “Exploiting Large Language Models to Train Automatic Detectors of Sensitive Data”](https://www.research.unipd.it/handle/11577/3524608); [Qawara & Alhindi (2026), “Detecting Context-Dependent Sensitive Data in Unstructured Text”](https://www.mdpi.com/2078-2489/17/7/663).
+**Giới hạn và đánh giá.** Kết quả trên tweet chính trị và sắc tộc/chủng tộc không bảo đảm chuyển sang tiếng Việt, văn bản sức khỏe, tài liệu nội bộ hoặc pipeline Big Data khác. Ngữ cảnh mơ hồ có thể làm mô hình nhầm địa chỉ được nêu trong quảng cáo với địa chỉ gắn cùng một cá nhân và lịch vắng nhà; quảng cáo bất động sản không tự động đồng nghĩa với nội dung không nhạy cảm. Tương tự, câu phủ định về tình trạng sức khỏe vẫn có thể tiết lộ thông tin sức khỏe cá nhân. Trước khi dùng trong luồng kiểm soát, cần đánh giá báo nhầm, bỏ sót và độ trễ trên dữ liệu mục tiêu, với label được rà soát và tiêu chí phù hợp với hậu quả của từng lỗi.
+
+**Phân biệt với demo.** Bài báo và demo seminar là hai nội dung riêng. Demo dùng một Multinomial Naive Bayes nhỏ trên các câu tiếng Việt tổng hợp về thông tin sức khỏe; mã nguồn cho thấy tập minh họa chỉ có mười câu. Đây là mô hình và tập dữ liệu khác với nghiên cứu trên tweet tiếng Anh. Demo chỉ minh họa vị trí của bộ phân loại trong luồng, không tái tạo nghiên cứu hoặc chứng minh chất lượng triển khai.
+
+Một hướng nghiên cứu bổ trợ là tạo dữ liệu huấn luyện tổng hợp: De Renzis, Dosso và Testolin (2024) sử dụng LLM để sinh văn bản tiếng Ý cho huấn luyện detector dữ liệu nhạy cảm. Đây là công việc hỗ trợ dữ liệu huấn luyện, không phải phương pháp phát hiện được trình bày ở trên. Nguồn: [De Renzis et al. (2024), “Exploiting Large Language Models to Train Automatic Detectors of Sensitive Data”](https://www.research.unipd.it/handle/11577/3524608).
+
+Nguồn kỹ thuật chính: Qawara, H. M., & Alhindi, H. (2026). “Detecting Context-Dependent Sensitive Data in Unstructured Text.” *Information, 17*(7), 663. https://doi.org/10.3390/info17070663.
 -->
