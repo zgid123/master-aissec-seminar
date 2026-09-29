@@ -38,7 +38,7 @@ def test_scanner_combines_pattern_fingerprint_and_context_ml(spark):
                 "CUS-0001",
                 "alice@example.test",
                 "AURORA-2026",
-                "Khách hàng đang điều trị HIV và cần tư vấn bảo hiểm.",
+                "Khách hàng đang mang thai và cần hỗ trợ giao hàng tại nhà.",
             ),
             (
                 "CUS-0002",

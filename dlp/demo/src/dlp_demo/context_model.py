@@ -7,7 +7,7 @@ from dataclasses import dataclass
 
 
 TRAINING_SAMPLES = (
-    ("khách hàng đang điều trị hiv và cần tư vấn bảo hiểm", 1),
+    ("khách hàng đang mang thai và cần hỗ trợ giao hàng tại nhà", 1),
     ("bệnh nhân có tiền sử ung thư và đang dùng thuốc", 1),
     ("hồ sơ ghi nhận chẩn đoán tiểu đường", 1),
     ("khách hàng khai báo tình trạng sức khỏe tâm thần", 1),
@@ -61,4 +61,3 @@ class TinyContextClassifier:
         exp_safe = math.exp(scores[0] - maximum)
         probability = exp_sensitive / (exp_sensitive + exp_safe)
         return ContextPrediction(sensitive=probability >= 0.65, probability=round(probability, 3))
-

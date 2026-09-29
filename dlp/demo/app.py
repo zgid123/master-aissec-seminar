@@ -134,7 +134,7 @@ with story_col:
         st.error(
             "**File phân khúc vẫn còn dữ liệu nhạy cảm.**\n\n"
             "Ngoài email và số điện thoại, năm dòng còn mang mã chiến dịch nội bộ "
-            "và ghi chú về sức khỏe."
+            "và ghi chú có thông tin sức khỏe."
         )
     else:
         st.success(
@@ -222,7 +222,8 @@ if run_export and dataset_path.exists():
     if any(finding.method == "context-ml" for finding in result.scan.findings):
         st.info(
             "**Mô hình ngữ cảnh giúp ở đâu?** Quy tắc định dạng không hiểu ý nghĩa của câu "
-            "'đang điều trị HIV'. Mô hình thử nghiệm nhận ra đây là thông tin sức khỏe. "
+            "'đang mang thai và cần hỗ trợ giao hàng tại nhà'. Mô hình thử nghiệm nhận ra "
+            "đây là thông tin sức khỏe. "
             "Mô hình này chỉ dùng để minh họa cách tích hợp và chưa đủ để triển khai thực tế."
         )
 

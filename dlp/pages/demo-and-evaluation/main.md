@@ -12,6 +12,10 @@ src: ./00-system-context.md
 ---
 
 ---
+src: ./01-sensitive-output.md
+---
+
+---
 src: ./02-multi-detector-results.md
 ---
 
@@ -20,5 +24,5 @@ src: ./03-policy-enforcement.md
 ---
 
 ---
-src: ./05-coverage-and-limits.md
+src: ./04-safe-sharing.md
 ---

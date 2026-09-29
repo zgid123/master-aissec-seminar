@@ -4,58 +4,29 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Nơi nhận quyết định cách xử lý file
+# Nơi nhận dữ liệu
 
-<div class="mt-3 text-[16px] leading-relaxed text-slate-700">
-  Policy xét người gửi, hành động, nhãn dữ liệu và nơi nhận. Ba lần chạy dưới đây dùng cùng một export gateway.
+<div style="clear: both; width: 100%;">
+  <DemoProgress :active="4" />
 </div>
 
-<table class="mt-5 w-full border-collapse text-[14px]">
-  <thead>
-    <tr class="border-y border-slate-300 bg-slate-100 text-left">
-      <th class="px-4 py-3">File gửi đi</th>
-      <th class="px-4 py-3">Nơi nhận</th>
-      <th class="px-4 py-3">Kết quả</th>
-      <th class="px-4 py-3">Bằng chứng tại nơi nhận</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr class="border-b border-slate-200">
-      <td class="px-4 py-4"><code>customer_segments</code><br><span class="text-slate-500">Có PII và dữ liệu nhạy cảm</span></td>
-      <td class="px-4 py-4">Kho phân tích nội bộ<br><span class="text-slate-500">Đã được duyệt</span></td>
-      <td class="px-4 py-4 text-[18px] font-black text-emerald-700">CHO PHÉP</td>
-      <td class="px-4 py-4">18 tệp · 19.589.777 byte</td>
-    </tr>
-    <tr class="border-b border-slate-200 bg-rose-50">
-      <td class="px-4 py-4"><code>customer_segments</code><br><span class="text-slate-500">Giữ nguyên nội dung</span></td>
-      <td class="px-4 py-4">Ổ đĩa của đối tác<br><span class="text-slate-500">Chưa được duyệt</span></td>
-      <td class="px-4 py-4 text-[18px] font-black text-rose-700">CHẶN</td>
-      <td class="px-4 py-4 font-bold text-rose-700">0 tệp · 0 byte</td>
-    </tr>
-    <tr class="border-b border-slate-200 bg-emerald-50">
-      <td class="px-4 py-4"><code>segment_summary</code><br><span class="text-slate-500">Chỉ còn số liệu tổng hợp</span></td>
-      <td class="px-4 py-4">Ổ đĩa của đối tác</td>
-      <td class="px-4 py-4 text-[18px] font-black text-emerald-700">CHO PHÉP</td>
-      <td class="px-4 py-4">4 tệp · 1.384 byte</td>
-    </tr>
-  </tbody>
-</table>
+<div class="mt-4 rounded-lg bg-slate-100 px-5 py-3 text-center text-[15px] text-slate-700">Phong gửi <code>customer_segments</code> — file có thông tin cá nhân, nội bộ và sức khỏe</div>
 
-<div class="mt-5 grid grid-cols-[1.25fr_1fr] gap-10">
-  <div class="text-[16px] leading-relaxed text-slate-700">
-    Đối tác chỉ cần số khách theo vùng và phân khúc. Sau khi file chi tiết bị chặn, nhóm dữ liệu tạo một bảng tổng hợp rồi gửi lại.
-  </div>
-  <div class="border-l-4 border-sky-500 pl-5 text-[14px] leading-relaxed text-slate-600">
-    Mỗi lần xử lý đều ghi lại người gửi, nơi nhận, policy khớp và số byte đã được ghi.
-  </div>
+<div class="mt-4 grid grid-cols-2 gap-8">
+  <div v-click class="border-t-4 border-emerald-500 bg-emerald-50/70 px-7 py-4"><div class="text-[12px] font-black tracking-[0.14em] text-emerald-700">TRƯỜNG HỢP A</div><div class="mt-2 text-[20px] font-bold text-slate-900">Gửi vào kho phân tích nội bộ</div><div class="mt-2 text-[14px] text-slate-600">Nơi nhận đã được công ty phê duyệt</div><div class="mt-4 text-[31px] font-black text-emerald-700">CHO PHÉP</div><div class="mt-2 border-t border-emerald-200 pt-2 text-[15px] text-slate-700">Dữ liệu vẫn nằm trong phạm vi kiểm soát.</div></div>
+  <div v-click class="border-t-4 border-rose-500 bg-rose-50/70 px-7 py-4"><div class="text-[12px] font-black tracking-[0.14em] text-rose-700">TRƯỜNG HỢP B</div><div class="mt-2 text-[20px] font-bold text-slate-900">Gửi sang ổ đĩa của đối tác</div><div class="mt-2 text-[14px] text-slate-600">Nơi nhận nằm ngoài công ty</div><div class="mt-4 text-[31px] font-black text-rose-700">CHẶN</div><div class="mt-2 border-t border-rose-200 pt-2 text-[15px] text-slate-700">DLP dừng thao tác trước khi file được ghi.</div></div>
 </div>
+
+<div v-click class="mt-3 border-l-4 border-slate-800 px-5 py-1 text-[16px] font-semibold text-slate-800">Quyết định phụ thuộc vào nội dung file, người gửi, hành động và nơi nhận.</div>
 
 <!--
-Mục tiêu: 1:00
+Mục tiêu: 0:45
 
-Policy không chặn mọi file có dữ liệu nhạy cảm. File chi tiết vẫn được phép dùng trong kho nội bộ đã duyệt.
+Đây là phép so sánh quan trọng nhất của demo: giữ nguyên người gửi và file, chỉ thay nơi nhận.
 
-Khi cùng file đó được gửi sang ổ đĩa ngoài, gateway chặn trước lệnh ghi nên nơi nhận có 0 tệp và 0 byte.
+[CLICK] Khi Phong gửi file vào kho phân tích nội bộ đã được phê duyệt, policy cho phép vì dữ liệu vẫn nằm trong phạm vi kiểm soát.
 
-Đối tác không cần dữ liệu của từng khách hàng. Nhóm dữ liệu tạo segment_summary chỉ còn vùng, phân khúc, số lượng và mức chi tiêu trung bình. DLP quét lại và cho phép gửi bản tổng hợp.
+[CLICK] Khi cùng file đó được gửi sang ổ đĩa của đối tác, policy chặn. Thao tác dừng trước khi file được ghi ra ngoài.
+
+[CLICK] Vì vậy DLP là kiểm soát theo ngữ cảnh. Nội dung nhạy cảm là một đầu vào; người gửi, hành động và nơi nhận là các đầu vào còn lại.
 -->

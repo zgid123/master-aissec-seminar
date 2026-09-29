@@ -28,7 +28,7 @@ def build(raw_path: Path, derived_root: Path) -> None:
             [
                 (
                     customer_id,
-                    "Khách hàng đang điều trị HIV và cần tư vấn bảo hiểm.",
+                    "Khách hàng đang mang thai và cần hỗ trợ giao hàng tại nhà.",
                 )
                 for customer_id in sensitive_ids
             ],
