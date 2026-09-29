@@ -8,14 +8,14 @@ transition: slide-left
 
 <div class="lim-body">
   <div class="lim-main">
-  <TableComparison class="lim-table" :animation="false" :dense="true" row-header-width="118px" :spacing="3.5">
-    <TableComparisonCols corner-width="118px">
+  <TableComparison class="lim-table" :animation="false" :dense="true" row-header-width="114px" :spacing="2.5">
+    <TableComparisonCols corner-width="114px">
       <TableComparisonCol color="#fff1f2" text-color="#9f1239">Vì sao xảy ra</TableComparisonCol>
       <TableComparisonCol color="#ecfdf5" text-color="#047857">Cách giảm thiểu</TableComparisonCol>
     </TableComparisonCols>
     <TableComparisonRows>
       <TableComparisonRow title="1 - Báo nhầm / bỏ sót (FP/FN)">
-        <TableComparisonCell align="left">Rule, fingerprint, AI đều có <strong>sai số</strong>; dữ liệu <strong>mã hóa hoặc cố tình biến dạng</strong> khó phát hiện.</TableComparisonCell>
+        <TableComparisonCell align="left">Rule, fingerprint, AI đều có <strong>sai số</strong>; dữ liệu <strong>mã hóa hoặc cố tình biến dạng</strong> khó phát hiện (Liu 2015).</TableComparisonCell>
         <TableComparisonCell align="left">Chạy <strong>chế độ mô phỏng</strong> trước khi chặn thật; tinh chỉnh; đo FP/FN.</TableComparisonCell>
       </TableComparisonRow>
       <TableComparisonRow title="2 - Egress path chưa kiểm soát" class="lim-core">
@@ -41,7 +41,7 @@ transition: slide-left
   <div class="lim-side">
     <div class="lim-card lim-card--risk">
       <div class="lim-tag">INSIDER - NGƯỜI CÓ QUYỀN HỢP LỆ</div>
-      <p>Tổng quan 42 nghiên cứu (2011-2022) coi rò rỉ do <b>người có quyền hợp lệ</b>, cố ý hoặc vô ý, là mối quan tâm chính; ~40% nghiên cứu tập trung vào insider. DLP <b>giảm chứ không loại bỏ</b> rủi ro này và phụ thuộc nhiều vào chất lượng policy.</p>
+      <p>Tổng quan 42 nghiên cứu (2011-2022) coi rò rỉ do <b>người có quyền hợp lệ</b>, cố ý hoặc vô ý, là mối quan tâm chính; ~40% nghiên cứu quan tâm đáng kể đến insider. DLP <b>giảm chứ không loại bỏ</b> rủi ro này và phụ thuộc nhiều vào chất lượng policy.</p>
       <div class="lim-source">Herrera Montano et al., 2022</div>
     </div>
     <div class="lim-legend">
@@ -52,20 +52,21 @@ transition: slide-left
 
 <div class="lim-takeaway">
   Cần đo: <strong>FP/FN</strong> — <strong>Độ trễ</strong> — <strong>Độ bao phủ</strong>
+  <span class="lim-scope">Prototype: 1 máy · dữ liệu tổng hợp · 1 điểm chặn</span>
 </div>
 
 <style scoped>
 :deep(h1) {
   margin-top: 0 !important;
-  margin-bottom: 8px !important;
-  font-size: 27px !important;
+  margin-bottom: 6px !important;
+  font-size: 26px !important;
   line-height: 1.2 !important;
 }
 .lim-body {
-  margin-top: 6px;
+  margin-top: 4px;
   display: grid;
-  grid-template-columns: minmax(0, 1fr) 275px;
-  gap: 16px;
+  grid-template-columns: minmax(0, 1fr) 270px;
+  gap: 14px;
   align-items: start;
 }
 .lim-main {
@@ -76,34 +77,34 @@ transition: slide-left
   margin: 0;
 }
 :deep(.lim-table .alpha-table-comparison-col) {
-  padding: 7px 11px;
+  padding: 4.5px 8px;
   text-align: left !important;
   text-transform: none;
   letter-spacing: normal;
-  font-size: 13px !important;
+  font-size: 12px !important;
   font-weight: 700;
   border: 1px solid #dce5ee !important;
 }
 :deep(.lim-table .alpha-table-comparison-row-title) {
-  padding: 6.5px 9px;
+  padding: 4px 8px;
   background: #e8eef5 !important;
   color: #18334f !important;
   text-align: left !important;
   text-transform: none;
   letter-spacing: normal;
-  font-size: 11.5px !important;
+  font-size: 11px !important;
   font-weight: 700;
-  line-height: 1.3;
+  line-height: 1.25;
   border: 1px solid #dce5ee !important;
 }
 :deep(.lim-table .alpha-table-comparison-cell) {
-  padding: 7px 11px;
+  padding: 4.5px 8px;
   background: #f8fafc !important;
   color: #243c54 !important;
   text-align: left !important;
-  font-size: 12px !important;
+  font-size: 11.2px !important;
   font-weight: 400;
-  line-height: 1.4;
+  line-height: 1.32;
   border: 1px solid #e0e7ef !important;
 }
 :deep(.lim-table .alpha-table-comparison-cell strong) {
@@ -121,12 +122,12 @@ transition: slide-left
 .lim-side {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 8px;
 }
 .lim-card {
-  padding: 13px 15px;
+  padding: 10px 12px;
   border: 1px solid;
-  border-radius: 12px;
+  border-radius: 11px;
   color: #18334f;
 }
 .lim-card--risk {
@@ -135,54 +136,61 @@ transition: slide-left
   border-left-width: 4px;
 }
 .lim-tag {
-  font-size: 11px;
+  font-size: 10.5px;
   font-weight: 800;
   letter-spacing: .06em;
   line-height: 1.2;
   color: #9f1239;
 }
 .lim-card p {
-  margin: 7px 0 0;
-  font-size: 12.2px;
-  line-height: 1.45;
+  margin: 5px 0 0;
+  font-size: 11.2px;
+  line-height: 1.35;
 }
 .lim-source {
-  margin-top: 9px;
+  margin-top: 6px;
   color: #53677c;
-  font-size: 11px;
+  font-size: 10.5px;
 }
 .lim-legend {
   display: flex;
   align-items: center;
-  gap: 8px;
-  padding: 8px 12px;
+  gap: 6px;
+  padding: 6px 10px;
   background: #fff5f5;
   border: 1px dashed #fb7185;
-  border-radius: 8px;
+  border-radius: 7px;
   color: #9f1239;
-  font-size: 11.5px;
-  line-height: 1.3;
+  font-size: 11px;
+  line-height: 1.25;
 }
 .lim-legend i {
-  width: 9px;
-  height: 9px;
+  width: 8px;
+  height: 8px;
   border: 1px solid #fb7185;
   border-radius: 2px;
   background: #ffe4e6;
   flex-shrink: 0;
 }
 .lim-takeaway {
-  margin: 14px auto 0;
+  margin: 7px auto 0;
   max-width: 660px;
-  padding: 8px 24px;
-  border-radius: 8px;
+  padding: 4px 20px;
+  border-radius: 7px;
   background: #f0f9ff;
   border: 1px solid #bae6fd;
   color: #0369a1;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 600;
-  line-height: 1.3;
+  line-height: 1.25;
   text-align: center;
+}
+.lim-scope {
+  display: block;
+  margin-top: 1px;
+  font-size: 10.5px;
+  font-weight: 500;
+  color: #53677c;
 }
 .lim-takeaway strong {
   font-weight: 800;
@@ -193,38 +201,40 @@ transition: slide-left
 <!--
 Mục tiêu: nói rõ DLP giảm rủi ro chứ không loại bỏ được rủi ro.
 
-Thời lượng: khoảng 1 phút 15 giây.
-
 Thưa thầy cô và các bạn, DLP giúp giảm rủi ro, nhưng không loại bỏ được rủi ro.
-Bảng này có năm hạn chế. Nhóm em xin nói kỹ ba hạn chế đầu, hai hạn chế còn lại sẽ nói lướt.
+Bảng có năm hạn chế. Nhóm em nói kỹ ba hạn chế đầu, hai hạn chế cuối nói lướt.
 
 Hạn chế thứ nhất là báo nhầm và bỏ sót.
-Rule, fingerprint hay AI đều có thể sai. Dữ liệu đã mã hóa, hoặc cố tình bị biến dạng, thì càng khó phát hiện.
-Vì vậy, nên chạy ở chế độ mô phỏng trước, rồi mới bật chặn thật.
+Rule, fingerprint hay AI đều có sai số, và dữ liệu mã hóa hoặc cố tình biến dạng thì càng khó phát hiện; chính nhóm Liu cũng nói hệ thống của họ nhắm vào rò rỉ vô tình, không nhắm vào việc cố ý đánh cắp bằng mã hóa.
+Vì vậy nên chạy chế độ mô phỏng trước, rồi mới chặn thật.
+(Tùy chọn:) Ngay trong demo, fingerprint chỉ so khớp chính xác giá trị AURORA-2026 sau khi cắt khoảng trắng; đổi một ký tự là không khớp. Theo tổng quan của Herrera Montano, hash toàn tài liệu cũng đổi hoàn toàn chỉ vì một chỉnh sửa nhỏ.
 
-Hạn chế thứ hai, cũng là giới hạn cốt lõi của đề xuất, là egress path chưa được kiểm soát.
-Egress path nói đơn giản là mọi đường để dữ liệu rời khỏi hệ thống.
-Ví dụ: người dùng upload qua trình duyệt, đọc thẳng từ storage, hoặc viết script đi vòng qua điểm chặn.
-DLP chỉ chặn được ở những đường đã được tích hợp. Ví dụ, Google Model Armor chỉ trả về kết quả kiểm tra; nơi tích hợp mới là bên thực sự chặn.
-Cho nên ta phải kiểm soát từng egress path. Ta cũng phải quét lại dữ liệu dẫn xuất, tức là dữ liệu mới tạo ra từ dữ liệu gốc, vì nhãn cũ có thể đã lỗi thời sau khi dữ liệu được biến đổi.
+Hạn chế thứ hai, cũng là giới hạn cốt lõi của đề xuất: egress path chưa được kiểm soát, tức mọi đường để dữ liệu rời hệ thống, như upload qua trình duyệt, đọc thẳng từ storage, hoặc script đi vòng.
+Prototype của nhóm em chỉ chặn ở một đường, là cổng xuất dữ liệu, và chỉ ghi file khi policy trả về ALLOW. Đường nào không đi qua cổng đó thì không tự động bị chặn.
+Vì vậy phải kiểm soát từng egress path, và quét lại dữ liệu dẫn xuất, tức dữ liệu mới tạo ra từ dữ liệu gốc, vì nhãn cũ có thể đã lỗi thời.
+Trong demo, nhóm em quét trực tiếp bảng dẫn xuất customer_segments tại cổng xuất, chứ không dựa vào nhãn của dữ liệu gốc.
 
 Hạn chế thứ ba là phạm vi hỗ trợ của sản phẩm.
-Mỗi dịch vụ chỉ hỗ trợ một số loại dữ liệu và định dạng nhất định. Ví dụ, Model Armor bỏ qua tệp lớn hơn 4 MB và không hỗ trợ audio, video.
-Vì vậy cần lập bảng độ bao phủ, và kết hợp nhiều lớp phòng thủ.
+Ví dụ Google Model Armor bỏ qua nội dung lớn hơn 4 MB và không quét audio, video.
+Cần lập bảng độ bao phủ và kết hợp nhiều lớp phòng thủ.
 
-Hai hàng cuối, nhóm em xin nói lướt.
-Về chi phí vận hành, nên triển khai theo pha: ghi log trước, rồi cảnh báo, cuối cùng mới chặn.
-Về độ trễ, ta cần đo thời gian quét và thời gian ra quyết định.
-Về người trong tổ chức, hay insider: Herrera Montano và cộng sự năm 2022 tổng quan 42 nghiên cứu và coi rò rỉ do người có quyền hợp lệ, dù cố ý hay vô ý, là mối quan tâm chính; khoảng 40 phần trăm nghiên cứu tập trung vào insider.
-Chính tổng quan này cũng nêu: DLP khó khắc phục sơ suất của người dùng và phụ thuộc nhiều vào chất lượng policy. Vì vậy DLP giúp giảm, chứ không loại bỏ được rủi ro này.
+Hai hàng cuối nói lướt: chi phí vận hành thì triển khai theo pha, ghi log, cảnh báo rồi mới chặn; độ trễ thì cần đo thời gian quét và thời gian ra quyết định.
+(Tùy chọn, chỉ nói nếu muốn trích Schwab:) Nhóm Schwab năm 2021 đo riêng độ trễ của việc phân loại truy vấn SQL qua proxy JDBC: vài mili giây với siêu dữ liệu quan hệ, 137 mili giây với đồ thị, và giảm còn 0,35 mili giây ở 87% trường hợp sau tối ưu. Đó là bài toán truy vấn SQL, không phải quét nội dung tệp.
 
-Vì vậy, ta cần đo ba thứ: báo nhầm và bỏ sót, độ trễ, và độ bao phủ.
-Prototype của nhóm em mới chỉ đo trên dữ liệu tổng hợp, chạy trên một máy.
-Ví dụ, tập kiểm thử chỉ có 12 dòng, cho ra 1 báo nhầm và 1 bỏ sót. [XÁC MINH SỐ NÀY VỚI REPO DEMO TRƯỚC KHI NÓI - không thấy trên slide nào]
-Con số này chỉ minh họa cách đo, chưa đại diện cho hệ thống thật.
+Khung bên phải là insider. Herrera Montano và cộng sự năm 2022 tổng quan 42 nghiên cứu từ 2011 đến 2022; khoảng 40% thể hiện quan tâm đáng kể đến mối đe dọa nội bộ, tức người có quyền hợp lệ, cố ý hoặc vô ý.
+Tổng quan này cũng ghi nhận DLP phụ thuộc gần như hoàn toàn vào chất lượng policy, và chưa khắc phục được sơ suất của người dùng. Vì vậy DLP giảm chứ không loại bỏ rủi ro này.
+
+Cuối cùng, cần đo ba thứ: báo nhầm và bỏ sót, độ trễ, và độ bao phủ.
+Prototype của nhóm em đã dựng sẵn đường đo, nhưng số liệu chỉ lấy từ dữ liệu tổng hợp trên một máy, nên nhóm em không dùng chúng để kết luận về độ chính xác hay khả năng mở rộng.
+(Tùy chọn, hoặc dùng khi bị hỏi:) Ví dụ, thử trên tập 12 dòng chỉ để kiểm tra đường đo, ba rule regex cho 6 đúng, 1 báo nhầm và 1 bỏ sót. Báo nhầm là một chuỗi 12 chữ số bất kỳ khớp rule số định danh; bỏ sót là một số điện thoại 9 chữ số.
+
 Vậy xu hướng hiện nay là gì? Mời thầy cô và các bạn xem slide tiếp theo.
 
+(Nếu cần rút gọn: bỏ câu "Trong demo, nhóm em quét trực tiếp bảng dẫn xuất..." và câu về nhóm Liu ở hạn chế thứ nhất, rồi rút khung insider còn một câu: "Khoảng 40% nghiên cứu quan tâm đáng kể đến người có quyền hợp lệ; DLP giảm chứ không loại bỏ rủi ro này.")
+
 Tham khảo (không đọc):
+- Liu et al. (2015): https://vtechworks.lib.vt.edu/items/2652b4c0-305d-4b03-b463-e16d1cd8ad4e
 - Herrera Montano et al. (2022): https://doi.org/10.1007/s10586-022-03668-2
+- Schwab et al. (2021): https://doi.org/10.1007/s13222-021-00385-9
 - Google Model Armor: https://docs.cloud.google.com/model-armor/overview
 -->
