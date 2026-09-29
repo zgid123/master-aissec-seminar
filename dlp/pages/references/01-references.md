@@ -73,7 +73,7 @@ transition: slide-left
 </div>
 
 <!--
-Slide tham khảo dự phòng, 0:00. Tên bài báo gốc và đường dẫn đã hiển thị trên slide. Thông tin xuất bản đầy đủ:
+Thông tin xuất bản đầy đủ của các nghiên cứu được trích dẫn:
 
 1. Alneyadi, S., Sithirasenan, E., & Muthukkumarasamy, V. (2016). “A survey on data leakage prevention systems.” Journal of Network and Computer Applications, 62, 137–152. https://doi.org/10.1016/j.jnca.2016.01.008
 2. Liu, F., Shu, X., Yao, D., & Butt, A. R. (2015). “Privacy-Preserving Scanning of Big Content for Sensitive Data Exposure with MapReduce.” CODASPY ’15. https://vtechworks.lib.vt.edu/items/2652b4c0-305d-4b03-b463-e16d1cd8ad4e
@@ -83,4 +83,14 @@ Slide tham khảo dự phòng, 0:00. Tên bài báo gốc và đường dẫn đ
 6. Herrera Montano, I., et al. (2022). “Survey of Techniques on Data Leakage Protection and Methods to address the Insider threat.” Cluster Computing, 25, 4289–4302. https://doi.org/10.1007/s10586-022-03668-2
 7. De Renzis, S., Dosso, D., & Testolin, A. (2024). “Exploiting Large Language Models to Train Automatic Detectors of Sensitive Data.” CEUR Workshop Proceedings, vol. 3643, IRCDL 2024. https://research.unipd.it/handle/11577/3524608
 8. Qawara, H. M., & Alhindi, H. (2026). “Detecting Context-Dependent Sensitive Data in Unstructured Text.” Information, 17(7), 663. https://doi.org/10.3390/info17070663
+
+Tài liệu kỹ thuật chính cho kiến trúc triển khai và xử lý cảnh báo:
+
+- Microsoft Learn — Learn about Endpoint data loss prevention: https://learn.microsoft.com/en-us/purview/endpoint-dlp-learn-about
+- Microsoft Learn — Learn about Microsoft Purview Network Data Security: https://learn.microsoft.com/en-us/purview/dlp-network-data-security-learn
+- Google Cloud — Inspect storage and databases for sensitive data: https://docs.cloud.google.com/sensitive-data-protection/docs/inspecting-storage
+- Google Cloud — Enable inspection or risk analysis actions: https://docs.cloud.google.com/sensitive-data-protection/docs/concepts-actions
+- Amazon Macie — Supported storage classes and formats: https://docs.aws.amazon.com/macie/latest/user/discovery-supported-storage.html
+- Microsoft Learn — Learn about investigating data loss prevention alerts: https://learn.microsoft.com/en-us/purview/dlp-alert-investigation-learn
+- Microsoft Learn — Get started with data loss prevention alerts: https://learn.microsoft.com/en-us/purview/dlp-alerts-get-started
 -->

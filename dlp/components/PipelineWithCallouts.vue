@@ -10,25 +10,25 @@ const { $clicks } = useSlideContext()
 
 const stages = [
   { label: 'Nguồn dữ liệu', icon: DataBaseIcon, tone: 'neutral', step: 0 },
-  { label: 'Lưu trữ', icon: DataCenterIcon, tone: 'amber', badge: 'A', step: 2 },
-  { label: 'Xử lý và biến đổi', icon: FlowIcon, tone: 'neutral', step: 0 },
-  { label: 'Dữ liệu dẫn xuất', icon: DataStructuredIcon, tone: 'cyan', badge: 'B', step: 3 },
-  { label: 'Chia sẻ hoặc xuất', icon: ShareIcon, tone: 'violet', badge: 'C', step: 4 },
+  { label: 'Lưu trữ', state: 'Data at rest', icon: DataCenterIcon, tone: 'amber', badge: 'A', step: 2 },
+  { label: 'Xử lý và biến đổi', state: 'Data in use', icon: FlowIcon, tone: 'neutral', step: 0 },
+  { label: 'Dữ liệu sau xử lý', icon: DataStructuredIcon, tone: 'cyan', badge: 'B', step: 3 },
+  { label: 'Chia sẻ hoặc export', state: 'Data in motion', icon: ShareIcon, tone: 'violet', badge: 'C', step: 4 },
 ] as const
 
 const callouts = [
   {
-    badge: 'A', tone: 'amber', step: 2, heading: 'Phát hiện và phân loại',
-    description: 'Finding ghi bằng chứng; label gắn classification cho dữ liệu.',
+    badge: 'A', tone: 'amber', step: 2, heading: 'Phát hiện và classification',
+    description: 'Quét nội dung trong phạm vi đã chọn để tạo finding, hỗ trợ classification.',
     source: 'Liu et al. (2015) · quét quy mô lớn',
   },
   {
     badge: 'B', tone: 'cyan', step: 3, heading: 'Rà soát sau biến đổi',
-    description: 'Lineage hỗ trợ truy vết; rà soát hoặc quét lại đầu ra khi cần.',
+    description: 'Join hoặc tổng hợp có thể thay đổi mức độ nhạy cảm. Rà soát classification của kết quả.',
   },
   {
     badge: 'C', tone: 'violet', step: 4, heading: 'Đánh giá policy và enforcement',
-    description: 'Xét label, người thực hiện, hành động và đích; điểm tích hợp áp dụng quyết định.',
+    description: 'Xét dữ liệu, người thực hiện, hành động và đích nhận để quyết định xử lý.',
     outcome: 'Cho phép · Cảnh báo · Chặn',
   },
 ] as const
@@ -46,6 +46,7 @@ const callouts = [
         <span v-if="stage.badge" class="badge stage-badge reveal" :class="{ revealed: $clicks >= stage.step }">{{ stage.badge }}</span>
         <component :is="stage.icon" class="stage-icon" aria-hidden="true" />
         <span class="stage-label">{{ stage.label }}</span>
+        <small v-if="'state' in stage" class="stage-state">{{ stage.state }}</small>
         <span v-if="index < 4" class="flow-arrow" aria-hidden="true">→</span>
       </div>
     </div>
@@ -75,7 +76,6 @@ const callouts = [
     </div>
     <div class="pipeline-extras">
       <p class="qualification reveal" :class="{ revealed: $clicks >= 4 }">Chặn chỉ có hiệu lực tại đường đã tích hợp kiểm soát.</p>
-      <p class="challenges reveal" :class="{ revealed: $clicks >= 4 }">Thách thức: quy mô lớn · đa định dạng · dữ liệu biến đổi · nhiều đường xuất.</p>
     </div>
   </div>
 </template>
@@ -116,6 +116,7 @@ const callouts = [
 
 .stage-icon { width: 25px; height: 25px; color: var(--accent); transition: color 250ms ease; }
 .stage-label { padding: 0 5px; font-size: 13px; font-weight: 700; line-height: 1.18; transition: color 250ms ease; }
+.stage-state { margin-top: -6px; padding: 0 5px; color: var(--ink); font-size: 11px; font-weight: 500; line-height: 1.1; }
 
 .badge {
   display: inline-flex;
