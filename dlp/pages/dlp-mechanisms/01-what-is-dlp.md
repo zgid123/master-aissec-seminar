@@ -35,13 +35,15 @@ Data Loss Prevention (DLP){.font-bold} nhận diện dữ liệu nhạy cảm v�
 </div>
 
 <!--
-Data Loss Prevention (DLP) là nhóm biện pháp nhận diện dữ liệu nhạy cảm và áp dụng chính sách để kiểm soát việc sử dụng, chia sẻ hoặc truyền dữ liệu. Trong tài liệu nghiên cứu, tên gọi Data Leakage Prevention cũng được sử dụng; cách phân biệt phạm vi giữa hai thuật ngữ không thống nhất giữa các nguồn. Bài trình bày sử dụng Data Loss Prevention và tập trung vào phòng chống rò rỉ dữ liệu.
+Data Loss Prevention (DLP, phòng chống thất thoát dữ liệu) là nhóm biện pháp nhận diện dữ liệu nhạy cảm và kiểm soát việc sử dụng, chia sẻ hoặc truyền dữ liệu. Policy là tập quy tắc xét dữ liệu, người thực hiện, hành động và đích nhận để chọn cách xử lý. Detector là thành phần kiểm tra dữ liệu; finding là kết quả hoặc bằng chứng mà detector tạo ra. Classification là quá trình gán mức hoặc loại nhạy cảm cho dữ liệu, còn label là thông tin phân loại được gắn với dữ liệu. Finding, classification và label có liên hệ nhưng không đồng nghĩa: finding ghi điều detector quan sát được, classification đưa ra phân loại, còn label lưu phân loại đó để các bước sau sử dụng.
 
-[click:2]
+Enforcement là việc áp dụng quyết định tại một điểm kiểm soát đã tích hợp. Một finding có thể được dùng làm đầu vào cho policy, nhưng tự nó không chặn truy vấn hay lần xuất dữ liệu. Tên gọi Data Leakage Prevention cũng xuất hiện trong tài liệu nghiên cứu; cách phân biệt phạm vi giữa hai tên gọi không thống nhất giữa các nguồn. Bài trình bày dùng Data Loss Prevention và tập trung vào phòng chống rò rỉ dữ liệu.
+
+[click]
 
 Quyền đọc và quyền chia sẻ cần được xem xét riêng. Một người dùng có thể được phép đọc dữ liệu để phân tích nhưng không được phép gửi bản kết quả đến mọi nơi nhận. DLP bổ sung việc đánh giá nội dung cùng người thực hiện, hành động và đích theo policy.
 
-Kết quả phát hiện có thể dẫn đến cảnh báo, cho phép hoặc chặn tùy cấu hình. Khả năng thực thi phụ thuộc vào sản phẩm và các đường dữ liệu đã tích hợp kiểm soát; phát hiện dữ liệu nhạy cảm không đồng nghĩa với tự động chặn mọi lần xuất.
+Policy có thể quyết định cảnh báo, cho phép hoặc chặn tùy cấu hình. Enforcement phụ thuộc vào sản phẩm và các đường dữ liệu đã tích hợp; phát hiện dữ liệu nhạy cảm không đồng nghĩa với tự động chặn mọi lần xuất.
 
 DLP tập trung kiểm soát việc sử dụng và tiết lộ dữ liệu nhạy cảm trái policy. Bảo vệ dữ liệu toàn diện còn cần backup và disaster recovery để khôi phục khi dữ liệu bị mất, hỏng hoặc mã hóa bởi ransomware. Trong một cuộc tấn công kết hợp đánh cắp và mã hóa dữ liệu, DLP có thể hỗ trợ hạn chế truyền dữ liệu trái phép trên các đường được kiểm soát, còn backup và recovery hỗ trợ khôi phục. Khôi phục được dữ liệu không đồng nghĩa với việc thu hồi được bản đã bị đánh cắp.
 

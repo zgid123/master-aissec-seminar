@@ -18,17 +18,17 @@ const stages = [
 
 const callouts = [
   {
-    badge: 'A', tone: 'amber', step: 2, heading: 'Phát hiện và gắn nhãn',
-    description: 'Quét file, bảng để nhận diện dữ liệu nhạy cảm.',
+    badge: 'A', tone: 'amber', step: 2, heading: 'Phát hiện và phân loại',
+    description: 'Finding ghi bằng chứng; label gắn classification cho dữ liệu.',
     source: 'Liu et al. (2015) · quét quy mô lớn',
   },
   {
-    badge: 'B', tone: 'cyan', step: 3, heading: 'Kiểm tra sau biến đổi',
-    description: 'Xác minh nhãn sau biến đổi; dùng lineage và quét lại khi cần.',
+    badge: 'B', tone: 'cyan', step: 3, heading: 'Rà soát sau biến đổi',
+    description: 'Lineage hỗ trợ truy vết; rà soát hoặc quét lại đầu ra khi cần.',
   },
   {
-    badge: 'C', tone: 'violet', step: 4, heading: 'Thực thi policy',
-    description: 'Xét nhãn, người thực hiện, hành động và đích.',
+    badge: 'C', tone: 'violet', step: 4, heading: 'Đánh giá policy và enforcement',
+    description: 'Xét label, người thực hiện, hành động và đích; điểm tích hợp áp dụng quyết định.',
     outcome: 'Cho phép · Cảnh báo · Chặn',
   },
 ] as const
@@ -155,7 +155,7 @@ const callouts = [
 
 .callouts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
 .callout {
-  min-height: 132px;
+  min-height: 148px;
   padding: 15px 17px 13px;
   border: 1px solid var(--border);
   border-radius: 13px;
@@ -164,7 +164,7 @@ const callouts = [
   transition: opacity 250ms ease;
 }
 .callout-heading { display: flex; align-items: center; gap: 9px; font-size: 15px; line-height: 1.2; }
-.callout p { margin: 10px 0 0; font-size: 13px; line-height: 1.35; color: #334b63; }
+.callout p { margin: 10px 0 0; font-size: 14px; line-height: 1.35; color: #334b63; }
 .outcome { margin-top: 9px; color: var(--ink); font-size: 12px; font-weight: 700; }
 .pipeline-extras { min-height: 55px; margin-top: 11px; text-align: center; }
 .pipeline-extras p { margin: 0; line-height: 1.35; }
