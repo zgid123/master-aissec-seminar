@@ -22,3 +22,7 @@ src: ./03-detection-and-policy.md
 ---
 src: ./04-pipeline-architecture.md
 ---
+
+---
+src: ./06-alert-handling.md
+---
