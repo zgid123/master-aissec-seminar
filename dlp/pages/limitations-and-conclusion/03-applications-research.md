@@ -23,7 +23,7 @@ transition: slide-left
   </article>
 </div>
 
-<div v-click="4" class="app-takeaway">Xu hướng: từ “quét tệp” sang bảo vệ luồng dữ liệu, kể cả prompt AI.</div>
+<div v-click="4" class="app-takeaway">Xu hướng: từ “quét file” sang bảo vệ luồng dữ liệu, kể cả prompt AI.</div>
 
 
 <style scoped>
@@ -64,7 +64,7 @@ Qawara và Alhindi năm 2026 dùng 3.083 tweet tiếng Anh về chính trị và
 Cả hai chưa được kiểm chứng trên tiếng Việt hay Big Data.
 
 [click:4]
-Tóm lại, nhóm em nhận thấy xu hướng là chuyển từ quét tệp sang bảo vệ cả luồng dữ liệu, kể cả prompt gửi cho AI.
+Tóm lại, nhóm em nhận thấy xu hướng là chuyển từ quét file sang bảo vệ cả luồng dữ liệu, kể cả prompt gửi cho AI.
 Xin mời thầy cô và các bạn đến phần kết luận.
 
 (Nếu cần rút gọn: bỏ câu Google và câu Qawara; giữ Purview Copilot, De Renzis và câu "chưa được kiểm chứng trên tiếng Việt hay Big Data".)

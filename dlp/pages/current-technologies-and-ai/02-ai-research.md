@@ -60,7 +60,7 @@ Mục 3.1–3.3 mô tả tweet tiếng Anh ngắn, tối đa 300 ký tự, lấy
 
 ### Cơ chế
 
-**Đầu vào và tiền xử lý.** Mỗi đầu vào là một tweet; lớp đích là nhạy cảm hoặc không nhạy cảm. Mục 3.4 mô tả chuyển chữ thường, loại một số dấu câu, ký hiệu, số, stop words, hashtag, mention và đường dẫn, mở rộng từ viết tắt, tokenization cùng stemming/lemmatization; văn bản song ngữ bị loại. Tokenization tách văn bản thành đơn vị đầu vào; stemming/lemmatization chuẩn hóa dạng từ. Những lựa chọn này có thể làm mất tín hiệu cần cho miền khác, nên không tự áp dụng nguyên xi cho dữ liệu DLP mục tiêu.
+**Input và tiền xử lý.** Mỗi input là một tweet; lớp đích là nhạy cảm hoặc không nhạy cảm. Mục 3.4 mô tả chuyển chữ thường, loại một số dấu câu, ký hiệu, số, stop words, hashtag, mention và đường dẫn, mở rộng từ viết tắt, tokenization cùng stemming/lemmatization; văn bản song ngữ bị loại. Tokenization tách văn bản thành đơn vị input; stemming/lemmatization chuẩn hóa dạng từ. Những lựa chọn này có thể làm mất tín hiệu cần cho miền khác, nên không tự áp dụng nguyên xi cho dữ liệu DLP mục tiêu.
 
 **Huấn luyện.** Mục 3.5.1 dùng bag-of-words qua CountVectorizer (đếm từ) cho Logistic Regression (LR), Naive Bayes, Decision Tree và Support Vector Machine. GridSearchCV được mô tả với cross-validation năm fold để chọn siêu tham số. LR là baseline được chọn theo kết quả. Mục 3.5.2 fine-tune DistilRoBERTa và ALBERT từ mô hình pretrained, dùng tokenizer tương ứng và biểu diễn ngữ cảnh. Fine-tune là tiếp tục huấn luyện mô hình đã học trước trên ví dụ gán nhãn của bài toán đích, không huấn luyện transformer từ đầu. ALBERT là “A Lite BERT for Self-supervised Learning of Language Representations”; BERT là “Bidirectional Encoder Representations from Transformers”.
 

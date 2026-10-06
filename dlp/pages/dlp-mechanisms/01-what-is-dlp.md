@@ -44,7 +44,7 @@ Data Loss Prevention (DLP, phòng chống thất thoát dữ liệu) là nhóm b
 
 **So sánh mục đích chính.** Firewall kiểm soát lưu lượng mạng theo các quy tắc đã cấu hình. Antivirus/anti-malware phát hiện và xử lý phần mềm độc hại. DLP nhận diện nội dung nhạy cảm rồi kiểm soát cách sử dụng hoặc tiết lộ nội dung đó theo policy. Ví dụ giả định: người dùng gửi báo cáo khách hàng nhạy cảm qua một ứng dụng vốn được phép dùng. Hoạt động này không nhất thiết có malware, nhưng nội dung hoặc đích nhận có thể vi phạm policy chia sẻ dữ liệu. Các nhóm sản phẩm có thể có tính năng chồng lấn hoặc được tích hợp với nhau; phép so sánh trên chỉ nêu mục đích chính.
 
-Enforcement là việc áp dụng quyết định tại một điểm kiểm soát đã tích hợp. Một finding có thể được dùng làm đầu vào cho policy, nhưng tự nó không chặn query hay lần export dữ liệu. Tên gọi Data Leakage Prevention cũng xuất hiện trong tài liệu nghiên cứu; cách phân biệt phạm vi giữa hai tên gọi không thống nhất giữa các nguồn. Bài trình bày dùng Data Loss Prevention và tập trung vào phòng chống rò rỉ dữ liệu.
+Enforcement là việc áp dụng quyết định tại một điểm kiểm soát đã tích hợp. Một finding có thể được dùng làm input cho policy, nhưng tự nó không chặn query hay lần export dữ liệu. Tên gọi Data Leakage Prevention cũng xuất hiện trong tài liệu nghiên cứu; cách phân biệt phạm vi giữa hai tên gọi không thống nhất giữa các nguồn. Bài trình bày dùng Data Loss Prevention và tập trung vào phòng chống rò rỉ dữ liệu.
 
 [click]
 ### Vấn đề, cơ chế và lợi ích

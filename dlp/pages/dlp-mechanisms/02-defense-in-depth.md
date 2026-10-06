@@ -28,7 +28,7 @@ const { $clicks: slideClicks } = useSlideContext()
     </SquarePyramidStackTitle>
     <SquarePyramidStackContent>
       <strong>DLP tại nơi lưu trữ</strong>
-      <span>Quét và phân loại dữ liệu nhạy cảm.</span>
+      <span>Quét, phát hiện và hỗ trợ phân loại.</span>
     </SquarePyramidStackContent>
   </SquarePyramidStack>
   <SquarePyramidStack>
@@ -187,7 +187,7 @@ Năm phạm vi trong hình là mô hình minh họa, không phải hệ phân lo
 
 DLP bổ sung kiểm soát nội dung và cách chia sẻ dữ liệu tại nhiều phạm vi. Ở nơi lưu trữ, việc quét giúp phát hiện và phân loại dữ liệu nhạy cảm. Trong ứng dụng và dịch vụ, DLP có thể kiểm tra hành động chia sẻ hoặc export tại điểm đã tích hợp. Trên máy chủ và endpoint, DLP có thể giám sát hoặc hạn chế sao chép, in và upload theo policy đối với những thao tác được sản phẩm hỗ trợ. Ở mạng, DLP tại gateway có thể kiểm tra nội dung và đích nhận trên lưu lượng đi qua điểm kiểm soát. Hạ tầng vật lý bảo vệ phòng máy và thiết bị; hình để trống phần DLP tương ứng vì không gán chức năng DLP trực tiếp tại đây.
 
-Trạng thái dữ liệu mô tả dữ liệu đang được lưu trữ, sử dụng hay truyền đi. Endpoint, network và cloud mô tả môi trường hoặc vị trí triển khai kiểm soát. Hai cách nhìn bổ trợ nhau, không có quan hệ một-một. Một kiểm soát trên endpoint được quản lý có thể hỗ trợ các hoạt động được sản phẩm tích hợp, gồm quét tệp lưu trữ và những thao tác như sao chép, in hoặc upload; phạm vi endpoint không chỉ là dữ liệu đang được sử dụng. Network control point có thể kiểm tra lưu lượng đi qua nó. Tích hợp cloud có thể xử lý nội dung và hoạt động mà dịch vụ hỗ trợ. Những vị trí này không loại trừ lẫn nhau và không tạo thành kiến trúc đầy đủ; phạm vi thực tế tùy sản phẩm, cấu hình và đường dữ liệu tích hợp.
+Trạng thái dữ liệu mô tả dữ liệu đang được lưu trữ, sử dụng hay truyền đi. Endpoint, network và cloud mô tả môi trường hoặc vị trí triển khai kiểm soát. Hai cách nhìn bổ trợ nhau, không có quan hệ một-một. Một kiểm soát trên endpoint được quản lý có thể hỗ trợ các hoạt động được sản phẩm tích hợp, gồm quét file lưu trữ và những thao tác như sao chép, in hoặc upload; phạm vi endpoint không chỉ là dữ liệu đang được sử dụng. Network control point có thể kiểm tra lưu lượng đi qua nó. Tích hợp cloud có thể xử lý nội dung và hoạt động mà dịch vụ hỗ trợ. Những vị trí này không loại trừ lẫn nhau và không tạo thành kiến trúc đầy đủ; phạm vi thực tế tùy sản phẩm, cấu hình và đường dữ liệu tích hợp.
 
 Các kiểm soát khác vẫn cần thiết: xác thực và phân quyền kiểm soát truy cập; mã hóa bảo vệ dữ liệu; masking là nhóm kỹ thuật che hoặc biến đổi dữ liệu, với tác động tùy cơ chế. Trong SQL Server, Dynamic Data Masking (DDM) che giá trị trong kết quả query đối với người dùng không có quyền xem dữ liệu đầy đủ, trong khi dữ liệu lưu trữ vẫn giữ nguyên. DDM không thay thế mã hóa hoặc kiểm soát quyền truy cập. Audit là ghi nhận event để hỗ trợ giám sát và điều tra. Policy, đào tạo, audit và giám sát hỗ trợ xuyên suốt. Kiểm soát truy cập không phải lúc nào cũng chỉ xác minh quyền đọc: một số mô hình còn giới hạn luồng thông tin giữa các đối tượng hoặc đích. Quyền đọc không tự cho phép chia sẻ tới mọi đích; người được đọc dữ liệu để phân tích vẫn phải tuân theo policy khi chia sẻ. Một kiểm soát có thể xuất hiện ở nhiều phạm vi nên các vị trí trong hình không mang tính độc quyền. Khả năng DLP phụ thuộc sản phẩm, cấu hình và đường dữ liệu đã tích hợp. Quét và classification không đồng nghĩa với enforcement trên mọi lần export dữ liệu.
 

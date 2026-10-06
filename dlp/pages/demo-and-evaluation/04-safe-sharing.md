@@ -23,7 +23,7 @@ Việc bị chặn không làm nhu cầu nghiệp vụ biến mất. DLP phải 
 
 [CLICK] File chi tiết không được gửi vì chứa nhiều dữ liệu hơn yêu cầu.
 
-[CLICK] Nhóm dữ liệu quay lại nhu cầu ban đầu và chỉ giữ các trường cần thiết.
+[CLICK] Nhóm dữ liệu quay lại nhu cầu ban đầu và chỉ giữ các column / field cần thiết.
 
 [CLICK] Bảng segment_summary chỉ còn vùng, phân khúc, số lượng và mức chi tiêu trung bình. Không còn dữ liệu của từng khách hàng nên được phép gửi cho đối tác.
 

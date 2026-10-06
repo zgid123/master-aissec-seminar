@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import { computed, unref } from 'vue'
 import { useSlideContext } from '@slidev/client'
 import DataBaseIcon from '~icons/carbon/data-base'
 import DataCenterIcon from '~icons/carbon/data-center'
@@ -9,29 +10,50 @@ import ShareIcon from '~icons/carbon/share'
 const { $clicks } = useSlideContext()
 
 const stages = [
-  { label: 'Nguồn dữ liệu', icon: DataBaseIcon, tone: 'neutral', step: 0 },
-  { label: 'Lưu trữ', state: 'Data at rest', icon: DataCenterIcon, tone: 'amber', badge: 'A', step: 2 },
-  { label: 'Xử lý và biến đổi', state: 'Data in use', icon: FlowIcon, tone: 'neutral', step: 0 },
-  { label: 'Dữ liệu sau xử lý', icon: DataStructuredIcon, tone: 'cyan', badge: 'B', step: 3 },
-  { label: 'Chia sẻ hoặc export', state: 'Data in motion', icon: ShareIcon, tone: 'violet', badge: 'C', step: 4 },
+  {
+    label: 'Tiếp nhận', icon: DataBaseIcon, tone: 'amber',
+    problem: 'Nguồn có email/mã khách; báo cáo chỉ cần tổng hợp.',
+    data: 'raw → kho hạn chế | bản giảm cột → xử lý',
+    check: 'Detector tìm email/mã khách; policy xét mục đích và người nhận.',
+    action: 'Job bỏ email ở bản xử lý; raw và bản chi tiết vẫn ở vùng hạn chế.',
+    limit: 'Nhánh khác bỏ qua job không chịu kiểm soát này.',
+  },
+  {
+    label: 'Lưu trữ', icon: DataCenterIcon, tone: 'cyan',
+    problem: 'Email ở nhiều bảng; nhóm rộng vẫn có quyền đọc.',
+    data: 'contacts(customer_id, email)',
+    check: 'Scanner tìm email trong nội dung/schema và tạo finding.',
+    action: 'Workflow chuyển finding để chủ kho rà soát và thu hẹp quyền đọc.',
+    limit: 'Scan không chặn lượt đọc đã xảy ra trước khi quyền được sửa.',
+  },
+  {
+    label: 'Xử lý / làm sạch', icon: FlowIcon, tone: 'violet',
+    problem: 'Join hai nguồn trong kho hạn chế nối danh tính với giao dịch.',
+    data: 'customer_id + email + giao dịch',
+    check: 'Detector quét bản join trong vùng chờ; policy xét nhóm nhận báo cáo.',
+    action: 'Orchestrator giữ bản join; job tổng hợp, bỏ khóa và kiểm tra lại trước công bố.',
+    limit: 'Output mới phải được kiểm tra lại; lineage một mình không phân loại nó.',
+  },
+  {
+    label: 'Phân tích / trực quan hóa', icon: DataStructuredIcon, tone: 'blue',
+    problem: 'Drill-down lộ giao dịch chi tiết cho nhóm báo cáo rộng.',
+    data: 'query + người xem + drill-down',
+    check: 'Tích hợp DLP xét kết quả query, người xem và thao tác drill-down.',
+    action: 'Query/app chỉ trả tổng hợp cho nhóm rộng; giữ hàng chi tiết cho nhóm được duyệt.',
+    limit: 'Chỉ query và thao tác qua app đã tích hợp chịu kiểm soát.',
+  },
+  {
+    label: 'Chia sẻ / export', icon: ShareIcon, tone: 'teal',
+    problem: 'File khách hàng bị gửi tới email cá nhân.',
+    data: 'file khách → email cá nhân',
+    check: 'Gateway inline xét nội dung đọc được, người gửi, thao tác và đích.',
+    action: 'Policy cấm đích cá nhân; gateway chặn lần gửi trước khi file rời hệ thống.',
+    limit: 'Payload mã hóa hoặc đường bypass cần kiểm soát khác.',
+  },
 ] as const
 
-const callouts = [
-  {
-    badge: 'A', tone: 'amber', step: 2, heading: 'Phát hiện và classification',
-    description: 'Quét nội dung trong phạm vi đã chọn để tạo finding, hỗ trợ classification.',
-    source: 'Liu et al. (2015) · quét quy mô lớn',
-  },
-  {
-    badge: 'B', tone: 'cyan', step: 3, heading: 'Rà soát sau biến đổi',
-    description: 'Join hoặc tổng hợp có thể thay đổi mức độ nhạy cảm. Rà soát classification của kết quả.',
-  },
-  {
-    badge: 'C', tone: 'violet', step: 4, heading: 'Đánh giá policy và enforcement',
-    description: 'Xét dữ liệu, người thực hiện, hành động và đích nhận để quyết định xử lý.',
-    outcome: 'Cho phép · Cảnh báo · Chặn',
-  },
-] as const
+const activeIndex = computed(() => Math.min(Math.max(unref($clicks) - 1, -1), stages.length - 1))
+const activeStage = computed(() => activeIndex.value >= 0 ? stages[activeIndex.value] : undefined)
 </script>
 
 <template>
@@ -41,138 +63,60 @@ const callouts = [
         v-for="(stage, index) in stages"
         :key="stage.label"
         class="stage"
-        :class="`tone-${stage.step && $clicks >= stage.step ? stage.tone : 'neutral'}`"
+        :class="[`tone-${activeIndex === index ? stage.tone : 'neutral'}`, { active: activeIndex === index }]"
       >
-        <span v-if="stage.badge" class="badge stage-badge reveal" :class="{ revealed: $clicks >= stage.step }">{{ stage.badge }}</span>
         <component :is="stage.icon" class="stage-icon" aria-hidden="true" />
         <span class="stage-label">{{ stage.label }}</span>
-        <small v-if="'state' in stage" class="stage-state">{{ stage.state }}</small>
-        <span v-if="index < 4" class="flow-arrow" aria-hidden="true">→</span>
+        <span v-if="index < stages.length - 1" class="flow-arrow" aria-hidden="true">→</span>
       </div>
     </div>
 
-    <svg class="control-connectors" viewBox="0 0 1000 68" preserveAspectRatio="none" aria-hidden="true">
-      <path class="amber-line reveal" :class="{ revealed: $clicks >= 2 }" d="M 300 0 V 26 L 166.67 54 V 68" />
-      <path class="cyan-line reveal" :class="{ revealed: $clicks >= 3 }" d="M 700 0 V 26 L 500 54 V 68" />
-      <path class="violet-line reveal" :class="{ revealed: $clicks >= 4 }" d="M 900 0 V 26 L 833.33 54 V 68" />
-    </svg>
-
-    <div class="callouts" aria-label="Các điểm kiểm soát DLP">
-      <div
-        v-for="callout in callouts"
-        :key="callout.badge"
-        class="callout"
-        :class="`tone-${callout.tone}`"
-        v-click="callout.step"
-      >
-        <div class="callout-heading">
-          <span class="badge">{{ callout.badge }}</span>
-          <strong>{{ callout.heading }}</strong>
-        </div>
-        <p>{{ callout.description }}</p>
-        <small v-if="'source' in callout" class="callout-source">{{ callout.source }}</small>
-        <div v-if="'outcome' in callout" class="outcome">{{ callout.outcome }}</div>
+    <div v-if="activeStage" class="stage-detail" :class="`detail-${activeStage.tone}`" aria-live="polite">
+      <div class="detail-heading"><component :is="activeStage.icon" aria-hidden="true" /><h2>{{ activeStage.label }}</h2></div>
+      <div class="stage-story">
+        <article class="story-problem"><small>TÌNH HUỐNG</small><p>{{ activeStage.problem }}</p><code>{{ activeStage.data }}</code></article>
+        <article class="story-check"><small>DLP KIỂM TRA TẠI ĐÂU?</small><p>{{ activeStage.check }}</p></article>
+        <article class="story-action"><small>THỰC THI / KẾT QUẢ</small><p>{{ activeStage.action }}</p></article>
       </div>
-    </div>
-    <div class="pipeline-extras">
-      <p class="qualification reveal" :class="{ revealed: $clicks >= 4 }">Chặn chỉ có hiệu lực tại đường đã tích hợp kiểm soát.</p>
+      <p class="stage-limit">{{ activeStage.limit }}</p>
     </div>
   </div>
 </template>
 
 <style scoped>
-.pipeline-with-callouts {
-  width: 100%;
-  margin-top: 14px;
-  color: #18334f;
-}
-
-.stages {
-  display: grid;
-  grid-template-columns: repeat(5, minmax(0, 1fr));
-  gap: 24px;
-}
-
+.pipeline-with-callouts { width: 100%; margin-top: 10px; color: #18334f; }
+.stages { display: grid; grid-template-columns: repeat(5, minmax(0, 1fr)); gap: 19px; }
 .stage {
-  position: relative;
-  height: 108px;
-  border: 1px solid var(--border);
-  border-radius: 13px;
-  background: var(--surface);
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  text-align: center;
-  color: var(--ink);
-  transition: border-color 250ms ease, background-color 250ms ease, color 250ms ease;
+  position: relative; min-height: 68px; padding: 8px 7px; border: 1px solid var(--border); border-radius: 12px;
+  background: var(--surface); color: var(--ink); display: flex; flex-direction: column; align-items: center; justify-content: center;
+  gap: 7px; text-align: center; transition: border-color 200ms ease, background-color 200ms ease, transform 200ms ease;
 }
-
-.tone-neutral { --surface: #f1f5f9; --border: #d5dee9; --ink: #18334f; --accent: #60758b; }
+.stage.active { transform: translateY(-3px); box-shadow: 0 3px 12px #18334f18; }
+.tone-neutral { --surface: #f1f5f9; --border: #d5dee9; --ink: #52677b; --accent: #8192a3; }
 .tone-amber { --surface: #fffbeb; --border: #f2ca72; --ink: #92400e; --accent: #d69216; }
 .tone-cyan { --surface: #ecfeff; --border: #8bd9e4; --ink: #0e6175; --accent: #18a3b8; }
 .tone-violet { --surface: #f5f3ff; --border: #c7b9f3; --ink: #5b3aa2; --accent: #8762d3; }
-
-.stage-icon { width: 25px; height: 25px; color: var(--accent); transition: color 250ms ease; }
-.stage-label { padding: 0 5px; font-size: 13px; font-weight: 700; line-height: 1.18; transition: color 250ms ease; }
-.stage-state { margin-top: -6px; padding: 0 5px; color: var(--ink); font-size: 11px; font-weight: 500; line-height: 1.1; }
-
-.badge {
-  display: inline-flex;
-  width: 23px;
-  height: 23px;
-  flex: 0 0 23px;
-  align-items: center;
-  justify-content: center;
-  border-radius: 50%;
-  background: var(--accent);
-  color: white;
-  font-size: 12px;
-  font-weight: 800;
-  line-height: 1;
-}
-
-.stage-badge { position: absolute; top: 6px; right: 7px; width: 20px; height: 20px; font-size: 11px; }
-.flow-arrow {
-  position: absolute;
-  left: calc(100% + 3px);
-  top: 50%;
-  width: 18px;
-  transform: translateY(-50%);
-  color: #74869a;
-  font-size: 21px;
-  font-weight: 400;
-  line-height: 1;
-}
-
-.control-connectors { display: block; width: 100%; height: 68px; overflow: visible; }
-.control-connectors path { fill: none; stroke-width: 1.6; vector-effect: non-scaling-stroke; }
-.reveal { opacity: 0; pointer-events: none; transition: opacity 250ms ease; }
-.reveal.revealed { opacity: 1; pointer-events: auto; }
-.amber-line { stroke: #d69216; }
-.cyan-line { stroke: #18a3b8; }
-.violet-line { stroke: #8762d3; }
-
-.callouts { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; }
-.callout {
-  min-height: 148px;
-  padding: 15px 17px 13px;
-  border: 1px solid var(--border);
-  border-radius: 13px;
-  background: var(--surface);
-  color: var(--ink);
-  transition: opacity 250ms ease;
-}
-.callout-heading { display: flex; align-items: center; gap: 9px; font-size: 15px; line-height: 1.2; }
-.callout p { margin: 10px 0 0; font-size: 14px; line-height: 1.35; color: #334b63; }
-.outcome { margin-top: 9px; color: var(--ink); font-size: 12px; font-weight: 700; }
-.pipeline-extras { min-height: 55px; margin-top: 11px; text-align: center; }
-.pipeline-extras p { margin: 0; line-height: 1.35; }
-.qualification { color: #5b3aa2; font-size: 13px; font-weight: 700; }
-.challenges { display: inline-block; margin-top: 5px !important; padding: 5px 12px; border-radius: 6px; background: #eef2f7; color: #334b63; font-size: 13px; }
-.callout-source { display: block; margin-top: 7px; color: #64788c; font-size: 10px; font-weight: 650; line-height: 1.2; }
-@media (prefers-reduced-motion: reduce) {
-  .stage, .stage-icon, .stage-label, .callout, .reveal { transition: none; }
-}
+.tone-blue { --surface: #eff6ff; --border: #a8c8f0; --ink: #1d4f91; --accent: #3977bf; }
+.tone-teal { --surface: #ecfdf5; --border: #9addbd; --ink: #14634e; --accent: #18916e; }
+.stage-icon { width: 21px; height: 21px; color: var(--accent); }
+.stage-label { max-width: 150px; font-size: 14px; font-weight: 700; line-height: 1.15; }
+.flow-arrow { position: absolute; left: calc(100% + 4px); top: 50%; width: 15px; transform: translateY(-50%); color: #74869a; font-size: 19px; line-height: 1; }
+.stage-detail { height: 225px; box-sizing: border-box; margin-top: 12px; padding: 10px 18px; border: 1px solid var(--detail-border); border-left: 5px solid var(--detail-accent); border-radius: 11px; background: var(--detail-bg); color: #18334f; display: flex; flex-direction: column; }
+.detail-amber { --detail-border: #f2ca72; --detail-accent: #d69216; --detail-bg: #fffcf1; }
+.detail-cyan { --detail-border: #8bd9e4; --detail-accent: #18a3b8; --detail-bg: #f1fdfe; }
+.detail-violet { --detail-border: #c7b9f3; --detail-accent: #8762d3; --detail-bg: #f8f6ff; }
+.detail-blue { --detail-border: #a8c8f0; --detail-accent: #3977bf; --detail-bg: #f4f8fe; }
+.detail-teal { --detail-border: #9addbd; --detail-accent: #18916e; --detail-bg: #f1fcf6; }
+.detail-heading { display: flex; flex-shrink: 0; align-items: center; gap: 10px; margin-bottom: 8px; color: var(--detail-accent); }
+.detail-heading svg { width: 25px; height: 25px; }
+.detail-heading h2 { margin: 0; font-size: 21px; line-height: 1.1; }
+.stage-story { flex: 1; min-height: 0; display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); grid-template-rows: minmax(0, 1fr); gap: 10px; }
+.stage-story article { min-height: 0; height: 100%; box-sizing: border-box; padding: 8px 14px; border: 1px solid var(--detail-border); border-radius: 8px; background: #ffffffd9; }
+.stage-story small { display: block; margin-bottom: 6px; color: var(--detail-accent); font-size: 12px; line-height: 1.2; font-weight: 800; }
+.stage-story p { margin: 0; color: #243b55; font-size: 16px; line-height: 1.32; }
+.stage-story code { display: block; margin-top: 8px; color: #52677b; font-size: 13px; line-height: 1.25; white-space: normal; overflow-wrap: anywhere; }
+.story-check { border-top: 3px solid #18a3b8 !important; }
+.story-action { border-top: 3px solid #18916e !important; }
+.stage-limit { flex: 0 0 22px; box-sizing: border-box; margin: 7px 0 0; color: #52677b; font-size: 13px; line-height: 1.2; font-weight: 600; text-align: right; display: flex; align-items: center; justify-content: flex-end; }
+@media (prefers-reduced-motion: reduce) { .stage { transition: none; } }
 </style>

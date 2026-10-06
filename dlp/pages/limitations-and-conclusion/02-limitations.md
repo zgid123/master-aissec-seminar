@@ -23,7 +23,7 @@ transition: slide-left
         <TableComparisonCell align="left">Kiểm soát <strong>từng egress path</strong>; quét lại dữ liệu dẫn xuất.</TableComparisonCell>
       </TableComparisonRow>
       <TableComparisonRow title="3 - Phạm vi hỗ trợ của sản phẩm">
-        <TableComparisonCell align="left">Mỗi dịch vụ chỉ <strong>hỗ trợ một số loại dữ liệu, định dạng</strong> (vd: Model Armor bỏ qua tệp &gt; 4 MB, không hỗ trợ audio/video).</TableComparisonCell>
+        <TableComparisonCell align="left">Mỗi dịch vụ chỉ <strong>hỗ trợ một số loại dữ liệu, định dạng</strong> (vd: Model Armor bỏ qua file &gt; 4 MB, không hỗ trợ audio/video).</TableComparisonCell>
         <TableComparisonCell align="left">Lập <strong>bảng độ bao phủ</strong>; kết hợp nhiều lớp phòng thủ (defense in depth).</TableComparisonCell>
       </TableComparisonRow>
       <TableComparisonRow title="4 - Chi phí vận hành">
@@ -219,7 +219,7 @@ Ví dụ Google Model Armor bỏ qua nội dung lớn hơn 4 MB và không quét
 Cần lập bảng độ bao phủ và kết hợp nhiều lớp phòng thủ.
 
 Hai hàng cuối nói lướt: chi phí vận hành thì triển khai theo pha, ghi log, cảnh báo rồi mới chặn; độ trễ thì cần đo thời gian quét và thời gian ra quyết định.
-(Tùy chọn, chỉ nói nếu muốn trích Schwab:) Nhóm Schwab năm 2021 đo riêng độ trễ của việc phân loại truy vấn SQL qua proxy JDBC: vài mili giây với siêu dữ liệu quan hệ, 137 mili giây với đồ thị, và giảm còn 0,35 mili giây ở 87% trường hợp sau tối ưu. Đó là bài toán truy vấn SQL, không phải quét nội dung tệp.
+(Tùy chọn, chỉ nói nếu muốn trích Schwab:) Nhóm Schwab năm 2021 đo riêng độ trễ của việc phân loại truy vấn SQL qua proxy JDBC: vài mili giây với siêu dữ liệu quan hệ, 137 mili giây với đồ thị, và giảm còn 0,35 mili giây ở 87% trường hợp sau tối ưu. Đó là bài toán truy vấn SQL, không phải quét nội dung file.
 
 Khung bên phải là insider. Herrera Montano và cộng sự năm 2022 tổng quan 42 nghiên cứu từ 2011 đến 2022; khoảng 40% thể hiện quan tâm đáng kể đến mối đe dọa nội bộ, tức người có quyền hợp lệ, cố ý hoặc vô ý.
 Tổng quan này cũng ghi nhận DLP phụ thuộc gần như hoàn toàn vào chất lượng policy, và chưa khắc phục được sơ suất của người dùng. Vì vậy DLP giảm chứ không loại bỏ rủi ro này.

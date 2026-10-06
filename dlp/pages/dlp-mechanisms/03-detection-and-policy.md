@@ -16,7 +16,7 @@ import MachineLearningIcon from '~icons/carbon/machine-learning-model'
   class="detection-gear"
   :height="360"
   :clicks="Math.min(3, Math.max(0, $clicks - 1))"
-  @click="$clicks = Math.min($clicks + 1, 4)"
+  @click="$clicks = Math.min($clicks + 1, 5)"
 >
   <GearTriadCallout
     title="Quy tắc định dạng (Regex)"
@@ -71,7 +71,7 @@ import MachineLearningIcon from '~icons/carbon/machine-learning-model'
   </GearTriadContents>
 </GearTriad>
 
-<div v-click="5" class="detection-takeaway">Phát hiện cung cấp đầu vào cho policy; chặn cần điểm thực thi.</div>
+<div v-click="5" class="detection-takeaway">Detector tạo finding → policy xét dữ liệu và ngữ cảnh → điểm thực thi áp dụng quyết định.</div>
 
 <span v-click="2" class="hidden" />
 <span v-click="3" class="hidden" />
@@ -121,14 +121,14 @@ import MachineLearningIcon from '~icons/carbon/machine-learning-model'
 [click]
 ### Tổng quan các kỹ thuật
 
-Quy tắc nhìn vào mẫu có cấu trúc, fingerprinting đối chiếu dữ liệu tham chiếu, còn AI/ML xét tín hiệu ngữ cảnh. Các kỹ thuật bổ trợ nhau; đầu ra phát hiện vẫn cần policy và điểm enforcement.
+Quy tắc nhìn vào mẫu có cấu trúc, fingerprinting đối chiếu dữ liệu tham chiếu, còn AI/ML xét tín hiệu ngữ cảnh. Các kỹ thuật bổ trợ nhau; output phát hiện vẫn cần policy và điểm enforcement.
 
 [click]
 ### Quy tắc định dạng (Regex)
 
 **Cơ chế.** Quy tắc so nội dung với mẫu đã định nghĩa, chẳng hạn Regex (biểu thức chính quy) mô tả cấu trúc thường thấy của địa chỉ email. Finding cho biết mẫu đã khớp; nó chưa xác nhận danh tính, mức độ nhạy cảm hoặc vi phạm policy chia sẻ.
 
-**Ví dụ.** Mẫu email có thể khớp chuỗi `lan@example.com` trong một tệp văn bản. Nếu cùng giá trị bị chèn khoảng trắng, xuống dòng hoặc mã hóa theo định dạng mà detector không chuẩn hóa, mẫu có thể bỏ sót. Ngược lại, mẫu quá rộng có thể khớp chuỗi trông giống mã định danh nhưng không mang ý nghĩa đó.
+**Ví dụ.** Mẫu email có thể khớp chuỗi `lan@example.com` trong một file văn bản. Nếu cùng giá trị bị chèn khoảng trắng, xuống dòng hoặc mã hóa theo định dạng mà detector không chuẩn hóa, mẫu có thể bỏ sót. Ngược lại, mẫu quá rộng có thể khớp chuỗi trông giống mã định danh nhưng không mang ý nghĩa đó.
 
 **Giới hạn và đánh đổi.** Quy tắc dễ kiểm tra và phù hợp với định dạng ổn định, nhưng phải được điều chỉnh theo các biến thể dữ liệu. Sau finding, policy vẫn phải xét người thực hiện, hành động và đích nhận trước khi chọn cảnh báo, cho phép hay chặn.
 
@@ -143,9 +143,9 @@ Quy tắc nhìn vào mẫu có cấu trúc, fingerprinting đối chiếu dữ l
 
 **Trường hợp thất bại.** Với exact-value hashing, chỉ cần sửa dấu câu hoặc một ký tự trong giá trị đã đăng ký cũng có thể làm ứng viên không khớp. Một phương pháp theo mảnh cũng có thể bỏ sót nếu đoạn sao chép bị sửa theo cách nằm ngoài khả năng chịu biến đổi của kỹ thuật đó.
 
-**Exact Data Match (EDM).** EDM là cách đối chiếu giá trị trong nội dung với các giá trị đã đăng ký trong bảng dữ liệu tham chiếu; chẳng hạn, một detector có thể dò bản ghi khách hàng đã đăng ký bằng mã khách hàng cùng trường hỗ trợ được cấu hình. Đây là so khớp dữ liệu bản ghi, khác với fingerprinting nội dung tài liệu hoặc mẫu tài liệu. Phạm vi tính năng riêng của từng nhà cung cấp cũng phụ thuộc cách triển khai; không xem những kỹ thuật này là các tên gọi thay thế cho nhau.
+**Exact Data Match (EDM).** EDM là cách đối chiếu giá trị trong nội dung với các giá trị đã đăng ký trong bảng dữ liệu tham chiếu; chẳng hạn, một detector có thể dò bản ghi khách hàng đã đăng ký bằng mã khách hàng cùng column / field hỗ trợ được cấu hình. Đây là so khớp dữ liệu bản ghi, khác với fingerprinting nội dung tài liệu hoặc mẫu tài liệu. Phạm vi tính năng riêng của từng nhà cung cấp cũng phụ thuộc cách triển khai; không xem những kỹ thuật này là các tên gọi thay thế cho nhau.
 
-**Chi tiết demo.** Cài đặt đơn giản hóa trong demo kiểm tra cột `campaign_code`, bỏ khoảng trắng đầu/cuối của giá trị ứng viên, tính SHA-256 rồi so với hash đã đăng ký của `AURORA-2026`. Đây là so khớp giá trị chính xác sau tiền xử lý, không phải so khớp đoạn trong tài liệu hay một hệ thống EDM production dùng trong môi trường thực tế. Finding chỉ là một đầu vào để policy xét tiếp.
+**Chi tiết demo.** Cài đặt đơn giản hóa trong demo kiểm tra cột `campaign_code`, bỏ khoảng trắng đầu/cuối của giá trị ứng viên, tính SHA-256 rồi so với hash đã đăng ký của `AURORA-2026`. Đây là so khớp giá trị chính xác sau tiền xử lý, không phải so khớp đoạn trong tài liệu hay một hệ thống EDM production dùng trong môi trường thực tế. Finding chỉ là một input để policy xét tiếp.
 
 **Nguồn cho EDM.** [Microsoft Learn — “Learn about exact data match based sensitive information types”](https://learn.microsoft.com/en-us/purview/sit-learn-about-exact-data-match-based-sits); [Microsoft Learn — “Reduce false positives by using SITs and advanced classifiers”](https://learn.microsoft.com/en-us/purview/deploymentmodels/depmod-reduce-false-positives). Tài liệu Microsoft phân biệt EDM trên dữ liệu tham chiếu với document fingerprinting.
 
@@ -163,7 +163,7 @@ Quy tắc nhìn vào mẫu có cấu trúc, fingerprinting đối chiếu dữ l
 [click]
 ### Từ phát hiện đến enforcement
 
-Finding từ detector chỉ cung cấp bằng chứng cho policy. Policy mới xét thêm label, người thực hiện, hành động và đích nhận để đưa ra quyết định; enforcement là việc áp dụng quyết định đó tại điểm tích hợp. Do vậy, phát hiện cung cấp đầu vào cho policy; chặn cần điểm thực thi.
+Finding từ detector chỉ cung cấp bằng chứng cho policy. Policy mới xét thêm label, người thực hiện, hành động và đích nhận để đưa ra quyết định; enforcement là việc áp dụng quyết định đó tại điểm tích hợp. Do vậy, phát hiện cung cấp input cho policy; chặn cần điểm thực thi.
 
 **Nguồn nghiên cứu:** [Shapira et al. (2013), “Content-based data leakage detection using extended fingerprinting”](https://arxiv.org/abs/1302.2028); [Ahmed et al. (2021), “Automated detection of unstructured context-dependent sensitive information using deep learning”](https://doi.org/10.1016/j.iot.2021.100444).
 -->

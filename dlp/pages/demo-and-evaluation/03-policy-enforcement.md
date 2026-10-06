@@ -30,11 +30,11 @@ Mục tiêu: 0:45
 
 Đây là phép so sánh quan trọng nhất của demo: giữ nguyên người gửi và file, chỉ thay nơi nhận.
 
-[CLICK] Policy nhận hai nhóm đầu vào: nhãn nội dung do detector tạo ra và ngữ cảnh của hành động xuất dữ liệu.
+[CLICK] Policy nhận hai nhóm input: nhãn nội dung do detector tạo ra và ngữ cảnh của hành động xuất dữ liệu.
 
 [CLICK] Khi Phong gửi file vào kho phân tích nội bộ đã được phê duyệt, policy cho phép vì dữ liệu vẫn nằm trong phạm vi kiểm soát.
 
 [CLICK] Khi cùng file đó được gửi sang ổ đĩa của đối tác, policy chặn. Thao tác dừng trước khi file được ghi ra ngoài.
 
-[CLICK] Vì vậy DLP là kiểm soát theo ngữ cảnh. Nội dung nhạy cảm là một đầu vào; người gửi, hành động và nơi nhận là các đầu vào còn lại.
+[CLICK] Vì vậy DLP là kiểm soát theo ngữ cảnh. Nội dung nhạy cảm là một input; người gửi, hành động và nơi nhận là các input còn lại.
 -->
