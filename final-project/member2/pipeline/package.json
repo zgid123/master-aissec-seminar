@@ -1,0 +1,37 @@
+{
+  "name": "aissec-member2-pipeline",
+  "version": "2.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "exports": "./dist/src/index.js",
+  "bin": {
+    "keystroke-pipeline": "./dist/src/cli.js"
+  },
+  "scripts": {
+    "build": "tsc",
+    "test": "pnpm run build && node --test dist/tests/*.test.js",
+    "pipeline": "node dist/src/cli.js",
+    "reproduce": "node dist/src/cli.js reproduce",
+    "process": "node dist/src/cli.js process",
+    "handoff": "node dist/examples/handoff.js",
+    "verify:browser": "node dist/examples/verify-browser-qa.js",
+    "export:pdf": "node dist/examples/export-report.js",
+    "package:release": "node dist/examples/package-release.js",
+    "verify:reproducibility": "node dist/examples/verify-reproducibility.js"
+  },
+  "dependencies": {
+    "csv-parse": "7.0.3",
+    "csv-stringify": "6.9.0",
+    "echarts": "6.1.0",
+    "fflate": "0.8.3",
+    "playwright": "1.64.1"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "typescript": "7.0.2"
+  },
+  "packageManager": "pnpm@12.11.2"
+}

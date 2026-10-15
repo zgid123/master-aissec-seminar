@@ -1,0 +1,144 @@
+{
+  "result": "passed",
+  "verified_at_utc": "2026-10-15T06:48:39.694Z",
+  "node": "v22.23.3",
+  "pipeline_tests": {
+    "passed": 28,
+    "failed": 0
+  },
+  "collector_tests": {
+    "passed": 9,
+    "failed": 0
+  },
+  "browser_smoke": "passed",
+  "browser_integration": "passed",
+  "reproducibility": {
+    "files_compared": 52,
+    "result": "passed"
+  },
+  "source_and_output_hashes": "matched",
+  "handoff_targets": [
+    {
+      "claimed_profile": "SIM01",
+      "shape": [
+        192,
+        12
+      ],
+      "active_features": 12
+    },
+    {
+      "claimed_profile": "SIM02",
+      "shape": [
+        192,
+        12
+      ],
+      "active_features": 12
+    },
+    {
+      "claimed_profile": "SIM03",
+      "shape": [
+        192,
+        12
+      ],
+      "active_features": 12
+    },
+    {
+      "claimed_profile": "SIM04",
+      "shape": [
+        192,
+        12
+      ],
+      "active_features": 12
+    }
+  ],
+  "simulation": {
+    "sessions": 24,
+    "valid_strokes": 28800,
+    "excluded_pairs": 48,
+    "windows_by_size": {
+      "20": 1440,
+      "50": 576,
+      "100": 288
+    },
+    "negative_flight_count": 1638,
+    "adjacent_intervals": 28728,
+    "inactive_normalizer_dimensions": 4
+  },
+  "report_pdf_sha256": "a913e03bd72a1b86a2ca6122a40c8b5ac549c542047df15a445b8437d331ec8d",
+  "local_document_links_checked": 34,
+  "report_images_loaded": 5,
+  "clean_release": {
+    "result": "passed",
+    "updated_at_utc": "2026-10-15T06:49:13.441Z",
+    "checks": [
+      "collector: pnpm install --frozen-lockfile",
+      "collector: pnpm test",
+      "pipeline: pnpm install --frozen-lockfile",
+      "pipeline: pnpm run build",
+      "pipeline: pnpm run handoff",
+      "pipeline: pnpm run verify:reproducibility",
+      "demo: fresh ZIP, frozen installs, all checks, live server and SIGINT cleanup",
+      "make setup and make check",
+      "make all from clean ZIP: setup, full checks, live server and Ctrl+C cleanup"
+    ],
+    "collector_server_health": "passed",
+    "javascript_source_files": 0,
+    "excluded": [
+      "dependencies",
+      "build output",
+      "raw QA",
+      "Python metadata",
+      "hosting configuration"
+    ]
+  },
+  "documentation": {
+    "language": "vi",
+    "markdown_files": 11,
+    "updated_at_utc": "2026-10-15T05:07:01.743Z",
+    "raw_data_csv_and_normalizers": "unchanged",
+    "standalone_report_images_loaded": 5,
+    "markdown_suffix": ".md"
+  },
+  "typescript_migration": {
+    "result": "passed",
+    "updated_at_utc": "2026-10-15T05:14:10.760Z",
+    "strict_collector_typecheck": "passed",
+    "javascript_source_files": 0,
+    "collector_source_hashes": {
+      "collector/package.json": "275c837507058742d210f20fb81bf5bb17524369c7952f78c1441915b60ffad6",
+      "collector/pnpm-lock.yaml": "9aa983b9bd1b1790b311e5aed3a88f36670af0eb6e3db882ea1155acf214dfef",
+      "collector/pnpm-workspace.yaml": "ac02d96368617c760f093cfe61fdec64b6244007ab3553e0d6621f706f54a353",
+      "collector/scripts/build.ts": "424ad00f25be8c6d8ca074c21dec96dbeee98a16c61047dea2b788b629ebe276",
+      "collector/server/dev.ts": "96b3ca700d6a1a754976f80bbb9fb9ee05a53381a1447924a3f855566684f1bc",
+      "collector/src/client/App.tsx": "c48645c7e8ae7dca566bc34d08add47c954e34b2c0dc7a6ff1fb2cebd0789260",
+      "collector/src/client/main.tsx": "c720427a1f01dab9653f62a9ea2d5e166c8e14e73f7d225b8df0c3bc2bf6534e",
+      "collector/src/client/useRecorder.ts": "fa78631514ad56949e852b713925b6b118f137762fde73eb943b6e6accb108ff",
+      "collector/src/server/app.ts": "c69d356818768bf60560c9ce221b2ba441b3b04e08e96243d2a241046ac0eddb",
+      "collector/src/server/index.ts": "c767d44b181077cfd94b20755e8ef943131c9772a5692ac64811e9d66c6b643e",
+      "collector/src/server/types.ts": "cbc7ed1289c3571d02c04b2b353235b6d09f0e192a2e72f0340b5a279f84ba98",
+      "collector/src/shared/recorder.ts": "8c6a4d08ba83afa16af0e1d6494f2a5e90b81ee4f3cf08678576f89df2b81a70",
+      "collector/src/shared/types.ts": "0703b176375d2f39833562094ccabf688afe3d5a91bc152687272e61a00cc6a8",
+      "collector/src/virtual-assets.d.ts": "92993870597de9597be70229f824317de7d68c0b11a9c8eae75c6c1a8d5967a8",
+      "collector/tests/browser-smoke.ts": "175132c0a1b4efa1424ef3ce49157d83a9c206c9ba9e196fb6b03bc41f37d41b",
+      "collector/tests/core.test.ts": "0f7f9ca19a17bef0eb1e7196e06776778c931e1cffd9c8f85604bb153c4d6f68",
+      "collector/tests/four-profiles.ts": "a0e78114cca6c70a485488899a3672d987e84ce54db27ac9440d81708d0383b2",
+      "collector/tests/server.test.ts": "1af2546784076f7faacef96150000183c7622ff80b453956a4868939731cba90",
+      "collector/tsconfig.json": "7998972aa250b1d32f42f53583a883b4ee5ff226066abbb7882c2e761bab2c82",
+      "collector/scripts/demo.ts": "bdb0c4eeb47e02f99fc75ae8f722dd03566682678a8f0d9111250f94c8d583b6"
+    }
+  },
+  "package_manager": {
+    "name": "pnpm",
+    "version": "12.11.2",
+    "frozen_installs": "passed",
+    "direct_dependency_versions": "unchanged",
+    "lockfiles": [
+      "collector/pnpm-lock.yaml",
+      "pipeline/pnpm-lock.yaml"
+    ]
+  },
+  "live_demo": {
+    "result": "passed",
+    "evidence": "docs/evidence/live-demo.json"
+  }
+}

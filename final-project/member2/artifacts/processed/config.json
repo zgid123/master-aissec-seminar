@@ -1,0 +1,58 @@
+{
+  "generator_version": "2.0.0-xoshiro128ss-boxmuller",
+  "master_seed": 42,
+  "days": 3,
+  "sessions_per_day": 2,
+  "strokes_per_session": 1200,
+  "segments_per_session": 3,
+  "window_sizes": [
+    20,
+    50,
+    100
+  ],
+  "pause_threshold_ms": 2000,
+  "dwell_log_sigma": 0.28,
+  "interval_log_sigma": 0.42,
+  "session_log_sigma": 0.07,
+  "day_drift_log_sigma": 0.025,
+  "pace_ar_coefficient": 0.92,
+  "pace_innovation_sigma": 0.04,
+  "correction_cluster_multiplier": 2,
+  "separator_probability": 0.17,
+  "pause_probability": 0.025,
+  "pause_extra_ms_range": [
+    2000,
+    6000
+  ],
+  "boundary_pause_ms_range": [
+    20000,
+    90000
+  ],
+  "repeat_probability": 0.005,
+  "profiles": [
+    {
+      "participant_id": "SIM01",
+      "dwell_median_ms": 105,
+      "interval_median_ms": 240,
+      "correction_probability": 0.035
+    },
+    {
+      "participant_id": "SIM02",
+      "dwell_median_ms": 115,
+      "interval_median_ms": 255,
+      "correction_probability": 0.045
+    },
+    {
+      "participant_id": "SIM03",
+      "dwell_median_ms": 98,
+      "interval_median_ms": 225,
+      "correction_probability": 0.04
+    },
+    {
+      "participant_id": "SIM04",
+      "dwell_median_ms": 110,
+      "interval_median_ms": 245,
+      "correction_probability": 0.05
+    }
+  ]
+}

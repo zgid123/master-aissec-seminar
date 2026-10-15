@@ -1,0 +1,33 @@
+{
+  "name": "aissec-keystroke-collector",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "pnpm run typecheck && tsx scripts/build.ts",
+    "test": "pnpm run build && tsx --test tests/*.test.ts",
+    "start": "pnpm run build && tsx server/dev.ts",
+    "start:built": "tsx server/dev.ts",
+    "test:browser": "tsx tests/browser-smoke.ts",
+    "test:four-profiles": "tsx tests/four-profiles.ts"
+  },
+  "dependencies": {
+    "@hono/node-server": "2.1.4",
+    "hono": "4.13.13",
+    "react": "19.3.0",
+    "react-dom": "19.3.0"
+  },
+  "devDependencies": {
+    "@types/node": "22.20.5",
+    "@types/react": "19.3.0",
+    "@types/react-dom": "19.3.0",
+    "esbuild": "0.28.2",
+    "playwright": "1.64.0",
+    "tsx": "4.23.15",
+    "typescript": "7.0.2"
+  },
+  "engines": {
+    "node": ">=22"
+  },
+  "packageManager": "pnpm@12.11.2"
+}

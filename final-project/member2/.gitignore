@@ -1,0 +1,8 @@
+pipeline/node_modules/
+pipeline/dist/
+collector/node_modules/
+collector/dist/
+collector/.artifacts/
+data/real/
+private/
+.artifacts/

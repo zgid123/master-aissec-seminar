@@ -1,0 +1,5 @@
+participant_id,sessions,valid_strokes,excluded_pairs,recording_minutes,interruptions,repeats
+SIM01,6,7200,12,45.7090022,12,30
+SIM02,6,7200,12,45.9747439,12,44
+SIM03,6,7200,12,41.4276027,12,32
+SIM04,6,7200,12,43.1012097,12,31

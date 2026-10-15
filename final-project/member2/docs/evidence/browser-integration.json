@@ -1,0 +1,157 @@
+{
+  "result": "passed",
+  "automated_only": true,
+  "participant_observations": 0,
+  "collector_data_kind": "real",
+  "provenance_note": "Collector schema value is not evidence of human observation. All files are automated QA fixtures.",
+  "sessions": [
+    {
+      "participant_id": "P01",
+      "split": "train",
+      "session_id": "ce6b110f-c47a-4d8e-a4da-05f68b96f4c9",
+      "exported_events": 549,
+      "input_sha256": "470e5ab9641ea24b0d2bb6a32cb8400e6dfb22291215397ce5a7eedea799cd9a"
+    },
+    {
+      "participant_id": "P01",
+      "split": "validation",
+      "session_id": "989cc2bb-b933-4d23-b0e3-90b1bf63c46b",
+      "exported_events": 549,
+      "input_sha256": "1cb5db0bac017e9b22505c8aead87cc82c572b47373d644341bd0a1fa2dffc52"
+    },
+    {
+      "participant_id": "P01",
+      "split": "test",
+      "session_id": "e4e9d043-a0b3-4926-a6f2-413af3585fc9",
+      "exported_events": 549,
+      "input_sha256": "a6e7696e15398df4ad8b56041945d62551d3e0aac925e6b7b012b3bcd9835318"
+    },
+    {
+      "participant_id": "P02",
+      "split": "train",
+      "session_id": "bd2cb89e-9d74-4ddc-af51-86016ae87e82",
+      "exported_events": 549,
+      "input_sha256": "2973f865bb5d526916ac476b6b3d03973e97c9b98e02cfdbc1f4943caf74ceb8"
+    },
+    {
+      "participant_id": "P02",
+      "split": "validation",
+      "session_id": "c5c368c2-cdd1-4445-b3b1-9a6f822421c9",
+      "exported_events": 549,
+      "input_sha256": "a421780c6a3461628dd43a9f98fd168ac04172103fab7731da7d40eda23b7bf6"
+    },
+    {
+      "participant_id": "P02",
+      "split": "test",
+      "session_id": "2d4bf9e9-6ccc-4d50-a180-d089ba4965a7",
+      "exported_events": 549,
+      "input_sha256": "0ce0a4f9de15fbe697de1a85fada6b9c64d2fc0376708f7a29f1a0d1f903c601"
+    },
+    {
+      "participant_id": "P03",
+      "split": "train",
+      "session_id": "bcfa6452-aac2-48d0-a50a-fd70f1f5d3d3",
+      "exported_events": 549,
+      "input_sha256": "237f1bee408b178ea8dab320a79fce4738b2c206a0be500aabb99d8b86e48da9"
+    },
+    {
+      "participant_id": "P03",
+      "split": "validation",
+      "session_id": "9aa28330-b2dc-43ad-808e-ce68d3b69482",
+      "exported_events": 549,
+      "input_sha256": "bebf6eec25308dd223d3ee37ce27bdc31d87cf81c28c9291d2d7229096657b83"
+    },
+    {
+      "participant_id": "P03",
+      "split": "test",
+      "session_id": "009f6ba7-24e9-46a0-a3e7-d0513e776a54",
+      "exported_events": 549,
+      "input_sha256": "bfc33de0e7564ab99f4e036baff12ab407e81196e06b7fcc69575dbf6c57b411"
+    },
+    {
+      "participant_id": "P04",
+      "split": "train",
+      "session_id": "6d90b0ad-e00c-4eb8-966e-e36fb53e6bbd",
+      "exported_events": 549,
+      "input_sha256": "cf1f74fae04aff28c55e535b5d87851856a2b12371b380975b7d297ad7b1bcf0"
+    },
+    {
+      "participant_id": "P04",
+      "split": "validation",
+      "session_id": "84627984-f159-48d6-a5cd-44ba70889f4d",
+      "exported_events": 549,
+      "input_sha256": "6247ca8625fb4fd31bdcbb2dfaf738ed43bb6912bab6225c02b8952a183cac7e"
+    },
+    {
+      "participant_id": "P04",
+      "split": "test",
+      "session_id": "8c0d7a3f-058c-4f23-a0f2-5bbfb32204aa",
+      "exported_events": 549,
+      "input_sha256": "c531f16cc78cb9020babde0ba7778efbacfc3c8875e2ce66023963001a164487"
+    }
+  ],
+  "browser_errors": [],
+  "unexpected_requests": [],
+  "pipeline_result": "passed",
+  "runtime": "TypeScript / Node.js",
+  "generated_at_utc": "2026-10-15T06:47:30.073Z",
+  "valid_strokes": 3240,
+  "windows_by_size": {
+    "20": 156,
+    "50": 48,
+    "100": 24
+  },
+  "excluded_missing_releases": 12,
+  "targets": [
+    {
+      "claimed_profile": "P01",
+      "shape": [
+        16,
+        12
+      ],
+      "active_features": 10
+    },
+    {
+      "claimed_profile": "P02",
+      "shape": [
+        16,
+        12
+      ],
+      "active_features": 10
+    },
+    {
+      "claimed_profile": "P03",
+      "shape": [
+        16,
+        12
+      ],
+      "active_features": 9
+    },
+    {
+      "claimed_profile": "P04",
+      "shape": [
+        16,
+        12
+      ],
+      "active_features": 10
+    }
+  ],
+  "checks": [
+    "privacy",
+    "four profiles and twelve unique sessions",
+    "short-session warning",
+    "missing releases",
+    "composition flags",
+    "repeats",
+    "negative flight",
+    "corrections",
+    "long pause",
+    "segment boundaries",
+    "partial tails",
+    "session-isolated splits",
+    "train-only fitting",
+    "four target normalizers",
+    "finite model inputs",
+    "no research report"
+  ]
+}

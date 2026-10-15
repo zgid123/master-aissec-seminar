@@ -1,0 +1,722 @@
+[
+  {
+    "participant_id": "SIM01",
+    "session_id": "SIM01_D1_S1",
+    "data_kind": "synthetic",
+    "split": "train",
+    "event_count": 2410,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 587.78982777,
+    "recording_seconds": 480.036320243,
+    "paused_seconds": 107.75350752699998,
+    "interruptions": 2,
+    "repeats": 2,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 2,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM01",
+    "session_id": "SIM01_D1_S2",
+    "data_kind": "synthetic",
+    "split": "train",
+    "event_count": 2413,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 559.8539302400001,
+    "recording_seconds": 477.66958711400014,
+    "paused_seconds": 82.1843431259999,
+    "interruptions": 2,
+    "repeats": 5,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 5,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM01",
+    "session_id": "SIM01_D2_S1",
+    "data_kind": "synthetic",
+    "split": "validation",
+    "event_count": 2413,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 549.40586392,
+    "recording_seconds": 431.565045462,
+    "paused_seconds": 117.84081845800003,
+    "interruptions": 2,
+    "repeats": 5,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 5,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM01",
+    "session_id": "SIM01_D2_S2",
+    "data_kind": "synthetic",
+    "split": "validation",
+    "event_count": 2413,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 613.894018355,
+    "recording_seconds": 475.68667704300003,
+    "paused_seconds": 138.20734131199995,
+    "interruptions": 2,
+    "repeats": 5,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 5,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM01",
+    "session_id": "SIM01_D3_S1",
+    "data_kind": "synthetic",
+    "split": "test",
+    "event_count": 2419,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 597.5727971370001,
+    "recording_seconds": 486.3875974470001,
+    "paused_seconds": 111.18519968999992,
+    "interruptions": 2,
+    "repeats": 11,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 11,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM01",
+    "session_id": "SIM01_D3_S2",
+    "data_kind": "synthetic",
+    "split": "test",
+    "event_count": 2410,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 444.753998433,
+    "recording_seconds": 391.19490174,
+    "paused_seconds": 53.559096693,
+    "interruptions": 2,
+    "repeats": 2,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 2,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM02",
+    "session_id": "SIM02_D1_S1",
+    "data_kind": "synthetic",
+    "split": "train",
+    "event_count": 2414,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 622.673245199,
+    "recording_seconds": 493.9970295020001,
+    "paused_seconds": 128.67621569699992,
+    "interruptions": 2,
+    "repeats": 6,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 6,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM02",
+    "session_id": "SIM02_D1_S2",
+    "data_kind": "synthetic",
+    "split": "train",
+    "event_count": 2413,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 585.440613068,
+    "recording_seconds": 489.1215032239999,
+    "paused_seconds": 96.31910984400002,
+    "interruptions": 2,
+    "repeats": 5,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 5,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM02",
+    "session_id": "SIM02_D2_S1",
+    "data_kind": "synthetic",
+    "split": "validation",
+    "event_count": 2418,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 609.452930314,
+    "recording_seconds": 498.519743233,
+    "paused_seconds": 110.93318708100001,
+    "interruptions": 2,
+    "repeats": 10,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "boundary": 2,
+      "resume": 2,
+      "repeat": 10,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM02",
+    "session_id": "SIM02_D2_S2",
+    "data_kind": "synthetic",
+    "split": "validation",
+    "event_count": 2417,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 588.360018618,
+    "recording_seconds": 452.417157537,
+    "paused_seconds": 135.94286108100002,
+    "interruptions": 2,
+    "repeats": 9,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 9,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM02",
+    "session_id": "SIM02_D3_S1",
+    "data_kind": "synthetic",
+    "split": "test",
+    "event_count": 2414,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 515.998843373,
+    "recording_seconds": 398.4469036859999,
+    "paused_seconds": 117.55193968700006,
+    "interruptions": 2,
+    "repeats": 6,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 6,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM02",
+    "session_id": "SIM02_D3_S2",
+    "data_kind": "synthetic",
+    "split": "test",
+    "event_count": 2416,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 502.96414539700004,
+    "recording_seconds": 425.98229685900003,
+    "paused_seconds": 76.98184853799997,
+    "interruptions": 2,
+    "repeats": 8,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 8,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM03",
+    "session_id": "SIM03_D1_S1",
+    "data_kind": "synthetic",
+    "split": "train",
+    "event_count": 2411,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 528.383015207,
+    "recording_seconds": 411.696366287,
+    "paused_seconds": 116.68664891999995,
+    "interruptions": 2,
+    "repeats": 3,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 3,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM03",
+    "session_id": "SIM03_D1_S2",
+    "data_kind": "synthetic",
+    "split": "train",
+    "event_count": 2413,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 585.275986091,
+    "recording_seconds": 489.959869374,
+    "paused_seconds": 95.31611671700003,
+    "interruptions": 2,
+    "repeats": 5,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 5,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM03",
+    "session_id": "SIM03_D2_S1",
+    "data_kind": "synthetic",
+    "split": "validation",
+    "event_count": 2414,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 525.584946774,
+    "recording_seconds": 384.523862702,
+    "paused_seconds": 141.061084072,
+    "interruptions": 2,
+    "repeats": 6,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 6,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM03",
+    "session_id": "SIM03_D2_S2",
+    "data_kind": "synthetic",
+    "split": "validation",
+    "event_count": 2415,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 595.860452269,
+    "recording_seconds": 437.282992717,
+    "paused_seconds": 158.577459552,
+    "interruptions": 2,
+    "repeats": 7,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 7,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM03",
+    "session_id": "SIM03_D3_S1",
+    "data_kind": "synthetic",
+    "split": "test",
+    "event_count": 2415,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 531.37648158,
+    "recording_seconds": 398.49411691600005,
+    "paused_seconds": 132.882364664,
+    "interruptions": 2,
+    "repeats": 7,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 7,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM03",
+    "session_id": "SIM03_D3_S2",
+    "data_kind": "synthetic",
+    "split": "test",
+    "event_count": 2412,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 513.867856594,
+    "recording_seconds": 363.698953119,
+    "paused_seconds": 150.168903475,
+    "interruptions": 2,
+    "repeats": 4,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 4,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM04",
+    "session_id": "SIM04_D1_S1",
+    "data_kind": "synthetic",
+    "split": "train",
+    "event_count": 2415,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 638.660725308,
+    "recording_seconds": 496.352213728,
+    "paused_seconds": 142.30851158,
+    "interruptions": 2,
+    "repeats": 7,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 7,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM04",
+    "session_id": "SIM04_D1_S2",
+    "data_kind": "synthetic",
+    "split": "train",
+    "event_count": 2410,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 572.4159223700001,
+    "recording_seconds": 426.17950587300004,
+    "paused_seconds": 146.23641649700002,
+    "interruptions": 2,
+    "repeats": 2,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "boundary": 2,
+      "resume": 2,
+      "repeat": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM04",
+    "session_id": "SIM04_D2_S1",
+    "data_kind": "synthetic",
+    "split": "validation",
+    "event_count": 2415,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 560.697195931,
+    "recording_seconds": 461.56472952700005,
+    "paused_seconds": 99.13246640400001,
+    "interruptions": 2,
+    "repeats": 7,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 7,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM04",
+    "session_id": "SIM04_D2_S2",
+    "data_kind": "synthetic",
+    "split": "validation",
+    "event_count": 2414,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 484.97592318600005,
+    "recording_seconds": 368.16041260699996,
+    "paused_seconds": 116.81551057900005,
+    "interruptions": 2,
+    "repeats": 6,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 6,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM04",
+    "session_id": "SIM04_D3_S1",
+    "data_kind": "synthetic",
+    "split": "test",
+    "event_count": 2412,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 506.053558457,
+    "recording_seconds": 430.464447369,
+    "paused_seconds": 75.58911108800001,
+    "interruptions": 2,
+    "repeats": 4,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "boundary": 2,
+      "resume": 2,
+      "repeat": 4,
+      "stop": 1
+    }
+  },
+  {
+    "participant_id": "SIM04",
+    "session_id": "SIM04_D3_S2",
+    "data_kind": "synthetic",
+    "split": "test",
+    "event_count": 2413,
+    "pair_count": 1202,
+    "valid_strokes": 1200,
+    "excluded_pairs": 2,
+    "segment_count": 3,
+    "wall_seconds": 501.54189090200003,
+    "recording_seconds": 403.35127123800004,
+    "paused_seconds": 98.190619664,
+    "interruptions": 2,
+    "repeats": 5,
+    "composition_strokes": 0,
+    "long_holds_over_2000ms": 0,
+    "exclusion_reasons": {
+      "missing_up": 2
+    },
+    "diagnostics": {
+      "start": 1,
+      "down": 1202,
+      "up": 1200,
+      "repeat": 5,
+      "boundary": 2,
+      "resume": 2,
+      "stop": 1
+    }
+  }
+]
