@@ -1,0 +1,9 @@
+scorer,policy_id,detected,first_alert_on_mixed,first_alert_on_impostor,first_alert_on_genuine,mixed_share
+distance,B0,164,30,134,0,0.182927
+distance,B1,216,41,175,0,0.189815
+distance,P1,234,39,195,0,0.166667
+distance,B1_lambda1,218,43,175,0,0.197248
+isolation_forest,B0,156,23,133,0,0.147436
+isolation_forest,B1,271,62,209,0,0.228782
+isolation_forest,P1,265,69,196,0,0.260377
+isolation_forest,B1_lambda1,271,62,209,0,0.228782

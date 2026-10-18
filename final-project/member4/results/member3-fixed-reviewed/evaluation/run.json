@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1",
+  "evaluator_version": "0.1.0",
+  "data_kind": "synthetic",
+  "created_at": "2026-10-18T12:29:37.411Z",
+  "node_version": "v24.19.0",
+  "options": {
+    "split": "test",
+    "seed": 20261016,
+    "horizonKeys": 150,
+    "iterations": 2000
+  },
+  "git_commit": "f16e2749e2091587a9314c087234f1c4b799332e",
+  "git_status": "?? final-project/member1/\n?? final-project/member4/",
+  "git_warning": null,
+  "input_sha256": "a551b6ad02891134902fa7b272d2ab0b290703c83173e6d5d840ba9ec583dc88",
+  "source_sha256": {
+    "cli.mjs": "f341c52ee35b3d2be6b0d65e43205103db7fd9b5f3a42b0263a6ef585c48ccb6",
+    "evaluate.mjs": "2e38efface9c044b7d1ec4f865bcf92789f189f8551d1695351b49db7f7e60db",
+    "fixture.mjs": "567a7325974afdccf982bdc3bfe2876ca493836497567fc26d9a1ddbb6878fa3",
+    "member3-adapter.mjs": "727b1559ec0f153c369ed4f7704b72ec00484ce6726334eba0533fc16a01bf33",
+    "metrics.mjs": "3479d2be030777af4c7f4090899836b05ce3f9a1ced7bbb2778e7306d44ab5aa",
+    "statistics.mjs": "95d0623b12410b80255ac2e7f2bce5da2b6a19ff225f8c04602c860064600c6d",
+    "validate.mjs": "47a8c3f9b4589a7124f88b41ad24681c78a0d3a9d76968552a7f258094c0cd59"
+  },
+  "output_sha256": {
+    "input.json": "a551b6ad02891134902fa7b272d2ab0b290703c83173e6d5d840ba9ec583dc88",
+    "report.json": "a9262954f4dd8c245d3a625ba5eec64af9ec95c087629c43936fc513f67bac30",
+    "per-user.csv": "a8aabeea80801842e3923963032ef3a6f63d5a4a02297b5f34ffdf597d9fb0d5",
+    "macro-summary.csv": "5f2da41745c6640af0621933de029fe669a748b85a9e494b2edc5623bb1adcf1",
+    "takeover-outcomes.csv": "c1cb4090072739361ac1e4521018a47717d521661b02b1ca348a9b13d878731c",
+    "roc.svg": "b5cf18f8c3996b5f582e7f85601eb7ef57b8b1d013b2e9570314d8465f9868e0"
+  },
+  "source_validation": "Declared manifest only; raw data files and fitting pipeline are not verified."
+}

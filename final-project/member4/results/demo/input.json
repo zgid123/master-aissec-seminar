@@ -1,0 +1,1099 @@
+{
+  "schema_version": "0.1",
+  "data_kind": "fixture",
+  "score_direction": "higher_is_more_anomalous",
+  "window_track": "fixed_window_scores",
+  "provenance": "Hand-designed formula fixture. FIX users, scores and episodes are NOT model or human observations. Hashes identify fixture labels, not raw files. B1/P1 names exercise the adapter only.",
+  "sessions": [
+    {
+      "session_id": "FIX01-train",
+      "participant_id": "FIX01",
+      "split": "train",
+      "data_kind": "fixture",
+      "sha256": "558493c99dd7c8572ecebf152820fec41df8668c85cefe220c6594f744b7c048"
+    },
+    {
+      "session_id": "FIX01-validation",
+      "participant_id": "FIX01",
+      "split": "validation",
+      "data_kind": "fixture",
+      "sha256": "fc7f34f1d21fb57ed5e9283d89ea63863333587511c9c6264790a0138aa3f65d"
+    },
+    {
+      "session_id": "FIX01-test",
+      "participant_id": "FIX01",
+      "split": "test",
+      "data_kind": "fixture",
+      "sha256": "53bea7621368f2bc428a087b056f4019b8a384b86430c7003025ab0fd393ddb9"
+    },
+    {
+      "session_id": "FIX02-train",
+      "participant_id": "FIX02",
+      "split": "train",
+      "data_kind": "fixture",
+      "sha256": "336182da07f9c600e7f619233872c661194312721bfb8a573c4fd7c0b57c5faa"
+    },
+    {
+      "session_id": "FIX02-validation",
+      "participant_id": "FIX02",
+      "split": "validation",
+      "data_kind": "fixture",
+      "sha256": "2958e50aa251150afe10fff7584eca50fd589151d59ae764dc95caac2c43f187"
+    },
+    {
+      "session_id": "FIX02-test",
+      "participant_id": "FIX02",
+      "split": "test",
+      "data_kind": "fixture",
+      "sha256": "7bc18f138af5cee71222dbac7f31924915e5928b4357c95b890ff10e5e3539cf"
+    },
+    {
+      "session_id": "FIX03-train",
+      "participant_id": "FIX03",
+      "split": "train",
+      "data_kind": "fixture",
+      "sha256": "8ce26f3c7889d4d208496ab32007eb886b86270b7cea958a83e823ef8d630978"
+    },
+    {
+      "session_id": "FIX03-validation",
+      "participant_id": "FIX03",
+      "split": "validation",
+      "data_kind": "fixture",
+      "sha256": "cda79e083c8ef60b7d37acae35c05f0e919db8607cf40ed9f3b187d5e564f57a"
+    },
+    {
+      "session_id": "FIX03-test",
+      "participant_id": "FIX03",
+      "split": "test",
+      "data_kind": "fixture",
+      "sha256": "ccee1efad64df50af8952a2e81dd91549c9ab21cc9a2dd5a6fc5e7f82093cc69"
+    },
+    {
+      "session_id": "FIX04-train",
+      "participant_id": "FIX04",
+      "split": "train",
+      "data_kind": "fixture",
+      "sha256": "4321edcf5a3958aeaaca9f41cf08642dee9e7d9c236d70dea45b6540cc22eb85"
+    },
+    {
+      "session_id": "FIX04-validation",
+      "participant_id": "FIX04",
+      "split": "validation",
+      "data_kind": "fixture",
+      "sha256": "3c65af466821f2aa078df3457ec1f1cce715ff1bd3d5879a05418f7251b0658c"
+    },
+    {
+      "session_id": "FIX04-test",
+      "participant_id": "FIX04",
+      "split": "test",
+      "data_kind": "fixture",
+      "sha256": "f90244b80c625aa03f035c2e9911e43bca79a13a42eea368cea78f867ad8d472"
+    }
+  ],
+  "windows": [
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX01",
+      "split": "test",
+      "window_id": "w0",
+      "source_session_ids": [
+        "FIX01-test"
+      ],
+      "label": "genuine",
+      "score": 0.1,
+      "accepted": true
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX01",
+      "split": "test",
+      "window_id": "w1",
+      "source_session_ids": [
+        "FIX01-test"
+      ],
+      "label": "genuine",
+      "score": 0.2,
+      "accepted": true
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX01",
+      "split": "test",
+      "window_id": "w2",
+      "source_session_ids": [
+        "FIX02-test"
+      ],
+      "label": "impostor",
+      "score": 0.8,
+      "accepted": false
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX01",
+      "split": "test",
+      "window_id": "w3",
+      "source_session_ids": [
+        "FIX02-test"
+      ],
+      "label": "impostor",
+      "score": 0.9,
+      "accepted": false
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX02",
+      "split": "test",
+      "window_id": "w0",
+      "source_session_ids": [
+        "FIX02-test"
+      ],
+      "label": "genuine",
+      "score": 0.1,
+      "accepted": true
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX02",
+      "split": "test",
+      "window_id": "w1",
+      "source_session_ids": [
+        "FIX02-test"
+      ],
+      "label": "genuine",
+      "score": 0.2,
+      "accepted": true
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX02",
+      "split": "test",
+      "window_id": "w2",
+      "source_session_ids": [
+        "FIX03-test"
+      ],
+      "label": "impostor",
+      "score": 0.8,
+      "accepted": false
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX02",
+      "split": "test",
+      "window_id": "w3",
+      "source_session_ids": [
+        "FIX03-test"
+      ],
+      "label": "impostor",
+      "score": 0.9,
+      "accepted": false
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX03",
+      "split": "test",
+      "window_id": "w0",
+      "source_session_ids": [
+        "FIX03-test"
+      ],
+      "label": "genuine",
+      "score": 0.1,
+      "accepted": true
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX03",
+      "split": "test",
+      "window_id": "w1",
+      "source_session_ids": [
+        "FIX03-test"
+      ],
+      "label": "genuine",
+      "score": 0.2,
+      "accepted": true
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX03",
+      "split": "test",
+      "window_id": "w2",
+      "source_session_ids": [
+        "FIX04-test"
+      ],
+      "label": "impostor",
+      "score": 0.8,
+      "accepted": false
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX03",
+      "split": "test",
+      "window_id": "w3",
+      "source_session_ids": [
+        "FIX04-test"
+      ],
+      "label": "impostor",
+      "score": 0.9,
+      "accepted": false
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX04",
+      "split": "test",
+      "window_id": "w0",
+      "source_session_ids": [
+        "FIX04-test"
+      ],
+      "label": "genuine",
+      "score": 0.1,
+      "accepted": true
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX04",
+      "split": "test",
+      "window_id": "w1",
+      "source_session_ids": [
+        "FIX04-test"
+      ],
+      "label": "genuine",
+      "score": 0.2,
+      "accepted": true
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX04",
+      "split": "test",
+      "window_id": "w2",
+      "source_session_ids": [
+        "FIX01-test"
+      ],
+      "label": "impostor",
+      "score": 0.8,
+      "accepted": false
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX04",
+      "split": "test",
+      "window_id": "w3",
+      "source_session_ids": [
+        "FIX01-test"
+      ],
+      "label": "impostor",
+      "score": 0.9,
+      "accepted": false
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX01",
+      "split": "test",
+      "window_id": "w0",
+      "source_session_ids": [
+        "FIX01-test"
+      ],
+      "label": "genuine",
+      "score": 0.1,
+      "accepted": true
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX01",
+      "split": "test",
+      "window_id": "w1",
+      "source_session_ids": [
+        "FIX01-test"
+      ],
+      "label": "genuine",
+      "score": 0.2,
+      "accepted": true
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX01",
+      "split": "test",
+      "window_id": "w2",
+      "source_session_ids": [
+        "FIX02-test"
+      ],
+      "label": "impostor",
+      "score": 0.8,
+      "accepted": false
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX01",
+      "split": "test",
+      "window_id": "w3",
+      "source_session_ids": [
+        "FIX02-test"
+      ],
+      "label": "impostor",
+      "score": 0.9,
+      "accepted": false
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX02",
+      "split": "test",
+      "window_id": "w0",
+      "source_session_ids": [
+        "FIX02-test"
+      ],
+      "label": "genuine",
+      "score": 0.1,
+      "accepted": true
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX02",
+      "split": "test",
+      "window_id": "w1",
+      "source_session_ids": [
+        "FIX02-test"
+      ],
+      "label": "genuine",
+      "score": 0.2,
+      "accepted": true
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX02",
+      "split": "test",
+      "window_id": "w2",
+      "source_session_ids": [
+        "FIX03-test"
+      ],
+      "label": "impostor",
+      "score": 0.8,
+      "accepted": false
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX02",
+      "split": "test",
+      "window_id": "w3",
+      "source_session_ids": [
+        "FIX03-test"
+      ],
+      "label": "impostor",
+      "score": 0.9,
+      "accepted": false
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX03",
+      "split": "test",
+      "window_id": "w0",
+      "source_session_ids": [
+        "FIX03-test"
+      ],
+      "label": "genuine",
+      "score": 0.1,
+      "accepted": true
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX03",
+      "split": "test",
+      "window_id": "w1",
+      "source_session_ids": [
+        "FIX03-test"
+      ],
+      "label": "genuine",
+      "score": 0.2,
+      "accepted": true
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX03",
+      "split": "test",
+      "window_id": "w2",
+      "source_session_ids": [
+        "FIX04-test"
+      ],
+      "label": "impostor",
+      "score": 0.8,
+      "accepted": false
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX03",
+      "split": "test",
+      "window_id": "w3",
+      "source_session_ids": [
+        "FIX04-test"
+      ],
+      "label": "impostor",
+      "score": 0.9,
+      "accepted": false
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX04",
+      "split": "test",
+      "window_id": "w0",
+      "source_session_ids": [
+        "FIX04-test"
+      ],
+      "label": "genuine",
+      "score": 0.1,
+      "accepted": true
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX04",
+      "split": "test",
+      "window_id": "w1",
+      "source_session_ids": [
+        "FIX04-test"
+      ],
+      "label": "genuine",
+      "score": 0.2,
+      "accepted": true
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX04",
+      "split": "test",
+      "window_id": "w2",
+      "source_session_ids": [
+        "FIX01-test"
+      ],
+      "label": "impostor",
+      "score": 0.8,
+      "accepted": false
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX04",
+      "split": "test",
+      "window_id": "w3",
+      "source_session_ids": [
+        "FIX01-test"
+      ],
+      "label": "impostor",
+      "score": 0.9,
+      "accepted": false
+    }
+  ],
+  "episodes": [
+    {
+      "episode_id": "G0",
+      "claimed_profile": "FIX01",
+      "method_id": "B1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX01-test"
+      ],
+      "takeover_ms": null,
+      "planned_end_ms": 3600000,
+      "end_ms": 3600000,
+      "genuine_wall_seconds": 3600,
+      "genuine_recording_seconds": 1800,
+      "observed_attacker_keys": 0,
+      "termination_reason": "completed",
+      "events": [
+        {
+          "event_id": "request-0",
+          "type": "mfa_request",
+          "t_ms": 10000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-0",
+          "type": "mfa_pass",
+          "t_ms": 10100,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "request-1",
+          "type": "mfa_request",
+          "t_ms": 20000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-1",
+          "type": "mfa_pass",
+          "t_ms": 20100,
+          "attacker_keys": 0
+        }
+      ]
+    },
+    {
+      "episode_id": "A1",
+      "claimed_profile": "FIX01",
+      "method_id": "B1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX01-test",
+        "FIX02-test"
+      ],
+      "takeover_ms": 60000,
+      "planned_end_ms": 120000,
+      "end_ms": 80000,
+      "genuine_wall_seconds": 60,
+      "genuine_recording_seconds": 60,
+      "observed_attacker_keys": 100,
+      "termination_reason": "revoke",
+      "events": [
+        {
+          "event_id": "challenge",
+          "type": "mfa_request",
+          "t_ms": 80000,
+          "attacker_keys": 100
+        },
+        {
+          "event_id": "fail",
+          "type": "mfa_fail",
+          "t_ms": 80000,
+          "attacker_keys": 100
+        },
+        {
+          "event_id": "revoke",
+          "type": "revoke",
+          "t_ms": 80000,
+          "attacker_keys": 100
+        }
+      ]
+    },
+    {
+      "episode_id": "G0",
+      "claimed_profile": "FIX02",
+      "method_id": "B1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX02-test"
+      ],
+      "takeover_ms": null,
+      "planned_end_ms": 3600000,
+      "end_ms": 3600000,
+      "genuine_wall_seconds": 3600,
+      "genuine_recording_seconds": 1800,
+      "observed_attacker_keys": 0,
+      "termination_reason": "completed",
+      "events": [
+        {
+          "event_id": "request-0",
+          "type": "mfa_request",
+          "t_ms": 10000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-0",
+          "type": "mfa_pass",
+          "t_ms": 10100,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "request-1",
+          "type": "mfa_request",
+          "t_ms": 20000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-1",
+          "type": "mfa_pass",
+          "t_ms": 20100,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "request-2",
+          "type": "mfa_request",
+          "t_ms": 30000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-2",
+          "type": "mfa_pass",
+          "t_ms": 30100,
+          "attacker_keys": 0
+        }
+      ]
+    },
+    {
+      "episode_id": "A1",
+      "claimed_profile": "FIX02",
+      "method_id": "B1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX02-test",
+        "FIX03-test"
+      ],
+      "takeover_ms": 60000,
+      "planned_end_ms": 120000,
+      "end_ms": 80000,
+      "genuine_wall_seconds": 60,
+      "genuine_recording_seconds": 60,
+      "observed_attacker_keys": 100,
+      "termination_reason": "revoke",
+      "events": [
+        {
+          "event_id": "challenge",
+          "type": "mfa_request",
+          "t_ms": 80000,
+          "attacker_keys": 100
+        },
+        {
+          "event_id": "fail",
+          "type": "mfa_fail",
+          "t_ms": 80000,
+          "attacker_keys": 100
+        },
+        {
+          "event_id": "revoke",
+          "type": "revoke",
+          "t_ms": 80000,
+          "attacker_keys": 100
+        }
+      ]
+    },
+    {
+      "episode_id": "G0",
+      "claimed_profile": "FIX03",
+      "method_id": "B1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX03-test"
+      ],
+      "takeover_ms": null,
+      "planned_end_ms": 3600000,
+      "end_ms": 3600000,
+      "genuine_wall_seconds": 3600,
+      "genuine_recording_seconds": 1800,
+      "observed_attacker_keys": 0,
+      "termination_reason": "completed",
+      "events": [
+        {
+          "event_id": "request-0",
+          "type": "mfa_request",
+          "t_ms": 10000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-0",
+          "type": "mfa_pass",
+          "t_ms": 10100,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "request-1",
+          "type": "mfa_request",
+          "t_ms": 20000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-1",
+          "type": "mfa_pass",
+          "t_ms": 20100,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "request-2",
+          "type": "mfa_request",
+          "t_ms": 30000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-2",
+          "type": "mfa_pass",
+          "t_ms": 30100,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "request-3",
+          "type": "mfa_request",
+          "t_ms": 40000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-3",
+          "type": "mfa_pass",
+          "t_ms": 40100,
+          "attacker_keys": 0
+        }
+      ]
+    },
+    {
+      "episode_id": "A1",
+      "claimed_profile": "FIX03",
+      "method_id": "B1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX03-test",
+        "FIX04-test"
+      ],
+      "takeover_ms": 60000,
+      "planned_end_ms": 120000,
+      "end_ms": 80000,
+      "genuine_wall_seconds": 60,
+      "genuine_recording_seconds": 60,
+      "observed_attacker_keys": 100,
+      "termination_reason": "revoke",
+      "events": [
+        {
+          "event_id": "challenge",
+          "type": "mfa_request",
+          "t_ms": 80000,
+          "attacker_keys": 100
+        },
+        {
+          "event_id": "fail",
+          "type": "mfa_fail",
+          "t_ms": 80000,
+          "attacker_keys": 100
+        },
+        {
+          "event_id": "revoke",
+          "type": "revoke",
+          "t_ms": 80000,
+          "attacker_keys": 100
+        }
+      ]
+    },
+    {
+      "episode_id": "G0",
+      "claimed_profile": "FIX04",
+      "method_id": "B1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX04-test"
+      ],
+      "takeover_ms": null,
+      "planned_end_ms": 3600000,
+      "end_ms": 3600000,
+      "genuine_wall_seconds": 3600,
+      "genuine_recording_seconds": 1800,
+      "observed_attacker_keys": 0,
+      "termination_reason": "completed",
+      "events": [
+        {
+          "event_id": "request-0",
+          "type": "mfa_request",
+          "t_ms": 10000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-0",
+          "type": "mfa_pass",
+          "t_ms": 10100,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "request-1",
+          "type": "mfa_request",
+          "t_ms": 20000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-1",
+          "type": "mfa_pass",
+          "t_ms": 20100,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "request-2",
+          "type": "mfa_request",
+          "t_ms": 30000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-2",
+          "type": "mfa_pass",
+          "t_ms": 30100,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "request-3",
+          "type": "mfa_request",
+          "t_ms": 40000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-3",
+          "type": "mfa_pass",
+          "t_ms": 40100,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "request-4",
+          "type": "mfa_request",
+          "t_ms": 50000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-4",
+          "type": "mfa_pass",
+          "t_ms": 50100,
+          "attacker_keys": 0
+        }
+      ]
+    },
+    {
+      "episode_id": "A1",
+      "claimed_profile": "FIX04",
+      "method_id": "B1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX04-test",
+        "FIX01-test"
+      ],
+      "takeover_ms": 60000,
+      "planned_end_ms": 120000,
+      "end_ms": 120000,
+      "genuine_wall_seconds": 60,
+      "genuine_recording_seconds": 60,
+      "observed_attacker_keys": 300,
+      "termination_reason": "completed",
+      "events": []
+    },
+    {
+      "episode_id": "G0",
+      "claimed_profile": "FIX01",
+      "method_id": "P1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX01-test"
+      ],
+      "takeover_ms": null,
+      "planned_end_ms": 3600000,
+      "end_ms": 3600000,
+      "genuine_wall_seconds": 3600,
+      "genuine_recording_seconds": 1800,
+      "observed_attacker_keys": 0,
+      "termination_reason": "completed",
+      "events": [
+        {
+          "event_id": "request-0",
+          "type": "mfa_request",
+          "t_ms": 10000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-0",
+          "type": "mfa_pass",
+          "t_ms": 10100,
+          "attacker_keys": 0
+        }
+      ]
+    },
+    {
+      "episode_id": "A1",
+      "claimed_profile": "FIX01",
+      "method_id": "P1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX01-test",
+        "FIX02-test"
+      ],
+      "takeover_ms": 60000,
+      "planned_end_ms": 120000,
+      "end_ms": 70000,
+      "genuine_wall_seconds": 60,
+      "genuine_recording_seconds": 60,
+      "observed_attacker_keys": 50,
+      "termination_reason": "revoke",
+      "events": [
+        {
+          "event_id": "challenge",
+          "type": "mfa_request",
+          "t_ms": 70000,
+          "attacker_keys": 50
+        },
+        {
+          "event_id": "fail",
+          "type": "mfa_fail",
+          "t_ms": 70000,
+          "attacker_keys": 50
+        },
+        {
+          "event_id": "revoke",
+          "type": "revoke",
+          "t_ms": 70000,
+          "attacker_keys": 50
+        }
+      ]
+    },
+    {
+      "episode_id": "G0",
+      "claimed_profile": "FIX02",
+      "method_id": "P1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX02-test"
+      ],
+      "takeover_ms": null,
+      "planned_end_ms": 3600000,
+      "end_ms": 3600000,
+      "genuine_wall_seconds": 3600,
+      "genuine_recording_seconds": 1800,
+      "observed_attacker_keys": 0,
+      "termination_reason": "completed",
+      "events": [
+        {
+          "event_id": "request-0",
+          "type": "mfa_request",
+          "t_ms": 10000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-0",
+          "type": "mfa_pass",
+          "t_ms": 10100,
+          "attacker_keys": 0
+        }
+      ]
+    },
+    {
+      "episode_id": "A1",
+      "claimed_profile": "FIX02",
+      "method_id": "P1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX02-test",
+        "FIX03-test"
+      ],
+      "takeover_ms": 60000,
+      "planned_end_ms": 120000,
+      "end_ms": 70000,
+      "genuine_wall_seconds": 60,
+      "genuine_recording_seconds": 60,
+      "observed_attacker_keys": 50,
+      "termination_reason": "revoke",
+      "events": [
+        {
+          "event_id": "challenge",
+          "type": "mfa_request",
+          "t_ms": 70000,
+          "attacker_keys": 50
+        },
+        {
+          "event_id": "fail",
+          "type": "mfa_fail",
+          "t_ms": 70000,
+          "attacker_keys": 50
+        },
+        {
+          "event_id": "revoke",
+          "type": "revoke",
+          "t_ms": 70000,
+          "attacker_keys": 50
+        }
+      ]
+    },
+    {
+      "episode_id": "G0",
+      "claimed_profile": "FIX03",
+      "method_id": "P1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX03-test"
+      ],
+      "takeover_ms": null,
+      "planned_end_ms": 3600000,
+      "end_ms": 3600000,
+      "genuine_wall_seconds": 3600,
+      "genuine_recording_seconds": 1800,
+      "observed_attacker_keys": 0,
+      "termination_reason": "completed",
+      "events": [
+        {
+          "event_id": "request-0",
+          "type": "mfa_request",
+          "t_ms": 10000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-0",
+          "type": "mfa_pass",
+          "t_ms": 10100,
+          "attacker_keys": 0
+        }
+      ]
+    },
+    {
+      "episode_id": "A1",
+      "claimed_profile": "FIX03",
+      "method_id": "P1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX03-test",
+        "FIX04-test"
+      ],
+      "takeover_ms": 60000,
+      "planned_end_ms": 120000,
+      "end_ms": 70000,
+      "genuine_wall_seconds": 60,
+      "genuine_recording_seconds": 60,
+      "observed_attacker_keys": 50,
+      "termination_reason": "revoke",
+      "events": [
+        {
+          "event_id": "challenge",
+          "type": "mfa_request",
+          "t_ms": 70000,
+          "attacker_keys": 50
+        },
+        {
+          "event_id": "fail",
+          "type": "mfa_fail",
+          "t_ms": 70000,
+          "attacker_keys": 50
+        },
+        {
+          "event_id": "revoke",
+          "type": "revoke",
+          "t_ms": 70000,
+          "attacker_keys": 50
+        }
+      ]
+    },
+    {
+      "episode_id": "G0",
+      "claimed_profile": "FIX04",
+      "method_id": "P1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX04-test"
+      ],
+      "takeover_ms": null,
+      "planned_end_ms": 3600000,
+      "end_ms": 3600000,
+      "genuine_wall_seconds": 3600,
+      "genuine_recording_seconds": 1800,
+      "observed_attacker_keys": 0,
+      "termination_reason": "completed",
+      "events": [
+        {
+          "event_id": "request-0",
+          "type": "mfa_request",
+          "t_ms": 10000,
+          "attacker_keys": 0
+        },
+        {
+          "event_id": "pass-0",
+          "type": "mfa_pass",
+          "t_ms": 10100,
+          "attacker_keys": 0
+        }
+      ]
+    },
+    {
+      "episode_id": "A1",
+      "claimed_profile": "FIX04",
+      "method_id": "P1",
+      "split": "test",
+      "source_session_ids": [
+        "FIX04-test",
+        "FIX01-test"
+      ],
+      "takeover_ms": 60000,
+      "planned_end_ms": 120000,
+      "end_ms": 120000,
+      "genuine_wall_seconds": 60,
+      "genuine_recording_seconds": 60,
+      "observed_attacker_keys": 300,
+      "termination_reason": "completed",
+      "events": []
+    }
+  ]
+}

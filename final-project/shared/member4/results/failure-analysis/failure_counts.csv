@@ -1,0 +1,9 @@
+scorer,policy_id,a1_scenarios,g0_sessions,not_detected,late_detection,pre_takeover_revoke,wrongful_revoke_g0,not_detected_rate,late_detection_rate
+distance,B0,432,8,268,79,0,1,0.62037,0.18287
+distance,B1,432,8,162,98,54,2,0.375,0.226852
+distance,P1,432,8,180,102,18,2,0.416667,0.236111
+distance,B1_lambda1,432,8,160,97,54,2,0.37037,0.224537
+isolation_forest,B0,432,8,276,97,0,0,0.638889,0.224537
+isolation_forest,B1,432,8,161,122,0,1,0.372685,0.282407
+isolation_forest,P1,432,8,95,86,72,4,0.219907,0.199074
+isolation_forest,B1_lambda1,432,8,161,122,0,1,0.372685,0.282407
