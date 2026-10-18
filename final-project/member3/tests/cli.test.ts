@@ -1,0 +1,11 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import {spawnSync} from 'node:child_process';
+import {resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
+const root=fileURLToPath(new URL('../',import.meta.url));
+const run=(args:string[])=>spawnSync(process.execPath,[resolve(root,'src/cli.ts'),...args],{cwd:root,encoding:'utf8'});
+test('CLI verify checks real member2 artifacts',()=>{const r=run(['verify']);assert.equal(r.status,0,r.stderr);assert.equal(JSON.parse(r.stdout).windowsChecked,2304);});
+test('CLI missing output/model rejected',()=>{const a=run(['fit']);assert.equal(a.status,1);assert.match(a.stderr,/requires --out/);const b=run(['evaluate','--out','unused']);assert.equal(b.status,1);assert.match(b.stderr,/requires --model/);});
+test('CLI rejects config override on frozen evaluation',()=>{const r=run(['evaluate','--out','unused','--model','unused.json','--config','config.json']);assert.equal(r.status,1);assert.match(r.stderr,/frozen config/);});
+test('CLI never overwrites source directory as output',()=>{const r=run(['fit','--out','src']);assert.equal(r.status,1);assert.match(r.stderr,/not empty/);});

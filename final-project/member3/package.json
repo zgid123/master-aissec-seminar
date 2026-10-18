@@ -1,0 +1,23 @@
+{
+  "name": "aissec-member3-models",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=24"
+  },
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "demo": "node scripts/demo.ts",
+    "verify:reproducibility": "node scripts/verify-reproducibility.ts",
+    "test": "node --test tests/*.test.ts",
+    "fit": "node src/cli.ts fit",
+    "evaluate": "node src/cli.ts evaluate",
+    "verify": "node src/cli.ts verify",
+    "reproduce": "node src/cli.ts reproduce"
+  },
+  "devDependencies": {
+    "@types/node": "24.0.0",
+    "typescript": "5.9.3"
+  }
+}

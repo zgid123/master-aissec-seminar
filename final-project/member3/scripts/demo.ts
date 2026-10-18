@@ -1,0 +1,22 @@
+import {resolve} from 'node:path';
+import {fileURLToPath} from 'node:url';
+import {readJson} from '../src/io.ts';
+import {loadData,profileKey} from '../src/data.ts';
+import {makeScenarios} from '../src/scenarios.ts';
+import {replay} from '../src/policy.ts';
+import type {Bundle} from '../src/types.ts';
+
+const root=fileURLToPath(new URL('../',import.meta.url));
+const [target='SIM01',scorer='isolation_forest',policy='P1']=process.argv.slice(2);
+const b=await readJson<Bundle>(resolve(root,'artifacts/simulation-reviewed/fit/model.json'));
+const key=profileKey(scorer,target),p=b.profiles[key],selection=b.selections[key]?.[policy];
+if(!p||!selection)throw new Error('Unknown target/scorer/policy');
+const raw=resolve(root,'../member2/artifacts'),data=await loadData(resolve(raw,'processed'),raw,resolve(raw,'manifest.json'));
+const scenario=makeScenarios(data,p,'test',b.config,b.validationPartition).find(s=>s.kind==='A1')!;
+const r=replay(scenario,selection.policy);
+console.log('DEMO DỮ LIỆU MÔ PHỎNG — không phải kết quả trên người thật');
+console.log(`Scorer=${scorer}; target=${target}; policy=${policy}; validation_user_feasible=${selection.validationByUser[target].feasible}; validation_selection_feasible=${selection.feasible}`);
+console.log(`Kịch bản đầu tiên theo thứ tự nguồn, không chọn theo kết quả: ${scenario.id}`);
+console.table(r.logs.map(w=>({window:w.window_id,time_ms:Number(w.time_ms).toFixed(1),z:Number(w.z).toFixed(3),S:Number(w.s).toFixed(3),h1:w.h1,h2:w.h2,label:w.true_label,action:w.action})));
+console.table(r.events);
+console.log(JSON.stringify({detected:r.detection,detection_evidence:r.detectionEvidence,ttd_keys:r.ttdKeys,ttd_ms:r.ttdMs,censored:r.censored,pre_takeover_revoke:r.preTakeoverRevoke},null,2));
