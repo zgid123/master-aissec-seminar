@@ -12,6 +12,19 @@ function Setup({ session }: { session: RecorderSession }) {
       <h2 id="setup-title">Thông tin phiên</h2>
       <p className="muted">Dùng cùng mã người tham gia qua các phiên.</p>
       <form id="setup" onSubmit={start}>
+        <label htmlFor="collection-mode">Loại phiên</label>
+        <select
+          id="collection-mode"
+          name="collection_mode"
+          value={session.collectionMode}
+          onChange={(event) =>
+            session.setCollectionMode(event.target.value as "pilot" | "formal")
+          }
+          disabled={r.active}
+        >
+          <option value="formal">Thu chính thức · 1.000 lần gõ · 8 phút</option>
+          <option value="pilot">Pilot · 300 lần gõ · 5 phút</option>
+        </select>
         <label htmlFor="participant">Mã người tham gia</label>
         <select
           id="participant"
@@ -21,10 +34,11 @@ function Setup({ session }: { session: RecorderSession }) {
           disabled={r.active}
         >
           <option value="">Chọn mã của bạn</option>
-          <option>P01</option>
-          <option>P02</option>
-          <option>P03</option>
-          <option>P04</option>
+          {Array.from({ length: 20 }, (_, i) =>
+            `P${String(i + 1).padStart(2, "0")}`,
+          ).map((id) => (
+            <option key={id}>{id}</option>
+          ))}
         </select>
         <label htmlFor="keyboard">Bàn phím</label>
         <select
@@ -94,6 +108,8 @@ function Typing({ session }: { session: RecorderSession }) {
     finished,
     notice,
     elapsedLabel,
+    collectionMode,
+    targets,
     resume,
     stop,
     download,
@@ -134,9 +150,14 @@ function Typing({ session }: { session: RecorderSession }) {
           <strong id="count">{r.completed}</strong>
         </div>
         <div>
-          <span className="stat-label">MỤC TIÊU PILOT</span>
+          <span className="stat-label">
+            MỤC TIÊU{" "}
+            {collectionMode === "pilot"
+              ? "PILOT · 5 PHÚT"
+              : "CHÍNH THỨC · 8 PHÚT"}
+          </span>
           <strong>
-            300<span className="stat-unit"> lần gõ</span>
+            {targets.strokes}<span className="stat-unit"> lần gõ</span>
           </strong>
         </div>
       </div>
@@ -159,17 +180,21 @@ function Typing({ session }: { session: RecorderSession }) {
         <div
           className="progress"
           role="progressbar"
-          aria-label="Tiến độ 300 lần gõ"
+          aria-label={`Tiến độ ${targets.strokes} lần gõ`}
           aria-valuemin={0}
-          aria-valuemax={300}
-          aria-valuenow={Math.min(300, r.completed)}
+          aria-valuemax={targets.strokes}
+          aria-valuenow={Math.min(targets.strokes, r.completed)}
         >
           <div
             id="progress-fill"
-            style={{ width: `${Math.min(100, r.completed / 3)}%` }}
+            style={{
+              width: `${Math.min(100, (r.completed / targets.strokes) * 100)}%`,
+            }}
           />
         </div>
-        <span id="progress-label">{r.completed} / 300</span>
+        <span id="progress-label">
+          {r.completed} / {targets.strokes}
+        </span>
       </div>
       <p
         id="notice"
@@ -275,9 +300,10 @@ export function App() {
             <span>02 /</span>
             <h3>Thu qua nhiều phiên</h3>
             <p>
-              Pilot: 300 lần gõ và 5 phút. Thu chính thức: 6 phiên trong 3 ngày,
-              mỗi phiên ít nhất 1.000 lần gõ và 8 phút; nghỉ ít nhất 30 phút
-              giữa các phiên.
+              Pilot: 300 lần gõ và 5 phút. Thu chính thức: 4 phiên trong 3 ngày
+              (2 train ngày 1, 1 validation ngày 2, 1 test ngày 3), mỗi phiên
+              ít nhất 1.000 lần gõ và 8 phút; nghỉ ít nhất 30 phút giữa hai
+              phiên cùng ngày.
             </p>
           </article>
           <article>

@@ -1,0 +1,210 @@
+{
+  "date": "2026-10-18",
+  "status": "all four UI Pilot targets passed; human-equivalence not established",
+  "actual_operator": "OpenAI Codex AI agent",
+  "method": "native visible Safari interface; explicit sequential key presses with accessibility observations, mixed single/paired key sections and uneven manually selected pauses",
+  "generated_input_loop_or_browser_test_runner": false,
+  "random_sampling_claimed": false,
+  "human_participants": 0,
+  "research_manifest_changed": false,
+  "confirmed_collector_defects": [],
+  "sessions": [
+    {
+      "profile": "P01",
+      "session_id": "e1b34213-fcc7-4492-aa4a-2ede0d84cb47",
+      "actual_operator": "OpenAI Codex AI agent",
+      "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.0.1 Safari/605.1.15",
+      "os": "macOS 27.0.1 (26A434)",
+      "file": "exports/AI-PACED-P01.json",
+      "sha256": "7cb0700eb80c8a5bc3d6d8f19fa27dc38686beb5416bd0b429fe3e8fb67220bb",
+      "completed_strokes": 310,
+      "recording_seconds": 313.065,
+      "goal_met": true,
+      "correction_strokes": 0,
+      "down_down_ms": {
+        "min": 2,
+        "median": 543,
+        "max": 56776,
+        "under_200ms": 50,
+        "over_1000ms": 7
+      },
+      "original_schema_data_kind": "real",
+      "original_consent_flag": true,
+      "human_consent_obtained": false,
+      "human_participant_observation": false,
+      "event_fields": [
+        "composing",
+        "group",
+        "pair_id",
+        "reason",
+        "t_ms",
+        "type"
+      ],
+      "boundaries": [
+        {
+          "type": "start",
+          "t_ms": 0
+        },
+        {
+          "type": "boundary",
+          "t_ms": 313065,
+          "reason": "blur"
+        },
+        {
+          "type": "stop",
+          "t_ms": 313080
+        }
+      ]
+    },
+    {
+      "profile": "P02",
+      "session_id": "9eb3eb68-953b-43e6-a061-a9e4659fadb0",
+      "actual_operator": "OpenAI Codex AI agent",
+      "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.0.1 Safari/605.1.15",
+      "os": "macOS 27.0.1 (26A434)",
+      "file": "exports/AI-PACED-P02.json",
+      "sha256": "43c2bdc3ac2a148ae25d026cfc23eadca148b00474a5ae941e463cd3b42fd42c",
+      "completed_strokes": 366,
+      "recording_seconds": 308.025,
+      "goal_met": true,
+      "correction_strokes": 1,
+      "down_down_ms": {
+        "min": 4,
+        "median": 544,
+        "max": 33475,
+        "under_200ms": 60,
+        "over_1000ms": 7
+      },
+      "original_schema_data_kind": "real",
+      "original_consent_flag": true,
+      "human_consent_obtained": false,
+      "human_participant_observation": false,
+      "event_fields": [
+        "composing",
+        "group",
+        "pair_id",
+        "reason",
+        "t_ms",
+        "type"
+      ],
+      "boundaries": [
+        {
+          "type": "start",
+          "t_ms": 0
+        },
+        {
+          "type": "boundary",
+          "t_ms": 308025,
+          "reason": "blur"
+        },
+        {
+          "type": "stop",
+          "t_ms": 308033
+        }
+      ]
+    },
+    {
+      "profile": "P03",
+      "session_id": "8c03cce6-8e52-4c9c-a19f-1fa5a7a3b53e",
+      "actual_operator": "OpenAI Codex AI agent",
+      "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.0.1 Safari/605.1.15",
+      "os": "macOS 27.0.1 (26A434)",
+      "file": "exports/AI-PACED-P03.json",
+      "sha256": "2a9672e7eb3ed9ce6ad9b44fa04b98e5d09fb8863ce8a5fa02f5ac0042e2c926",
+      "completed_strokes": 316,
+      "recording_seconds": 312.944,
+      "goal_met": true,
+      "correction_strokes": 1,
+      "down_down_ms": {
+        "min": 2,
+        "median": 542,
+        "max": 41350,
+        "under_200ms": 85,
+        "over_1000ms": 7
+      },
+      "original_schema_data_kind": "real",
+      "original_consent_flag": true,
+      "human_consent_obtained": false,
+      "human_participant_observation": false,
+      "event_fields": [
+        "composing",
+        "group",
+        "pair_id",
+        "reason",
+        "t_ms",
+        "type"
+      ],
+      "boundaries": [
+        {
+          "type": "start",
+          "t_ms": 0
+        },
+        {
+          "type": "boundary",
+          "t_ms": 312944,
+          "reason": "blur"
+        },
+        {
+          "type": "stop",
+          "t_ms": 312953
+        }
+      ]
+    },
+    {
+      "profile": "P04",
+      "session_id": "de26f3d3-8697-427f-a1ae-41659246e864",
+      "actual_operator": "OpenAI Codex AI agent",
+      "browser": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/27.0.1 Safari/605.1.15",
+      "os": "macOS 27.0.1 (26A434)",
+      "file": "exports/AI-PACED-P04.json",
+      "sha256": "ce050e598713fe1ba14ab14ebf4b0547d02c4cd368fdca58f875603dd456c35a",
+      "completed_strokes": 329,
+      "recording_seconds": 314.091,
+      "goal_met": true,
+      "correction_strokes": 1,
+      "down_down_ms": {
+        "min": 2,
+        "median": 547.0,
+        "max": 33894,
+        "under_200ms": 53,
+        "over_1000ms": 6
+      },
+      "original_schema_data_kind": "real",
+      "original_consent_flag": true,
+      "human_consent_obtained": false,
+      "human_participant_observation": false,
+      "event_fields": [
+        "composing",
+        "group",
+        "pair_id",
+        "reason",
+        "t_ms",
+        "type"
+      ],
+      "boundaries": [
+        {
+          "type": "start",
+          "t_ms": 0
+        },
+        {
+          "type": "boundary",
+          "t_ms": 314091,
+          "reason": "blur"
+        },
+        {
+          "type": "stop",
+          "t_ms": 314102
+        }
+      ]
+    }
+  ],
+  "limitations": [
+    "All profiles share one actual AI operator, browser and computer",
+    "Native control latency dominates many key intervals near 540 ms; these are not validated human timing distributions",
+    "P01 begins with a 13-stroke typeText phrase; remaining input uses discrete key presses",
+    "Single/paired sections and chosen pauses are deliberately varied; not a stochastic sample from a human population",
+    "Physical hold timing, ordinary-key overlap, held repeat and Vietnamese IME not validated",
+    "No new text-editor visual inspection claimed; exported fields inspected read-only after UI runs",
+    "No network/storage instrumentation or automated suite rerun"
+  ]
+}

@@ -39,13 +39,6 @@ export function fitNormalizers(windows: Window[]): Normalizers {
       training_sessions: unique(rows.map((w) => w.session_id)).sort(),
     };
   }
-  const missing = unique(
-    windows.map((w) => `${w.participant_id}:${w.window_size}`),
-  ).filter((k) => !p.profiles[k]);
-  if (missing.length)
-    throw new Error(
-      `Missing training windows for profiles: ${missing.sort().join(", ")}`,
-    );
   return p;
 }
 export function transformWindows(

@@ -1,0 +1,132 @@
+{
+  "result": "passed",
+  "generated_at_utc": "2026-10-18T11:23:45.104Z",
+  "operator": "Sol-labelled OpenAI Codex AI agent",
+  "new_human_observations": 0,
+  "sessions": [
+    {
+      "file": "../human-test/exports/AI-PACED-P01.json",
+      "sha256": "7cb0700eb80c8a5bc3d6d8f19fa27dc38686beb5416bd0b429fe3e8fb67220bb",
+      "valid_strokes": 310,
+      "recording_seconds": 313.065,
+      "session_target_met": true,
+      "event_fields_allowlist": "passed"
+    },
+    {
+      "file": "../human-test/exports/AI-PACED-P02.json",
+      "sha256": "43c2bdc3ac2a148ae25d026cfc23eadca148b00474a5ae941e463cd3b42fd42c",
+      "valid_strokes": 366,
+      "recording_seconds": 308.025,
+      "session_target_met": true,
+      "event_fields_allowlist": "passed"
+    },
+    {
+      "file": "../human-test/exports/AI-PACED-P03.json",
+      "sha256": "2a9672e7eb3ed9ce6ad9b44fa04b98e5d09fb8863ce8a5fa02f5ac0042e2c926",
+      "valid_strokes": 316,
+      "recording_seconds": 312.944,
+      "session_target_met": true,
+      "event_fields_allowlist": "passed"
+    },
+    {
+      "file": "../human-test/exports/AI-PACED-P04.json",
+      "sha256": "ce050e598713fe1ba14ab14ebf4b0547d02c4cd368fdca58f875603dd456c35a",
+      "valid_strokes": 329,
+      "recording_seconds": 314.091,
+      "session_target_met": true,
+      "event_fields_allowlist": "passed"
+    }
+  ],
+  "processing_summary": {
+    "sessions": 4,
+    "valid_strokes": 0,
+    "study_design": {
+      "target_participants": 20,
+      "participants": 0,
+      "participants_missing_target": 20,
+      "protocol_complete_participants": 0,
+      "protocol_incomplete_participants": 0,
+      "target_formal_sessions": 80,
+      "formal_sessions": 0,
+      "formal_sessions_missing_target": 80,
+      "eligible_sessions": 0,
+      "excluded_sessions": 4,
+      "study_complete": false,
+      "exclusion_reasons": {
+        "pilot_mode": 4
+      }
+    },
+    "excluded_pairs": 0,
+    "windows_by_size": {},
+    "negative_flight_count": 0,
+    "adjacent_intervals": 0,
+    "inactive_normalizer_dimensions": 0,
+    "split_summary": [
+      {
+        "split": "train",
+        "participants": 4,
+        "sessions": 4,
+        "eligible_research_sessions": 0,
+        "excluded_sessions": 4,
+        "complete_strokes": 0,
+        "feature_sessions": 0,
+        "normalized_feature_windows": 0,
+        "windows_without_train_normalizer": 0,
+        "windows_w50": 0,
+        "recording_minutes": 20.802083333333332,
+        "excluded_pairs": 0,
+        "formal_sessions_below_target": 0,
+        "sessions_with_unspecified_mode": 0
+      },
+      {
+        "split": "validation",
+        "participants": 0,
+        "sessions": 0,
+        "eligible_research_sessions": 0,
+        "excluded_sessions": 0,
+        "complete_strokes": 0,
+        "feature_sessions": 0,
+        "normalized_feature_windows": 0,
+        "windows_without_train_normalizer": 0,
+        "windows_w50": 0,
+        "recording_minutes": 0,
+        "excluded_pairs": 0,
+        "formal_sessions_below_target": 0,
+        "sessions_with_unspecified_mode": 0
+      },
+      {
+        "split": "test",
+        "participants": 0,
+        "sessions": 0,
+        "eligible_research_sessions": 0,
+        "excluded_sessions": 0,
+        "complete_strokes": 0,
+        "feature_sessions": 0,
+        "normalized_feature_windows": 0,
+        "windows_without_train_normalizer": 0,
+        "windows_w50": 0,
+        "recording_minutes": 0,
+        "excluded_pairs": 0,
+        "formal_sessions_below_target": 0,
+        "sessions_with_unspecified_mode": 0
+      }
+    ]
+  },
+  "study_design": {
+    "target_participants": 20,
+    "participants": 0,
+    "participants_missing_target": 20,
+    "protocol_complete_participants": 0,
+    "protocol_incomplete_participants": 0,
+    "target_formal_sessions": 80,
+    "formal_sessions": 0,
+    "formal_sessions_missing_target": 80,
+    "eligible_sessions": 0,
+    "excluded_sessions": 4,
+    "study_complete": false,
+    "exclusion_reasons": {
+      "pilot_mode": 4
+    }
+  },
+  "scope": "Read-only audit of existing AI-operated QA exports; isolated QA-only manifest outside research artifacts. Event fields checked; metadata still contains timestamps and browser/platform context. Not a network/storage audit."
+}

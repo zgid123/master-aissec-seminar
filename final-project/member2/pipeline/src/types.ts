@@ -56,6 +56,8 @@ export interface ManifestRow {
   data_kind: DataKind;
   split: Split;
   study_day?: number;
+  /** Optional explicit replacement link for a failed formal session. */
+  supersedes_session_id?: string;
 }
 export type Cell = string | number | boolean;
 export type Row = Record<string, Cell>;
@@ -106,6 +108,19 @@ export interface QualityDetails {
   repeats: number;
   composition_strokes: number;
   long_holds_over_2000ms: number;
+  collection_mode: "pilot" | "formal" | "unspecified";
+  target_strokes: number | "";
+  target_recording_seconds: number | "";
+  stroke_target_met: boolean | "";
+  recording_target_met: boolean | "";
+  session_target_met: boolean | "";
+  study_day: number | "";
+  participant_protocol_complete: boolean | "";
+  research_eligible: boolean | "";
+  eligibility_reasons: string;
+  normalization_exclusion_reasons: string;
+  supersedes_session_id: string;
+  superseded_by_session_id: string;
   exclusion_reasons: Record<string, number>;
   diagnostics: Record<string, number>;
 }
@@ -126,6 +141,20 @@ export interface Normalizers {
 export interface Summary {
   sessions: number;
   valid_strokes: number;
+  study_design?: {
+    target_participants: number;
+    participants: number;
+    participants_missing_target: number;
+    protocol_complete_participants: number;
+    protocol_incomplete_participants: number;
+    target_formal_sessions: number;
+    formal_sessions: number;
+    formal_sessions_missing_target: number;
+    eligible_sessions: number;
+    excluded_sessions: number;
+    study_complete: boolean;
+    exclusion_reasons: Record<string, number>;
+  };
   [key: string]: unknown;
 }
 export interface Run {

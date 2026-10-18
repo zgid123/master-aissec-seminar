@@ -8,6 +8,13 @@
 | data_kind | Giá trị liệt kê | `synthetic` cho dữ liệu mô phỏng; `real` cho dữ liệu xuất từ công cụ thu |
 | metadata.participant_id | Chuỗi | Mã hồ sơ nguồn ổn định; SIM01–SIM04 là các hồ sơ mô phỏng |
 | metadata.session_id | Chuỗi | Mã phiên duy nhất |
+| metadata.collection_mode | `pilot`, `formal`; tùy chọn với file cũ | Phân biệt phiên thử công cụ với phiên nghiên cứu chính thức |
+| metadata.started_at / timezone | Chuỗi ISO-8601 / múi giờ IANA | Thời điểm bắt đầu và múi giờ dùng để kiểm tra ngày thu |
+| metadata.goal_strokes | Số nguyên, collector mới | Mục tiêu lần gõ hoàn chỉnh: pilot 300, formal 1.000 |
+| metadata.goal_recording_seconds | Số nguyên, collector mới | Mục tiêu ghi chủ động: pilot 300 giây, formal 480 giây |
+| metadata.completed_strokes | Số nguyên, collector mới | Số cặp nhấn/nhả hoàn thành khi dừng thu |
+| metadata.recording_seconds | Số, collector mới | Thời gian ghi chủ động; không gồm thời gian tạm dừng |
+| metadata.stroke_goal_met / time_goal_met / goal_met | Luận lý, collector mới | Mức đạt mục tiêu tại trình duyệt; pipeline tính lại từ sự kiện hợp lệ khi xử lý |
 | metadata.study_day | Số nguyên, chỉ có trong mô phỏng | Chỉ số ngày nghiên cứu 1/2/3, không phải ngày trên lịch |
 | metadata.session_number | Số nguyên, chỉ có trong mô phỏng | Thứ tự phiên 1/2 trong ngày |
 | metadata.seed | Chuỗi, chỉ có trong mô phỏng | Giá trị khởi tạo ngẫu nhiên 128 bit, biểu diễn bằng 32 ký tự thập lục phân |
@@ -33,7 +40,7 @@ Không sinh hoặc xuất `key`, `code`, nội dung văn bản đã gõ hay nộ
 
 ## Danh sách phiên và nguồn gốc dữ liệu
 
-manifest.json chứa đường dẫn tương đối từ thư mục đầu vào, participant_id, session_id, data_kind, split và study_day đối với mô phỏng. Ngày tổng hợp 1/2/3 tương ứng tập huấn luyện/kiểm định/kiểm tra (`train`/`validation`/`test`). Mã, loại dữ liệu và tập được gán phải khớp file đầu vào. Đường dẫn ngoài thư mục đầu vào bị từ chối. Mã phiên hoặc nội dung trùng bị từ chối để tránh đếm hai lần. File lỗi được ghi vào rejections.json; lần chạy chỉ hoàn tất một phần trả mã thoát 2.
+manifest.json chứa đường dẫn tương đối từ thư mục đầu vào, participant_id, session_id, data_kind, split và study_day. Với dữ liệu mô phỏng, ngày/tập phải khớp metadata. Với dữ liệu thật, study_day là ngày nghiên cứu 1/2/3 do người quản lý manifest gán; mỗi người cần hai phiên formal ngày 1 vào `train`, một phiên ngày 2 vào `validation` và một phiên ngày 3 vào `test`. Thời gian bắt đầu và múi giờ phải hợp lệ; khoảng nghỉ giữa hai phiên ngày 1 được tính từ lúc kết thúc phiên trước đến lúc bắt đầu phiên sau, dùng thời lượng tường đã kiểm tra từ sự kiện (gồm thời gian tạm dừng), và phải đạt ít nhất 30 phút; các ngày phải tăng theo thứ tự. Lịch không đủ hoặc sai được giữ trong bảng chất lượng nhưng loại khỏi đặc trưng. Phiên pilot và phiên cũ thiếu collection_mode cũng được giữ để chẩn đoán, nhưng không tham gia nghiên cứu. Phiên formal chỉ đủ điều kiện khi có ít nhất 1.000 lần gõ hợp lệ và 480 giây ghi chủ động; pipeline tính lại hai mục tiêu từ sự kiện. Có thể khai báo `supersedes_session_id` cho một phiên formal thu lại; phiên được thay phải tồn tại, cùng participant/day/split và chỉ có một replacement. Phiên cũ vẫn hiện trong bảng chất lượng với `superseded_session`, không tính vào lịch active và không vào đặc trưng. Link sai, trùng hoặc tạo vòng không thay thế phiên nào và khiến lịch bị đánh dấu lỗi. Lịch có nghỉ dưới 30 phút mang lý do `day1_rest_under_30m`; timestamp hoặc thời lượng phiên ngày 1 không hợp lệ mang lý do `invalid_day1_session_timing`. Nếu không có train windows cho một participant/kích thước, raw feature windows vẫn được giữ nhưng normalized windows bị bỏ với lý do `missing_eligible_training_windows`; pipeline không lấy validation/test thay train. Cặp mã phiên hoặc nội dung trùng và đường dẫn ngoài thư mục đầu vào bị từ chối. File lỗi cấu trúc nằm trong rejections.json; lần chạy có file bị từ chối trả mã thoát 2.
 
 run.json ghi thời điểm chạy, không phải thời điểm thu; phiên bản Node.js và thư viện; SHA-256 đầu vào; mã băm của danh sách phiên, cấu hình, mã nguồn và đầu ra; trạng thái chạy và số liệu tổng hợp. Giá trị khởi tạo ngẫu nhiên và toàn bộ cấu hình sinh nằm trong JSON thô, được liên kết bằng session_id và mã băm đầu vào.
 
@@ -41,16 +48,21 @@ run.json ghi thời điểm chạy, không phải thời điểm thu; phiên b�
 
 | File | Đơn vị mỗi hàng | Nội dung |
 | --- | --- | --- |
-| sessions.csv | Một phiên | Các mã, loại dữ liệu, tập; event_count, pair_count, valid_strokes, excluded_pairs, segment_count, wall_seconds, recording_seconds, paused_seconds, interruptions, repeats, composition_strokes, long_holds_over_2000ms |
-| strokes.csv | Một lần gõ hoàn chỉnh hợp lệ | Các mã, loại dữ liệu, tập; segment_id, pair_id, down_ms, up_ms, dwell_ms, group, composing |
+| sessions.csv | Một phiên hợp lệ về cấu trúc | Chẩn đoán chất lượng, ngày/tập đã gán, collection_mode, mục tiêu tính lại, participant_protocol_complete, research_eligible, eligibility_reasons, liên kết retake và lý do thiếu normalizer |
+| strokes.csv | Một lần gõ hoàn chỉnh thuộc phiên đủ điều kiện | Chỉ các cặp của phiên nghiên cứu đủ điều kiện; mã, loại dữ liệu, tập, segment_id, pair_id và thời gian |
 | windows.csv | Một cửa sổ đầy đủ | Các mã, loại dữ liệu, tập; segment_id, window_id, window_size, start_ms, end_ms, các trường chẩn đoán và 12 đặc trưng bên dưới |
-| normalized_windows.csv | Một cửa sổ đầy đủ | Cùng các cột trên, thay giá trị đặc trưng bằng giá trị chuẩn hóa không có đơn vị; thêm claimed_profile |
+| normalized_windows.csv | Một cửa sổ đầy đủ có train normalizer | Cùng các cột trên, thay giá trị đặc trưng bằng giá trị chuẩn hóa không có đơn vị; thêm claimed_profile. Cửa sổ không có hồ sơ train được bỏ ở đây nhưng vẫn ở windows.csv |
+| normalization_exclusions.csv | Một participant × kích thước thiếu train normalizer | Số raw feature windows còn dùng được, số normalized (0) và lý do loại |
 | window_tails.csv | Một đoạn × một kích thước cửa sổ | session_id, segment_id, window_size, dropped_tail_strokes |
-| session_feature_summary.csv | Một phiên, W=50 | Trung vị của từng đặc trưng cửa sổ trong phiên, kèm mã và tập |
+| session_feature_summary.csv | Một phiên, W=50 | Trung vị của từng đặc trưng cửa sổ trong phiên, kèm mã và tập; dữ liệu hạn chế truy cập khi dùng người thật |
 | profile_feature_summary.csv | Một hồ sơ, W=50 | Trung vị trên các trung vị phiên của những đặc trưng được chọn |
 | session_drift_summary.csv | Một hồ sơ, W=50 | Trung vị tốc độ phiên theo tập; test_minus_train_percent = 100 × (test/train − 1); để trống nếu không đủ tập tương ứng |
 | profile_summary.csv | Một hồ sơ | Tổng hợp độ bao phủ và chất lượng |
 | window_size_summary.csv | Một kích thước cửa sổ × một tập | Số cửa sổ/phiên, trung vị thời gian giữ phím, khoảng tứ phân vị của các trung vị giữ phím và trung vị tốc độ |
+| feature_distribution_summary.csv | Một split × kích thước × đặc trưng | Số phiên và median/IQR/min/max trên giá trị trung vị từng phiên; không coi cửa sổ là người tham gia độc lập |
+| study_design_summary.json | Một lần chạy dữ liệu thật | Mức bao phủ so với protocol hiện chọn 20 người/80 phiên, số lịch hoàn chỉnh, số phiên đủ điều kiện và lý do loại tổng hợp; không có mã người tham gia. Đây là mục tiêu protocol của Member 2, không phải cỡ mẫu quy định trong phân công |
+
+`research_eligible` chỉ áp dụng cho dữ liệu `real`: true nghĩa là phiên formal đạt mục tiêu và thuộc lịch đúng; false nghĩa là phiên bị loại và có `eligibility_reasons`. Trường này để trống với fixture `synthetic`, vì fixture chỉ dùng kiểm tra kỹ thuật chứ không phải dữ liệu nghiên cứu.
 
 Thông tin chất lượng chi tiết giữ số lượng từng loại sự kiện và lý do loại cặp: missing_down/up, duplicate_pair_events, cross_boundary_pair, negative_dwell, invalid_group, invalid_composition_flag. Một cặp có thể mắc nhiều lỗi; chỉ đếm một lần theo lý do đầu tiên phù hợp. Lỗi cấu trúc làm từ chối toàn bộ file. Sự kiện unmatched_up không có pair_id được đếm là chẩn đoán sự kiện, không phải cặp bị loại. `duplicate_down` và `repeat` là chẩn đoán; bản ghi down/up thực sự bị trùng cùng pair_id sẽ làm loại cặp đó.
 
@@ -80,7 +92,7 @@ Các kích thước 20/50/100 là những cách biểu diễn cùng một nguồ
 
 ## Quy ước chuẩn hóa
 
-normalizers.json dùng khóa dạng `claimed-profile:window-size`, chứa feature_columns theo đúng thứ tự, median, scale, mặt nạ active, mã phiên huấn luyện và số cửa sổ huấn luyện. Chỉ ước lượng tham số trên train. Scale = 1.4826 × MAD. Chỉ chiều có scale > 0 mới hoạt động. Chiều không hoạt động luôn xuất 0, kể cả trên validation/test; mô hình phía sau phải tuân theo mặt nạ và không thể phát hiện thay đổi ở những chiều này. Đây là giới hạn được ghi rõ; không thêm hằng số rất nhỏ tùy ý để khuếch đại sai lệch.
+normalizers.json dùng khóa dạng `claimed-profile:window-size`, chứa feature_columns theo đúng thứ tự, median, scale, mặt nạ active, mã phiên huấn luyện và số cửa sổ huấn luyện. Chỉ ước lượng tham số trên train. Scale = 1.4826 × MAD. Chỉ chiều có scale > 0 mới hoạt động. Chiều không hoạt động luôn xuất 0, kể cả trên validation/test; mô hình phía sau phải tuân theo mặt nạ và không thể phát hiện thay đổi ở những chiều này. Participant/kích thước không có eligible train windows sẽ không có entry trong normalizers.json; transform cho khóa đó báo lỗi và pipeline không tự dùng dữ liệu validation/test. Đây là giới hạn được ghi rõ; không thêm hằng số rất nhỏ tùy ý để khuếch đại sai lệch.
 
 `transformWindows(windows, parameters, "SIM01")` giữ participant_id của nguồn nhưng áp dụng tham số đã ước lượng cho SIM01. Bỏ đối số claimedProfile sẽ chuẩn hóa từng hàng theo hồ sơ nguồn, chỉ phù hợp phân tích mô tả chính hồ sơ đó. Khi đánh giá mẫu từ người khác, phải chỉ định tài khoản đích. Thiếu hồ sơ huấn luyện hoặc đặc trưng không hữu hạn sẽ gây lỗi.
 

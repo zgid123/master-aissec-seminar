@@ -1,5 +1,9 @@
 import type { FormEvent } from "react";
-import type { CollectionMetadata } from "../shared/types.ts";
+import {
+  COLLECTION_TARGETS,
+  type CollectionMetadata,
+  type CollectionMode,
+} from "../shared/types.ts";
 import {
   useEffect,
   useLayoutEffect,
@@ -18,9 +22,11 @@ export function useRecorder() {
   const exportedRef = useRef(true);
   const [finished, setFinished] = useState(false);
   const [exported, setExported] = useState(true);
+  const [collectionMode, setCollectionMode] =
+    useState<CollectionMode>("formal");
   const [, refresh] = useReducer((value) => value + 1, 0);
   const [notice, setNotice] = useState({
-    text: "Pilot: ít nhất 300 lần gõ và 5 phút. Thu chính thức: ít nhất 1.000 lần gõ và 8 phút. Bạn có thể dừng bất kỳ lúc nào.",
+    text: "Chọn phiên pilot hoặc phiên chính thức. Bạn có thể dừng bất kỳ lúc nào.",
     warning: false,
   });
 
@@ -105,11 +111,17 @@ export function useRecorder() {
     event.preventDefault();
     if (recorder.active || !exportedRef.current) return;
     const form = new FormData(event.currentTarget);
+    const mode = String(form.get("collection_mode")) as CollectionMode;
+    const goal = COLLECTION_TARGETS[mode];
+    if (!goal) return;
     if (areaRef.current) areaRef.current.value = "";
     const field = (name: string) => String(form.get(name) ?? "");
     recorder.start({
       participant_id: field("participant"),
       session_id: crypto.randomUUID(),
+      collection_mode: mode,
+      goal_strokes: goal.strokes,
+      goal_recording_seconds: goal.recordingSeconds,
       started_at: new Date().toISOString(),
       timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       keyboard: field("keyboard"),
@@ -123,7 +135,10 @@ export function useRecorder() {
     setExported(false);
     setFinished(false);
     setNotice({
-      text: "Đang ghi nhịp gõ. Mục tiêu pilot: 300 lần gõ và 5 phút; thu chính thức: 1.000 lần gõ và 8 phút.",
+      text:
+        mode === "pilot"
+          ? "Đang ghi phiên pilot. Mục tiêu: 300 lần gõ hoàn chỉnh và 5 phút ghi chủ động."
+          : "Đang ghi phiên chính thức. Mục tiêu: 1.000 lần gõ hoàn chỉnh và 8 phút ghi chủ động.",
       warning: false,
     });
     refresh();
@@ -141,12 +156,23 @@ export function useRecorder() {
     recorder.stop();
     if (areaRef.current) areaRef.current.value = "";
     setFinished(true);
-    const short = recorder.completed < 300 || recorder.recordingMs < 300000;
+    const goal = COLLECTION_TARGETS[collectionMode];
+    const recordingSeconds = recorder.recordingMs / 1000;
+    const strokeGoalMet = recorder.completed >= goal.strokes;
+    const timeGoalMet = recordingSeconds >= goal.recordingSeconds;
+    if (recorder.metadata) {
+      recorder.metadata.completed_strokes = recorder.completed;
+      recorder.metadata.recording_seconds = recordingSeconds;
+      recorder.metadata.stroke_goal_met = strokeGoalMet;
+      recorder.metadata.time_goal_met = timeGoalMet;
+      recorder.metadata.goal_met = strokeGoalMet && timeGoalMet;
+    }
     setNotice({
-      text: short
-        ? "Phiên ngắn hơn mục tiêu. Vẫn tải file để kiểm tra chất lượng; thu thêm phiên nếu cần."
-        : "Phiên đã hoàn tất. Tải file JSON và gửi cho nhóm trước khi bắt đầu phiên mới.",
-      warning: short,
+      text:
+        strokeGoalMet && timeGoalMet
+          ? "Phiên đã đạt mục tiêu. Tải file JSON, kiểm tra file rồi gửi cho nhóm."
+          : `Chưa đạt mục tiêu ${collectionMode === "pilot" ? "pilot" : "chính thức"}: cần ${goal.strokes} lần gõ và ${Math.round(goal.recordingSeconds / 60)} phút. Vẫn tải file để nhóm kiểm tra hoặc lên lịch thu lại.`,
+      warning: !(strokeGoalMet && timeGoalMet),
     });
     refresh();
   }
@@ -178,6 +204,9 @@ export function useRecorder() {
     areaRef,
     finished,
     exported,
+    collectionMode,
+    setCollectionMode,
+    targets: COLLECTION_TARGETS[collectionMode],
     notice,
     elapsedLabel,
     start,

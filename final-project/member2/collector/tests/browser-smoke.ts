@@ -1,4 +1,7 @@
-import type { RecordedSession } from "../src/shared/types.ts";
+import type {
+  CollectionMetadata,
+  RecordedSession,
+} from "../src/shared/types.ts";
 // Optional browser QA: pnpm install --frozen-lockfile && pnpm exec playwright install --with-deps chromium.
 // Run pnpm start separately, then pnpm run test:browser. Never use this data in research.
 import { chromium } from "playwright";
@@ -26,6 +29,12 @@ try {
     path: fileURLToPath(new URL("desktop.png", output)),
     fullPage: true,
   });
+  assert.equal(await page.locator("#participant option").count(), 21);
+  assert.equal(await page.locator("#collection-mode").inputValue(), "formal");
+  assert.equal(await page.locator(".progress").getAttribute("aria-valuemax"), "1000");
+  await page.locator("#collection-mode").selectOption("pilot");
+  assert.equal(await page.locator(".progress").getAttribute("aria-valuemax"), "300");
+  await page.locator("#collection-mode").selectOption("formal");
   await page.locator("#start").click();
   assert.equal(await page.locator("#typing-area").isDisabled(), true);
   await page.locator("#participant").selectOption("P01");
@@ -91,12 +100,16 @@ try {
   const downloadPath = await download.path();
   assert.ok(downloadPath);
   const text = await readFile(downloadPath, "utf8");
-  const data = JSON.parse(text) as RecordedSession;
+  const data = JSON.parse(text) as RecordedSession<CollectionMetadata>;
   assert.doesNotMatch(
     text,
     /mot ngay|PRIVATE_COMPOSITION|Key[A-Z]|"key"|"code"|"text"/,
   );
   assert.equal(data.metadata.participant_id, "P01");
+  assert.equal(data.metadata.collection_mode, "formal");
+  assert.equal(data.metadata.goal_strokes, 1000);
+  assert.equal(data.metadata.goal_recording_seconds, 480);
+  assert.equal(data.metadata.goal_met, false);
   assert.equal(data.events.at(-1)?.type, "stop");
   assert.ok(data.events.some((e) => e.type === "down" && e.composing));
   assert.ok(data.events.some((e) => e.type === "repeat"));

@@ -1,4 +1,7 @@
-import type { RecordedSession } from "../src/shared/types.ts";
+import type {
+  CollectionMetadata,
+  RecordedSession,
+} from "../src/shared/types.ts";
 // Automated workflow QA only. Exports retain the collector schema's `real` value,
 // but are quarantined here and must never enter participant/research manifests.
 import { chromium } from "playwright";
@@ -46,6 +49,7 @@ try {
   for (let profile = 1; profile <= 4; profile++) {
     const participant = `P0${profile}`;
     await page.locator("#participant").selectOption(participant);
+    await page.locator("#collection-mode").selectOption("pilot");
     await page.locator("#consent").check(); // Form behavior only, no human consent.
     for (const split of ["train", "validation", "test"] as const) {
       await page.locator("#start").click();
@@ -91,7 +95,7 @@ try {
       await page.locator("#stop").click();
       assert.match(
         (await page.locator("#notice").textContent()) ?? "",
-        /Phiên ngắn/,
+        /Chưa đạt mục tiêu pilot/,
       );
       assert.equal(await page.locator("#typing-area").inputValue(), "");
       const pending = page.waitForEvent("download");
@@ -104,9 +108,11 @@ try {
         raw,
         /automated workflow sample|QA_PRIVATE_COMPOSITION|"key"|"code"|"text"/,
       );
-      const data = JSON.parse(raw) as RecordedSession;
+      const data = JSON.parse(raw) as RecordedSession<CollectionMetadata>;
       assert.equal(data.data_kind, "real");
       assert.equal(data.metadata.participant_id, participant);
+      assert.equal(data.metadata.collection_mode, "pilot");
+      assert.equal(data.metadata.goal_met, false);
       assert.equal(data.events.at(-1)?.type, "stop");
       assert.ok(data.events.some((event) => event.type === "repeat"));
       assert.ok(
