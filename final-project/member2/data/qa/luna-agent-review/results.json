@@ -1,0 +1,92 @@
+{
+  "result": "passed after LUNA-01 artifact provenance repair",
+  "verified_at_utc": "2026-10-18T11:37:42.899713+00:00",
+  "phase_label": "Luna",
+  "actual_operator": "OpenAI Codex AI agent in this conversation",
+  "model_identity_independently_verified": false,
+  "independent_reviewer": false,
+  "new_human_observations": 0,
+  "environment": {
+    "os": "macOS 27.0.1 (26A434)",
+    "node": "v26.0.0",
+    "pnpm_cli": "11.1.2",
+    "declared_package_manager": "pnpm@12.11.2",
+    "dependencies_reinstalled": false
+  },
+  "collector": {
+    "command": "pnpm test in collector/",
+    "exit_code": 0,
+    "passed": 9,
+    "failed": 0,
+    "typecheck_and_build": "passed"
+  },
+  "pipeline": {
+    "command": "pnpm test in pipeline/",
+    "exit_code": 0,
+    "passed": 45,
+    "failed": 0,
+    "typescript_build": "passed"
+  },
+  "automation_scope": {
+    "collector_browser_test_runner_run": false,
+    "collector_auto_typing_run": false,
+    "pipeline_headless_chromium_chart_renderer": true,
+    "note": "Pipeline tests and reproducibility use Playwright Chromium internally to render charts; no visible collector UI session was run in this phase."
+  },
+  "qa_export_audit": {
+    "result": "passed",
+    "sessions": 4,
+    "valid_strokes": 1321,
+    "active_seconds": 1248.125,
+    "all_pilot_targets_met": true,
+    "files_read_only": true,
+    "four_pilot_sessions_excluded": true,
+    "research_feature_windows": 0,
+    "evidence": "qa-export-audit.json"
+  },
+  "finding": {
+    "id": "LUNA-01",
+    "severity": "artifact provenance",
+    "initial_result": "failed",
+    "issue": "Canonical run.json source hashes were stale after the Luna report section was added to the report template",
+    "resolution": "Regenerated processed synthetic outputs using current source and unchanged inputs; repeated reproducibility check passed",
+    "application_logic_or_input_changed": false,
+    "result": "fixed and verified"
+  },
+  "reproducibility": {
+    "result": "passed",
+    "files_compared": 54,
+    "summary_input_hashes_source_hashes": "matched",
+    "exclusions": [
+      "run.json byte-level file comparison",
+      "all PDF files"
+    ]
+  },
+  "source_review": {
+    "areas": [
+      "event privacy and consent semantics",
+      "active time, pause and reset boundaries",
+      "pair validity and train-only normalization",
+      "pilot exclusion and report provenance"
+    ],
+    "confirmed_new_collector_defects": 0
+  },
+  "artifacts": {
+    "pdf_pages": 10,
+    "pdf_pages_visually_reviewed": 10,
+    "pdf_renderer": "ReportLab 5.0.1",
+    "report_banner": "BÁO CÁO KIỂM THỬ PHẦN MỀM — THÀNH VIÊN 2",
+    "pdf_sha256": "944970def4557343a9f53f03699adcd052da14869328b4b041d78716854906ee",
+    "research_manifest_sha256": "a3e463c54f015245a80582b321fafed073216d3050adce8e177c79e75bb77728",
+    "research_manifest_changed": false
+  },
+  "not_tested_this_phase": [
+    "visible UI sessions",
+    "physical keyboard behavior",
+    "Vietnamese IME through UI",
+    "network/storage instrumentation",
+    "frozen-lockfile clean install",
+    "tests from extracted archive"
+  ],
+  "scope": "Luna phase label, not a verified separate model/operator; existing four QA exports are AI-operated records, not four human observations"
+}

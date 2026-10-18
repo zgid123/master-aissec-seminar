@@ -24,7 +24,13 @@ import {
   digest,
   unique,
 } from "../src/io.js";
-import type { Session, Config, Window, ManifestRow } from "../src/types.js";
+import type {
+  Session,
+  Config,
+  Window,
+  ManifestRow,
+  Normalizers,
+} from "../src/types.js";
 const config = await readJson<Config>(join(packageRoot, "config.json"));
 function sample(): Session {
   return {
@@ -85,6 +91,20 @@ test("hand-calculated features, quartiles, overlap, proportions and rate", () =>
   );
   assert.equal(quality.composition_strokes, 1);
   assert.equal(tails[0].dropped_tail_strokes, 0);
+});
+test("collection goals are derived from accepted strokes and active recording time", () => {
+  const data = sample();
+  data.data_kind = "real";
+  data.metadata.collection_mode = "formal";
+  const formal = validateSession(data, "train").quality;
+  assert.equal(formal.collection_mode, "formal");
+  assert.equal(formal.target_strokes, 1000);
+  assert.equal(formal.target_recording_seconds, 480);
+  assert.equal(formal.stroke_target_met, false);
+  assert.equal(formal.recording_target_met, false);
+  assert.equal(formal.session_target_met, false);
+  delete data.metadata.collection_mode;
+  assert.equal(validateSession(data, "train").quality.collection_mode, "unspecified");
 });
 for (const bad of [NaN, Infinity, -1, true, "10"])
   test(`invalid timestamp ${String(bad)} rejected`, () => {
@@ -331,18 +351,16 @@ test("zero MAD inactive mask produces finite zeros", () => {
     ),
   );
 });
-test("missing train, unknown claim, contract mismatch and nonfinite features rejected", () => {
+test("missing training profiles are omitted; transform, contract and finite checks stay strict", () => {
   const w = normalizationFixture(),
     p = fitNormalizers(w);
-  assert.throws(
-    () =>
-      fitNormalizers(
-        w.map((r) =>
-          r.participant_id === "SIM02" ? { ...r, split: "test" } : r,
-        ),
-      ),
-    /Missing training/,
+  const noTrain = fitNormalizers(
+    w.map((r) =>
+      r.participant_id === "SIM02" ? { ...r, split: "test" } : r,
+    ),
   );
+  assert.equal(noTrain.profiles["SIM02:50"], undefined);
+  assert.throws(() => transformWindows(w, noTrain), /No training/);
   assert.throws(() => transformWindows(w, p, "MISSING"), /No training/);
   assert.throws(
     () => transformWindows(w, { ...p, feature_columns: [] }),
@@ -457,7 +475,7 @@ test("end-to-end partial failure, report exports, provenance, reproducibility an
     await rm(root, { recursive: true, force: true });
   }
 });
-test("manifest conflicts, outside paths, symlinks and real data report suppression", async () => {
+test("manifest conflicts, real-session eligibility, aggregate reports and data-kind isolation", async () => {
   const root = await mkdtemp(join(tmpdir(), "member2-manifest-"));
   try {
     const tiny = {
@@ -487,41 +505,261 @@ test("manifest conflicts, outside paths, symlinks and real data report suppressi
     assert.match(rejections[0].reason, /day\/split/);
     assert.match(rejections[1].reason, /inside input/);
     assert.match(rejections[2].reason, /inside input/);
-    const real: ManifestRow[] = [];
-    for (const [i, r] of rows.slice(1, 4).entries()) {
-      const d = await readJson<Session>(join(input, r.file));
+    const realConfig = {
+        ...config,
+        profiles: config.profiles.slice(0, 1),
+        strokes_per_session: 1200,
+        sessions_per_day: 2,
+      },
+      realInput = join(root, "real-input"),
+      generated = await generateDataset(realConfig, realInput),
+      dayOne = generated.filter((r) => r.study_day === 1),
+      dayTwo = generated.find((r) => r.study_day === 2)!,
+      dayThree = generated.find((r) => r.study_day === 3)!,
+      selected = [...dayOne, dayTwo, dayThree],
+      real: ManifestRow[] = [];
+    for (const r of selected) {
+      const d = await readJson<Session>(join(realInput, r.file)),
+        day = r.study_day!,
+        daySessionNumber = Number(d.metadata.session_number ?? 1),
+        sessionId = `P01-D${day}-S${daySessionNumber}`;
       d.data_kind = "real";
-      await saveJson(join(input, r.file), d);
+      d.events = d.events
+        .filter(
+          (event) =>
+            event.pair_id === undefined || Number(event.pair_id) <= (day === 2 ? 800 : 2000),
+        )
+        .map((event) => ({ ...event, t_ms: event.t_ms * 3 }));
+      d.metadata = {
+        participant_id: "P01",
+        session_id: sessionId,
+        collection_mode: "formal",
+        started_at: `2026-01-0${day}T${daySessionNumber === 1 ? "08" : "09"}:00:00.000Z`,
+        timezone: "UTC",
+      };
+      const file = `raw/${sessionId}.json`;
+      await saveJson(join(realInput, file), d);
       real.push({
         ...r,
+        file,
+        participant_id: "P01",
+        session_id: sessionId,
         data_kind: "real",
-        split: (["train", "validation", "test"] as const)[i],
+        split: (["train", "validation", "test"] as const)[day - 1],
+        study_day: day,
       });
     }
-    await saveJson(join(input, "manifest.json"), real);
+    const pilot = await readJson<Session>(join(realInput, real[0].file));
+    pilot.metadata.session_id = "P01-pilot";
+    pilot.metadata.collection_mode = "pilot";
+    await saveJson(join(realInput, "raw/P01-pilot.json"), pilot);
+    real.push({
+      ...real[0],
+      file: "raw/P01-pilot.json",
+      session_id: "P01-pilot",
+    });
+    const unspecified = await readJson<Session>(join(realInput, real[1].file));
+    unspecified.metadata.session_id = "P01-unspecified";
+    delete unspecified.metadata.collection_mode;
+    await saveJson(join(realInput, "raw/P01-unspecified.json"), unspecified);
+    real.push({
+      ...real[1],
+      file: "raw/P01-unspecified.json",
+      session_id: "P01-unspecified",
+    });
+    await saveJson(join(realInput, "manifest.json"), real);
     const realRun = await processDataset(
-      input,
-      join(input, "manifest.json"),
-      tiny,
+      realInput,
+      join(realInput, "manifest.json"),
+      realConfig,
       join(root, "real"),
     );
     assert.equal(realRun.data_kind, "real");
-    await assert.rejects(access(join(root, "real/report.md")));
-    const d = await readJson<Session>(join(input, real[2].file));
-    d.data_kind = "synthetic";
-    await saveJson(join(input, real[2].file), d);
-    real[2].data_kind = "synthetic";
-    await saveJson(join(input, "manifest.json"), real);
+    assert.equal(realRun.rejected_files, 0);
+    assert.deepEqual(realRun.summary.study_design, {
+      target_participants: 20,
+      participants: 1,
+      participants_missing_target: 19,
+      protocol_complete_participants: 1,
+      protocol_incomplete_participants: 0,
+      target_formal_sessions: 80,
+      formal_sessions: 4,
+      formal_sessions_missing_target: 76,
+      eligible_sessions: 3,
+      excluded_sessions: 3,
+      study_complete: false,
+      exclusion_reasons: {
+        below_stroke_target: 1,
+        collection_mode_unspecified: 1,
+        pilot_mode: 1,
+      },
+    });
+    const qualityRows = await readCsv(join(root, "real/sessions.csv"));
+    assert.equal(qualityRows.length, 6);
+    for (const id of ["P01-D1-S1", "P01-D1-S2", "P01-D3-S1"])
+      assert.equal(
+        qualityRows.find((r) => r.session_id === id)?.research_eligible,
+        true,
+      );
+    assert.match(
+      String(
+        qualityRows.find((r) => r.session_id === "P01-D2-S1")?.eligibility_reasons,
+      ),
+      /below_stroke_target/,
+    );
+    assert.match(
+      String(
+        qualityRows.find((r) => r.session_id === "P01-pilot")?.eligibility_reasons,
+      ),
+      /pilot_mode/,
+    );
+    assert.match(
+      String(
+        qualityRows.find((r) => r.session_id === "P01-unspecified")?.eligibility_reasons,
+      ),
+      /collection_mode_unspecified/,
+    );
+    const realWindows = await readCsv<Window>(join(root, "real/windows.csv"));
+    assert.ok(realWindows.every((w) => w.session_id !== "P01-D2-S1"));
+    assert.ok(realWindows.every((w) => !w.session_id.includes("pilot")));
+    assert.ok(realWindows.every((w) => !w.session_id.includes("unspecified")));
+    const realNormalizers = await readJson<Normalizers>(
+      join(root, "real/normalizers.json"),
+    );
+    assert.deepEqual(
+      realNormalizers.profiles["P01:50"].training_sessions,
+      ["P01-D1-S1", "P01-D1-S2"],
+    );
+    const design = await readJson<Record<string, unknown>>(
+      join(root, "real/study_design_summary.json"),
+    );
+    assert.equal(design.eligible_sessions, 3);
+    assert.doesNotMatch(JSON.stringify(design), /P01|SIM01/);
+    const realReport = await readFile(join(root, "real/report.vi.html"), "utf8");
+    assert.match(realReport, /DỮ LIỆU NGƯỜI THAM GIA/);
+    assert.match(realReport, /Thống kê này không chứng minh/);
+    assert.doesNotMatch(realReport, /SIM01|P01|P01-pilot/);
+    const realFigure = await readFile(
+      join(root, "real/figures/02_session_variation.svg"),
+      "utf8",
+    );
+    assert.match(realFigure, /REAL PARTICIPANT DATA/);
+    assert.doesNotMatch(realFigure, /SIM01|P01/);
+    const noTrainRows: ManifestRow[] = [];
+    for (const row of real.slice(0, 4)) {
+      const data = await readJson<Session>(join(realInput, row.file));
+      if (row.study_day === 1)
+        data.events = data.events.filter(
+          (event) => event.pair_id === undefined || Number(event.pair_id) <= 800,
+        );
+      const file = `raw/no-train-${row.session_id}.json`;
+      await saveJson(join(realInput, file), data);
+      noTrainRows.push({ ...row, file });
+    }
+    await saveJson(join(realInput, "manifest.json"), noTrainRows);
+    await processDataset(
+      realInput,
+      join(realInput, "manifest.json"),
+      realConfig,
+      join(root, "no-train-profiles"),
+    );
+    const noTrainWindows = await readCsv<Window>(
+        join(root, "no-train-profiles/windows.csv"),
+      ),
+      noTrainNormalized = await readCsv<Window>(
+        join(root, "no-train-profiles/normalized_windows.csv"),
+      ),
+      noTrainParameters = await readJson<Normalizers>(
+        join(root, "no-train-profiles/normalizers.json"),
+      ),
+      noTrainExclusions = await readCsv(
+        join(root, "no-train-profiles/normalization_exclusions.csv"),
+      ),
+      noTrainQuality = await readCsv(
+        join(root, "no-train-profiles/sessions.csv"),
+      ),
+      featureDistributions = await readCsv(
+        join(root, "real/feature_distribution_summary.csv"),
+      );
+    assert.ok(noTrainWindows.length > 0);
+    assert.equal(noTrainNormalized.length, 0);
+    assert.deepEqual(noTrainParameters.profiles, {});
+    assert.ok(
+      noTrainExclusions.every(
+        (row) => row.reason === "missing_eligible_training_windows",
+      ),
+    );
+    assert.match(
+      String(noTrainQuality[0]?.normalization_exclusion_reasons),
+      /missing_eligible_training_windows_W100/,
+    );
+    assert.ok(featureDistributions.length > 0);
+    assert.equal("participant_id" in (featureDistributions[0] ?? {}), false);
+
+    const retake = await readJson<Session>(join(realInput, real[3].file));
+    retake.metadata.session_id = "P01-D2-RETAKE";
+    retake.metadata.started_at = "2026-01-02T12:00:00.000Z";
+    const retakeFile = "raw/P01-D2-RETAKE.json";
+    await saveJson(join(realInput, retakeFile), retake);
+    const retakeRow: ManifestRow = {
+      ...real[2],
+      file: retakeFile,
+      session_id: "P01-D2-RETAKE",
+      supersedes_session_id: real[2].session_id,
+    };
+    await saveJson(join(realInput, "manifest.json"), [
+      ...real.slice(0, 4),
+      retakeRow,
+      ...real.slice(4),
+    ]);
+    const retakeRun = await processDataset(
+      realInput,
+      join(realInput, "manifest.json"),
+      realConfig,
+      join(root, "retake"),
+    );
+    assert.equal(retakeRun.summary.study_design?.formal_sessions, 4);
+    assert.equal(retakeRun.summary.study_design?.protocol_complete_participants, 1);
+    assert.equal(retakeRun.summary.study_design?.eligible_sessions, 4);
+    const retakeQuality = await readCsv(join(root, "retake/sessions.csv"));
+    assert.equal(
+      retakeQuality.find((row) => row.session_id === real[2].session_id)
+        ?.superseded_by_session_id,
+      "P01-D2-RETAKE",
+    );
+    assert.match(
+      String(
+        retakeQuality.find((row) => row.session_id === real[2].session_id)
+          ?.eligibility_reasons,
+      ),
+      /superseded_session/,
+    );
+    assert.equal(
+      (await readCsv<Window>(join(root, "retake/windows.csv"))).some(
+        (window) => window.session_id === real[2].session_id,
+      ),
+      false,
+    );
+    const d = await readJson<Session>(join(realInput, generated[0].file));
+    await saveJson(join(realInput, "raw/SIM01-synthetic.json"), d);
+    const mixed = [
+      ...real,
+      {
+        ...generated[0],
+        file: "raw/SIM01-synthetic.json",
+      },
+    ];
+    await saveJson(join(realInput, "manifest.json"), mixed);
     await assert.rejects(
       processDataset(
-        input,
-        join(input, "manifest.json"),
-        tiny,
+        realInput,
+        join(realInput, "manifest.json"),
+        realConfig,
         join(root, "mixed"),
       ),
       /Do not mix/,
     );
-    await saveJson(join(input, "manifest.json"), [real[2]]);
+    await saveJson(join(realInput, "manifest.json"), [real[3]]);
     const cli = spawnSync(
       process.execPath,
       [
@@ -530,16 +768,16 @@ test("manifest conflicts, outside paths, symlinks and real data report suppressi
         "--config",
         join(packageRoot, "config.json"),
         "--input",
-        input,
+        realInput,
         "--manifest",
-        join(input, "manifest.json"),
+        join(realInput, "manifest.json"),
         "--output",
         join(root, "no-train"),
       ],
       { encoding: "utf8" },
     );
-    assert.equal(cli.status, 1);
-    assert.match(cli.stderr, /Missing training/);
+    assert.equal(cli.status, 0, cli.stderr);
+    assert.equal(JSON.parse(cli.stdout).study_design.eligible_sessions, 0);
   } finally {
     await rm(root, { recursive: true, force: true });
   }

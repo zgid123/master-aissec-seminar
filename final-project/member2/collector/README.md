@@ -17,12 +17,12 @@ File `pnpm-lock.yaml` khóa phiên bản thư viện; `pnpm-workspace.yaml` cấ
 
 ## Thu một phiên
 
-1. Chọn mã người tham gia P01–P04, bàn phím, bộ gõ tiếng Việt và ngữ cảnh. Dùng nhất quán một mã giữa các phiên.
+1. Chọn loại phiên `Pilot` hoặc `Thu chính thức`, sau đó chọn mã người tham gia P01–P20, bàn phím, bộ gõ tiếng Việt và ngữ cảnh. Dùng nhất quán một mã giữa các phiên.
 2. Đồng ý tham gia và bắt đầu. Gõ tiếng Việt tự do bằng bàn phím vật lý về chủ đề thông thường, không nhạy cảm.
-3. Phiên thử cần ít nhất 5 phút và 300 lần gõ hoàn chỉnh. Thu chính thức cần ít nhất 8 phút ghi và 1.000 lần gõ hoàn chỉnh mỗi phiên. Rời vùng nhập sẽ tạm dừng; bấm “Tiếp tục gõ” để mở đoạn mới.
+3. Phiên pilot cần ít nhất 5 phút và 300 lần gõ hoàn chỉnh. Thu chính thức cần ít nhất 8 phút ghi và 1.000 lần gõ hoàn chỉnh mỗi phiên. Màn hình báo rõ từng mục tiêu chưa đạt; file vẫn tải được để kiểm tra chất lượng. Rời vùng nhập sẽ tạm dừng; bấm “Tiếp tục gõ” để mở đoạn mới.
 4. Kết thúc và tải file JSON trước khi bắt đầu phiên tiếp theo. Gửi file cho nhóm qua kênh đã thống nhất.
 
-Chạy thử trên trình duyệt/bộ gõ thực tế của từng người trước khi thu chính thức. Tuân theo quy trình: sáu phiên mỗi người trong ba ngày, hai phiên/ngày, cách nhau ít nhất 30 phút.
+Chạy pilot trên trình duyệt/bộ gõ thực tế trước khi thu chính thức. Kế hoạch là 20 người × bốn phiên trong ba ngày: hai phiên train ngày 1, một validation ngày 2, một test ngày 3; hai phiên ngày 1 cách nhau ít nhất 30 phút. Phiên pilot được đánh dấu trong metadata và phải để ngoài manifest nghiên cứu.
 
 Nội dung văn bản chỉ nằm trong phần tử nhập của trang, ngoài trạng thái React và JSON xuất; nội dung được xóa khi kết thúc phiên. Danh tính phím vật lý chỉ tồn tại tạm thời để ghép nhấn–nhả. Thao tác dán/kéo văn bản bị chặn. Không có điểm nhận dữ liệu tải lên; bản ghi sự kiện nằm trong bộ nhớ trình duyệt đến khi được tải xuống.
 
@@ -34,14 +34,14 @@ Mỗi file JSON có bốn trường:
 | --- | --- |
 | `schema_version` | `1.0` |
 | `data_kind` | `real` đối với phiên thu qua giao diện |
-| `metadata` | Mã người/phiên, thời điểm bắt đầu, múi giờ, bàn phím, bộ gõ, ngữ cảnh, trình duyệt, nền tảng và sự đồng thuận |
+| `metadata` | Mã người/phiên, collection_mode, mục tiêu và trạng thái đạt, thời điểm bắt đầu, múi giờ, bàn phím, bộ gõ, ngữ cảnh, trình duyệt, nền tảng và sự đồng thuận |
 | `events` | Thời gian tương đối bằng mili giây, loại sự kiện và các trường ghép cặp/nhóm/trạng thái bộ gõ nếu có |
 
 Sự kiện `down` và `up` dùng chung `pair_id`, `group` (`typing`, `separator`, `correction`) và `composing`. Không xuất danh tính chữ hoặc nội dung đã nhập. Các sự kiện khác gồm bắt đầu/kết thúc phiên, ranh giới mất tiêu điểm/tiếp tục, bắt đầu/kết thúc trạng thái bộ gõ và chẩn đoán phím lặp, phím tắt hoặc cặp không hoàn chỉnh. Ranh giới xóa các phím đang chờ, ngăn ghép cặp xuyên gián đoạn.
 
 Thời gian lấy từ đồng hồ đơn điệu của trình duyệt, không phải mốc phần cứng. Hành vi bộ gõ tiếng Việt khác nhau theo cấu hình; kiểm tra trạng thái bộ gõ tự động không thay thế phiên thử trên thiết bị thật. Lưu file người tham gia trong kho riêng và tách bảng ánh xạ danh tính sang mã người tham gia.
 
-Bộ đếm thời gian ghi trên màn hình loại khoảng tạm dừng. Cuối phiên, phần tóm tắt hiện số lần gõ hoàn chỉnh, lần gõ thiếu bị xóa khi ngắt/dừng, số lần gián đoạn và thời lượng ghi. Cấu trúc xuất vẫn là phiên bản 1.0. Gói Thành viên 2 hiện dùng dữ liệu được sinh riêng và ghi rõ là mô phỏng; xem [README của Thành viên 2](../README.md). Khi thu chính thức, dùng [quy trình ba ngày](../docs/COLLECTION_PROTOCOL.md), có mục tiêu cao hơn phiên thử.
+Bộ đếm thời gian ghi trên màn hình loại khoảng tạm dừng. Cuối phiên, phần tóm tắt hiện số lần gõ hoàn chỉnh, lần gõ thiếu bị xóa khi ngắt/dừng, số lần gián đoạn và thời lượng ghi. Cấu trúc xuất vẫn là phiên bản 1.0. Pipeline Thành viên 2 từ chối phiên pilot khỏi manifest nghiên cứu; dùng [quy trình ba ngày](../docs/COLLECTION_PROTOCOL.md) và [README của Thành viên 2](../README.md) khi xử lý phiên formal.
 
 ## Mã nguồn và biên dịch
 

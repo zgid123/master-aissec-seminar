@@ -4,7 +4,7 @@
 
 Đề tài: Xác thực liên tục thích ứng dựa trên nhịp gõ phím. Thành viên 2 thực hiện biểu diễn dữ liệu, tiền xử lý, trích xuất đặc trưng, chuẩn hóa và phân tích mô tả.
 
-**Toàn bộ dữ liệu trong báo cáo này là dữ liệu mô phỏng (`data_kind: synthetic`). Không có người tham gia thật, phiếu đồng thuận thật hay quan sát trên thiết bị thật.** Các mã SIM01, SIM02, SIM03, SIM04 là hồ sơ sinh bởi chương trình. Ba ngày là mốc thời gian nghiên cứu tổng hợp, không phải ngày thu thập. Bộ dữ liệu dùng để kiểm tra quy trình xử lý và bàn giao giao diện cho thành viên khác.
+**Dữ liệu phân tích định lượng tại mục 2–5 là dữ liệu mô phỏng (`data_kind: synthetic`). Không có người tham gia thật, phiếu đồng thuận thật hay quan sát người tham gia thật.** Các mã SIM01, SIM02, SIM03, SIM04 là hồ sơ sinh bởi chương trình. Ba ngày là mốc thời gian nghiên cứu tổng hợp, không phải ngày thu thập. Bộ dữ liệu dùng để kiểm tra quy trình xử lý và bàn giao giao diện cho thành viên khác.
 
 ## 2. Phương pháp tạo dữ liệu
 
@@ -67,6 +67,8 @@ Số cửa sổ và thống kê theo tập:
 | 100 | train | 96 | 8 | 108.832 | 9.463 | 153.236 |
 | 100 | validation | 96 | 8 | 107.561 | 9.710 | 168.737 |
 
+Thống kê session-level cho từng đặc trưng, kích thước cửa sổ và tập được xuất trong `feature_distribution_summary.csv` (số phiên, trung vị, IQR, cực tiểu và cực đại của giá trị trung vị phiên). Mỗi phiên có cùng trọng số trong các thống kê này; cửa sổ không được tính như người tham gia độc lập.
+
 Số đuôi bị bỏ trong lần chạy hiện tại là 0. Khả năng xử lý đuôi ngắn được kiểm thử riêng, không suy ra từ cấu hình thuận lợi này. Các cửa sổ thuộc cùng một phiên hoặc hồ sơ không được xem là những người tham gia độc lập.
 
 ## 5. Hình và diễn giải
@@ -101,7 +103,71 @@ Chưa có dữ liệu người thật, độ trôi thực qua ngày, biến đ�
 
 ## 7. Tái lập và nguồn phương pháp
 
-Chạy theo README của member2. run.json ghi mã băm đầu vào, cấu hình, mã nguồn quy trình xử lý và phiên bản thư viện. Mọi bảng và hình trong báo cáo được sinh tự động từ dữ liệu. Công thức thời gian giữ phím/khoảng nhả–nhấn theo tài liệu phân công và trang trình chiếu số 6 của đề tài; lựa chọn sinh dữ liệu là thiết kế của gói mô phỏng này, không được gán cho một công trình thực nghiệm khác. Kết quả kiểm thử và bản bàn giao được ghi trong VERIFICATION.md sau khi chạy kiểm tra.
+Chạy theo README của member2. run.json ghi mã băm đầu vào, cấu hình, mã nguồn quy trình xử lý và phiên bản thư viện. Mọi bảng và hình trong báo cáo được sinh tự động từ dữ liệu. Công thức thời gian giữ phím/khoảng nhả–nhấn theo tài liệu phân công và trang trình chiếu số 6 của đề tài; lựa chọn sinh dữ liệu là thiết kế của gói mô phỏng này, không được gán cho một công trình thực nghiệm khác. Dữ liệu kiểm thử được trích dẫn trong báo cáo nằm tại data/qa/.
 
 Tài liệu tham khảo trực tiếp: Killourhy và Maxion (2009), Comparing Anomaly-Detection Algorithms for Keystroke Dynamics, https://www.cs.cmu.edu/~ksk/KillourhyMaxion2009.pdf; Ayotte và cộng sự (2020), Fast Free-text Authentication via Instance-based Keystroke Dynamics, https://arxiv.org/abs/2006.09337; Dillon và Arushi (2025), An Agent-Based Modeling Approach to Free-Text Keyboard Dynamics for Continuous Authentication, bản thảo arXiv, https://arxiv.org/abs/2505.05015. Ghi chú bài toán, phương pháp, dữ liệu/đánh giá, điểm kế thừa và giới hạn của từng tài liệu nằm trong docs/LITERATURE_REVIEW.md của gói bàn giao. Các công trình này cung cấp bối cảnh thời gian gõ, kích thước mẫu và mô phỏng; không xác nhận tham số sinh hoặc hiệu quả thực tế của bộ SIM01–SIM04.
 
+### 7.1. Tổng hợp bằng chứng kiểm thử ngày 18/10/2026
+
+Báo cáo sử dụng ba bộ bằng chứng đã lưu: data/qa/luna-agent-review, data/qa/sol-agent-review và data/qa/human-test. Kết quả dưới đây được tổng hợp từ results.json và các file audit tương ứng; đây là kết quả của các lượt đã ghi nhận, không phải tuyên bố chạy lại kiểm thử khi biên tập báo cáo. Các mục 8–10 trình bày ba bộ bằng chứng này.
+
+| Nguồn bằng chứng | Phạm vi | Kết quả ghi nhận | Diễn giải |
+| --- | --- | --- | --- |
+| human test | human test, P01–P04 | 4/4 đạt ≥300 lần gõ và ≥300 giây chủ động; tổng 1.321 lần gõ, 1.248,125 giây | Đặt lại, nhập, dừng và tải JSON đạt các bước đã thử; P02–P04 mỗi phiên có một lần sửa |
+| sol-agent-review | Build/typecheck, hồi quy và audit bốn export | Collector 9/9; pipeline 45/45; bốn SHA-256 khớp; 54 file tái lập khớp sau sửa SOL-01 | Lỗi provenance được xử lý bằng tái sinh artifact từ đầu vào không đổi |
+| luna-agent-review | Review và xác minh phần mềm tiếp theo | Collector 9/9; pipeline 45/45; bốn SHA-256 khớp; 54 file tái lập khớp sau sửa LUNA-01 | Lỗi mã băm nguồn cũ sau sửa mẫu báo cáo được xử lý; không xác nhận lỗi collector mới |
+
+Hai pha Sol/Luna kiểm tra lại cùng bốn file AI-PACED; không cộng các audit thành tám phiên mới hoặc cộng hai lượt suite thành số ca kiểm thử độc lập. Cả hai audit dùng manifest QA riêng, xác nhận bốn phiên bị loại với lý do pilot_mode và tạo 0 cửa sổ nghiên cứu. Manifest nghiên cứu vẫn chỉ chứa SIM01–SIM04; các bảng và hình tại mục 2–5 giữ nguyên phạm vi mô phỏng.
+
+Các nhãn Sol/Luna là nhãn pha của cùng AI operator trong bản ghi, chưa xác minh danh tính mô hình độc lập. P01–P04 không đại diện bốn người thật. Không có quan sát hay đồng thuận người thật bổ sung, dù schema export ghi real/consent true. Trường sự kiện đã kiểm tra không chứa nội dung gõ hoặc danh tính phím; metadata thời gian và ngữ cảnh vẫn còn, nên kết quả này không chứng minh ẩn danh hoặc an toàn mạng/lưu trữ.
+
+SOL-01 và LUNA-01 đều có lần kiểm tra tái lập ban đầu thất bại, sau đó đạt khi tái sinh đầu ra. Phạm vi tái lập gồm 54 file so sánh bằng SHA-256 cùng summary/input_hashes/source_hashes; loại trừ so sánh byte run.json và các PDF theo chính sách sẵn có. Các mã băm/PDF/số file ZIP trong bằng chứng lịch sử chỉ áp dụng cho bản artifact của từng pha, không tự động chứng nhận bản báo cáo biên tập sau đó.
+
+Kết luận kiểm thử: phần mềm đạt các bước và ca đã thực hiện, chưa có lỗi collector mới được xác nhận. Chưa kiểm chứng bàn phím vật lý, giữ/chồng phím thường, IME tiếng Việt, mạng/lưu trữ có instrumentation, cài sạch hoặc chạy suite từ ZIP giải nén. Độ trễ điều khiển chi phối nhịp QA quanh 540 ms; không suy ra phân phối gõ tự nhiên, độ trôi người thật hoặc FAR/FRR/EER/TTD.
+
+## 8. human test — P01–P04
+
+Mục tiêu: xác minh luồng Pilot qua giao diện hiển thị, gồm đặt lại phiên, bắt đầu, nhập liệu có nhịp thay đổi, sửa lỗi, dừng và tải JSON. Bốn phiên P01–P04 được thực hiện ngày 18/10/2026 trong Safari 27.0.1 / macOS 27.0.1. Theo hồ sơ bằng chứng, người vận hành là AI agent OpenAI Codex; P01–P04 là mã ca kiểm thử. Sau cụm mở đầu 13 phím của P01, phần nhập còn lại dùng các thao tác pressKey riêng, tuần tự, xen kẽ đoạn chậm, nhóm hai phím nhanh hơn, khoảng dừng không đều và sửa lỗi. Không dùng test runner, DOM, developer console hoặc vòng lặp sinh sự kiện. Các khoảng dừng được chọn thủ công; không tuyên bố lấy mẫu ngẫu nhiên từ phân phối gõ của người thật.
+
+| Hồ sơ QA | Lần gõ hoàn chỉnh | Thời gian ghi (giây) | Lần sửa | Trung vị down-down (ms) |
+| --- | --- | --- | --- | --- |
+| P01 | 310 | 313.065 | 0 | 543 |
+| P02 | 366 | 308.025 | 1 | 544 |
+| P03 | 316 | 312.944 | 1 | 542 |
+| P04 | 329 | 314.091 | 1 | 547 |
+
+| Bước xác minh | Kỳ vọng | Kết quả quan sát |
+| --- | --- | --- |
+| Đặt lại và bắt đầu | Mã phiên mới, ô nhập trống, bộ đếm 0, đồng hồ 00:00 | Đạt cho P01–P04 |
+| Nhập liệu và sửa lỗi | Bộ đếm tăng; Backspace xóa ký tự đã nhập khi được thử | Đạt; P02–P04 mỗi phiên có một lần sửa |
+| Mục tiêu Pilot | Ít nhất 300 lần gõ hoàn chỉnh và 300 giây chủ động | Đạt 4/4 phiên |
+| Dừng | Xóa và khóa vùng nhập; không thiếu nhả phím | Đạt 4/4 phiên |
+| Tải JSON | Tải thành công, mã phiên và số đếm khớp kết quả | Đạt 4/4 phiên; mã băm được audit lại ở mục 9–10 |
+
+Cả bốn phiên mới đều đạt ít nhất 300 lần gõ và 5 phút ghi chủ động; giao diện hiển thị đạt mục tiêu, không thiếu nhả phím và xóa/khóa vùng nhập khi dừng. P02–P04 có sửa ký tự x bằng Backspace. Các file xuất mới giữ nguyên byte trong data/qa/human-test/exports, tách khỏi các lượt trước. Không đưa vào manifest nghiên cứu.
+
+Các khoảng nhấn–nhấn có biến động trong từng phiên và lịch nhập khác nhau giữa các hồ sơ, nhưng trung vị cùng gần 540 ms do độ trễ công cụ điều khiển/quan sát. Không suy ra bốn người thật hoặc phân phối giữ/nhả phím tự nhiên. Schema real/consent true chỉ là trạng thái phần mềm, không phải đồng thuận người thật. Bằng chứng hành động, giới hạn, mã phiên, thống kê khoảng gõ và mã băm nằm trong data/qa/human-test/results.json. Chưa xác nhận lỗi collector. Các pha xác minh phần mềm Sol và Luna được trình bày tại mục 9–10.
+
+
+## 9. Pha kiểm thử Sol AI Agent riêng — 18/10/2026
+
+Pha này chạy lại kiểm thử tự động và review mã nguồn theo yêu cầu người dùng, tách khỏi các lượt giao diện P01–P04. Người vận hành là AI agent OpenAI Codex với nhãn Sol trong cùng cuộc hội thoại; không phải reviewer độc lập. Môi trường thực chạy: macOS 27.0.1, Node.js 26.0.0, pnpm CLI 11.1.2; package.json khai báo pnpm 12.11.2. Không cài lại dependency hoặc kiểm tra clean install trong pha này.
+
+Collector typecheck/build và 9/9 kiểm thử đạt. Pipeline TypeScript build và 45/45 kiểm thử đạt. Các ca bao gồm ghép/chồng phím, composition không xuất nội dung, repeat/shortcut, tạm dừng và thời gian chủ động, reset, endpoint/header, đặc trưng tính tay, loại cặp sai, chuẩn hóa chỉ train và lịch/retake. Đây là kiểm thử phần mềm; không xác nhận hành vi bàn phím vật lý hay IME qua giao diện. Pipeline gọi headless Chromium nội bộ để render biểu đồ; không chạy browser-smoke, four-profiles hoặc tự động nhập liệu collector trong pha này.
+
+Kiểm tra lại bốn file AI-PACED-P01–P04: mã SHA-256 khớp, parser chấp nhận 1.321 lần gõ, thời gian ghi khớp kết quả giao diện và cả bốn đạt mục tiêu Pilot. Trường sự kiện chỉ gồm type, t_ms, pair_id, group, composing và reason; không có nội dung gõ hoặc danh tính phím. Metadata vẫn có thời điểm và ngữ cảnh trình duyệt/nền tảng. Xử lý bằng manifest QA riêng ngoài artifacts cho kết quả cả bốn bị loại khỏi nghiên cứu vì pilot_mode, không có feature window nghiên cứu. Manifest nghiên cứu không đổi.
+
+Phát hiện một lỗi đóng gói/provenance: kiểm tra tái lập ban đầu thất bại vì source_hashes trong run.json cũ hơn report.ts, report template và lockfile hiện tại. Đã tái sinh đầu ra mô phỏng từ nguồn hiện tại; kiểm tra lại đạt 54 file bằng SHA-256, kèm so sánh summary, input_hashes và source_hashes. PDF và byte run.json vẫn thuộc ngoại lệ đã công bố; PDF được kiểm tra riêng. Không xác nhận lỗi logic collector mới và không sửa mã collector trong pha này.
+
+Kết quả và dữ liệu audit được lưu tại data/qa/sol-agent-review/results.json và qa-export-audit.json. Chưa thử lại giao diện, giữ/chồng phím vật lý, Vietnamese IME, instrumentation mạng/storage hoặc cài sạch. Pha Luna thực hiện sau lượt Sol này được trình bày tại mục 10.
+
+
+## 10. Pha review Luna AI Agent — 18/10/2026
+
+Đây là lượt review kỹ thuật mới theo yêu cầu của người dùng, mang nhãn Luna trong cuộc hội thoại này. Người vận hành thực tế vẫn là AI agent Codex; đây không phải reviewer độc lập hoặc con người. Môi trường: macOS 27.0.1, Node.js 26.0.0 và pnpm CLI 11.1.2; dự án khai báo pnpm 12.11.2. Không cài lại dependency trong lượt này.
+
+Collector build/typecheck và 9/9 kiểm thử đạt. Pipeline build và 45/45 kiểm thử đạt. Đã review lại thu thập sự kiện, xóa/reset, tạm dừng và thời gian chủ động, ghép cặp sự kiện, loại Pilot khỏi nghiên cứu và băm nguồn. Không xác nhận lỗi collector mới. Pipeline tích hợp và tái lập mở Chromium headless qua Playwright để vẽ biểu đồ; không chạy browser smoke, bốn hồ sơ tự động hoặc tự động gõ vào giao diện collector trong lượt Luna.
+
+Audit mới bốn file QA đã lưu: tất cả băm khớp, 1.321 lần gõ và 1.248,125 giây theo đúng bản ghi. Parser xác nhận 4/4 phiên Pilot đạt mục tiêu; xử lý bằng manifest riêng từ chối 4 phiên với lý do pilot_mode, tạo 0 cửa sổ nghiên cứu. Mỗi sự kiện chỉ có type, t_ms, pair_id, group, composing và reason. Metadata còn thời điểm, trình duyệt/nền tảng và ngữ cảnh. Không sửa file export gốc hoặc manifest nghiên cứu.
+
+Lần kiểm tra tái lập đầu tiên thất bại với LUNA-01 do mã băm nguồn trong run.json chưa cập nhật sau khi thêm mục Luna vào mẫu báo cáo. Đã tái sinh artifact từ cùng đầu vào mô phỏng; lần kiểm tra lại đạt 54 file. Summary, input hash và source hash khớp; PDF và byte run.json tiếp tục là các ngoại lệ được nêu trong quy trình. Bản PDF tại thời điểm pha Luna có 10 trang, đã render và xem từng trang; số trang và mã băm đó chỉ mô tả bản lưu của pha này. Không chạy lại giao diện, thiết bị vật lý, IME, network/storage instrumentation, cài sạch hoặc test từ bản ZIP đã giải nén. Bằng chứng: data/qa/luna-agent-review/results.json và qa-export-audit.json. Pha Luna là nhãn của lượt kiểm thử này, không phải tuyên bố đã dùng một mô hình độc lập thứ hai.

@@ -1,0 +1,69 @@
+{
+  "result": "passed",
+  "audited_at_utc": "2026-10-18T11:36:17.274Z",
+  "phase": "Luna-labelled follow-up",
+  "actual_operator": "OpenAI Codex AI agent in the current conversation",
+  "independent_reviewer": false,
+  "human_observations_added": 0,
+  "sessions": [
+    {
+      "file": "../human-test/exports/AI-PACED-P01.json",
+      "sha256": "7cb0700eb80c8a5bc3d6d8f19fa27dc38686beb5416bd0b429fe3e8fb67220bb",
+      "valid_strokes": 310,
+      "recording_seconds": 313.065,
+      "pilot_goal_met": true,
+      "event_fields_privacy": "passed"
+    },
+    {
+      "file": "../human-test/exports/AI-PACED-P02.json",
+      "sha256": "43c2bdc3ac2a148ae25d026cfc23eadca148b00474a5ae941e463cd3b42fd42c",
+      "valid_strokes": 366,
+      "recording_seconds": 308.025,
+      "pilot_goal_met": true,
+      "event_fields_privacy": "passed"
+    },
+    {
+      "file": "../human-test/exports/AI-PACED-P03.json",
+      "sha256": "2a9672e7eb3ed9ce6ad9b44fa04b98e5d09fb8863ce8a5fa02f5ac0042e2c926",
+      "valid_strokes": 316,
+      "recording_seconds": 312.944,
+      "pilot_goal_met": true,
+      "event_fields_privacy": "passed"
+    },
+    {
+      "file": "../human-test/exports/AI-PACED-P04.json",
+      "sha256": "ce050e598713fe1ba14ab14ebf4b0547d02c4cd368fdca58f875603dd456c35a",
+      "valid_strokes": 329,
+      "recording_seconds": 314.091,
+      "pilot_goal_met": true,
+      "event_fields_privacy": "passed"
+    }
+  ],
+  "totals": {
+    "valid_strokes": 1321,
+    "recording_seconds": 1248.125
+  },
+  "isolated_pipeline": {
+    "rejected_files": 0,
+    "study_design": {
+      "target_participants": 20,
+      "participants": 0,
+      "participants_missing_target": 20,
+      "protocol_complete_participants": 0,
+      "protocol_incomplete_participants": 0,
+      "target_formal_sessions": 80,
+      "formal_sessions": 0,
+      "formal_sessions_missing_target": 80,
+      "eligible_sessions": 0,
+      "excluded_sessions": 4,
+      "study_complete": false,
+      "exclusion_reasons": {
+        "pilot_mode": 4
+      }
+    },
+    "research_windows_by_size": {}
+  },
+  "research_manifest_touched": false,
+  "raw_exports_edited": false,
+  "scope": "Existing AI-operated QA files checked read-only; metadata includes timestamps and browser/platform; not anonymous and not a network/storage test."
+}

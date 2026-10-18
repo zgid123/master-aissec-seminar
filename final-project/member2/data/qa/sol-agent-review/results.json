@@ -1,0 +1,97 @@
+{
+  "result": "passed after stale artifact provenance repair",
+  "verified_at_utc": "2026-10-18T11:26:35.391839+00:00",
+  "actual_operator": "OpenAI Codex AI agent; user-requested Sol phase label",
+  "independent_reviewer": false,
+  "new_human_participant_observations": 0,
+  "environment": {
+    "os": "macOS 27.0.1 (26A434)",
+    "node": "v26.0.0",
+    "pnpm_cli": "11.1.2",
+    "declared_package_manager": "pnpm@12.11.2",
+    "dependency_install_this_phase": false
+  },
+  "collector": {
+    "command": "pnpm test (collector/)",
+    "exit_code": 0,
+    "passed": 9,
+    "failed": 0,
+    "typecheck_and_build": "passed"
+  },
+  "pipeline": {
+    "command": "pnpm test (pipeline/)",
+    "exit_code": 0,
+    "passed": 45,
+    "failed": 0,
+    "typescript_build": "passed"
+  },
+  "automation_scope": {
+    "browser_ui_test_runners": false,
+    "collector_synthetic_input_this_phase": false,
+    "headless_chromium_chart_renderer": true,
+    "note": "Pipeline integration tests and reproducibility internally render charts with Playwright Chromium. No new manual UI run is claimed."
+  },
+  "qa_exports": {
+    "result": "passed",
+    "sessions": 4,
+    "valid_strokes": 1321,
+    "research_eligible_sessions": 0,
+    "research_feature_windows": 0,
+    "evidence": "qa-export-audit.json",
+    "original_export_bytes_unchanged": true
+  },
+  "finding": {
+    "id": "SOL-01",
+    "severity": "release provenance",
+    "initial_result": "failed",
+    "issue": "Canonical run.json source hashes stale after report renderer, report template and lockfile edits",
+    "fix": "Regenerated synthetic processed artifacts from unchanged inputs using current source; numerical CSV and SVG hashes unchanged; PNG charts and HTML regenerated",
+    "application_logic_changed": false,
+    "status": "fixed and verified"
+  },
+  "reproducibility": {
+    "final_result": "passed",
+    "files_compared": 54,
+    "summary_input_and_source_hashes": "matched",
+    "exclusions": [
+      "run.json bytes",
+      "all PDF files"
+    ]
+  },
+  "source_review": {
+    "files": [
+      "collector/src/client/App.tsx",
+      "collector/src/client/useRecorder.ts",
+      "collector/src/shared/recorder.ts",
+      "pipeline/src/preprocess.ts",
+      "pipeline/src/study-design.ts",
+      "pipeline/src/normalize.ts",
+      "pipeline/src/report.ts",
+      "pipeline/src/pipeline.ts"
+    ],
+    "confirmed_new_collector_defects": 0,
+    "focus": [
+      "event privacy and consent semantics",
+      "active time and pause/reset boundaries",
+      "pair validity and train-only normalization",
+      "Pilot exclusion and report provenance"
+    ]
+  },
+  "artifacts": {
+    "pdf_pages": 9,
+    "pdf_pages_visually_reviewed": 9,
+    "pdf_renderer": "ReportLab 5.0.1",
+    "report_banner": "BÁO CÁO KIỂM THỬ PHẦN MỀM — THÀNH VIÊN 2",
+    "pdf_sha256": "d6c166c8c6bbe835983d40f40e6002be955368d9b21ead514711b5f903da7ab8",
+    "manifest_sha256": "a3e463c54f015245a80582b321fafed073216d3050adce8e177c79e75bb77728",
+    "research_manifest_changed": false
+  },
+  "not_tested_this_phase": [
+    "new visible UI sessions",
+    "physical-key holds/overlap",
+    "Vietnamese IME through UI",
+    "network/storage instrumentation",
+    "fresh frozen-lockfile install",
+    "tests from clean extracted archive"
+  ]
+}

@@ -23,7 +23,11 @@ const inline = (s: string) =>
   escape(s)
     .replace(/`([^`]+)`/g, "<code>$1</code>")
     .replace(/\*\*([^*]+)\*\*/g, "<strong>$1</strong>");
-export async function renderHtml(markdown: string, directory: string) {
+export async function renderHtml(
+  markdown: string,
+  directory: string,
+  dataKind: "real" | "synthetic" = "synthetic",
+) {
   const lines = markdown.split("\n"),
     blocks: string[] = [];
   for (let i = 0; i < lines.length; i++) {
@@ -64,7 +68,11 @@ export async function renderHtml(markdown: string, directory: string) {
       blocks.push(`<p>${inline(paragraph.join(" "))}</p>`);
     }
   }
-  return `<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>Thành viên 2 — Báo cáo dữ liệu mô phỏng</title><style>
+  const real = dataKind === "real";
+  const provenance = real
+    ? "DỮ LIỆU NGƯỜI THAM GIA · Báo cáo tổng hợp; lưu trữ theo quy trình nghiên cứu"
+    : "BÁO CÁO KIỂM THỬ PHẦN MỀM — THÀNH VIÊN 2";
+  return `<!doctype html><html lang="vi"><head><meta charset="utf-8"><title>Thành viên 2 — Báo cáo dữ liệu ${real ? "người tham gia" : "mô phỏng"}</title><style>
     @page {size:A4;margin:17mm 15mm} body {font:11pt/1.6 Arial,sans-serif;color:#172b35;max-width:1050px;margin:30px auto;padding:0 20px}
     h1 {font-size:24pt;line-height:1.2;color:#126356} h2 {font-size:15pt;color:#126356;margin-top:25px;break-after:avoid}
     p {text-align:justify} code {font-size:.9em;background:#edf4f2;padding:1px 3px} figure {margin:18px 0 8px;break-inside:avoid} img {width:100%;height:auto}
@@ -72,7 +80,7 @@ export async function renderHtml(markdown: string, directory: string) {
     th,td {border:1px solid #b8cbc5;padding:5px;text-align:left;overflow-wrap:anywhere} th {background:#e9f3ef} tr {break-inside:avoid}
     .provenance {padding:12px;background:#edf4f2;border-left:4px solid #126356;font-weight:bold}
     @media print {body {margin:0;padding:0;font-size:10pt}.table-wrap {overflow:visible}}
-    </style></head><body><div class="provenance">DỮ LIỆU MÔ PHỎNG · Không có người tham gia thật</div>${blocks.join("\n")}</body></html>`;
+    </style></head><body><div class="provenance">${provenance}</div>${blocks.join("\n")}</body></html>`;
 }
 export async function exportReport(input: string, output: string) {
   const browser = await chromium.launch({
@@ -91,7 +99,7 @@ export async function exportReport(input: string, output: string) {
       displayHeaderFooter: true,
       headerTemplate: "<span></span>",
       footerTemplate:
-        '<div style="font-size:8px;width:100%;text-align:center;color:#49665d">Thành viên 2 · Dữ liệu mô phỏng · <span class="pageNumber"></span>/<span class="totalPages"></span></div>',
+        '<div style="font-size:8px;width:100%;text-align:center;color:#49665d">Thành viên 2 · Báo cáo dữ liệu · <span class="pageNumber"></span>/<span class="totalPages"></span></div>',
     });
   } finally {
     await browser.close();

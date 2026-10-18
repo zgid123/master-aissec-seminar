@@ -1,4 +1,12 @@
 export type KeyGroup = "typing" | "separator" | "correction";
+export type CollectionMode = "pilot" | "formal";
+export const COLLECTION_TARGETS: Record<
+  CollectionMode,
+  { strokes: number; recordingSeconds: number }
+> = {
+  pilot: { strokes: 300, recordingSeconds: 300 },
+  formal: { strokes: 1000, recordingSeconds: 480 },
+};
 export type EventType =
   | "start"
   | "stop"
@@ -38,6 +46,14 @@ export interface SessionMetadata {
   session_id: string;
 }
 export interface CollectionMetadata extends SessionMetadata {
+  collection_mode: CollectionMode;
+  goal_strokes: number;
+  goal_recording_seconds: number;
+  completed_strokes?: number;
+  recording_seconds?: number;
+  stroke_goal_met?: boolean;
+  time_goal_met?: boolean;
+  goal_met?: boolean;
   started_at: string;
   timezone: string;
   keyboard: string;

@@ -26,16 +26,16 @@ Script dừng ngay khi một bước lỗi, trả mã thoát khác 0 và in đư
 | Bước tự động | Điều cần đạt |
 | --- | --- |
 | Cài hai gói bằng pnpm | Dùng đúng file khóa; cài Chromium cho cả hai phiên bản Playwright |
-| Kiểm thử quy trình xử lý | 28 kiểm thử đạt; biên dịch TypeScript đạt |
+| Kiểm thử quy trình xử lý | 45 kiểm thử đạt; biên dịch TypeScript đạt |
 | Kiểm thử công cụ thu | 9 kiểm thử đạt; kiểm tra kiểu và biên dịch giao diện đạt |
 | Mở máy chủ và kiểm tra sức khỏe | `/api/health` trả trạng thái `ok` |
 | Kiểm tra trình duyệt | Thu phím, tạm dừng/tiếp tục, chặn dán, xuất JSON, riêng tư, giao diện di động |
-| Thu tự động và xử lý | 4 hồ sơ × 3 phiên; 3.240 lần gõ hợp lệ; cửa sổ W=20/50/100: 156/48/24; loại 12 cặp thiếu nhả |
-| Tái lập | 52 file trùng từng byte; đối chiếu nguồn và đầu vào; loại thời điểm chạy và thông tin mô tả PDF khỏi so sánh |
+| Thu tự động và kiểm tra xử lý | 4 hồ sơ × 3 phiên pilot; giữ 12 phiên trong bảng chất lượng, loại khỏi đặc trưng nghiên cứu; parser trích xuất được cửa sổ W=20/50/100 từ sự kiện thô |
+| Tái lập | Đối chiếu SHA-256 các artifact trừ `run.json` và PDF; so sánh riêng summary, input hashes và source hashes. PDF được xuất riêng nhưng nội dung PDF không nằm trong đối chiếu hash. |
 | Bàn giao | SIM01–SIM04 đều nhận ma trận 192 × 12 cho W=50 trước khi loại chiều không hoạt động |
 | Xuất báo cáo | Tạo PDF mới từ báo cáo HTML, kiểm tra định dạng PDF |
 
-Kết quả mỗi lần nằm trong `.artifacts/demo-<mã>/`: `result.json`, nhật ký từng bước, JSON kiểm tra trình duyệt/tái lập, bốn JSON bàn giao và PDF mới. Script in riêng đường dẫn 12 phiên QA trong `collector/.artifacts/`. Các thư mục này được bỏ qua trong Git và ZIP bàn giao; `artifacts/` chính thức được giữ nguyên.
+Kết quả mỗi lần nằm trong `.artifacts/demo-<mã>/`: `result.json`, nhật ký từng bước, JSON kiểm tra trình duyệt/tái lập, bốn JSON bàn giao và PDF mới. Script in riêng đường dẫn 12 phiên QA trong `collector/.artifacts/`. Các thư mục này được bỏ qua trong Git; `artifacts/` chính thức được giữ nguyên.
 
 ## Chạy trong buổi demo
 
@@ -67,10 +67,10 @@ Các tùy chọn khác: `--check-only` để kiểm tra rồi tự tắt, `--wit
 ## Kịch bản trình bày khoảng 5–7 phút
 
 1. **Giới thiệu phạm vi (30 giây):** mở `artifacts/processed/report.vi.html` bằng trình duyệt. Nêu rõ 24 phiên và 28.800 lần gõ là dữ liệu mô phỏng SIM01–SIM04; chỉ minh họa quy trình và đặc trưng.
-2. **Thu một phiên ngắn (2 phút):** mở công cụ thu, chọn P01, bàn phím, bộ gõ và ngữ cảnh phù hợp; đọc và xác nhận đồng ý rồi chọn **Bắt đầu phiên**. Gõ câu thông thường, sửa bằng Backspace, thử dán, nhấp ra ngoài vùng gõ rồi chọn **Tiếp tục gõ**. Quan sát bộ đếm và trạng thái. Chọn **Kết thúc phiên**, xem cảnh báo phiên ngắn rồi **Tải file JSON**. Đây chỉ là minh họa thao tác, chưa đủ mục tiêu pilot 300 lần gõ và 5 phút.
+2. **Thu một phiên ngắn (2 phút):** mở công cụ thu, chọn chế độ **Pilot**, chọn P01, bàn phím, bộ gõ và ngữ cảnh phù hợp; đọc và xác nhận đồng ý rồi chọn **Bắt đầu phiên**. Gõ câu thông thường, sửa bằng Backspace, thử dán, nhấp ra ngoài vùng gõ rồi chọn **Tiếp tục gõ**. Quan sát bộ đếm và trạng thái. Chọn **Kết thúc phiên**, xem cảnh báo chưa đạt mục tiêu 300 lần gõ/5 phút rồi **Tải file JSON**. Giữ file demo ngoài manifest chính thức; nếu đưa vào lần chạy QA, pipeline giữ nó trong bảng chất lượng nhưng loại khỏi đặc trưng nghiên cứu.
 3. **Kiểm tra file tải về (1 phút):** mở JSON cục bộ, chỉ ra metadata, sự kiện down/up, thời gian và mốc ngắt. Kiểm tra không có nội dung câu đã gõ hoặc tên phím; văn bản nhập được xóa khi kết thúc. File không tự gửi lên máy chủ. Giữ bản demo riêng, ngoài danh sách phiên nghiên cứu.
 4. **Chứng minh xử lý xuyên suốt (1 phút):** mở `browser-integration.json` trong thư mục kết quả vừa in. Chỉ ra 12 phiên tự động, số lần gõ, cửa sổ, loại thiếu nhả và chuẩn hóa theo bốn tài khoản đích. Dữ liệu QA có nhãn cấu trúc `real` mặc định từ công cụ thu nhưng **không phải quan sát người tham gia**; không nhập vào `artifacts/manifest.json`.
-5. **Báo cáo và bàn giao (1–2 phút):** xem các hình trong HTML, PDF mới và `handoff-SIM01.json`. Giải thích phân chia theo phiên/ngày, chỉ ước lượng chuẩn hóa trên tập huấn luyện và giữ riêng `participant_id` với `claimed_profile`. Mở `reproducibility.json` để xác nhận 52 file trùng nhau.
+5. **Báo cáo và bàn giao (1–2 phút):** xem các hình trong HTML, PDF mới và `handoff-SIM01.json`. Giải thích phân chia theo phiên/ngày, chỉ ước lượng chuẩn hóa trên tập huấn luyện và giữ riêng `participant_id` với `claimed_profile`. Mở `reproducibility.json` để xem số file được so sánh và các phạm vi loại trừ; PDF bị loại toàn bộ khỏi đối chiếu hash.
 
 Nếu muốn đưa phiên tải bằng tay qua quy trình xử lý, làm theo [quy trình thu](COLLECTION_PROTOCOL.md), [từ điển dữ liệu](DATA_DICTIONARY.md) và [hướng dẫn bàn giao](HANDOFF.md): tạo thư mục riêng trong `data/real/` với danh sách phiên hợp lệ, rồi chạy `pnpm run process` từ `pipeline`. Script demo đã kiểm tra đường đi thu → xử lý bằng 12 phiên QA; không tự nhập file tải về của người trình bày.
 

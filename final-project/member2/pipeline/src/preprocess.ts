@@ -55,6 +55,11 @@ export function validateSession(
     )
   )
     throw new Error("Missing participant_id or session_id");
+  if (
+    meta.collection_mode !== undefined &&
+    !["pilot", "formal"].includes(String(meta.collection_mode))
+  )
+    throw new Error("collection_mode must be pilot or formal when provided");
   if (!Array.isArray(input.events) || input.events.length < 2)
     throw new Error("Missing events");
   if (!input.events.every(object))
@@ -166,6 +171,22 @@ export function validateSession(
     gap = false;
   }
   const wall = events.at(-1)!.t_ms - events[0].t_ms;
+  const collectionMode =
+      meta.collection_mode === "pilot" || meta.collection_mode === "formal"
+        ? meta.collection_mode
+        : "unspecified",
+    targetStrokes =
+      collectionMode === "pilot" ? 300 : collectionMode === "formal" ? 1000 : "",
+    targetSeconds =
+      collectionMode === "pilot" ? 300 : collectionMode === "formal" ? 480 : "",
+    strokeTargetMet =
+      collectionMode === "unspecified"
+        ? ""
+        : strokes.length >= (collectionMode === "pilot" ? 300 : 1000),
+    recordingTargetMet =
+      collectionMode === "unspecified"
+        ? ""
+        : recording / 1000 >= (collectionMode === "pilot" ? 300 : 480);
   return {
     strokes,
     quality: {
@@ -185,6 +206,22 @@ export function validateSession(
       repeats: diagnostics.repeat ?? 0,
       composition_strokes: strokes.filter((s) => s.composing).length,
       long_holds_over_2000ms: strokes.filter((s) => s.dwell_ms > 2000).length,
+      collection_mode: collectionMode,
+      target_strokes: targetStrokes,
+      target_recording_seconds: targetSeconds,
+      stroke_target_met: strokeTargetMet,
+      recording_target_met: recordingTargetMet,
+      session_target_met:
+        collectionMode === "unspecified"
+          ? ""
+          : strokeTargetMet === true && recordingTargetMet === true,
+      study_day: "",
+      participant_protocol_complete: "",
+      research_eligible: "",
+      eligibility_reasons: "",
+      normalization_exclusion_reasons: "",
+      supersedes_session_id: "",
+      superseded_by_session_id: "",
       exclusion_reasons: exclusions,
       diagnostics,
     },

@@ -10,6 +10,10 @@ import {
   digest,
 } from "../src/io.js";
 import { generateDataset, processDataset } from "../src/index.js";
+import {
+  compareArtifactHashes,
+  REPRODUCIBILITY_EXCLUSIONS,
+} from "../src/reproducibility.js";
 import type { Config, Run } from "../src/types.js";
 const canonical = resolve(process.argv[2] ?? "../artifacts"),
   temporary = await mkdtemp(join(tmpdir(), "member2-repro-"));
@@ -27,21 +31,26 @@ try {
   assert.deepEqual(fresh.summary, original.summary);
   assert.deepEqual(fresh.input_hashes, original.input_hashes);
   assert.deepEqual(fresh.source_hashes, original.source_hashes);
-  const paths = (await filesUnder(temporary)).filter(
-    (p) => !p.endsWith(".pdf") && !p.endsWith("/run.json"),
+  const hashes = async (directory: string) => {
+    const result: Record<string, string> = {};
+    for (const path of await filesUnder(directory))
+      result[relative(directory, path)] = await digest(path);
+    return result;
+  };
+  const [generatedHashes, referenceHashes] = await Promise.all([
+    hashes(temporary),
+    hashes(canonical),
+  ]);
+  const paths = compareArtifactHashes(generatedHashes, referenceHashes);
+  const matched = Object.fromEntries(
+    paths.map((path) => [path, generatedHashes[path]]),
   );
-  const matched: Record<string, string> = {};
-  for (const path of paths) {
-    const rel = relative(temporary, path),
-      hash = await digest(path);
-    assert.equal(hash, await digest(join(canonical, rel)), rel);
-    matched[rel] = hash;
-  }
   const result = {
     result: "passed",
     generated_at_utc: fresh.generated_at_utc,
     files_compared: paths.length,
-    exclusions: ["execution/provenance run.json timestamp", "PDF metadata"],
+    exclusions: REPRODUCIBILITY_EXCLUSIONS,
+    compared_scope: "All files except run.json and PDF files, by SHA-256",
     summary: fresh.summary,
     matched_hashes: matched,
   };
@@ -51,6 +60,7 @@ try {
       {
         result: "passed",
         files_compared: paths.length,
+        exclusions: REPRODUCIBILITY_EXCLUSIONS,
         summary: fresh.summary,
       },
       null,

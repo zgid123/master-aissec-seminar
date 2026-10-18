@@ -44,7 +44,11 @@ export function histogram(
     density && values.length ? n / (values.length * width) : n,
   ]);
 }
-export async function renderFigures(figures: Figure[], output: string) {
+export async function renderFigures(
+  figures: Figure[],
+  output: string,
+  provenance = "SIMULATED DATA — illustrative assumptions; no human observations",
+) {
   await mkdir(output, { recursive: true });
   const browser = await chromium.launch({
     headless: true,
@@ -70,8 +74,7 @@ export async function renderFigures(figures: Figure[], output: string) {
           color: ["#126356", "#b65328", "#4275a3", "#966aa1"],
           title: {
             text: figure.title,
-            subtext:
-              "SIMULATED DATA — illustrative assumptions; no human observations",
+            subtext: provenance,
             left: "center",
             top: 12,
             textStyle: { fontSize: 17 },
