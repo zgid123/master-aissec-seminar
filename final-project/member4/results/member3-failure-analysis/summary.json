@@ -1,0 +1,43 @@
+{
+  "generated_at_utc": "2026-10-18T16:46:29.044Z",
+  "node": "v24.19.0",
+  "status": "diagnostic_historical_synthetic_run",
+  "data_kind": [
+    "synthetic"
+  ],
+  "note": "Phan tich chan doan lan chay mo phong lich su cua member3. Khong phai ket qua nghien cuu, khong gan voi receipt member2 hien tai.",
+  "input_dir": "../member3/artifacts/simulation-reviewed/evaluation",
+  "input_sha256": {
+    "config.json": "76dbb6a7ca444ec315e72e6e952a7e5c8f2f8133a24552b01e7365877423ce5a",
+    "run.json": "cea6e73b232fcafc8363c7da11b115585e724b9d39e6ead257c7fe1b82e03362",
+    "failures.csv": "4a34c88a24e2537e0afdb26e724b4e38157ddaeff1cc5ba1d280f02598dccb77",
+    "scenario_results.csv": "dd845d7eb66eed0b38d780e80172af71ea12db82336eaf1709c9a31543afb181",
+    "decisions.csv": "9efaf527c384dfd236a4143f1c0cca2f97e96f3da1e6c0edfda6901b378ffb92",
+    "events.csv": "0052368588696103c5582e6d22f833da368d84efcb9a3a8b31c99ec1537eed6c",
+    "fixed_windows.csv": "31fde1279f86fae4a5ddbd12b6cd258502b9e34b68862516c86d3930d3c35531",
+    "policy_metrics.csv": "4aec9dff2c45bf9d554520fbb56f0286a128be8f86f07e4ceb37c1736b96df8f",
+    "window_metrics.csv": "f5e31795cd9eaa07ea16053c7e56ce25e55026174dad14d61c5eaf53245e6f29",
+    "scenarios.csv": "1e74bbf6a0a72adab0d562b93aca8861800f1d35f5d0e59d23bbc3baf01f4d29"
+  },
+  "horizon_check": {
+    "config_window_size": 50,
+    "prefix_keys": 225,
+    "suffix_keys": 300,
+    "declared_horizon_keys_values": [
+      "300"
+    ],
+    "window_count_values": [
+      "10"
+    ],
+    "joined_keys": 525,
+    "keys_covered_by_full_windows": 500,
+    "censored_cases": 1463,
+    "censored_max_observed_impostor_keys_values": [
+      275,
+      276
+    ],
+    "unscored_trailing_attacker_keys": 25
+  },
+  "validation_feasible_users": 0,
+  "policy_rows": 32
+}

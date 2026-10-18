@@ -1,0 +1,9 @@
+scorer,policy_id,late_cases,min_ttd_keys,median_ttd_keys,max_ttd_keys,constraint_keys
+distance,B0,79,175,175,275,150
+distance,B1,98,175,225,275,150
+distance,P1,102,175,200,275,150
+distance,B1_lambda1,97,175,225,275,150
+isolation_forest,B0,97,175,225,275,150
+isolation_forest,B1,122,175,225,276,150
+isolation_forest,P1,86,175,225,275,150
+isolation_forest,B1_lambda1,122,175,225,276,150

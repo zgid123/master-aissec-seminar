@@ -1,0 +1,15 @@
+{
+  "name": "aissec-member4-evaluation",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "engines": {
+    "node": ">=22"
+  },
+  "scripts": {
+    "test": "node --test",
+    "demo": "node src/cli.mjs --demo --output results/demo",
+    "evaluate": "node src/cli.mjs",
+    "document": "powershell -NoProfile -ExecutionPolicy Bypass -File scripts/export-protocol.ps1"
+  }
+}

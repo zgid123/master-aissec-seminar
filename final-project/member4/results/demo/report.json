@@ -1,0 +1,1234 @@
+{
+  "schema_version": "0.1",
+  "data_kind": "fixture",
+  "provenance": "Hand-designed formula fixture. FIX users, scores and episodes are NOT model or human observations. Hashes identify fixture labels, not raw files. B1/P1 names exercise the adapter only.",
+  "split": "test",
+  "seed": 20261016,
+  "horizon_keys": 150,
+  "bootstrap_iterations": 2000,
+  "warnings": [
+    "FIXTURE: NOT HUMAN RESEARCH RESULTS",
+    "Source hashes/splits are checked as declared; raw files and model fitting have not been audited.",
+    "FAR/FRR/EER refer to fixed-window scores, not stopped CUSUM policy replay.",
+    "TTD summaries are conditional on detection; censored trials remain in counts.",
+    "Horizon rate excludes incomplete followup and is not an unconditional survival estimate.",
+    "Statistical inference requires independent users; shared impostor sources can violate this."
+  ],
+  "by_user": [
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX01",
+      "windows": {
+        "n_windows": 4,
+        "excluded_mixed": 0,
+        "excluded_unknown": 0,
+        "far": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "frr": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "roc": {
+          "eer": 0,
+          "points": [
+            {
+              "threshold": null,
+              "threshold_kind": "above_max",
+              "far": 1,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0
+            },
+            {
+              "threshold": 0.9,
+              "threshold_kind": "finite",
+              "far": 0.5,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0.5
+            },
+            {
+              "threshold": 0.8,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.2,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0.5,
+              "fpr": 0.5,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.1,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 1,
+              "fpr": 1,
+              "tpr": 1
+            }
+          ],
+          "reason": null,
+          "interpolation": "linear_between_operating_points_not_a_deployment_threshold"
+        }
+      },
+      "episodes": {
+        "n_episodes": 2,
+        "n_planned_takeovers": 1,
+        "n_takeovers_reached": 1,
+        "n_takeovers_not_reached": 0,
+        "n_detected": 1,
+        "n_right_censored": 0,
+        "horizon_keys": 150,
+        "n_incomplete_followup": 0,
+        "detection_at_horizon_complete_case": {
+          "numerator": 1,
+          "denominator": 1,
+          "value": 1,
+          "reason": null
+        },
+        "ttd_keys_detected_only": {
+          "n": 1,
+          "median": 100,
+          "q1": 100,
+          "q3": 100,
+          "iqr": 0,
+          "mean": 100,
+          "reason": null
+        },
+        "ttd_ms_detected_only": {
+          "n": 1,
+          "median": 20000,
+          "q1": 20000,
+          "q3": 20000,
+          "iqr": 0,
+          "mean": 20000,
+          "reason": null
+        },
+        "false_revocations": 0,
+        "mfa_per_wall_hour": {
+          "numerator": 2,
+          "denominator": 1.0166666666666666,
+          "value": 1.9672131147540985,
+          "reason": null
+        },
+        "mfa_per_recording_hour": {
+          "numerator": 2,
+          "denominator": 0.5166666666666667,
+          "value": 3.8709677419354835,
+          "reason": null
+        },
+        "outcomes": [
+          {
+            "episode_id": "A1",
+            "status": "detected",
+            "detected": true,
+            "ttd_keys": 100,
+            "ttd_ms": 20000,
+            "censor_keys": null,
+            "censor_ms": null,
+            "horizon_outcome": "detected"
+          }
+        ]
+      }
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX02",
+      "windows": {
+        "n_windows": 4,
+        "excluded_mixed": 0,
+        "excluded_unknown": 0,
+        "far": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "frr": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "roc": {
+          "eer": 0,
+          "points": [
+            {
+              "threshold": null,
+              "threshold_kind": "above_max",
+              "far": 1,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0
+            },
+            {
+              "threshold": 0.9,
+              "threshold_kind": "finite",
+              "far": 0.5,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0.5
+            },
+            {
+              "threshold": 0.8,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.2,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0.5,
+              "fpr": 0.5,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.1,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 1,
+              "fpr": 1,
+              "tpr": 1
+            }
+          ],
+          "reason": null,
+          "interpolation": "linear_between_operating_points_not_a_deployment_threshold"
+        }
+      },
+      "episodes": {
+        "n_episodes": 2,
+        "n_planned_takeovers": 1,
+        "n_takeovers_reached": 1,
+        "n_takeovers_not_reached": 0,
+        "n_detected": 1,
+        "n_right_censored": 0,
+        "horizon_keys": 150,
+        "n_incomplete_followup": 0,
+        "detection_at_horizon_complete_case": {
+          "numerator": 1,
+          "denominator": 1,
+          "value": 1,
+          "reason": null
+        },
+        "ttd_keys_detected_only": {
+          "n": 1,
+          "median": 100,
+          "q1": 100,
+          "q3": 100,
+          "iqr": 0,
+          "mean": 100,
+          "reason": null
+        },
+        "ttd_ms_detected_only": {
+          "n": 1,
+          "median": 20000,
+          "q1": 20000,
+          "q3": 20000,
+          "iqr": 0,
+          "mean": 20000,
+          "reason": null
+        },
+        "false_revocations": 0,
+        "mfa_per_wall_hour": {
+          "numerator": 3,
+          "denominator": 1.0166666666666666,
+          "value": 2.9508196721311477,
+          "reason": null
+        },
+        "mfa_per_recording_hour": {
+          "numerator": 3,
+          "denominator": 0.5166666666666667,
+          "value": 5.806451612903225,
+          "reason": null
+        },
+        "outcomes": [
+          {
+            "episode_id": "A1",
+            "status": "detected",
+            "detected": true,
+            "ttd_keys": 100,
+            "ttd_ms": 20000,
+            "censor_keys": null,
+            "censor_ms": null,
+            "horizon_outcome": "detected"
+          }
+        ]
+      }
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX03",
+      "windows": {
+        "n_windows": 4,
+        "excluded_mixed": 0,
+        "excluded_unknown": 0,
+        "far": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "frr": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "roc": {
+          "eer": 0,
+          "points": [
+            {
+              "threshold": null,
+              "threshold_kind": "above_max",
+              "far": 1,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0
+            },
+            {
+              "threshold": 0.9,
+              "threshold_kind": "finite",
+              "far": 0.5,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0.5
+            },
+            {
+              "threshold": 0.8,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.2,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0.5,
+              "fpr": 0.5,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.1,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 1,
+              "fpr": 1,
+              "tpr": 1
+            }
+          ],
+          "reason": null,
+          "interpolation": "linear_between_operating_points_not_a_deployment_threshold"
+        }
+      },
+      "episodes": {
+        "n_episodes": 2,
+        "n_planned_takeovers": 1,
+        "n_takeovers_reached": 1,
+        "n_takeovers_not_reached": 0,
+        "n_detected": 1,
+        "n_right_censored": 0,
+        "horizon_keys": 150,
+        "n_incomplete_followup": 0,
+        "detection_at_horizon_complete_case": {
+          "numerator": 1,
+          "denominator": 1,
+          "value": 1,
+          "reason": null
+        },
+        "ttd_keys_detected_only": {
+          "n": 1,
+          "median": 100,
+          "q1": 100,
+          "q3": 100,
+          "iqr": 0,
+          "mean": 100,
+          "reason": null
+        },
+        "ttd_ms_detected_only": {
+          "n": 1,
+          "median": 20000,
+          "q1": 20000,
+          "q3": 20000,
+          "iqr": 0,
+          "mean": 20000,
+          "reason": null
+        },
+        "false_revocations": 0,
+        "mfa_per_wall_hour": {
+          "numerator": 4,
+          "denominator": 1.0166666666666666,
+          "value": 3.934426229508197,
+          "reason": null
+        },
+        "mfa_per_recording_hour": {
+          "numerator": 4,
+          "denominator": 0.5166666666666667,
+          "value": 7.741935483870967,
+          "reason": null
+        },
+        "outcomes": [
+          {
+            "episode_id": "A1",
+            "status": "detected",
+            "detected": true,
+            "ttd_keys": 100,
+            "ttd_ms": 20000,
+            "censor_keys": null,
+            "censor_ms": null,
+            "horizon_outcome": "detected"
+          }
+        ]
+      }
+    },
+    {
+      "method_id": "B1",
+      "claimed_profile": "FIX04",
+      "windows": {
+        "n_windows": 4,
+        "excluded_mixed": 0,
+        "excluded_unknown": 0,
+        "far": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "frr": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "roc": {
+          "eer": 0,
+          "points": [
+            {
+              "threshold": null,
+              "threshold_kind": "above_max",
+              "far": 1,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0
+            },
+            {
+              "threshold": 0.9,
+              "threshold_kind": "finite",
+              "far": 0.5,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0.5
+            },
+            {
+              "threshold": 0.8,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.2,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0.5,
+              "fpr": 0.5,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.1,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 1,
+              "fpr": 1,
+              "tpr": 1
+            }
+          ],
+          "reason": null,
+          "interpolation": "linear_between_operating_points_not_a_deployment_threshold"
+        }
+      },
+      "episodes": {
+        "n_episodes": 2,
+        "n_planned_takeovers": 1,
+        "n_takeovers_reached": 1,
+        "n_takeovers_not_reached": 0,
+        "n_detected": 0,
+        "n_right_censored": 1,
+        "horizon_keys": 150,
+        "n_incomplete_followup": 0,
+        "detection_at_horizon_complete_case": {
+          "numerator": 0,
+          "denominator": 1,
+          "value": 0,
+          "reason": null
+        },
+        "ttd_keys_detected_only": {
+          "n": 0,
+          "median": null,
+          "q1": null,
+          "q3": null,
+          "iqr": null,
+          "mean": null,
+          "reason": "no_observations"
+        },
+        "ttd_ms_detected_only": {
+          "n": 0,
+          "median": null,
+          "q1": null,
+          "q3": null,
+          "iqr": null,
+          "mean": null,
+          "reason": "no_observations"
+        },
+        "false_revocations": 0,
+        "mfa_per_wall_hour": {
+          "numerator": 5,
+          "denominator": 1.0166666666666666,
+          "value": 4.918032786885246,
+          "reason": null
+        },
+        "mfa_per_recording_hour": {
+          "numerator": 5,
+          "denominator": 0.5166666666666667,
+          "value": 9.677419354838708,
+          "reason": null
+        },
+        "outcomes": [
+          {
+            "episode_id": "A1",
+            "status": "right_censored",
+            "detected": false,
+            "ttd_keys": null,
+            "ttd_ms": null,
+            "censor_keys": 300,
+            "censor_ms": 60000,
+            "horizon_outcome": "not_detected"
+          }
+        ]
+      }
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX01",
+      "windows": {
+        "n_windows": 4,
+        "excluded_mixed": 0,
+        "excluded_unknown": 0,
+        "far": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "frr": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "roc": {
+          "eer": 0,
+          "points": [
+            {
+              "threshold": null,
+              "threshold_kind": "above_max",
+              "far": 1,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0
+            },
+            {
+              "threshold": 0.9,
+              "threshold_kind": "finite",
+              "far": 0.5,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0.5
+            },
+            {
+              "threshold": 0.8,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.2,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0.5,
+              "fpr": 0.5,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.1,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 1,
+              "fpr": 1,
+              "tpr": 1
+            }
+          ],
+          "reason": null,
+          "interpolation": "linear_between_operating_points_not_a_deployment_threshold"
+        }
+      },
+      "episodes": {
+        "n_episodes": 2,
+        "n_planned_takeovers": 1,
+        "n_takeovers_reached": 1,
+        "n_takeovers_not_reached": 0,
+        "n_detected": 1,
+        "n_right_censored": 0,
+        "horizon_keys": 150,
+        "n_incomplete_followup": 0,
+        "detection_at_horizon_complete_case": {
+          "numerator": 1,
+          "denominator": 1,
+          "value": 1,
+          "reason": null
+        },
+        "ttd_keys_detected_only": {
+          "n": 1,
+          "median": 50,
+          "q1": 50,
+          "q3": 50,
+          "iqr": 0,
+          "mean": 50,
+          "reason": null
+        },
+        "ttd_ms_detected_only": {
+          "n": 1,
+          "median": 10000,
+          "q1": 10000,
+          "q3": 10000,
+          "iqr": 0,
+          "mean": 10000,
+          "reason": null
+        },
+        "false_revocations": 0,
+        "mfa_per_wall_hour": {
+          "numerator": 1,
+          "denominator": 1.0166666666666666,
+          "value": 0.9836065573770493,
+          "reason": null
+        },
+        "mfa_per_recording_hour": {
+          "numerator": 1,
+          "denominator": 0.5166666666666667,
+          "value": 1.9354838709677418,
+          "reason": null
+        },
+        "outcomes": [
+          {
+            "episode_id": "A1",
+            "status": "detected",
+            "detected": true,
+            "ttd_keys": 50,
+            "ttd_ms": 10000,
+            "censor_keys": null,
+            "censor_ms": null,
+            "horizon_outcome": "detected"
+          }
+        ]
+      }
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX02",
+      "windows": {
+        "n_windows": 4,
+        "excluded_mixed": 0,
+        "excluded_unknown": 0,
+        "far": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "frr": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "roc": {
+          "eer": 0,
+          "points": [
+            {
+              "threshold": null,
+              "threshold_kind": "above_max",
+              "far": 1,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0
+            },
+            {
+              "threshold": 0.9,
+              "threshold_kind": "finite",
+              "far": 0.5,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0.5
+            },
+            {
+              "threshold": 0.8,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.2,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0.5,
+              "fpr": 0.5,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.1,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 1,
+              "fpr": 1,
+              "tpr": 1
+            }
+          ],
+          "reason": null,
+          "interpolation": "linear_between_operating_points_not_a_deployment_threshold"
+        }
+      },
+      "episodes": {
+        "n_episodes": 2,
+        "n_planned_takeovers": 1,
+        "n_takeovers_reached": 1,
+        "n_takeovers_not_reached": 0,
+        "n_detected": 1,
+        "n_right_censored": 0,
+        "horizon_keys": 150,
+        "n_incomplete_followup": 0,
+        "detection_at_horizon_complete_case": {
+          "numerator": 1,
+          "denominator": 1,
+          "value": 1,
+          "reason": null
+        },
+        "ttd_keys_detected_only": {
+          "n": 1,
+          "median": 50,
+          "q1": 50,
+          "q3": 50,
+          "iqr": 0,
+          "mean": 50,
+          "reason": null
+        },
+        "ttd_ms_detected_only": {
+          "n": 1,
+          "median": 10000,
+          "q1": 10000,
+          "q3": 10000,
+          "iqr": 0,
+          "mean": 10000,
+          "reason": null
+        },
+        "false_revocations": 0,
+        "mfa_per_wall_hour": {
+          "numerator": 1,
+          "denominator": 1.0166666666666666,
+          "value": 0.9836065573770493,
+          "reason": null
+        },
+        "mfa_per_recording_hour": {
+          "numerator": 1,
+          "denominator": 0.5166666666666667,
+          "value": 1.9354838709677418,
+          "reason": null
+        },
+        "outcomes": [
+          {
+            "episode_id": "A1",
+            "status": "detected",
+            "detected": true,
+            "ttd_keys": 50,
+            "ttd_ms": 10000,
+            "censor_keys": null,
+            "censor_ms": null,
+            "horizon_outcome": "detected"
+          }
+        ]
+      }
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX03",
+      "windows": {
+        "n_windows": 4,
+        "excluded_mixed": 0,
+        "excluded_unknown": 0,
+        "far": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "frr": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "roc": {
+          "eer": 0,
+          "points": [
+            {
+              "threshold": null,
+              "threshold_kind": "above_max",
+              "far": 1,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0
+            },
+            {
+              "threshold": 0.9,
+              "threshold_kind": "finite",
+              "far": 0.5,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0.5
+            },
+            {
+              "threshold": 0.8,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.2,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0.5,
+              "fpr": 0.5,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.1,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 1,
+              "fpr": 1,
+              "tpr": 1
+            }
+          ],
+          "reason": null,
+          "interpolation": "linear_between_operating_points_not_a_deployment_threshold"
+        }
+      },
+      "episodes": {
+        "n_episodes": 2,
+        "n_planned_takeovers": 1,
+        "n_takeovers_reached": 1,
+        "n_takeovers_not_reached": 0,
+        "n_detected": 1,
+        "n_right_censored": 0,
+        "horizon_keys": 150,
+        "n_incomplete_followup": 0,
+        "detection_at_horizon_complete_case": {
+          "numerator": 1,
+          "denominator": 1,
+          "value": 1,
+          "reason": null
+        },
+        "ttd_keys_detected_only": {
+          "n": 1,
+          "median": 50,
+          "q1": 50,
+          "q3": 50,
+          "iqr": 0,
+          "mean": 50,
+          "reason": null
+        },
+        "ttd_ms_detected_only": {
+          "n": 1,
+          "median": 10000,
+          "q1": 10000,
+          "q3": 10000,
+          "iqr": 0,
+          "mean": 10000,
+          "reason": null
+        },
+        "false_revocations": 0,
+        "mfa_per_wall_hour": {
+          "numerator": 1,
+          "denominator": 1.0166666666666666,
+          "value": 0.9836065573770493,
+          "reason": null
+        },
+        "mfa_per_recording_hour": {
+          "numerator": 1,
+          "denominator": 0.5166666666666667,
+          "value": 1.9354838709677418,
+          "reason": null
+        },
+        "outcomes": [
+          {
+            "episode_id": "A1",
+            "status": "detected",
+            "detected": true,
+            "ttd_keys": 50,
+            "ttd_ms": 10000,
+            "censor_keys": null,
+            "censor_ms": null,
+            "horizon_outcome": "detected"
+          }
+        ]
+      }
+    },
+    {
+      "method_id": "P1",
+      "claimed_profile": "FIX04",
+      "windows": {
+        "n_windows": 4,
+        "excluded_mixed": 0,
+        "excluded_unknown": 0,
+        "far": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "frr": {
+          "numerator": 0,
+          "denominator": 2,
+          "value": 0,
+          "reason": null
+        },
+        "roc": {
+          "eer": 0,
+          "points": [
+            {
+              "threshold": null,
+              "threshold_kind": "above_max",
+              "far": 1,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0
+            },
+            {
+              "threshold": 0.9,
+              "threshold_kind": "finite",
+              "far": 0.5,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 0.5
+            },
+            {
+              "threshold": 0.8,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0,
+              "fpr": 0,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.2,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 0.5,
+              "fpr": 0.5,
+              "tpr": 1
+            },
+            {
+              "threshold": 0.1,
+              "threshold_kind": "finite",
+              "far": 0,
+              "frr": 1,
+              "fpr": 1,
+              "tpr": 1
+            }
+          ],
+          "reason": null,
+          "interpolation": "linear_between_operating_points_not_a_deployment_threshold"
+        }
+      },
+      "episodes": {
+        "n_episodes": 2,
+        "n_planned_takeovers": 1,
+        "n_takeovers_reached": 1,
+        "n_takeovers_not_reached": 0,
+        "n_detected": 0,
+        "n_right_censored": 1,
+        "horizon_keys": 150,
+        "n_incomplete_followup": 0,
+        "detection_at_horizon_complete_case": {
+          "numerator": 0,
+          "denominator": 1,
+          "value": 0,
+          "reason": null
+        },
+        "ttd_keys_detected_only": {
+          "n": 0,
+          "median": null,
+          "q1": null,
+          "q3": null,
+          "iqr": null,
+          "mean": null,
+          "reason": "no_observations"
+        },
+        "ttd_ms_detected_only": {
+          "n": 0,
+          "median": null,
+          "q1": null,
+          "q3": null,
+          "iqr": null,
+          "mean": null,
+          "reason": "no_observations"
+        },
+        "false_revocations": 0,
+        "mfa_per_wall_hour": {
+          "numerator": 1,
+          "denominator": 1.0166666666666666,
+          "value": 0.9836065573770493,
+          "reason": null
+        },
+        "mfa_per_recording_hour": {
+          "numerator": 1,
+          "denominator": 0.5166666666666667,
+          "value": 1.9354838709677418,
+          "reason": null
+        },
+        "outcomes": [
+          {
+            "episode_id": "A1",
+            "status": "right_censored",
+            "detected": false,
+            "ttd_keys": null,
+            "ttd_ms": null,
+            "censor_keys": 300,
+            "censor_ms": 60000,
+            "horizon_outcome": "not_detected"
+          }
+        ]
+      }
+    }
+  ],
+  "macro_summary": [
+    {
+      "method_id": "B1",
+      "n_users": 4,
+      "metrics": {
+        "far": {
+          "n": 4,
+          "median": 0,
+          "q1": 0,
+          "q3": 0,
+          "iqr": 0,
+          "mean": 0,
+          "reason": null,
+          "n_missing_users": 0
+        },
+        "frr": {
+          "n": 4,
+          "median": 0,
+          "q1": 0,
+          "q3": 0,
+          "iqr": 0,
+          "mean": 0,
+          "reason": null,
+          "n_missing_users": 0
+        },
+        "eer": {
+          "n": 4,
+          "median": 0,
+          "q1": 0,
+          "q3": 0,
+          "iqr": 0,
+          "mean": 0,
+          "reason": null,
+          "n_missing_users": 0
+        },
+        "mfa_per_wall_hour": {
+          "n": 4,
+          "median": 3.4426229508196724,
+          "q1": 2.7049180327868854,
+          "q3": 4.180327868852459,
+          "iqr": 1.475409836065574,
+          "mean": 3.442622950819672,
+          "reason": null,
+          "n_missing_users": 0
+        },
+        "mfa_per_recording_hour": {
+          "n": 4,
+          "median": 6.774193548387096,
+          "q1": 5.32258064516129,
+          "q3": 8.225806451612902,
+          "iqr": 2.903225806451612,
+          "mean": 6.774193548387096,
+          "reason": null,
+          "n_missing_users": 0
+        },
+        "detection_at_horizon_complete_case": {
+          "n": 4,
+          "median": 1,
+          "q1": 0.75,
+          "q3": 1,
+          "iqr": 0.25,
+          "mean": 0.75,
+          "reason": null,
+          "n_missing_users": 0
+        }
+      }
+    },
+    {
+      "method_id": "P1",
+      "n_users": 4,
+      "metrics": {
+        "far": {
+          "n": 4,
+          "median": 0,
+          "q1": 0,
+          "q3": 0,
+          "iqr": 0,
+          "mean": 0,
+          "reason": null,
+          "n_missing_users": 0
+        },
+        "frr": {
+          "n": 4,
+          "median": 0,
+          "q1": 0,
+          "q3": 0,
+          "iqr": 0,
+          "mean": 0,
+          "reason": null,
+          "n_missing_users": 0
+        },
+        "eer": {
+          "n": 4,
+          "median": 0,
+          "q1": 0,
+          "q3": 0,
+          "iqr": 0,
+          "mean": 0,
+          "reason": null,
+          "n_missing_users": 0
+        },
+        "mfa_per_wall_hour": {
+          "n": 4,
+          "median": 0.9836065573770493,
+          "q1": 0.9836065573770493,
+          "q3": 0.9836065573770493,
+          "iqr": 0,
+          "mean": 0.9836065573770493,
+          "reason": null,
+          "n_missing_users": 0
+        },
+        "mfa_per_recording_hour": {
+          "n": 4,
+          "median": 1.9354838709677418,
+          "q1": 1.9354838709677418,
+          "q3": 1.9354838709677418,
+          "iqr": 0,
+          "mean": 1.9354838709677418,
+          "reason": null,
+          "n_missing_users": 0
+        },
+        "detection_at_horizon_complete_case": {
+          "n": 4,
+          "median": 1,
+          "q1": 0.75,
+          "q3": 1,
+          "iqr": 0.25,
+          "mean": 0.75,
+          "reason": null,
+          "n_missing_users": 0
+        }
+      }
+    }
+  ],
+  "comparison": {
+    "baseline": "B1",
+    "candidate": "P1",
+    "metric": "mfa_per_wall_hour",
+    "difference": "candidate_minus_baseline",
+    "pairs": [
+      {
+        "user": "FIX01",
+        "baseline": 1.9672131147540985,
+        "candidate": 0.9836065573770493,
+        "difference": -0.9836065573770493
+      },
+      {
+        "user": "FIX02",
+        "baseline": 2.9508196721311477,
+        "candidate": 0.9836065573770493,
+        "difference": -1.9672131147540983
+      },
+      {
+        "user": "FIX03",
+        "baseline": 3.934426229508197,
+        "candidate": 0.9836065573770493,
+        "difference": -2.9508196721311477
+      },
+      {
+        "user": "FIX04",
+        "baseline": 4.918032786885246,
+        "candidate": 0.9836065573770493,
+        "difference": -3.9344262295081966
+      }
+    ],
+    "excluded_users": [],
+    "descriptive_difference": {
+      "n": 4,
+      "median": -2.459016393442623,
+      "q1": -3.19672131147541,
+      "q3": -1.721311475409836,
+      "iqr": 1.475409836065574,
+      "mean": -2.459016393442623,
+      "reason": null
+    },
+    "bootstrap_mean_difference": {
+      "low": -3.4426229508196724,
+      "high": -1.4754098360655739,
+      "reason": null,
+      "confidence": 0.95,
+      "estimator": "mean_paired_user_difference",
+      "method": "percentile",
+      "seed": 20261016,
+      "iterations": 2000,
+      "warning": "small_user_sample"
+    },
+    "wilcoxon": {
+      "n_nonzero": 4,
+      "n_zero": 0,
+      "ties": false,
+      "w_plus": 0,
+      "w_minus": 10,
+      "rank_biserial": -1,
+      "p_two_sided": 0.125,
+      "method": "exact_conditional_sign_permutation_midrank_wilcox_zeros",
+      "reason": null
+    },
+    "warning": "This test alone does not establish matched TTD/FAR, absence of false revocations, or H1."
+  }
+}
