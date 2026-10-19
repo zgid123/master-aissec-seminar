@@ -6,25 +6,24 @@ transition: slide-left
 
 # Giới hạn cần đọc kèm kết quả
 
-<div class="mt-5 grid grid-cols-2 gap-x-6 gap-y-3 text-[15px] leading-snug">
-  <div class="border-l-4 border-rose-500 bg-rose-50 px-4 py-2.5">
-    <div class="font-bold text-rose-800">Dữ liệu mô phỏng</div>
-    4 hồ sơ, 24 phiên. Số liệu kiểm chứng quy trình, chưa nói được độ chính xác trên người dùng thật.
+<div class="mt-8 grid grid-cols-2 gap-x-6 gap-y-7 text-[21px] leading-snug">
+  <div class="border-l-4 border-rose-500 bg-rose-50 px-5 py-6">
+    <div class="mb-1 font-bold text-rose-800">Dữ liệu mô phỏng</div>
+    Mới kiểm chứng quy trình, chưa phải độ chính xác trên người thật.
   </div>
-  <div v-click class="border-l-4 border-rose-500 bg-rose-50 px-4 py-2.5">
-    <div class="font-bold text-rose-800">Mới đo một kiểu tấn công</div>
-    Chỉ đo A1 (người lạ gõ theo thói quen). Bắt chước nhịp gõ và phát lại gói chưa được đánh giá.
+  <div v-click class="border-l-4 border-rose-500 bg-rose-50 px-5 py-6">
+    <div class="mb-1 font-bold text-rose-800">Mới đo một kiểu tấn công</div>
+    Chưa đo bắt chước nhịp gõ hay gửi lại gói dữ liệu.
   </div>
-  <div v-click class="border-l-4 border-amber-500 bg-amber-50 px-4 py-2.5">
-    <div class="font-bold text-amber-800">MFA giả lập</div>
-    Chủ thật luôn qua, người lạ luôn trượt. Chưa có MFA thật và chưa có P2.
+  <div v-click class="border-l-4 border-amber-500 bg-amber-50 px-5 py-6">
+    <div class="mb-1 font-bold text-amber-800">MFA giả lập</div>
+    Chủ thật luôn qua, người lạ luôn trượt.
   </div>
-  <div v-click class="border-l-4 border-slate-500 bg-slate-50 px-4 py-2.5">
-    <div class="font-bold text-slate-800">Chưa so sánh cùng mức hỏi MFA</div>
-    Các cấu hình hỏi MFA với tần suất khác nhau, nên chưa đủ căn cứ chấp nhận hay bác bỏ H1, H2.
+  <div v-click class="border-l-4 border-slate-500 bg-slate-50 px-5 py-6">
+    <div class="mb-1 font-bold text-slate-800">Chưa so ở cùng mức hỏi MFA</div>
+    Nên chưa kết luận được câu hỏi nghiên cứu.
   </div>
 </div>
-
 <!--
 Mục tiêu: 0:45
 

@@ -6,35 +6,35 @@ transition: slide-left
 
 # Bộ điều khiển phiên và các cấu hình
 
-<div class="mt-1 grid grid-cols-[1.15fr_1fr] gap-5 items-start">
-  <div>
-    <img src="/figures/hinh3_trang_thai.png" class="w-full" alt="Máy trạng thái phiên" />
-    <div class="mt-1 text-[13px] text-slate-600 leading-snug">
-      MFA đạt thì đặt S về 0 và tạm ngừng cảnh báo mức h₁ trong 2 cửa sổ (cooldown).
-    </div>
-  </div>
-  <div class="flex flex-col gap-2 text-[14px] leading-snug">
-    <div v-click class="border-l-4 border-slate-500 bg-slate-50 px-3 py-1.5"><b class="font-mono">B0</b> Quyết định từng cửa sổ, ngưỡng chung.</div>
-    <div v-click class="border-l-4 border-sky-500 bg-sky-50 px-3 py-1.5"><b class="font-mono">B1</b> CUSUM có hệ số quên, ngưỡng chung. λ ∈ {0,9; 1}, k ∈ {0,25; 0,5; 1}.</div>
-    <div v-click class="border-l-4 border-violet-500 bg-violet-50 px-3 py-1.5"><b class="font-mono">P1</b> Giữ λ, k của B1; <b>h₁ riêng từng tài khoản</b>.</div>
-    <div v-click class="border-l-4 border-indigo-400 bg-indigo-50 px-3 py-1.5"><b class="font-mono">B1 λ=1</b> Đối chứng không quên, chọn lại k và ngưỡng.</div>
-    <div v-click class="border-l-4 border-slate-300 bg-white px-3 py-1.5 text-slate-500"><b class="font-mono">P2</b> P1 cộng cập nhật hồ sơ sau MFA. Chưa triển khai.</div>
-    <div v-click class="mt-1 rounded bg-slate-800 px-3 py-1.5 text-white">Mọi tham số chọn trên <b>validation</b>, lưới h₁ ∈ {0,5; 1; 2; 3; 5; 8; 12}.</div>
-  </div>
+<div class="mt-5 flex items-center justify-between gap-2 text-[20px] text-center">
+  <div class="w-[210px] rounded-lg border-2 border-emerald-500 bg-emerald-50 px-3 py-5"><b>Đang hoạt động</b><div class="text-[15px] text-slate-600">điểm rủi ro thấp</div></div>
+  <div class="flex-1 text-[16px] text-amber-700">vượt mức 1 →<br><span class="text-emerald-700">← MFA đạt, điểm về 0</span></div>
+  <div class="w-[210px] rounded-lg border-2 border-amber-500 bg-amber-50 px-3 py-5"><b>Hỏi MFA</b><div class="text-[15px] text-slate-600">chờ xác thực lại</div></div>
+  <div class="flex-1 text-[16px] text-rose-700">MFA trượt →<br>hoặc vượt mức 2</div>
+  <div class="w-[210px] rounded-lg border-2 border-rose-500 bg-rose-50 px-3 py-5"><b>Thu hồi phiên</b><div class="text-[15px] text-slate-600">đăng xuất ngay</div></div>
+</div>
+
+<div class="mt-8 grid grid-cols-4 gap-3 text-[18px] leading-snug">
+  <div v-click class="rounded-lg border-t-4 border-slate-500 bg-slate-50 px-4 py-4"><b class="font-mono text-[19px]">B0</b><br>Xét riêng từng đoạn, ngưỡng chung.</div>
+  <div v-click class="rounded-lg border-t-4 border-sky-500 bg-sky-50 px-4 py-4"><b class="font-mono text-[19px]">B1</b><br>Cộng dồn, ngưỡng chung.</div>
+  <div v-click class="rounded-lg border-t-4 border-violet-500 bg-violet-50 px-4 py-4"><b class="font-mono text-[19px]">P1</b><br>Cộng dồn, <b>ngưỡng riêng</b> từng người.</div>
+  <div v-click class="rounded-lg border-t-4 border-slate-300 bg-white px-3 py-3 text-slate-500"><b class="font-mono text-[19px]">P2</b><br>P1 và tự cập nhật hồ sơ. Chưa làm.</div>
+</div>
+
+<div v-click class="mt-6 rounded-lg bg-slate-800 px-5 py-3 text-[18px] text-white">
+  Mọi tham số chọn trên tập <b>validation</b>; tập test chỉ mở một lần ở cuối.
 </div>
 
 <!--
 Mục tiêu: 0:40
 
-Bộ điều khiển có ba trạng thái. S dưới h1 thì phiên chạy bình thường. S vượt h1 thì hỏi MFA; đạt thì S về 0, trượt hoặc S vượt h2 thì thu hồi phiên.
+Bộ điều khiển có ba trạng thái. Điểm rủi ro thấp thì phiên chạy bình thường. Vượt mức một thì hỏi MFA; đạt thì điểm về 0, trượt hoặc vượt mức hai thì thu hồi phiên.
 
-[CLICK] B0 là đường cơ sở: mỗi cửa sổ tự quyết, ngưỡng chung.
+[CLICK] B0 là đường cơ sở: mỗi đoạn tự quyết, ngưỡng chung.
 
-[CLICK] B1 thêm CUSUM, vẫn ngưỡng chung.
+[CLICK] B1 thêm cộng dồn, vẫn ngưỡng chung.
 
-[CLICK] P1 giữ B1 nhưng ngưỡng h1 riêng cho từng người.
-
-[CLICK] B1 lambda bằng 1 là đối chứng không có hệ số quên.
+[CLICK] P1 giữ B1 nhưng ngưỡng riêng cho từng người.
 
 [CLICK] P2 chưa triển khai.
 

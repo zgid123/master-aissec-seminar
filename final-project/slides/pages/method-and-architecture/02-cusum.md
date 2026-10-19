@@ -6,42 +6,63 @@ transition: slide-left
 
 # Cộng dồn bằng chứng bằng CUSUM
 
-<div class="mt-1 grid grid-cols-[1fr_1.1fr] gap-6 items-start">
-  <div>
-    <div class="rounded-lg bg-slate-50 px-4 py-2">
-
-$$S_t = \max\bigl(0,\ \lambda S_{t-1} + z_t - k\bigr)$$
-
-</div>
-    <ul class="mt-2 !pl-5 text-[15px] leading-snug [&_li]:!my-1">
-      <li><b>z<sub>t</sub></b>: điểm bất thường của cửa sổ 50 phím, chuẩn hóa bằng median và MAD của chính chủ tài khoản.</li>
-      <li><b>k</b> bỏ qua dao động nhỏ.</li>
-      <li><b>λ</b> là hệ số quên: λ = 1 là CUSUM chuẩn, λ &lt; 1 làm bằng chứng cũ phai dần.</li>
-      <li>Hai ngưỡng: <b>h₁</b> hỏi MFA, <b>h₂ = 2h₁</b> thu hồi phiên.</li>
-    </ul>
+<div class="mt-1 grid grid-cols-3 gap-4 text-[17px] leading-snug">
+  <div class="flex gap-3 items-start rounded-lg bg-sky-50 border border-sky-200 px-4 py-3">
+    <div class="i-carbon-keyboard text-3xl text-sky-700 shrink-0" />
+    <div><b>Chấm từng đoạn</b><br/>Càng khác thói quen của chủ, điểm càng cao.</div>
   </div>
-  <div v-click class="text-[14px]">
-    <div class="font-bold text-slate-600">Ví dụ minh họa: z = 3 ba cửa sổ liền, λ = 0,9, k = 0,5, ngưỡng 6</div>
-    <table class="mt-2 w-full text-center">
-      <thead><tr class="bg-slate-100"><th>Cửa sổ</th><th>z<sub>t</sub></th><th>S<sub>t</sub> (CUSUM)</th><th>Từng cửa sổ</th></tr></thead>
-      <tbody>
-        <tr><td>1</td><td>3</td><td>2,5</td><td>3 &lt; 6</td></tr>
-        <tr><td>2</td><td>3</td><td>4,75</td><td>3 &lt; 6</td></tr>
-        <tr class="bg-rose-50 font-bold"><td>3</td><td>3</td><td class="text-rose-700">6,775 ≥ 6</td><td>3 &lt; 6</td></tr>
-      </tbody>
-    </table>
-    <div v-click class="mt-3 border-l-4 border-violet-500 bg-violet-50 px-3 py-2 leading-snug">
-      Từng cửa sổ chỉ <b>hơi lạ</b> nên quyết định riêng lẻ bỏ qua. CUSUM thấy chúng <b>lạ liên tục</b> và vượt ngưỡng ở cửa sổ thứ ba.
-    </div>
+  <div class="flex gap-3 items-start rounded-lg bg-violet-50 border border-violet-200 px-4 py-3">
+    <div class="i-carbon-chart-line-data text-3xl text-violet-700 shrink-0" />
+    <div><b>Cộng dồn</b><br/>Lệch nhỏ bỏ qua, điểm cũ phai dần.</div>
+  </div>
+  <div class="flex gap-3 items-start rounded-lg bg-rose-50 border border-rose-200 px-4 py-3">
+    <div class="i-carbon-warning-alt text-3xl text-rose-700 shrink-0" />
+    <div><b>Hai mức</b><br/>Mức 1 hỏi MFA, mức 2 thu hồi phiên.</div>
+  </div>
+</div>
+
+<div v-click class="mt-3 grid grid-cols-2 gap-6">
+  <div class="rounded-lg border border-slate-200 px-3 pt-2">
+    <div class="text-[16px] font-bold text-slate-700">Xét riêng từng đoạn</div>
+    <svg viewBox="0 0 400 190" class="w-full h-[165px]">
+      <line x1="40" x2="390" y1="170" y2="170" stroke="#94a3b8" />
+      <line x1="40" x2="390" y1="65" y2="65" stroke="#e11d48" stroke-dasharray="6 4" />
+      <text x="44" y="57" text-anchor="start" fill="#be123c" style="font-size: 17px">ngưỡng</text>
+      <rect x="80" y="117.5" width="60" height="52.5" rx="3" fill="#a78bfa" />
+      <rect x="180" y="117.5" width="60" height="52.5" rx="3" fill="#a78bfa" />
+      <rect x="280" y="117.5" width="60" height="52.5" rx="3" fill="#a78bfa" />
+      <text x="110" y="110" text-anchor="middle" fill="#475569" style="font-size: 17px">hơi lạ</text>
+      <text x="210" y="110" text-anchor="middle" fill="#475569" style="font-size: 17px">hơi lạ</text>
+      <text x="310" y="110" text-anchor="middle" fill="#475569" style="font-size: 17px">hơi lạ</text>
+      <text x="110" y="187" text-anchor="middle" fill="#64748b" style="font-size: 16px">đoạn 1</text>
+      <text x="210" y="187" text-anchor="middle" fill="#64748b" style="font-size: 16px">đoạn 2</text>
+      <text x="310" y="187" text-anchor="middle" fill="#64748b" style="font-size: 16px">đoạn 3</text>
+    </svg>
+    <div class="pb-2 text-center text-[16px] text-slate-600">Không đoạn nào vượt → <b>bỏ lọt</b></div>
+  </div>
+  <div class="rounded-lg border border-rose-200 px-3 pt-2">
+    <div class="text-[16px] font-bold text-rose-700">Cộng dồn bằng CUSUM</div>
+    <svg viewBox="0 0 400 190" class="w-full h-[165px]">
+      <line x1="40" x2="390" y1="170" y2="170" stroke="#94a3b8" />
+      <line x1="40" x2="390" y1="65" y2="65" stroke="#e11d48" stroke-dasharray="6 4" />
+      <text x="44" y="57" text-anchor="start" fill="#be123c" style="font-size: 17px">ngưỡng</text>
+      <rect x="80" y="126" width="60" height="44" rx="3" fill="#fda4af" />
+      <rect x="180" y="87" width="60" height="83" rx="3" fill="#fb7185" />
+      <rect x="280" y="51" width="60" height="119" rx="3" fill="#e11d48" />
+      <polyline points="110,126 210,87 310,51" fill="none" stroke="#9f1239" stroke-width="2" />
+      <text x="310" y="42" text-anchor="middle" fill="#9f1239" style="font-size: 17px; font-weight: 700">hỏi MFA</text>
+      <text x="110" y="187" text-anchor="middle" fill="#64748b" style="font-size: 16px">đoạn 1</text>
+      <text x="210" y="187" text-anchor="middle" fill="#64748b" style="font-size: 16px">đoạn 2</text>
+      <text x="310" y="187" text-anchor="middle" fill="#64748b" style="font-size: 16px">đoạn 3</text>
+    </svg>
+    <div class="pb-2 text-center text-[16px] text-slate-600"><b>Lạ liên tục</b> → bắt được ở đoạn 3</div>
   </div>
 </div>
 
 <!--
 Mục tiêu: 0:50
 
-Mỗi cửa sổ 50 phím cho một điểm bất thường z, đã chuẩn hóa theo chính người đó. Thay vì quyết định riêng từng cửa sổ, nhóm cộng dồn bằng CUSUM. Mỗi lần trừ đi k để bỏ qua dao động nhỏ, và nhân điểm cũ với hệ số quên lambda. S vượt h1 thì hỏi MFA, vượt h2 thì thu hồi ngay.
+Ý tưởng rất đơn giản. Cứ mỗi 50 phím, hệ thống chấm xem nhịp gõ khác thói quen của chính chủ bao nhiêu. Thay vì quyết định riêng từng đoạn, nhóm cộng dồn điểm này bằng CUSUM, một kỹ thuật kinh điển trong kiểm soát chất lượng. Lệch nhỏ thì bỏ qua, bằng chứng cũ phai dần. Chạm mức một thì hỏi MFA, chạm mức hai thì thu hồi phiên.
 
-[CLICK] Ví dụ minh họa: ba cửa sổ liền có z bằng 3. S lần lượt là 2,5; 4,75; rồi 6,775, vượt ngưỡng 6 ở cửa sổ thứ ba.
-
-[CLICK] Nếu xét riêng từng cửa sổ thì không bao giờ cảnh báo vì 3 nhỏ hơn 6. CUSUM bắt được kẻ lạ "hơi lạ nhưng lạ liên tục".
+[CLICK] Ví dụ: kẻ lạ gõ "hơi lạ" ba đoạn liền. Xét riêng từng đoạn thì không đoạn nào vượt ngưỡng, nên bỏ lọt. Cộng dồn thì điểm tăng dần và vượt ngưỡng ở đoạn thứ ba. Tức là hơi lạ nhưng lạ liên tục thì hệ thống vẫn bắt được.
 -->

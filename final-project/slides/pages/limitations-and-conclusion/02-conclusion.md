@@ -6,23 +6,22 @@ transition: slide-left
 
 # Kết luận và hướng phát triển
 
-<div class="mt-5 grid grid-cols-[1.1fr_1fr] gap-6 text-[14.5px] leading-snug">
-  <div class="flex flex-col gap-2.5">
-    <div class="text-[12px] font-bold uppercase tracking-wide text-slate-500">Điều rút ra</div>
-    <div class="border-l-4 border-sky-500 bg-sky-50 px-4 py-2">Cộng dồn bằng CUSUM giúp phát hiện nhiều hơn chấm từng cửa sổ: với Isolation Forest, từ 0,361 lên 0,627.</div>
-    <div v-click class="border-l-4 border-rose-500 bg-rose-50 px-4 py-2">Nhưng <b>0/4 tài khoản</b> đạt cùng lúc ràng buộc phát hiện, độ trễ và số lần hỏi MFA. Hệ thống chưa sẵn sàng triển khai.</div>
-    <div v-click class="border-l-4 border-emerald-500 bg-emerald-50 px-4 py-2">Đóng góp chính là <b>quy trình đánh giá kiểm chứng được</b>: đo theo số phím và MFA mỗi giờ, tránh bẫy mẫu số, replay độc lập khớp hoàn toàn.</div>
+<div class="mt-7 grid grid-cols-[1.1fr_1fr] gap-8 text-[21px] leading-snug">
+  <div class="flex flex-col gap-4">
+    <div class="font-bold text-slate-600">Điều rút ra</div>
+    <div class="border-l-4 border-sky-500 bg-sky-50 px-4 py-4"><b>Cộng dồn</b> bắt người lạ tốt hơn xét từng đoạn.</div>
+    <div v-click class="border-l-4 border-rose-500 bg-rose-50 px-4 py-4">Chưa cấu hình nào vừa bắt nhanh vừa <b>không làm phiền</b> chủ thật.</div>
+    <div v-click class="border-l-4 border-emerald-500 bg-emerald-50 px-4 py-4">Có được <b>quy trình đánh giá</b> kiểm lại được, dùng lại cho dữ liệu mới.</div>
   </div>
   <div v-click>
-    <div class="text-[12px] font-bold uppercase tracking-wide text-slate-500">Bước tiếp theo</div>
-    <ol class="mt-2 list-decimal !pl-5 [&_li]:!my-2">
-      <li>Dùng collector có sẵn thu dữ liệu nhịp gõ thật của người tình nguyện, chạy lại đúng quy trình này.</li>
-      <li>Thử thêm đặc trưng và chỉnh ngưỡng để tìm cấu hình đạt ràng buộc.</li>
-      <li>Cài P2: cập nhật hồ sơ sau khi qua MFA.</li>
+    <div class="font-bold text-slate-600">Bước tiếp theo</div>
+    <ol class="mt-3 list-decimal !pl-6 [&_li]:!my-5">
+      <li>Thu dữ liệu thật của người tình nguyện bằng collector, chạy lại.</li>
+      <li>Thử thêm đặc trưng, chỉnh ngưỡng.</li>
+      <li>Làm P2: cập nhật hồ sơ sau MFA.</li>
     </ol>
   </div>
 </div>
-
 <!--
 Mục tiêu: 0:45
 
