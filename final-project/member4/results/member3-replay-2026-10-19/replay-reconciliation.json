@@ -1,0 +1,47 @@
+{
+  "status": "match",
+  "data_kind": [
+    "synthetic"
+  ],
+  "tolerance_relative": 1e-9,
+  "policy_horizon_keys": 150,
+  "checked": {
+    "decisions": 29183,
+    "events": 7600,
+    "scenario_results": 3520,
+    "user_policy_rows": 32,
+    "macro_rows": 8
+  },
+  "issue_counts": {
+    "step": 0,
+    "events": 0,
+    "outcome": 0,
+    "exposure": 0,
+    "user": 0,
+    "macro": 0
+  },
+  "issues": {
+    "step": [],
+    "events": [],
+    "outcome": [],
+    "exposure": [],
+    "user": [],
+    "macro": []
+  },
+  "inputs": {
+    "evaluation": "../member3/artifacts/simulation-2026-10-19/evaluation",
+    "model": "../member3/artifacts/simulation-2026-10-19/fit/model.json"
+  },
+  "input_sha256": {
+    "decisions.csv": "9efaf527c384dfd236a4143f1c0cca2f97e96f3da1e6c0edfda6901b378ffb92",
+    "events.csv": "0052368588696103c5582e6d22f833da368d84efcb9a3a8b31c99ec1537eed6c",
+    "scenario_results.csv": "29ea271b58fbb1a8d2a6fc87cc421a25a76e0ad70434cca7fea81c82338dfbb7",
+    "scenarios.csv": "83f75f38c7be44d2b7d571e3dc82b8efcbba385cb97664808ad32d84e978013b",
+    "policy_metrics.csv": "5fed6a42ab333b23755e389000cb18054b79a13b62d3d5f366871c718ba7311c",
+    "macro_policy_metrics.csv": "5b4df0a3e8337b5f113e755c7754893ccba4454c8e054767ebdafee9379edb1e",
+    "config.json": "76dbb6a7ca444ec315e72e6e952a7e5c8f2f8133a24552b01e7365877423ce5a",
+    "model.json": "ca19ae1ace563ba590cf76149c19e609d3949cf206afde7805b587bca5c8b006"
+  },
+  "exposure_note": "recording/wall seconds are taken from member3 scenario_results and only checked for internal consistency.",
+  "node": "v24.19.0"
+}

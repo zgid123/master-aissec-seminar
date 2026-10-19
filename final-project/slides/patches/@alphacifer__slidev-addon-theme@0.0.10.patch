@@ -1,0 +1,27 @@
+diff --git a/components/pyramid/square-pyramid/SquarePyramid.vue b/components/pyramid/square-pyramid/SquarePyramid.vue
+--- a/components/pyramid/square-pyramid/SquarePyramid.vue
++++ b/components/pyramid/square-pyramid/SquarePyramid.vue
+@@ -52,1 +52,5 @@
+-  readonly color?: string;
++  readonly color?: string;
++  /** Use the bottom layer's footprint for every layer. Default: false. */
++  readonly uniformLayers?: boolean;
++  /** Thickness of each slab in viewBox units. */
++  readonly slabHeight?: number;
+@@ -107,1 +111,3 @@
+-  colors: undefined,
++  uniformLayers: false,
++  slabHeight: undefined,
++  colors: undefined,
+@@ -322,3 +328,5 @@
+-      resolvedCount.value <= 2
+-        ? 100
+-        : Math.max(70, 95 - (resolvedCount.value - 3) * 6),
++      props.uniformLayers
++        ? 180
++        : resolvedCount.value <= 2
++          ? 100
++          : Math.max(70, 95 - (resolvedCount.value - 3) * 6),
+@@ -325,1 +333,1 @@
+-    slabHeight: resolvedCount.value >= 5 ? 8 : 10,
++    slabHeight: props.slabHeight ?? (resolvedCount.value >= 5 ? 8 : 10),
