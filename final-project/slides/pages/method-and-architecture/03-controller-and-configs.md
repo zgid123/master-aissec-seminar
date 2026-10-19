@@ -24,19 +24,19 @@ transition: slide-left
 </div>
 
 <!--
-Mục tiêu: 0:50
+Mục tiêu: 0:40
 
-Bộ điều khiển là máy ba trạng thái. Phiên ở ACTIVE khi S dưới h1. S vào khoảng h1 đến h2 thì chuyển sang chờ MFA. MFA đạt thì quay lại ACTIVE, S về 0 và tạm ngừng cảnh báo hai cửa sổ. MFA trượt, hoặc S vượt h2, thì thu hồi phiên.
+Bộ điều khiển có ba trạng thái. S dưới h1 thì phiên chạy bình thường. S vượt h1 thì hỏi MFA; đạt thì S về 0, trượt hoặc S vượt h2 thì thu hồi phiên.
 
-[CLICK] B0 là đường cơ sở: mỗi cửa sổ tự quyết, ngưỡng chung cho mọi người.
+[CLICK] B0 là đường cơ sở: mỗi cửa sổ tự quyết, ngưỡng chung.
 
-[CLICK] B1 thêm CUSUM có hệ số quên, vẫn ngưỡng chung.
+[CLICK] B1 thêm CUSUM, vẫn ngưỡng chung.
 
-[CLICK] P1 giữ nguyên lambda và k của B1, chỉ cá nhân hóa ngưỡng h1 theo từng tài khoản. So B1 với P1 là trả lời RQ1.
+[CLICK] P1 giữ B1 nhưng ngưỡng h1 riêng cho từng người.
 
-[CLICK] B1 lambda bằng 1 là đối chứng để xem hệ số quên có tác dụng không.
+[CLICK] B1 lambda bằng 1 là đối chứng không có hệ số quên.
 
-[CLICK] P2 là hướng mở rộng, chưa triển khai.
+[CLICK] P2 chưa triển khai.
 
-[CLICK] Tất cả tham số được chọn trên tập validation bằng lưới cố định, không nhìn tập test.
+[CLICK] Mọi tham số chọn trên tập validation, không nhìn tập test.
 -->

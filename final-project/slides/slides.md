@@ -77,17 +77,13 @@ indexed: true
 # Mục lục
 
 <!--
-Mục tiêu: 0:15
+Mục tiêu: 0:10
 
-Bài trình bày gồm sáu phần: bối cảnh và bài toán, mô hình đe dọa, phương pháp và kiến trúc, thực nghiệm, demo, cuối cùng là giới hạn và kết luận.
+Bài trình bày gồm năm phần chính: bối cảnh và mô hình đe dọa, phương pháp, thực nghiệm, demo, và cuối cùng là kết luận.
 -->
 
 ---
 src: ./pages/problem-and-motivation/main.md
----
-
----
-src: ./pages/threat-model/main.md
 ---
 
 ---

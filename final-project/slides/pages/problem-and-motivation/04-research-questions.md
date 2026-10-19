@@ -35,20 +35,20 @@ transition: slide-left
   </div>
 </div>
 
-<div v-click="4" class="mt-3 text-[14px] text-slate-600">
-  Điều kiện bác bỏ được đặt <b>trước</b> khi chạy: khoảng tin cậy bootstrap 95% của hiệu số theo từng người chứa 0 thì không chấp nhận giả thuyết.
+<div v-click="4" class="mt-3 border-l-4 border-sky-500 bg-sky-50 px-4 py-2 text-[14px] text-slate-800">
+  Các nghiên cứu trước chủ yếu báo FAR, FRR, EER. Đề tài đo theo góc vận hành: <b>bao nhiêu phím thì phát hiện người lạ</b> và <b>chủ thật bị hỏi MFA bao nhiêu lần mỗi giờ</b>.
 </div>
 
 <!--
-Mục tiêu: 1:00
+Mục tiêu: 0:50
 
-Câu hỏi trung tâm có hai mục tiêu mâu thuẫn. Ngưỡng nhạy thì phát hiện nhanh nhưng báo động giả nhiều. Ngưỡng chậm thì ít làm phiền nhưng cho kẻ lạ thêm thời gian.
+Câu hỏi trung tâm có hai mục tiêu ngược nhau. Ngưỡng nhạy thì phát hiện nhanh nhưng làm phiền chủ thật. Ngưỡng chậm thì ít làm phiền nhưng cho kẻ lạ thêm thời gian.
 
-[CLICK] RQ1 hỏi: nếu cá nhân hóa ngưỡng cho từng người, ở cùng thời gian phát hiện, chủ thật có bị hỏi MFA ít hơn không. So sánh B1 với P1.
+[CLICK] RQ1: cá nhân hóa ngưỡng cho từng người có giảm số lần hỏi MFA không. So B1 với P1.
 
-[CLICK] RQ2 hỏi: cộng dồn bằng chứng qua nhiều cửa sổ bằng CUSUM có phát hiện nhanh hơn quyết định riêng từng cửa sổ không. So sánh B0 với B1.
+[CLICK] RQ2: cộng dồn bằng chứng qua nhiều cửa sổ có phát hiện nhanh hơn không. So B0 với B1.
 
-[CLICK] RQ3 về cập nhật hồ sơ sau MFA thành công, tức cấu hình P2. P2 chưa được triển khai nên RQ3 chưa được kiểm chứng.
+[CLICK] RQ3 về cập nhật hồ sơ sau MFA, tức cấu hình P2, chưa triển khai.
 
-[CLICK] Nhóm đặt điều kiện bác bỏ trước khi chạy. Như sẽ thấy ở phần kết quả, hiện chưa có cấu hình nào đạt ràng buộc, nên RQ1 và RQ2 đều ở trạng thái chưa kết luận.
+[CLICK] Điểm khác của đề tài: các nghiên cứu như Killourhy và Maxion, TypeNet hay KVC-onGoing chủ yếu báo FAR, EER. Nhóm đo theo góc vận hành: cần bao nhiêu phím để phát hiện và chủ thật bị làm phiền bao nhiêu.
 -->

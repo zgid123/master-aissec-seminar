@@ -48,15 +48,13 @@ transition: slide-left
 </style>
 
 <!--
-Mục tiêu: 1:00
+Mục tiêu: 0:50
 
-Kiến trúc gồm năm thành phần. Một, collector trên trình duyệt bắt keydown, keyup và chỉ ghi nhóm phím. Hai, cắt cửa sổ 50 phím và tính 12 đặc trưng thời gian. Ba, tính điểm bất thường bằng L1 hoặc Isolation Forest. Bốn, chuẩn hóa điểm và tích lũy bằng CUSUM. Năm, bộ điều khiển phiên chọn tiếp tục, hỏi MFA hoặc thu hồi.
+Hệ thống gồm năm bước: collector trên trình duyệt chỉ ghi nhóm phím và thời điểm; cắt cửa sổ 50 phím, tính 12 đặc trưng; chấm điểm bất thường bằng khoảng cách L1 hoặc Isolation Forest; chuẩn hóa theo từng người và cộng dồn bằng CUSUM; cuối cùng bộ điều khiển chọn tiếp tục, hỏi MFA hoặc thu hồi phiên.
 
-Kho hồ sơ lưu tham số của từng tài khoản. Mỗi quyết định được ghi nhật ký để đánh giá lại.
+[CLICK] Màu xanh là phần đã hiện thực.
 
-[CLICK] Màu xanh là phần đã hiện thực: collector, pipeline, hai scorer, ba chính sách và bộ đánh giá replay.
+[CLICK] Khối viền vàng là phần còn ở mức thiết kế: lớp truyền chống phát lại, luồng chạy trực tiếp và MFA thật.
 
-[CLICK] Khối viền vàng là phần còn ở mức thiết kế: lớp truyền chống phát lại, luồng live và MFA thật. Nhóm trình bày rõ để không ai hiểu nhầm là hệ thống đã chạy end-to-end.
-
-[CLICK] Nguyên tắc so sánh công bằng: mọi chính sách dùng cùng pipeline, cùng dữ liệu, cùng chuỗi tấn công, và nhãn chủ hay người lạ không được dùng để chấm điểm.
+[CLICK] Mọi chính sách dùng cùng pipeline và cùng dữ liệu, nên so sánh công bằng.
 -->

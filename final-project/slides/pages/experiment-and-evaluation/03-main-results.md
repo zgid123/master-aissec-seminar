@@ -30,7 +30,7 @@ transition: slide-left
   </tbody>
 </table>
 
-<div class="mt-2 text-[12px] text-slate-500">Trung bình 4 hồ sơ mô phỏng; 432 kịch bản mỗi cấu hình. Nguồn: member3, lần chạy 19/10/2026, đã replay lại khớp hoàn toàn.</div>
+<div class="mt-2 text-[12px] text-slate-500">Trung bình 4 hồ sơ; 432 kịch bản mỗi cấu hình. Nguồn: lần chạy 19/10/2026, đã replay độc lập và khớp hoàn toàn.</div>
 
 <div v-click="1" class="mt-2 rounded-lg bg-slate-800 px-4 py-2 text-[15px] text-white">
   <b>0/4 tài khoản đạt ràng buộc</b> ở cả 8 tổ hợp, trên validation lẫn test. Đây là kết quả chẩn đoán, chưa có điểm vận hành hợp lệ.
@@ -46,11 +46,11 @@ transition: slide-left
 <!--
 Mục tiêu: 1:15
 
-Đây là bảng kết quả chính trên tập test, trung bình bốn hồ sơ.
+Đây là bảng kết quả chính trên tập test.
 
-So B0 với B1: cộng dồn bằng CUSUM tăng tỷ lệ phát hiện rõ rệt, ví dụ với Isolation Forest từ 0,361 lên 0,627. Cái giá là MFA mỗi giờ tăng, và với L1 còn có 54 kịch bản bị thu hồi trước khi người lạ bắt đầu gõ.
+So B0 với B1: cộng dồn bằng CUSUM tăng tỷ lệ phát hiện rõ rệt, với Isolation Forest từ 0,361 lên 0,627. Cái giá là MFA mỗi giờ tăng.
 
-[CLICK] Nhưng điều quan trọng nhất: không cấu hình nào đạt ràng buộc. Cả tám tổ hợp đều 0 trên 4 tài khoản, trên cả validation và test. Nên đây là kết quả chẩn đoán, không phải điểm vận hành, và nhóm chưa kết luận H1 hay H2.
+[CLICK] Nhưng quan trọng nhất: không cấu hình nào đạt đủ ràng buộc, 0 trên 4 tài khoản. Nên đây là kết quả chẩn đoán, nhóm chưa kết luận H1 hay H2.
 
-[CLICK] Dòng được khoanh là ví dụ của bẫy mẫu số. Isolation Forest với P1 có tỷ lệ phát hiện 0,755 nếu loại các kịch bản bị thu hồi sớm, trông như tốt nhất. Nhưng tính trên toàn bộ thì chỉ 0,613, thấp hơn B1 là 0,627, vì có 72 kịch bản bị thu hồi oan trước N và 4 lần thu hồi oan trên phiên chính chủ.
+[CLICK] Dòng được khoanh là bẫy mẫu số. IF P1 đạt 0,755 nếu loại các kịch bản bị thu hồi sớm, trông như tốt nhất. Nhưng tính trên toàn bộ chỉ còn 0,613, thấp hơn B1, vì có 72 kịch bản bị thu hồi oan trước khi người lạ xuất hiện và 4 lần thu hồi oan trên phiên chủ. Phân tích ca lỗi cho thấy không có chính sách nào thắng toàn diện: ngưỡng thấp đổi bỏ sót lấy thu hồi oan.
 -->

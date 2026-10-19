@@ -45,15 +45,13 @@ transition: slide-left
 </div>
 
 <!--
-Mục tiêu: 0:50
+Mục tiêu: 0:45
 
-Bảng bên trái so sánh định tính các biện pháp kiểm soát phiên trong đúng kịch bản của đề tài, không phải xếp hạng an toàn chung.
+Bảng bên trái so sánh các biện pháp kiểm soát phiên trong đúng kịch bản này. Timeout không biết ai đang gõ, kẻ lạ cứ thao tác thì phiên vẫn sống. Xác thực lại định kỳ thì gây gián đoạn. IP hay thiết bị gần như không đổi khi người lạ dùng chính máy đang mở.
 
-Timeout không xác minh ai đang gõ, và kẻ lạ cứ thao tác thì phiên vẫn còn sống. Xác thực lại định kỳ có điểm kiểm tra rõ nhưng gây gián đoạn. Tín hiệu IP hay thiết bị gần như không đổi khi người lạ dùng chính máy đang mở.
+[CLICK] Nhịp gõ thu được thụ động khi người dùng làm việc, không cần phần cứng mới.
 
-[CLICK] Nhịp gõ thu được thụ động ngay khi người dùng làm việc, không cần phần cứng ngoài bàn phím.
+[CLICK] Dữ liệu 136 triệu lần nhấn phím của Dhakal và cộng sự cho thấy gõ chồng phím rất phổ biến, nên hệ thống chuẩn hóa theo từng người.
 
-[CLICK] Nghiên cứu của Dhakal và cộng sự trên 136 triệu lần nhấn phím của 168 nghìn người cho thấy cách gõ rất đa dạng, và nhấn phím kế trước khi nhả phím trước là chuyện thường gặp. Vì vậy hệ thống giữ nguyên khoảng nghỉ âm và chuẩn hóa theo từng người.
-
-[CLICK] Nhược điểm lớn nhất là phải tích lũy đủ phím. Nên nhóm xem nhịp gõ là lớp bổ sung, không thay thế các biện pháp khác.
+[CLICK] Nhịp gõ là lớp bổ sung, không thay thế MFA.
 -->

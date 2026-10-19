@@ -39,15 +39,11 @@ transition: slide-left
 </div>
 
 <!--
-Mục tiêu: 1:00
+Mục tiêu: 0:50
 
-Phần này là đóng góp chính của mục đánh giá. Nhóm đo theo hai chiều đối nghịch.
+Nhóm đo theo hai chiều ngược nhau. Bên trái là phát hiện người lạ: chỉ số chính là tỷ lệ phát hiện trong 150 phím đầu của người lạ; TTD chỉ là phụ. Bên phải là làm phiền chủ thật: số lần hỏi MFA mỗi giờ và số lần thu hồi oan.
 
-Chiều thứ nhất là phát hiện người lạ. Chỉ số chính là tỷ lệ phát hiện trong 150 phím đầu tiên của người lạ. TTD chỉ là phụ, vì median TTD chỉ tính trên những ca đã phát hiện, nên một chính sách bỏ sót nhiều vẫn có thể có median đẹp. Ca không phát hiện được xử lý là kiểm duyệt phải.
+[CLICK] Khi rà kết quả, em phát hiện một bẫy mẫu số: nếu loại các kịch bản bị thu hồi trước khi người lạ gõ, thì chính sách thu hồi oan càng nhiều lại có tỷ lệ phát hiện càng đẹp. Nên nhóm báo song song cả hai cách tính.
 
-Chiều thứ hai là làm phiền chủ thật: số lần MFA mỗi giờ trên phiên chính chủ và số lần thu hồi oan. FAR, FRR, EER mức cửa sổ chỉ để chẩn đoán scorer, không phải hiệu năng của chính sách tuần tự.
-
-[CLICK] Khi rà kết quả, em phát hiện một bẫy mẫu số. Cách tính ban đầu loại các kịch bản bị thu hồi trước N ra khỏi mẫu số. Nghĩa là chính sách thu hồi oan nhiều thì mẫu số nhỏ lại và tỷ lệ phát hiện trông cao hơn. Vì vậy nhóm báo song song cả hai cách tính.
-
-[CLICK] Các ràng buộc được đặt trước khi chạy. Một cấu hình chỉ được coi là đạt khi thỏa cả bốn điều kiện trên từng tài khoản.
+[CLICK] Một cấu hình chỉ được coi là đạt khi thỏa cả bốn ràng buộc này, đặt trước khi chạy.
 -->

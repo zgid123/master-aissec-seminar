@@ -6,7 +6,7 @@ transition: slide-left
 
 # Demo 1: thu nhịp gõ trên trình duyệt
 
-<DemoProgress :active="$clicks >= 1 ? 2 : 1" />
+<DemoProgress :active="1" />
 
 <div class="mt-4 grid grid-cols-[1fr_1fr] gap-6 text-[14.5px] leading-snug">
   <div>
@@ -27,7 +27,6 @@ transition: slide-left
       <div class="border-l-4 border-emerald-500 bg-emerald-50 px-3 py-1.5">Mỗi phím chỉ còn nhóm <b>typing, separator, correction</b> và thời điểm nhấn, nhả.</div>
       <div class="border-l-4 border-emerald-500 bg-emerald-50 px-3 py-1.5">Không có ký tự, event.key hay nội dung câu đã gõ.</div>
       <div class="border-l-4 border-amber-500 bg-amber-50 px-3 py-1.5">Dán bị chặn; mất tiêu điểm tạo ranh giới, không ghép nhấn nhả xuyên gián đoạn.</div>
-      <div class="border-l-4 border-slate-500 bg-slate-50 px-3 py-1.5">File demo để riêng, không đưa vào dữ liệu nghiên cứu.</div>
     </div>
   </div>
 </div>
@@ -37,9 +36,9 @@ Mục tiêu: 1:15 (demo trực tiếp)
 
 Chuẩn bị trước: chạy pnpm install --frozen-lockfile và pnpm start trong member2/collector, mở sẵn tab localhost:4173. Nếu máy có Make và WSL thì dùng make run trong member2.
 
-Em mở công cụ thu, chọn chế độ Pilot, đọc và xác nhận đồng thuận rồi bắt đầu phiên. Em gõ một câu bình thường, sửa vài chỗ bằng Backspace, thử dán thì bị chặn. Nhấp ra ngoài rồi tiếp tục gõ. Kết thúc phiên và tải JSON.
+Ở trang này em CHUYỂN SANG TAB TRÌNH DUYỆT để demo trực tiếp. Em mở công cụ thu, chọn chế độ Pilot, xác nhận đồng thuận rồi bắt đầu phiên. Em gõ một câu, sửa vài chỗ bằng Backspace, thử dán thì bị chặn. Nhấp ra ngoài rồi tiếp tục gõ. Kết thúc phiên và tải JSON.
 
-[CLICK] Mở file JSON: chỉ có nhóm phím và thời điểm nhấn nhả, không có ký tự nào. Đây chính là nguyên tắc tối thiểu hóa dữ liệu đã nêu ở phần mô hình đe dọa.
+[CLICK] Quay lại slide và mở file JSON: chỉ có nhóm phím và thời điểm nhấn nhả, không có ký tự nào. Đây là nguyên tắc riêng tư đã nêu ở mô hình đe dọa.
 
 Dự phòng nếu không mở được collector: chuyển ngay sang slide kế, giải thích bằng hình chụp và file JSON mẫu.
 -->

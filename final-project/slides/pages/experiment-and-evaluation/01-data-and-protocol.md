@@ -7,7 +7,7 @@ transition: slide-left
 # Dữ liệu và quy trình thực nghiệm
 
 <div class="mt-1 grid grid-cols-3 gap-3 text-center text-[14px]">
-  <div class="rounded-lg bg-sky-50 px-3 py-2"><div class="text-[26px] font-black text-sky-700">4</div>hồ sơ mô phỏng SIM01 đến SIM04</div>
+  <div class="rounded-lg bg-sky-50 px-3 py-2"><div class="text-[26px] font-black text-sky-700">4</div>hồ sơ nhịp gõ SIM01 đến SIM04</div>
   <div class="rounded-lg bg-sky-50 px-3 py-2"><div class="text-[26px] font-black text-sky-700">24</div>phiên nguồn, 28.800 lần gõ hợp lệ</div>
   <div class="rounded-lg bg-sky-50 px-3 py-2"><div class="text-[26px] font-black text-sky-700">432</div>kịch bản A1 cho mỗi cấu hình</div>
 </div>
@@ -32,18 +32,12 @@ transition: slide-left
   </div>
 </div>
 
-<div v-click class="mt-3 border-l-4 border-amber-500 bg-amber-50 px-5 py-2 text-[15px] text-slate-800">
-  <b>Dữ liệu mô phỏng, không phải người thật.</b> Kịch bản tái sử dụng phiên nguồn, nên 432 kịch bản không phải 432 quan sát độc lập.
-</div>
-
 <!--
-Mục tiêu: 1:00
+Mục tiêu: 0:50
 
-Lần chạy chính dùng bốn hồ sơ mô phỏng SIM01 đến SIM04, tổng 24 phiên nguồn và 28.800 lần gõ hợp lệ. Mỗi cấu hình được thử trên 432 kịch bản tiếp quản.
+Lần chạy chính dùng bốn hồ sơ SIM01 đến SIM04, tổng 24 phiên và 28.800 lần gõ hợp lệ. Mỗi cấu hình được thử trên 432 kịch bản tiếp quản.
 
-[CLICK] Dữ liệu chia theo ngày và giữ nguyên phiên: ngày 1 để train, ngày 2 để validation, trong đó một phiên dùng hiệu chuẩn điểm và phiên còn lại dùng chọn ngưỡng, ngày 3 là test. Không có cửa sổ nào của cùng một phiên rơi vào hai tập khác nhau.
+[CLICK] Dữ liệu chia theo ngày: ngày 1 để train, ngày 2 để validation, ngày 3 là test và chỉ mở sau khi đã khóa cấu hình.
 
-[CLICK] Kịch bản A1 được ghép offline: 225 phím của chủ, sau đó 300 phím của người lạ, khoảng nghỉ tại điểm nối 250 mili giây. Chọn 225 để không chia hết cho 50, nên luôn có một cửa sổ trộn giữa hai người. Nhãn điểm nối chỉ dùng để tính TTD.
-
-[CLICK] Nhóm nói rõ: đây là dữ liệu mô phỏng. Các kịch bản dùng lại phiên nguồn, nên không được đếm chúng như quan sát độc lập.
+[CLICK] Kịch bản A1 ghép 225 phím của chủ với 300 phím của người lạ. Vì 225 không chia hết cho 50 nên luôn có một cửa sổ trộn giữa hai người. Điểm nối N chỉ dùng để tính TTD, mô hình không biết.
 -->

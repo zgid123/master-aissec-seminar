@@ -24,13 +24,13 @@ transition: slide-left
 </div>
 
 <!--
-Mục tiêu: 1:00
+Mục tiêu: 0:50
 
-MFA ở bước đăng nhập chỉ trả lời câu hỏi "ai đang đăng nhập lúc này". Sau đó phiên được duy trì bằng cookie hoặc token. NIST mô tả bí mật phiên như bearer token: ai giữ giá trị hợp lệ thì dùng được phiên.
+MFA chỉ trả lời câu hỏi "ai đang đăng nhập lúc này". Sau đó phiên được duy trì bằng cookie hoặc token, ai giữ được thì dùng được phiên.
 
-Hình minh họa: 9 giờ người dùng đăng nhập và qua MFA. 13 giờ 20 có người khác ngồi vào máy đang mở. Máy chủ vẫn thấy một phiên hợp lệ. Mục tiêu của đề tài là rút ngắn khoảng màu đỏ này. Đây là kịch bản minh họa, không theo tỉ lệ thời gian.
+Hình minh họa: 9 giờ người dùng đăng nhập và qua MFA. 13 giờ 20 có người khác ngồi vào máy đang mở. Máy chủ vẫn thấy một phiên hợp lệ. Mục tiêu của đề tài là rút ngắn khoảng màu đỏ này.
 
-[CLICK] Bản NIST SP 800-63B-4 công bố tháng 7 năm 2025 có mục giám sát phiên, còn gọi là xác thực liên tục. Đây là biện pháp tùy chọn, và nhịp gõ được nêu như một ví dụ của sinh trắc hành vi.
+[CLICK] NIST SP 800-63B-4 năm 2025 có mục giám sát phiên, và nêu nhịp gõ như một ví dụ của sinh trắc hành vi.
 
-[CLICK] Khi thấy dấu hiệu khả nghi, chuẩn khuyến nghị xác thực lại hoặc kết thúc phiên. Nhóm hiện thực đúng hai hành động đó: yêu cầu MFA và thu hồi phiên.
+[CLICK] Khi thấy nghi vấn, chuẩn khuyến nghị xác thực lại hoặc kết thúc phiên. Nhóm hiện thực đúng hai hành động đó.
 -->

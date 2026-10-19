@@ -5,7 +5,7 @@ indexed: true
 background: ../../assets/heading.png
 ---
 
-# Bối cảnh và bài toán
+# Bối cảnh và mô hình đe dọa
 
 ---
 src: ./01-post-mfa-gap.md
@@ -16,7 +16,7 @@ src: ./02-why-keystroke.md
 ---
 
 ---
-src: ./03-related-work.md
+src: ./03-threat-model.md
 ---
 
 ---

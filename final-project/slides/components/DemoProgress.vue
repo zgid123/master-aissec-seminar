@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{ active: number }>()
 
-const steps = ['Thu nhịp gõ', 'Kiểm tra bản ghi', 'Replay tiếp quản', 'Đối chiếu kết quả']
+const steps = ['Thu nhịp gõ', 'Replay một kịch bản', 'Đối chiếu kết quả']
 </script>
 
 <template>
@@ -21,7 +21,7 @@ const steps = ['Thu nhịp gõ', 'Kiểm tra bản ghi', 'Replay tiếp quản',
 <style scoped>
 .demo-progress {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   margin-top: 0.25rem;
   border-bottom: 1px solid #cbd5e1;
   color: #64748b;

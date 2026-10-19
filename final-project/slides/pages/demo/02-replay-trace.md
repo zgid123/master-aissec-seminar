@@ -6,7 +6,7 @@ transition: slide-left
 
 # Demo 2: replay một kịch bản tiếp quản
 
-<DemoProgress :active="3" />
+<DemoProgress :active="2" />
 
 <div class="mt-2 text-[13.5px] text-slate-600">
   Cùng prefix của SIM01 (Isolation Forest, P1: λ = 1, k = 0,25, h₁ = 1), ghép với hai phiên người lạ khác nhau. Lấy theo thứ tự nguồn, không chọn theo kết quả.
@@ -40,7 +40,7 @@ transition: slide-left
       { s: 0, label: 'impostor', action: 'CONTINUE' },
       { s: 1.08, label: 'impostor', action: 'MFA_CHALLENGE' },
     ]" />
-    <div class="text-[13px] text-slate-600">W6: z = 1,33 nên S = 1,08 ≥ h₁. MFA mô phỏng trượt, phiên bị thu hồi.</div>
+    <div class="text-[13px] text-slate-600">W6: z = 1,33 nên S = 1,08 ≥ h₁. Người lạ trượt MFA, phiên bị thu hồi.</div>
   </div>
 </div>
 
@@ -55,13 +55,11 @@ transition: slide-left
 </div>
 
 <!--
-Mục tiêu: 1:15
+Mục tiêu: 1:00
 
-Đây là log thật từ lần chạy ngày 19/10 của pipeline mô hình. Cả hai biểu đồ dùng cùng 225 phím đầu của chủ SIM01, ghép với hai phiên người lạ khác nhau. Em lấy theo thứ tự trong file, không chọn ca đẹp.
+Đây là log từ lần chạy ngày 19/10 của pipeline mô hình. Cả hai biểu đồ dùng cùng 225 phím đầu của chủ SIM01, ghép với hai phiên người lạ khác nhau. Em lấy theo thứ tự trong file, không chọn ca đẹp. Xanh là cửa sổ của chủ, tím là cửa sổ trộn, đỏ là người lạ.
 
-Màu xanh là cửa sổ của chủ, tím là cửa sổ trộn, đỏ là người lạ. Đường vàng là h1, đường đỏ là h2.
-
-Ca thứ nhất: người lạ gõ khá giống chủ, S chỉ nhích lên 0,33 rồi 0,36 rồi về 0. Hết 275 phím được chấm mà không cảnh báo. Đây là ca bỏ sót, được tính là kiểm duyệt phải.
+Ca thứ nhất: người lạ gõ khá giống chủ, S chỉ nhích lên 0,33 rồi về 0. Hết 275 phím mà không cảnh báo, đây là ca bỏ sót.
 
 [CLICK] Ca thứ hai: đến cửa sổ W6, z bằng 1,33, trừ k bằng 0,25 thì S bằng 1,08, vượt h1 bằng 1. Hệ thống hỏi MFA, người lạ trượt và phiên bị thu hồi, TTD là 125 phím.
 

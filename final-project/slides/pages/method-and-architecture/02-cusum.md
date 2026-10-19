@@ -14,6 +14,7 @@ $$S_t = \max\bigl(0,\ \lambda S_{t-1} + z_t - k\bigr)$$
 
 </div>
     <ul class="mt-2 !pl-5 text-[15px] leading-snug [&_li]:!my-1">
+      <li><b>z<sub>t</sub></b>: điểm bất thường của cửa sổ 50 phím, chuẩn hóa bằng median và MAD của chính chủ tài khoản.</li>
       <li><b>k</b> bỏ qua dao động nhỏ.</li>
       <li><b>λ</b> là hệ số quên: λ = 1 là CUSUM chuẩn, λ &lt; 1 làm bằng chứng cũ phai dần.</li>
       <li>Hai ngưỡng: <b>h₁</b> hỏi MFA, <b>h₂ = 2h₁</b> thu hồi phiên.</li>
@@ -36,11 +37,11 @@ $$S_t = \max\bigl(0,\ \lambda S_{t-1} + z_t - k\bigr)$$
 </div>
 
 <!--
-Mục tiêu: 1:00
+Mục tiêu: 0:50
 
-Thay vì quyết định riêng từng cửa sổ, nhóm cộng dồn bằng chứng bằng CUSUM một phía. Mỗi cửa sổ trừ đi k để bỏ qua dao động nhỏ, và nhân điểm cũ với hệ số quên lambda. Lambda bằng 1 là CUSUM chuẩn theo NIST/SEMATECH; lambda nhỏ hơn 1 là biến thể của nhóm, giúp bằng chứng cũ phai dần. S vượt h1 thì hỏi MFA, vượt h2 bằng hai lần h1 thì thu hồi ngay.
+Mỗi cửa sổ 50 phím cho một điểm bất thường z, đã chuẩn hóa theo chính người đó. Thay vì quyết định riêng từng cửa sổ, nhóm cộng dồn bằng CUSUM. Mỗi lần trừ đi k để bỏ qua dao động nhỏ, và nhân điểm cũ với hệ số quên lambda. S vượt h1 thì hỏi MFA, vượt h2 thì thu hồi ngay.
 
-[CLICK] Ví dụ minh họa, không phải kết quả thực nghiệm: ba cửa sổ liền có z bằng 3. S lần lượt là 2,5; 4,75; rồi 6,775, vượt ngưỡng 6 ở cửa sổ thứ ba.
+[CLICK] Ví dụ minh họa: ba cửa sổ liền có z bằng 3. S lần lượt là 2,5; 4,75; rồi 6,775, vượt ngưỡng 6 ở cửa sổ thứ ba.
 
-[CLICK] Nếu quyết định riêng từng cửa sổ với ngưỡng 6 thì không bao giờ cảnh báo vì 3 nhỏ hơn 6. Đó là trực giác của giả thuyết H2.
+[CLICK] Nếu xét riêng từng cửa sổ thì không bao giờ cảnh báo vì 3 nhỏ hơn 6. CUSUM bắt được kẻ lạ "hơi lạ nhưng lạ liên tục".
 -->

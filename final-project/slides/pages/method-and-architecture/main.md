@@ -12,13 +12,9 @@ src: ./01-architecture.md
 ---
 
 ---
-src: ./02-window-and-score.md
+src: ./02-cusum.md
 ---
 
 ---
-src: ./03-cusum.md
----
-
----
-src: ./04-controller-and-configs.md
+src: ./03-controller-and-configs.md
 ---

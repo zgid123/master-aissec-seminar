@@ -6,7 +6,7 @@ transition: slide-left
 
 # Demo 3: đối chiếu lại toàn bộ chính sách
 
-<DemoProgress :active="4" />
+<DemoProgress :active="3" />
 
 <div class="mt-4 grid grid-cols-[1.2fr_1fr] gap-6 text-[14px] leading-snug">
   <div>
@@ -25,22 +25,20 @@ transition: slide-left
     </div>
   </div>
   <div class="flex flex-col gap-2">
-    <div class="border-l-4 border-sky-500 bg-sky-50 px-3 py-2">Chạy dưới 1 giây, chỉ cần Node.js, không cài thêm thư viện.</div>
-    <div v-click class="border-l-4 border-emerald-500 bg-emerald-50 px-3 py-2">Sáu nhóm kiểm tra đều <b>0 sai lệch</b>: từng bước quyết định, sự kiện MFA, kết cục kịch bản, thời lượng, chỉ số theo người và trung bình.</div>
-    <div v-click class="border-l-4 border-slate-500 bg-slate-50 px-3 py-2">Bộ test của mục 4: 52/52 đạt với <code>node --test</code>.</div>
+    <div class="border-l-4 border-sky-500 bg-sky-50 px-3 py-2">Bộ đánh giá của mục 4 viết riêng, không dùng chung mã với pipeline mô hình. Chạy dưới 1 giây, chỉ cần Node.js.</div>
+    <div v-click class="border-l-4 border-emerald-500 bg-emerald-50 px-3 py-2">Replay lại B0, B1, P1: <b>khớp hoàn toàn</b> 29.183 quyết định, 7.600 sự kiện MFA và thu hồi, 3.520 kết cục kịch bản.</div>
+    <div v-click class="border-l-4 border-slate-500 bg-slate-50 px-3 py-2">Chấm lại mức cửa sổ: FAR, FRR, EER khớp 8/8 cặp scorer và tài khoản.</div>
   </div>
 </div>
 
 <!--
 Mục tiêu: 0:45 (demo trực tiếp)
 
-Bước cuối của demo là chứng minh các con số trên slide có thể kiểm lại. Em chạy công cụ đối chiếu của mục 4 trên log của lần chạy mô hình.
+Bước cuối là chứng minh các con số trên slide kiểm lại được. Em chạy công cụ đối chiếu của mục 4 trên log của lần chạy mô hình. Công cụ này viết riêng, không dùng chung mã với pipeline.
 
-[CLICK] Kết quả in ra sáu nhóm kiểm tra, tất cả đều 0 sai lệch.
+[CLICK] Kết quả: sáu nhóm kiểm tra đều 0 sai lệch, tức là 29.183 quyết định, 7.600 sự kiện và 3.520 kết cục đều khớp. Chính lúc đối chiếu này nhóm phát hiện ra bẫy mẫu số đã nói ở phần kết quả.
 
-[CLICK] Công cụ chỉ dùng thư viện chuẩn của Node.js nên chép sang máy khác là chạy được.
+[CLICK] Ở mức cửa sổ, FAR, FRR, EER cũng khớp cả 8 cặp.
 
-[CLICK] Bộ test của phần đánh giá có 52 ca, đều đạt.
-
-Chuẩn bị: tạo sẵn một thư mục output trống, ví dụ results/replay-demo-2010. Nếu thư mục đã có file, công cụ sẽ từ chối ghi đè.
+Chuẩn bị: tạo sẵn một thư mục output trống, ví dụ results/replay-demo-2010. Nếu thư mục đã có file, công cụ sẽ từ chối ghi đè. Nếu không kịp thời gian thì chỉ cần nói kết quả trên slide, bỏ qua chạy lệnh.
 -->
