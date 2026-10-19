@@ -1,0 +1,34 @@
+{
+  "SIM01": {
+    "calibration": [
+      "SIM01_D2_S1"
+    ],
+    "tuning": [
+      "SIM01_D2_S2"
+    ]
+  },
+  "SIM02": {
+    "calibration": [
+      "SIM02_D2_S1"
+    ],
+    "tuning": [
+      "SIM02_D2_S2"
+    ]
+  },
+  "SIM03": {
+    "calibration": [
+      "SIM03_D2_S1"
+    ],
+    "tuning": [
+      "SIM03_D2_S2"
+    ]
+  },
+  "SIM04": {
+    "calibration": [
+      "SIM04_D2_S1"
+    ],
+    "tuning": [
+      "SIM04_D2_S2"
+    ]
+  }
+}

@@ -1,0 +1,194 @@
+[
+  {
+    "file": "raw/SIM01_D1_S1.json",
+    "participant_id": "SIM01",
+    "session_id": "SIM01_D1_S1",
+    "study_day": 1,
+    "split": "train",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM01_D1_S2.json",
+    "participant_id": "SIM01",
+    "session_id": "SIM01_D1_S2",
+    "study_day": 1,
+    "split": "train",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM01_D2_S1.json",
+    "participant_id": "SIM01",
+    "session_id": "SIM01_D2_S1",
+    "study_day": 2,
+    "split": "validation",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM01_D2_S2.json",
+    "participant_id": "SIM01",
+    "session_id": "SIM01_D2_S2",
+    "study_day": 2,
+    "split": "validation",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM01_D3_S1.json",
+    "participant_id": "SIM01",
+    "session_id": "SIM01_D3_S1",
+    "study_day": 3,
+    "split": "test",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM01_D3_S2.json",
+    "participant_id": "SIM01",
+    "session_id": "SIM01_D3_S2",
+    "study_day": 3,
+    "split": "test",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM02_D1_S1.json",
+    "participant_id": "SIM02",
+    "session_id": "SIM02_D1_S1",
+    "study_day": 1,
+    "split": "train",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM02_D1_S2.json",
+    "participant_id": "SIM02",
+    "session_id": "SIM02_D1_S2",
+    "study_day": 1,
+    "split": "train",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM02_D2_S1.json",
+    "participant_id": "SIM02",
+    "session_id": "SIM02_D2_S1",
+    "study_day": 2,
+    "split": "validation",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM02_D2_S2.json",
+    "participant_id": "SIM02",
+    "session_id": "SIM02_D2_S2",
+    "study_day": 2,
+    "split": "validation",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM02_D3_S1.json",
+    "participant_id": "SIM02",
+    "session_id": "SIM02_D3_S1",
+    "study_day": 3,
+    "split": "test",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM02_D3_S2.json",
+    "participant_id": "SIM02",
+    "session_id": "SIM02_D3_S2",
+    "study_day": 3,
+    "split": "test",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM03_D1_S1.json",
+    "participant_id": "SIM03",
+    "session_id": "SIM03_D1_S1",
+    "study_day": 1,
+    "split": "train",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM03_D1_S2.json",
+    "participant_id": "SIM03",
+    "session_id": "SIM03_D1_S2",
+    "study_day": 1,
+    "split": "train",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM03_D2_S1.json",
+    "participant_id": "SIM03",
+    "session_id": "SIM03_D2_S1",
+    "study_day": 2,
+    "split": "validation",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM03_D2_S2.json",
+    "participant_id": "SIM03",
+    "session_id": "SIM03_D2_S2",
+    "study_day": 2,
+    "split": "validation",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM03_D3_S1.json",
+    "participant_id": "SIM03",
+    "session_id": "SIM03_D3_S1",
+    "study_day": 3,
+    "split": "test",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM03_D3_S2.json",
+    "participant_id": "SIM03",
+    "session_id": "SIM03_D3_S2",
+    "study_day": 3,
+    "split": "test",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM04_D1_S1.json",
+    "participant_id": "SIM04",
+    "session_id": "SIM04_D1_S1",
+    "study_day": 1,
+    "split": "train",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM04_D1_S2.json",
+    "participant_id": "SIM04",
+    "session_id": "SIM04_D1_S2",
+    "study_day": 1,
+    "split": "train",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM04_D2_S1.json",
+    "participant_id": "SIM04",
+    "session_id": "SIM04_D2_S1",
+    "study_day": 2,
+    "split": "validation",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM04_D2_S2.json",
+    "participant_id": "SIM04",
+    "session_id": "SIM04_D2_S2",
+    "study_day": 2,
+    "split": "validation",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM04_D3_S1.json",
+    "participant_id": "SIM04",
+    "session_id": "SIM04_D3_S1",
+    "study_day": 3,
+    "split": "test",
+    "data_kind": "synthetic"
+  },
+  {
+    "file": "raw/SIM04_D3_S2.json",
+    "participant_id": "SIM04",
+    "session_id": "SIM04_D3_S2",
+    "study_day": 3,
+    "split": "test",
+    "data_kind": "synthetic"
+  }
+]

@@ -170,11 +170,11 @@ export function auditStudyDesign(sessions: StudySession[]): StudyDesignAudit {
 
     const expectedCounts = new Map([
       [1, 2],
-      [2, 1],
+      [2, 2],
       [3, 1],
     ]);
     if (
-      rows.length !== 4 ||
+      rows.length !== 5 ||
       [...expectedCounts].some(([day, count]) => (days.get(day)?.length ?? 0) !== count)
     )
       groupReasons.add("incomplete_participant_protocol");
@@ -199,9 +199,10 @@ export function auditStudyDesign(sessions: StudySession[]): StudyDesignAudit {
     )
       groupReasons.add("participant_protocol_dates_invalid");
 
-    const dayOne = days.get(1) ?? [];
-    if (dayOne.length === 2) {
-      const ordered = [...dayOne].sort(
+    for (const day of [1, 2]) {
+      const daySessions = days.get(day) ?? [];
+      if (daySessions.length !== 2) continue;
+      const ordered = [...daySessions].sort(
         (a, b) =>
           Date.parse(String(a.metadata.started_at)) -
           Date.parse(String(b.metadata.started_at)),
@@ -215,9 +216,13 @@ export function auditStudyDesign(sessions: StudySession[]): StudyDesignAudit {
         !Number.isFinite(earlierDuration) ||
         earlierDuration < 0
       ) {
-        groupReasons.add("invalid_day1_session_timing");
-      } else if (laterStart - (earlierStart + earlierDuration) < 30 * 60 * 1000) {
-        groupReasons.add("day1_rest_under_30m");
+        groupReasons.add(`invalid_day${day}_session_timing`);
+      } else {
+        const gap = laterStart - (earlierStart + earlierDuration);
+        if (day === 1 && gap < 30 * 60 * 1000)
+          groupReasons.add("day1_rest_under_30m");
+        if (day === 2 && gap < 0)
+          groupReasons.add("day2_validation_overlap");
       }
     }
 

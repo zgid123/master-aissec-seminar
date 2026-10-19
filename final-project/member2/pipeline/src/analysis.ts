@@ -17,7 +17,7 @@ import { histogram, renderFigures } from "./charts.js";
 import type { Figure, Series } from "./charts.js";
 import type { Stroke, Window, Row, Normalizers, Summary } from "./types.js";
 const TARGET_PARTICIPANTS = 20;
-const TARGET_FORMAL_SESSIONS = TARGET_PARTICIPANTS * 4;
+const TARGET_FORMAL_SESSIONS = TARGET_PARTICIPANTS * 5;
 export async function analyze(
   strokes: Stroke[],
   windows: Window[],
@@ -313,7 +313,7 @@ export async function analyze(
       "",
       markdownTable(splitSummary),
       "",
-      `Có ${studyDesign!.participants}/${studyDesign!.target_participants} người tham gia mục tiêu và ${studyDesign!.formal_sessions}/${studyDesign!.target_formal_sessions} phiên formal mục tiêu. ${studyDesign!.protocol_complete_participants} người hoàn tất lịch bốn phiên; ${studyDesign!.protocol_incomplete_participants} người có lịch chưa đủ hoặc sai. Hiện có ${studyDesign!.eligible_sessions} phiên đủ điều kiện phân tích và ${studyDesign!.excluded_sessions} phiên bị loại.`,
+      `Có ${studyDesign!.participants}/${studyDesign!.target_participants} người tham gia mục tiêu và ${studyDesign!.formal_sessions}/${studyDesign!.target_formal_sessions} phiên formal mục tiêu. ${studyDesign!.protocol_complete_participants} người hoàn tất lịch năm phiên; ${studyDesign!.protocol_incomplete_participants} người có lịch chưa đủ hoặc sai. Hiện có ${studyDesign!.eligible_sessions} phiên đủ điều kiện phân tích và ${studyDesign!.excluded_sessions} phiên bị loại.`,
       "",
       "## Lý do loại theo phiên",
       "",
@@ -727,7 +727,7 @@ export async function analyze(
       "",
       markdownTable(splitSummary),
       "",
-      `Có ${studyDesign!.participants}/${studyDesign!.target_participants} người tham gia mục tiêu và ${studyDesign!.formal_sessions}/${studyDesign!.target_formal_sessions} phiên formal mục tiêu. ${studyDesign!.protocol_complete_participants} người hoàn tất lịch bốn phiên; ${studyDesign!.protocol_incomplete_participants} người có lịch chưa đủ hoặc sai. Hiện có ${studyDesign!.eligible_sessions} phiên đủ điều kiện phân tích và ${studyDesign!.excluded_sessions} phiên bị loại khỏi đặc trưng và chuẩn hóa. Mục tiêu mỗi phiên được tính lại từ cặp phím hợp lệ và thời gian ghi chủ động.`,
+      `Có ${studyDesign!.participants}/${studyDesign!.target_participants} người tham gia mục tiêu và ${studyDesign!.formal_sessions}/${studyDesign!.target_formal_sessions} phiên formal mục tiêu. ${studyDesign!.protocol_complete_participants} người hoàn tất lịch năm phiên; ${studyDesign!.protocol_incomplete_participants} người có lịch chưa đủ hoặc sai. Hiện có ${studyDesign!.eligible_sessions} phiên đủ điều kiện phân tích và ${studyDesign!.excluded_sessions} phiên bị loại khỏi đặc trưng và chuẩn hóa. Mục tiêu mỗi phiên được tính lại từ cặp phím hợp lệ và thời gian ghi chủ động.`,
       "",
       "Lý do loại được đếm theo phiên:",
       "",
@@ -737,7 +737,7 @@ export async function analyze(
           .map(([reason, sessions]) => ({ reason, sessions })),
       ),
       "",
-      "Lịch chính thức cần bốn phiên mỗi người: hai phiên train trong ngày 1 có ít nhất 30 phút nghỉ tính từ lúc phiên trước kết thúc đến lúc phiên sau bắt đầu (thời lượng gồm cả quãng tạm dừng), một phiên validation ngày 2 và một phiên test ngày 3. Ngày được gán tường minh trong manifest và kiểm tra theo thời gian bắt đầu tại múi giờ đã ghi. Pilot và phiên thiếu collection_mode được giữ trong tệp chất lượng nhưng không tham gia đặc trưng.",
+      "Lịch chính thức cần năm phiên mỗi người: hai phiên train ngày 1, hai phiên validation ngày 2 và một phiên test ngày 3. Hai phiên train ngày 1 cách nhau ít nhất 30 phút tính từ lúc phiên trước kết thúc đến lúc phiên sau bắt đầu (thời lượng gồm cả quãng tạm dừng). Hai phiên validation ngày 2 không được chồng lấp: phiên sau có thể bắt đầu đúng lúc phiên trước kết thúc, tính theo thời lượng tường gồm cả quãng tạm dừng; không yêu cầu thêm 30 phút nghỉ ở ngày 2. Ngày được gán tường minh trong manifest và kiểm tra theo thời gian bắt đầu tại múi giờ đã ghi. Pilot và phiên thiếu collection_mode được giữ trong tệp chất lượng nhưng không tham gia đặc trưng.",
       "",
       "## Đặc trưng theo phiên",
       "",

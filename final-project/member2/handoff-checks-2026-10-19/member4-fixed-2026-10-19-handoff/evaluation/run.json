@@ -1,0 +1,35 @@
+{
+  "schema_version": "0.1",
+  "evaluator_version": "0.1.0",
+  "data_kind": "synthetic",
+  "created_at": "2026-10-19T11:38:19.577Z",
+  "node_version": "v24.22.0",
+  "options": {
+    "split": "test",
+    "seed": 20261016,
+    "horizonKeys": 150,
+    "iterations": 2000
+  },
+  "git_commit": "3abbaf6df36a8bef14539176abe9a956f734454b",
+  "git_status": "M final-project/member2/README.md\nM  final-project/member2/collector/README.md\nMM final-project/member2/docs/COLLECTION_PROTOCOL.md\nMM final-project/member2/docs/DATA_DICTIONARY.md\nMM final-project/member2/docs/HANDOFF.md\nMM final-project/member2/pipeline/src/analysis.ts\nMM final-project/member2/pipeline/src/study-design.ts\nMM final-project/member2/pipeline/tests/pipeline.test.ts\nMM final-project/member2/pipeline/tests/study-design.test.ts\n M final-project/member3/scripts/verify-reproducibility.ts\n?? final-project/member2/artifacts-2026-10-19-handoff/\n?? final-project/member2/verification-2026-10-19-handoff.json\n?? final-project/member3/artifacts/member4-fixed-2026-10-19-handoff/\n?? final-project/member3/artifacts/reproducibility-2026-10-19-handoff.json\n?? final-project/member3/artifacts/simulation-2026-10-19-handoff/",
+  "git_warning": null,
+  "input_sha256": "62d8a55828701fcb1a8b6b83d33bd24ea6cad60af66fe0115ffff18f89d879fa",
+  "source_sha256": {
+    "cli.mjs": "76d95f9c2476a4c1320a23ef60e456953095af0603036b08ac089cddcc570999",
+    "evaluate.mjs": "541a4ef36fc27e95a0fb5d290a15feafdfeb4874eb338d8928f69d2ccabcde30",
+    "fixture.mjs": "1b5c6af7a0c34bd3a5ee843f678ccc812d15b0f83c56ea997d7cffb1d9c04356",
+    "member3-adapter.mjs": "efd9f1a4e357c88075842b9de9b13b99fb6d968b0cecfb2783ab73c784b04a19",
+    "metrics.mjs": "e3b6f07e64dc0369c64108ca8828c9af41ab3ef0670f4089194a56b6edd5a3b0",
+    "statistics.mjs": "633baeca5a8ba1dbc62ac4dcf78c8be0e0011a9c7bb423c994b4b1278949d0eb",
+    "validate.mjs": "bfe3b8cb54cd4c045fcc4a65a59b7dc2274c7eef82e6aee07b713382df1a7976"
+  },
+  "output_sha256": {
+    "input.json": "62d8a55828701fcb1a8b6b83d33bd24ea6cad60af66fe0115ffff18f89d879fa",
+    "report.json": "a9262954f4dd8c245d3a625ba5eec64af9ec95c087629c43936fc513f67bac30",
+    "per-user.csv": "a8aabeea80801842e3923963032ef3a6f63d5a4a02297b5f34ffdf597d9fb0d5",
+    "macro-summary.csv": "5f2da41745c6640af0621933de029fe669a748b85a9e494b2edc5623bb1adcf1",
+    "takeover-outcomes.csv": "c1cb4090072739361ac1e4521018a47717d521661b02b1ca348a9b13d878731c",
+    "roc.svg": "b5cf18f8c3996b5f582e7f85601eb7ef57b8b1d013b2e9570314d8465f9868e0"
+  },
+  "source_validation": "Declared manifest only; raw data files and fitting pipeline are not verified."
+}

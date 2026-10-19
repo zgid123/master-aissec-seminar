@@ -1,0 +1,75 @@
+{
+  "status": "pass",
+  "deterministicFiles": 17,
+  "excluded": "fit/run.json and evaluation/run.json (time, command and runtime metadata)",
+  "checks": [
+    {
+      "file": "fit/config.json",
+      "sha256": "c5f3de6a9c166fea8df860f3d9375414256417f9e01d1e03bf591a5c5ef7d2f6"
+    },
+    {
+      "file": "fit/model.json",
+      "sha256": "d63ad55406c7fc2a93a7b917597a29fabd03afd965027b8668a521fd1650592c"
+    },
+    {
+      "file": "fit/validation_partition.json",
+      "sha256": "5098b4872c57f05c37d630c61b1a1bc9bfe2d74ee5c3c3a1d149f85288f5d10f"
+    },
+    {
+      "file": "fit/validation_search.csv",
+      "sha256": "951e68217ca30e20f63475979baa4d1160f7e68e19af75444ec6521cf3621fd1"
+    },
+    {
+      "file": "evaluation/config.json",
+      "sha256": "c5f3de6a9c166fea8df860f3d9375414256417f9e01d1e03bf591a5c5ef7d2f6"
+    },
+    {
+      "file": "evaluation/decisions.csv",
+      "sha256": "7d6f6fca37a684e56a0bd1f333b9e279f2716282e9d5c9ff9384cd296f74b3c3"
+    },
+    {
+      "file": "evaluation/events.csv",
+      "sha256": "375b8f60b175f623a187f255dcec5e5aa2600814fd800ed78cfe6f2696bbabef"
+    },
+    {
+      "file": "evaluation/failures.csv",
+      "sha256": "5060af16a893986cea39899dc07a364525edbb8f53d55bfac91d50424ce38b84"
+    },
+    {
+      "file": "evaluation/fixed_windows.csv",
+      "sha256": "8aee683110f75acdea9869f713b6ff72bae002e8ec1f24c93ed7ab89c4e358a5"
+    },
+    {
+      "file": "evaluation/macro_policy_metrics.csv",
+      "sha256": "0ad53245481ce9c4077ee84ae21dd24845143da5cfe2bdc3f0f532548207e9f9"
+    },
+    {
+      "file": "evaluation/paired_statistics.csv",
+      "sha256": "0010f7d5c36e192814280b8486578a145d46e897afed48c900ef0bd51a595df0"
+    },
+    {
+      "file": "evaluation/policy_metrics.csv",
+      "sha256": "76f2e9919526e0515996dd5e2abd66e70cff4e8dca2547bd3f61b52f96401deb"
+    },
+    {
+      "file": "evaluation/report.md",
+      "sha256": "f43a210c287bce65e74623932af21c246d4d0f164e212d66d1483e7c49564813"
+    },
+    {
+      "file": "evaluation/roc.csv",
+      "sha256": "b8f2d99641deaf17cfc413703442427f0c20c0ac4c0a4115f2c6b184036c25e4"
+    },
+    {
+      "file": "evaluation/scenario_results.csv",
+      "sha256": "e40a0becdbddb534e8283a3e27b298e967a746eafbc7c681e3584eaa8004ebf5"
+    },
+    {
+      "file": "evaluation/scenarios.csv",
+      "sha256": "0001ed390c185cdcdb9c6d70c5d0ac930ec0e3972ef394861a327eae238aaa09"
+    },
+    {
+      "file": "evaluation/window_metrics.csv",
+      "sha256": "26da26b37a328e86cee5589b733f87c1e4d9ef8e83698aa57b8c07323c4f8cc7"
+    }
+  ]
+}

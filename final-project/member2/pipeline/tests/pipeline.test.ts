@@ -514,9 +514,9 @@ test("manifest conflicts, real-session eligibility, aggregate reports and data-k
       realInput = join(root, "real-input"),
       generated = await generateDataset(realConfig, realInput),
       dayOne = generated.filter((r) => r.study_day === 1),
-      dayTwo = generated.find((r) => r.study_day === 2)!,
+      dayTwo = generated.filter((r) => r.study_day === 2),
       dayThree = generated.find((r) => r.study_day === 3)!,
-      selected = [...dayOne, dayTwo, dayThree],
+      selected = [...dayOne, ...dayTwo, dayThree],
       real: ManifestRow[] = [];
     for (const r of selected) {
       const d = await readJson<Session>(join(realInput, r.file)),
@@ -527,7 +527,9 @@ test("manifest conflicts, real-session eligibility, aggregate reports and data-k
       d.events = d.events
         .filter(
           (event) =>
-            event.pair_id === undefined || Number(event.pair_id) <= (day === 2 ? 800 : 2000),
+            event.pair_id === undefined ||
+            Number(event.pair_id) <=
+              (day === 2 && daySessionNumber === 1 ? 800 : 2000),
         )
         .map((event) => ({ ...event, t_ms: event.t_ms * 3 }));
       d.metadata = {
@@ -582,10 +584,10 @@ test("manifest conflicts, real-session eligibility, aggregate reports and data-k
       participants_missing_target: 19,
       protocol_complete_participants: 1,
       protocol_incomplete_participants: 0,
-      target_formal_sessions: 80,
-      formal_sessions: 4,
-      formal_sessions_missing_target: 76,
-      eligible_sessions: 3,
+      target_formal_sessions: 100,
+      formal_sessions: 5,
+      formal_sessions_missing_target: 95,
+      eligible_sessions: 4,
       excluded_sessions: 3,
       study_complete: false,
       exclusion_reasons: {
@@ -595,8 +597,8 @@ test("manifest conflicts, real-session eligibility, aggregate reports and data-k
       },
     });
     const qualityRows = await readCsv(join(root, "real/sessions.csv"));
-    assert.equal(qualityRows.length, 6);
-    for (const id of ["P01-D1-S1", "P01-D1-S2", "P01-D3-S1"])
+    assert.equal(qualityRows.length, 7);
+    for (const id of ["P01-D1-S1", "P01-D1-S2", "P01-D2-S2", "P01-D3-S1"])
       assert.equal(
         qualityRows.find((r) => r.session_id === id)?.research_eligible,
         true,
@@ -633,7 +635,7 @@ test("manifest conflicts, real-session eligibility, aggregate reports and data-k
     const design = await readJson<Record<string, unknown>>(
       join(root, "real/study_design_summary.json"),
     );
-    assert.equal(design.eligible_sessions, 3);
+    assert.equal(design.eligible_sessions, 4);
     assert.doesNotMatch(JSON.stringify(design), /P01|SIM01/);
     const realReport = await readFile(join(root, "real/report.vi.html"), "utf8");
     assert.match(realReport, /DỮ LIỆU NGƯỜI THAM GIA/);
@@ -645,8 +647,30 @@ test("manifest conflicts, real-session eligibility, aggregate reports and data-k
     );
     assert.match(realFigure, /REAL PARTICIPANT DATA/);
     assert.doesNotMatch(realFigure, /SIM01|P01/);
+    // A valid five-slot schedule must still exclude every formal session when
+    // the two validation recordings overlap. Keep the quality evidence.
+    const overlappingValidation = await readJson<Session>(join(realInput, real[3].file));
+    overlappingValidation.metadata.started_at = "2026-01-02T08:00:00.000Z";
+    const overlappingFile = "raw/overlapping-validation.json";
+    await saveJson(join(realInput, overlappingFile), overlappingValidation);
+    await saveJson(join(realInput, "manifest.json"), real.slice(0, 5).map((row, i) =>
+      i === 3 ? { ...row, file: overlappingFile } : row));
+    const overlapRun = await processDataset(
+      realInput, join(realInput, "manifest.json"), realConfig, join(root, "validation-overlap"),
+    );
+    assert.equal(overlapRun.rejected_files, 0);
+    assert.equal(overlapRun.summary.study_design?.protocol_complete_participants, 0);
+    assert.equal(overlapRun.summary.study_design?.eligible_sessions, 0);
+    const overlapQuality = await readCsv(join(root, "validation-overlap/sessions.csv"));
+    assert.equal(overlapQuality.length, 5);
+    assert.ok(overlapQuality.every((row) => row.research_eligible === false &&
+      String(row.eligibility_reasons).includes("day2_validation_overlap")));
+    for (const file of ["strokes.csv", "windows.csv", "normalized_windows.csv"])
+      assert.equal((await readCsv(join(root, "validation-overlap", file))).length, 0);
+    assert.deepEqual((await readJson<Normalizers>(join(root, "validation-overlap/normalizers.json"))).profiles, {});
+
     const noTrainRows: ManifestRow[] = [];
-    for (const row of real.slice(0, 4)) {
+    for (const row of real.slice(0, 5)) {
       const data = await readJson<Session>(join(realInput, row.file));
       if (row.study_day === 1)
         data.events = data.events.filter(
@@ -718,9 +742,9 @@ test("manifest conflicts, real-session eligibility, aggregate reports and data-k
       realConfig,
       join(root, "retake"),
     );
-    assert.equal(retakeRun.summary.study_design?.formal_sessions, 4);
+    assert.equal(retakeRun.summary.study_design?.formal_sessions, 5);
     assert.equal(retakeRun.summary.study_design?.protocol_complete_participants, 1);
-    assert.equal(retakeRun.summary.study_design?.eligible_sessions, 4);
+    assert.equal(retakeRun.summary.study_design?.eligible_sessions, 5);
     const retakeQuality = await readCsv(join(root, "retake/sessions.csv"));
     assert.equal(
       retakeQuality.find((row) => row.session_id === real[2].session_id)
