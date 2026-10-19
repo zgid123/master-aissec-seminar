@@ -31,7 +31,12 @@ export function summarizeReplay(results:ReplayResult[],horizonKeys=150):Row {
   const known=eligible.filter(r=>(r.ttdKeys!==null&&r.ttdKeys<=horizonKeys)||r.horizonKeys>=horizonKeys);
   const detectedAtL=known.filter(r=>r.ttdKeys!==null&&r.ttdKeys<=horizonKeys).length;
   const exposure=g.reduce((s,r)=>s+r.observedRecordingSeconds,0),wall=g.reduce((s,r)=>s+r.observedWallSeconds,0),requests=g.reduce((s,r)=>s+r.mfaRequests,0);
+  const prefixCount=(rs:ReplayResult[])=>new Set(rs.map(r=>{
+    if(!r.genuinePrefixId)throw new Error('Missing genuine prefix provenance for A1');
+    return JSON.stringify([r.target,r.genuinePrefixId]);
+  })).size;
   return {genuine_sessions:g.length,attack_scenarios:a.length,eligible_attacks:eligible.length,pre_takeover_revokes:a.length-eligible.length,detected:detected.length,censored:eligible.filter(r=>r.censored).length,
+    attack_genuine_prefixes:prefixCount(a),pre_takeover_revoked_prefixes:prefixCount(a.filter(r=>r.preTakeoverRevoke)),
     delayed_genuine_alert_detections:detected.filter(r=>r.detectionEvidence==='delayed_genuine_window').length,
     detection_rate:eligible.length?detected.length/eligible.length:null,
     policy_horizon_keys:horizonKeys,known_at_L:known.length,unknown_at_L:eligible.length-known.length,
@@ -41,7 +46,7 @@ export function summarizeReplay(results:ReplayResult[],horizonKeys=150):Row {
     q1_ttd_keys_detected_only:detected.length?quantile(detected.map(r=>r.ttdKeys!),.25):null,q3_ttd_keys_detected_only:detected.length?quantile(detected.map(r=>r.ttdKeys!),.75):null,
     mfa_requests:requests,recording_seconds:exposure,wall_seconds:wall,
     mfa_per_recording_hour:exposure>0?requests*3600/exposure:null,mfa_per_wall_hour:wall>0?requests*3600/wall:null,
-    wrongful_revokes:g.reduce((s,r)=>s+r.wrongfulRevokes,0)};
+    wrongful_revokes:g.reduce((s,r)=>s+r.wrongfulRevokes,0),genuine_revokes_without_prior_mfa:g.filter(r=>r.wrongfulRevokes>0&&r.mfaRequests===0).length};
 }
 export function replayAll(scenarios:Scenario[],policy:Policy,horizonKeys=150):{results:ReplayResult[];summary:Row} {
   const results=scenarios.map(s=>replay(s,policy));return {results,summary:summarizeReplay(results,horizonKeys)};

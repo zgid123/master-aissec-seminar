@@ -53,6 +53,8 @@ export interface Scenario {
   sourceSessions: string[]; sourceSegments: string[];
   windows: ScoredWindow[]; t0: number | null; horizonKeys: number;
   availableHorizonMs: number | null; recordingSeconds: number; wallSeconds: number;
+  sourceHorizonMs: number | null; unscoredTailKeys: number;
+  genuinePrefixId: string | null;
   recordingIntervals: [number,number][]; wallStartMs: number;
   prefixKeys: number; suffixKeys: number; joinDownDownMs: number | null;
 }
@@ -62,6 +64,8 @@ export interface ReplayResult {
   detectionEvidence: 'post_takeover_window' | 'delayed_genuine_window' | null;
   censored: boolean; preTakeoverRevoke: boolean;
   horizonKeys: number;
+  genuinePrefixId: string | null; lastDecisionMs: number | null;
+  observedHorizonMs: number | null; stopReason: 'revoke' | 'end_of_scored_windows';
   mfaRequests: number; wrongfulRevokes: number;
   observedRecordingSeconds: number; observedWallSeconds: number;
   logs: Row[]; events: Row[];

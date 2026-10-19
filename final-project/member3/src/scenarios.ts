@@ -32,7 +32,7 @@ export function makeScenarios(data:Dataset,p:Profile,split:Split,c:Config,partit
     ws.sort((a,b)=>a.segment_id-b.segment_id||a.start_ms-b.start_ms);
     const session=data.sessions.find(s=>s.session_id===ws[0].session_id)!;
     const windows=ws.map(w=>({...scored(w,p,'genuine'),windowId:`G${w.segment_id}:${w.window_id}`}));
-    out.push({id:`G0:${ws[0].session_id}`,target:p.target,split,kind:'G0',sourceSessions:[ws[0].session_id],sourceSegments:[...new Set(ws.map(w=>`${w.session_id}:${w.segment_id}`))],windows,t0:null,horizonKeys:0,availableHorizonMs:null,recordingSeconds:Number(session.recording_seconds),wallSeconds:Number(session.wall_seconds),recordingIntervals:data.recordingIntervals[ws[0].session_id],wallStartMs:data.wallStarts[ws[0].session_id],prefixKeys:0,suffixKeys:0,joinDownDownMs:null});
+    out.push({id:`G0:${ws[0].session_id}`,target:p.target,split,kind:'G0',sourceSessions:[ws[0].session_id],sourceSegments:[...new Set(ws.map(w=>`${w.session_id}:${w.segment_id}`))],windows,t0:null,horizonKeys:0,availableHorizonMs:null,sourceHorizonMs:null,unscoredTailKeys:0,genuinePrefixId:null,recordingSeconds:Number(session.recording_seconds),wallSeconds:Number(session.wall_seconds),recordingIntervals:data.recordingIntervals[ws[0].session_id],wallStartMs:data.wallStarts[ws[0].session_id],prefixKeys:0,suffixKeys:0,joinDownDownMs:null});
   }
   const sg=groups(data.strokes.filter(allowed),s=>`${s.session_id}:${s.segment_id}`).map(g=>g.sort((a,b)=>a.down_ms-b.down_ms||a.pair_id-b.pair_id));
   const targets=sg.filter(g=>g[0].participant_id===p.target&&g.length>=c.attack.prefixKeys);
@@ -55,7 +55,8 @@ export function makeScenarios(data:Dataset,p:Profile,split:Split,c:Config,partit
       windows.push(scored(w,p,label,observed));
     }
     const endMs=Math.max(...joined.map(s=>s.up_ms));
-    out.push({id,target:p.target,split,kind:'A1',sourceSessions:[a[0].session_id,b[0].session_id],sourceSegments:[`${a[0].session_id}:${a[0].segment_id}`,`${b[0].session_id}:${b[0].segment_id}`],windows,t0:join-origin,horizonKeys:suffix.length,availableHorizonMs:endMs-(join-origin),recordingSeconds:endMs/1000,wallSeconds:endMs/1000,recordingIntervals:[[0,endMs]],wallStartMs:0,prefixKeys:prefix.length,suffixKeys:suffix.length,joinDownDownMs:c.attack.joinDownDownMs});
+    // The source may contain an incomplete tail. It is not evaluated follow-up.
+    out.push({id,target:p.target,split,kind:'A1',sourceSessions:[a[0].session_id,b[0].session_id],sourceSegments:[`${a[0].session_id}:${a[0].segment_id}`,`${b[0].session_id}:${b[0].segment_id}`],windows,t0:join-origin,horizonKeys:windows.at(-1)!.observedImpostorKeys,availableHorizonMs:Math.max(0,previousDecision-(join-origin)),sourceHorizonMs:endMs-(join-origin),unscoredTailKeys:joined.length-windows.length*c.windowSize,genuinePrefixId:`${a[0].session_id}:G${a[0].segment_id}`,recordingSeconds:endMs/1000,wallSeconds:endMs/1000,recordingIntervals:[[0,endMs]],wallStartMs:0,prefixKeys:prefix.length,suffixKeys:suffix.length,joinDownDownMs:c.attack.joinDownDownMs});
   }
   if(!out.some(s=>s.kind==='G0')||!out.some(s=>s.kind==='A1'))throw new Error(`Insufficient G0/A1 source segments for ${p.target}/${split}`);
   return out;

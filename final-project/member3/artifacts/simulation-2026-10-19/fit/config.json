@@ -1,0 +1,56 @@
+{
+  "version": "1.0",
+  "seed": 20261016,
+  "windowSize": 50,
+  "scorers": [
+    "distance",
+    "isolation_forest"
+  ],
+  "forest": {
+    "trees": 100,
+    "sampleSize": 256
+  },
+  "thresholds": [
+    0.5,
+    1,
+    2,
+    3,
+    5,
+    8,
+    12
+  ],
+  "lambdas": [
+    0.9,
+    1
+  ],
+  "ks": [
+    0.25,
+    0.5,
+    1
+  ],
+  "h2Ratio": 2,
+  "cooldownWindows": 2,
+  "attack": {
+    "prefixKeys": 225,
+    "suffixKeys": 300,
+    "joinDownDownMs": 250
+  },
+  "constraints": {
+    "maxMedianTtdKeys": 150,
+    "minDetectionRate": 0.8,
+    "maxWindowFar": 0.15,
+    "policyHorizonKeys": 150,
+    "maxPolicyFar": 0.15
+  },
+  "windowThresholds": [
+    0,
+    0.5,
+    1,
+    2,
+    3,
+    5,
+    8,
+    12
+  ],
+  "notes": "Thiết kế mặc định cho mô phỏng. Chốt lại trước khi dùng test người thật. Không có P2 hay điều chỉnh ngưỡng theo độ dài phiên/ngữ cảnh."
+}

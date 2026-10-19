@@ -20,7 +20,7 @@ const config=await readJson<Config>(resolve(root,'config.json'));
 const data=await loadData(dataRoot,resolve(dataRoot,'..'),resolve(dataRoot,'../manifest.json'));
 const policy:Policy={name:'B1',lambda:.9,k:.5,h1:6,h2:12,cooldownWindows:2};
 function scenario(zs:number[],takeover:number|null=0):Scenario {
-  return {id:'fixture',target:'A',split:'test',kind:takeover===null?'G0':'A1',sourceSessions:['fixture'],sourceSegments:['fixture:0'],windows:zs.map((z,i)=>({windowId:`G0:W${i}`,startMs:i*100,endMs:(i+1)*100,a:z,z,label:takeover===null?'genuine':'impostor',observedImpostorKeys:(i+1)*50})),t0:takeover,horizonKeys:zs.length*50,availableHorizonMs:zs.length*100-(takeover??0),recordingSeconds:zs.length/10,wallSeconds:zs.length/10,recordingIntervals:[[0,zs.length*100]],wallStartMs:0,prefixKeys:0,suffixKeys:zs.length*50,joinDownDownMs:null};
+  return {id:'fixture',target:'A',split:'test',kind:takeover===null?'G0':'A1',sourceSessions:['fixture'],sourceSegments:['fixture:0'],windows:zs.map((z,i)=>({windowId:`G0:W${i}`,startMs:i*100,endMs:(i+1)*100,a:z,z,label:takeover===null?'genuine':'impostor',observedImpostorKeys:(i+1)*50})),t0:takeover,horizonKeys:zs.length*50,availableHorizonMs:zs.length*100-(takeover??0),sourceHorizonMs:zs.length*100-(takeover??0),genuinePrefixId:takeover===null?null:'fixture:0',unscoredTailKeys:0,recordingSeconds:zs.length/10,wallSeconds:zs.length/10,recordingIntervals:[[0,zs.length*100]],wallStartMs:0,prefixKeys:0,suffixKeys:zs.length*50,joinDownDownMs:null};
 }
 test('median/IQR/MAD agree with hand calculations',()=>{assert.equal(median([1,2,3,4]),2.5);assert.equal(quantile([1,2,3,4],.25),1.75);assert.equal(mad([1,2,3,4]),1);assert.throws(()=>median([]));assert.throws(()=>median([NaN]));});
 test('harmonic path correction exact small values',()=>{close(cPath(1),0);close(cPath(2),1);close(cPath(3),5/3);});
@@ -81,7 +81,27 @@ test('A1 assembled from strokes, includes mixed window and no oracle reset',()=>
   assert.ok(s.sourceSessions.every(id=>id.includes('_D3_')));assert.equal(s.windows.filter(w=>w.label==='mixed').length,1);assert.equal(s.prefixKeys,225);assert.equal(s.suffixKeys,300);
   assert.ok(s.windows.every((w,i)=>i===0||w.endMs>=s.windows[i-1].endMs));
 });
-test('evaluation preserves frozen model and marks diagnostic results',()=>{const copy=structuredClone(bundle),r=evaluate(data,bundle);assert.deepEqual(bundle,copy);assert.equal(r.tables.window_metrics.length,8);assert.equal(r.tables.policy_metrics.length,32);assert.match(r.report,/mô phỏng/);assert.ok(r.tables.decisions.every(x=>!Object.hasOwn(x,'true_participant_feature')));});
+test('evaluation preserves frozen model and marks diagnostic results',()=>{
+  const copy=structuredClone(bundle),r=evaluate(data,bundle);
+  assert.deepEqual(bundle,copy);assert.equal(r.tables.window_metrics.length,8);assert.equal(r.tables.policy_metrics.length,32);
+  assert.match(r.report,/mô phỏng/);assert.ok(r.tables.decisions.every(x=>!Object.hasOwn(x,'true_participant_feature')));
+  for(const result of r.tables.scenario_results){
+    const decisions=r.tables.decisions.filter(d=>d.scorer===result.scorer&&d.target===result.target&&d.policy_id===result.policy_id&&d.scenario_id===result.scenario_id);
+    const last=decisions.at(-1)!;
+    assert.equal(result.last_decision_ms,last.time_ms);
+    const scenario=r.tables.scenarios.find(s=>s.scorer===result.scorer&&s.scenario_id===result.scenario_id)!;
+    assert.equal(result.planned_horizon_keys,scenario.horizon_keys);
+    assert.equal(result.planned_horizon_ms,scenario.horizon_ms);
+    if(result.kind==='A1'){
+      assert.equal(result.source_suffix_keys,300);assert.equal(result.unscored_tail_keys,25);
+      assert.equal(result.horizon_ms,last.after_takeover?Number(last.time_ms)-Number(scenario.t0_ms):null);
+      assert.ok(Number(result.horizon_keys)<=Number(result.planned_horizon_keys));
+      if(result.detected)assert.equal(result.horizon_keys,result.ttd_keys);
+      if(result.censored)assert.equal(result.horizon_keys,result.planned_horizon_keys);
+      if(result.pre_takeover_revoke)assert.equal(result.horizon_keys,0);
+    }
+  }
+});
 test('evaluation refuses changed dataset hashes',()=>{assert.throws(()=>evaluate({...data,hashes:{tampered:'yes'}},bundle),/changed after fit/);});
 test('runtime returns real risk result with no label and handles pending MFA',()=>{
   const p:Profile=structuredClone(bundle.profiles['distance/SIM01']);p.calibration={...p.calibration,median:-1,scale:1};
@@ -211,4 +231,57 @@ test('report counts actual validation users rather than copying the global flag'
 });
 test('evaluation requires a refit instead of inferring missing validation flags from an old bundle',()=>{
   assert.throws(()=>evaluate(data,{...bundle,version:'1.0'}),/schema outdated/);
+});
+
+test('A1 retains source length but censoring stops at last complete-window decision',()=>{
+  const s=makeScenarios(data,bundle.profiles['distance/SIM01'],'test',tiny,bundle.validationPartition).find(s=>s.kind==='A1')!;
+  assert.equal(s.suffixKeys,300);assert.equal(s.unscoredTailKeys,25);
+  assert.ok(s.horizonKeys===275||s.horizonKeys===276);
+  assert.equal(s.horizonKeys,s.windows.at(-1)!.observedImpostorKeys);
+  assert.ok(s.sourceHorizonMs!>=s.availableHorizonMs!);
+  s.windows=s.windows.map(w=>({...w,z:0}));
+  const r=replay(s,policy);
+  assert.equal(r.horizonKeys,s.horizonKeys);assert.equal(r.stopReason,'end_of_scored_windows');
+  assert.equal(r.lastDecisionMs,s.windows.at(-1)!.endMs);
+  const at300=summarizeReplay([r],300),at150=summarizeReplay([r],150);
+  assert.equal(at300.known_at_L,0);assert.equal(at300.unknown_at_L,1);assert.equal(at300.far_session_at_L,null);
+  assert.equal(at150.known_at_L,1);assert.equal(at150.far_session_at_L,1);
+});
+test('declared source horizon cannot invent follow-up beyond the observed final decision',()=>{
+  const s=scenario([0,0]);s.horizonKeys=300;s.suffixKeys=300;
+  const r=replay(s,policy);assert.equal(r.horizonKeys,100);assert.equal(r.observedHorizonMs,200);
+  assert.equal(summarizeReplay([r],150).unknown_at_L,1);
+});
+test('early detection has actual stop exposure and remains known before L',()=>{
+  const s=scenario([7,7,7]),r=replay(s,{...policy,name:'B0'});
+  assert.equal(r.horizonKeys,50);assert.equal(r.lastDecisionMs,100);assert.equal(r.stopReason,'revoke');
+  close(r.observedRecordingSeconds,.1);close(r.observedWallSeconds,.1);
+  const m=summarizeReplay([r],150);assert.equal(m.known_at_L,1);assert.equal(m.detection_rate_at_L,1);
+  const before=replay(scenario([20,20],150),policy);
+  assert.equal(before.horizonKeys,0);assert.equal(before.observedHorizonMs,null);assert.equal(before.preTakeoverRevoke,true);
+});
+test('prefix deduplication is reported separately without changing scenario denominators',()=>{
+  const cases=['prefix-A','prefix-A','prefix-B'].map((prefix,i)=>{
+    const s=scenario([20,20],150);s.id=`case-${i}`;s.genuinePrefixId=prefix;
+    return replay(s,policy);
+  });
+  const m=summarizeReplay(cases);
+  assert.equal(m.attack_scenarios,3);assert.equal(m.pre_takeover_revokes,3);
+  assert.equal(m.attack_genuine_prefixes,2);assert.equal(m.pre_takeover_revoked_prefixes,2);assert.equal(m.eligible_attacks,0);
+  const otherTarget={...cases[0],target:'B'};
+  assert.equal(summarizeReplay([...cases,otherTarget]).attack_genuine_prefixes,3);
+  assert.throws(()=>summarizeReplay([{...cases[0],genuinePrefixId:null}]),/prefix provenance/);
+});
+test('median constraint remains 150 even when per-decision TTD has a 50-key step',()=>{
+  const results=[125,175].map(keys=>{
+    const s=scenario([7]);s.windows[0].observedImpostorKeys=keys;
+    return replay(s,{...policy,name:'B0'});
+  });
+  const m=summarizeReplay(results);assert.equal(m.median_ttd_keys_detected_only,150);
+});
+test('genuine exposure and direct revoke counters remain explicit alongside hourly rate',()=>{
+  const direct=replay(scenario([20,20],null),policy),passed=replay(scenario([7,7],null),{...policy,name:'B0'});
+  const m=summarizeReplay([direct,passed]);
+  assert.equal(m.wrongful_revokes,1);assert.equal(m.genuine_revokes_without_prior_mfa,1);assert.equal(m.mfa_requests,1);
+  close(Number(m.recording_seconds),.3);close(Number(m.mfa_per_recording_hour),12000);
 });

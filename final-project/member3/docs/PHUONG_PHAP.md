@@ -149,6 +149,10 @@ Trong bản triển khai này, detected/TTD đo cảnh báo của **toàn chính
 
 Không phát hiện tới hết quan sát là kiểm duyệt phải, TTD để trống. Thu hồi trước N là ca tiếp quản chưa diễn ra, không ghi TTD=0 và không coi là kiểm duyệt sau tiếp quản. Số ca đó luôn được báo riêng.
 
+Theo dõi A1 kết thúc ở quyết định thực sự cuối cùng, không ở lần gõ cuối của nguồn. Với prefix 225, suffix 300 và W=50, chỉ có 10 cửa sổ đầy đủ, còn 25 phím không tạo cửa sổ mới. Trong bộ hiện tại, ca không phát hiện được theo dõi đến 275 hoặc 276 keydown người lạ tùy phím chồng, không phải 300. `scenario_results.csv` tách `horizon_keys/horizon_ms` thực tế, `planned_horizon_*` nếu chạy hết các cửa sổ và `source_suffix_keys/source_horizon_ms` của nguồn. Quy tắc này áp dụng cả khi thu hồi sớm; `stop_reason` và `last_decision_ms` ghi điểm dừng. Thời lượng recording của G0 không bị rút ngắn nếu phiên không bị thu hồi.
+
+Một prefix được ghép với nhiều suffix. Vì vậy, báo cả số kịch bản bị thu hồi trước N và số prefix chính chủ duy nhất bị thu hồi, nhận diện theo tài khoản đích + phiên nguồn + segment. Không thay mẫu số kịch bản bằng số prefix khi tính detection rate/FAR. TTD có bước theo cửa sổ nhưng ràng buộc median ≤150 vẫn giữ nguyên: hai ca TTD 125 và 175 có median bằng 150, nên không thể đổi điều kiện thành ≤125.
+
 Để có thước đo bỏ lọt cho chính sách có trạng thái, phần 3 đề xuất:
 
 $$
@@ -163,6 +167,8 @@ Ca phát hiện sớm hoặc theo dõi ít nhất L có kết cục tại L. Ca 
 
 MFA/giờ có hai mẫu số: thời gian recording và thời gian phiên. Nếu chính chủ bị thu hồi sớm, chỉ tính thời gian đến quyết định; recording được tính từ các khoảng start/resume tới boundary/stop trong dữ liệu thô. Thời gian recording không đồng nghĩa thời gian ngón tay đang gõ.
 
+Bảng kết quả kèm số yêu cầu MFA, thời lượng recording, số thu hồi oan và số phiên G0 bị thu hồi khi chưa có MFA nào trước đó. MFA/giờ bằng 0 không có nghĩa ít gây gián đoạn nếu hệ thống đã thu hồi phiên ngay. Tỷ lệ macro là trung bình tỷ lệ từng tài khoản, không phải tỷ lệ gộp tổng số yêu cầu trên tổng thời lượng.
+
 ## 8. Thống kê và khả năng tái lập
 
 Tổng hợp theo tài khoản đích trước khi lấy macro. TTD trung vị chỉ tính trên ca phát hiện, luôn đi với tỷ lệ phát hiện và số kiểm duyệt. Các người không có TTD được đếm riêng trong `users_with_observed_ttd`; không điền 0.
@@ -172,5 +178,7 @@ Từ model schema 1.1, kết quả validation của từng người tại cấu 
 So sánh P1-B1 về MFA/giờ ghi dùng bootstrap ghép cặp theo người, 2.000 lần và seed cố định; CI là của trung bình hiệu số. Wilcoxon dùng liệt kê dấu chính xác với hạng trung bình cho ties, bỏ hiệu số 0 và giới hạn tối đa 20 cặp trong hiện thực hiện tại. Báo thêm rank-biserial. Nếu chưa đạt ràng buộc vận hành, thống kê được gắn nhãn chẩn đoán.
 
 Với bốn hiệu số khác 0, p hai phía nhỏ nhất là 0.125. Việc nhiều người cùng làm nguồn tấn công cho nhau tạo phụ thuộc chéo; kết quả chỉ có điều kiện trên nhóm nguồn hiện tại. Bốn hồ sơ mô phỏng không phải bốn người thật và không tạo bằng chứng suy rộng cho quần thể.
+
+Danh tính người lạ ở validation và test trong bộ này cũng trùng nhau, dù khác phiên/ngày. Đây không phải bằng chứng rò rỉ nguyên phiên train sang test, nhưng giới hạn kết luận về người lạ chưa từng tham gia chọn ngưỡng.
 
 Mỗi lần fit/evaluate lưu cấu hình, hash nguồn, hash đầu vào, hash đầu ra, Node, Git commit và trạng thái dirty. Nội dung CSV, model và báo cáo phải giống khi chạy lại; thời điểm và metadata trong `run.json` được phép khác. Không cho ghi đè thư mục đầu ra đã có nội dung. Bộ mô phỏng đã dùng trong phát triển phần mềm, nên kết quả này là đánh giá phát triển, không phải nghiên cứu xác nhận trên holdout chưa từng xem.

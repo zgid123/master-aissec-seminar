@@ -2,6 +2,7 @@ node_modules/
 artifacts/run-*/
 artifacts/repro-check/
 artifacts/repro-check-reviewed/
+artifacts/repro-check-2026-10-19/
 artifacts/cli-checks/
 private/
 *.log

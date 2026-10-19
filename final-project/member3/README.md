@@ -4,7 +4,7 @@
 
 Xác thực liên tục dựa trên nhịp gõ phím · Nhóm 02 · MTH042
 
-[Chạy thử](#chạy-thử) · [Phương pháp](docs/PHUONG_PHAP.md) · [Bàn giao](docs/HANDOFF.md) · [Kết quả mô phỏng](artifacts/simulation-reviewed/evaluation/report.md)
+[Chạy thử](#chạy-thử) · [Phương pháp](docs/PHUONG_PHAP.md) · [Bàn giao](docs/HANDOFF.md) · [Kết quả mô phỏng](artifacts/simulation-2026-10-19/evaluation/report.md)
 
 </div>
 
@@ -12,7 +12,7 @@ Phần này nhận đặc trưng từ thành viên 2, tính điểm bất thư�
 
 **Dữ liệu đi kèm là mô phỏng. Kết quả chạy hiện tại không chứng minh hiệu quả trên người thật và chưa xác nhận các giả thuyết của đề tài.**
 
-Bản đã xử lý review dùng kết quả trong `artifacts/simulation-reviewed` và model schema 1.1. Xem [những gì đã sửa và kiểm tra](docs/XU_LY_REVIEW.md). `artifacts/simulation` giữ lần chạy trước để đối chiếu, không dùng bundle cũ để evaluate bằng mã mới.
+Bản hiện hành ngày 19/10/2026 dùng `artifacts/simulation-2026-10-19`, model schema 1.1 và dữ liệu thành viên 2 tại commit `df376c0`. Xem [xử lý review của Minh và cách ghép báo cáo](docs/CAP_NHAT_2026-10-19.md). `artifacts/simulation` và `artifacts/simulation-reviewed` giữ lịch sử; không dùng bundle cũ để evaluate bằng mã hoặc receipt dữ liệu mới.
 
 ## Những gì đã có
 
@@ -72,7 +72,7 @@ node src/cli.ts evaluate --data ../member2/private/processed --raw-root ../membe
 2. [HANDOFF.md](docs/HANDOFF.md): cách nối với phần dữ liệu, hệ thống và đánh giá.
 3. [BAO_CAO_PHAN_3.md](docs/BAO_CAO_PHAN_3.md): bản thảo nội dung có thể ghép vào báo cáo chung.
 4. [NGUON_THAM_KHAO.md](docs/NGUON_THAM_KHAO.md): nguồn cơ sở và mức kế thừa.
-5. [report.md](artifacts/simulation-reviewed/evaluation/report.md): kết quả mô phỏng sau xử lý review.
+5. [report.md](artifacts/simulation-2026-10-19/evaluation/report.md): kết quả mô phỏng hiện hành, có mẫu số prefix và thời lượng G0.
 6. [VERIFICATION.md](VERIFICATION.md): kiểm tra kỹ thuật và giới hạn kiểm chứng.
 
 ## Cấu trúc
@@ -82,10 +82,11 @@ member3/
   src/                 Mô hình, chính sách, mô phỏng, đánh giá và CLI
   tests/               Kiểm thử công thức, rò rỉ dữ liệu và tích hợp
   docs/                Phương pháp, nội dung báo cáo và hợp đồng bàn giao
-  artifacts/simulation-reviewed/
+  artifacts/simulation-2026-10-19/
     fit/               model.json, bảng tìm tham số, phân hoạch validation
     evaluation/        Log, các bảng kết quả và report.md
-  artifacts/simulation/  Lần chạy trước review, giữ để đối chiếu
+  artifacts/member4-fixed-2026-10-19/  Đối chiếu chỉ số cửa sổ bằng evaluator Minh
+  artifacts/simulation*/  Các lần chạy cũ giữ để đối chiếu
   config.json          Thiết kế chạy mặc định cho bộ mô phỏng
   package-lock.json    Khóa phiên bản công cụ kiểm tra kiểu
 ```

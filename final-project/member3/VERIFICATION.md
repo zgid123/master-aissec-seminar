@@ -1,15 +1,15 @@
 # Kiểm tra phần 3
 
-Kiểm tra ngày 16/10/2026, Node.js 24.16.0. Repo nguồn tại commit `7905176`; phần `member3` là thay đổi cục bộ chưa commit/chưa push.
+Kiểm tra hiện hành ngày 19/10/2026, Node.js 24.16.0. Đầu vào repo sau commit `df376c04bc110a2421a668d7bbf1eb48f7b69f94`; receipt của từng lần chạy ghi commit nền, trạng thái dirty và hash mã thực tế tại lúc chạy. Không sửa receipt để giả lập lần chạy từ một commit sạch.
 
-Bản kiểm tra hiện hành là bản sau xử lý review, model schema 1.1, kết quả tại `artifacts/simulation-reviewed`. Lần chạy trong `artifacts/simulation` và receipt cũ được giữ để đối chiếu. Chi tiết thay đổi: [XU_LY_REVIEW.md](docs/XU_LY_REVIEW.md).
+Bản hiện hành dùng model schema 1.1, kết quả tại `artifacts/simulation-2026-10-19`. Hai lần chạy `simulation` và `simulation-reviewed` cùng receipt cũ được giữ để đối chiếu, không dùng với mã/receipt dữ liệu mới. Chi tiết: [CAP_NHAT_2026-10-19.md](docs/CAP_NHAT_2026-10-19.md); lịch sử sửa trước đó: [XU_LY_REVIEW.md](docs/XU_LY_REVIEW.md).
 
 ## Kết quả kỹ thuật
 
 | Kiểm tra | Kết quả |
 |---|---|
 | TypeScript strict với compiler 5.9.3 | Đạt |
-| Kiểm thử Node | 59/59 đạt |
+| Kiểm thử Node | 65/65 đạt |
 | Hash dữ liệu thô và manifest đối chiếu receipt thành viên 2 | Đạt |
 | Hash bốn file xử lý đối chiếu receipt thành viên 2 | Đạt |
 | Tính lại normalizer chỉ từ train | Đạt |
@@ -17,8 +17,9 @@ Bản kiểm tra hiện hành là bản sau xử lý review, model schema 1.1, k
 | Sai số tương đối chuẩn hóa lớn nhất của phép đối chiếu đặc trưng | 0.00012728272491907577, khoảng 0.01273% |
 | Chạy đầy đủ fit → evaluate | Đạt |
 | Chạy lại hai lần độc lập | 17 file giống từng byte |
-| Kết quả chính đối chiếu bản trước review | Mô hình, cấu hình, chính sách đã chọn và các chỉ số cũ giữ nguyên |
-| Log sự kiện đối chiếu bản trước review | 108 timestamp SEGMENT_RESET chuyển sang thời điểm xử lý; còn giữ mốc nguồn riêng |
+| Đối chiếu simulation-reviewed | Profiles, config, chính sách đã chọn giữ nguyên; các cột cũ của 4 bảng window/policy/macro/paired_statistics không đổi |
+| Chân trời kiểm duyệt | 1.463 lượt dừng ở 275/276 phím; kiểm last_decision_ms của 3.520 lượt replay |
+| Evaluator cửa sổ của Minh | 8/8 cặp scorer–tài khoản khớp FAR/FRR/EER, tolerance 1e-12; 1.536 hàng điểm và receipt khớp byte-exact |
 
 Phép đối chiếu đặc trưng dùng `abs(rebuilt-original)/max(1,abs(original))`, ngưỡng 0.002 để tính đến làm tròn timestamp/đặc trưng trong CSV của thành viên 2. Nó không xác minh lại toàn bộ quá trình thu nhận và ghép sự kiện thô.
 
@@ -46,6 +47,10 @@ Phép đối chiếu đặc trưng dùng `abs(rebuilt-original)/max(1,abs(origin
 - Validation toàn cục không đạt trong fixture có 2/4 người đạt riêng lẻ; bảng vẫn đếm đúng 2/4.
 - Bundle schema cũ bị từ chối evaluate và yêu cầu fit lại.
 - CLI yêu cầu đường dẫn đầu ra mới, từ chối thiếu tham số và cấm thay config lúc evaluate.
+- Chân trời thực tế không dùng suffix chưa xử lý; ca phát hiện sớm có exposure cắt đúng, ca thiếu theo dõi tại L giữ unknown.
+- Đếm prefix duy nhất riêng khỏi kịch bản, không gộp khác tài khoản; thiếu nguồn prefix bị từ chối.
+- Median của 125/175 vẫn bằng 150; không đổi ràng buộc theo bước cửa sổ.
+- Số MFA, exposure và thu hồi không có MFA đi kèm được kiểm bằng ví dụ tính tay.
 
 ## Tái lập
 
@@ -57,11 +62,13 @@ node src/cli.ts reproduce --out artifacts/new-run
 node scripts/verify-reproducibility.ts artifacts/new-repro-check
 ```
 
-Thư mục mới phải chưa có nội dung. Bản ghi hiện hành đi kèm kết quả trong `artifacts/simulation-reviewed/fit/run.json` và `artifacts/simulation-reviewed/evaluation/run.json`. Biên nhận đối chiếu hai lần chạy được lưu tại `artifacts/reproducibility-reviewed.json`. Hai file run.json bị loại khỏi phép so byte vì chứa thời gian và metadata môi trường; 17 file nội dung còn lại đều giống nhau. Đã đối chiếu thêm 17 hash của lần chạy `simulation-reviewed` với receipt này, đều khớp.
+Thư mục mới phải chưa có nội dung. Bản ghi hiện hành đi kèm `artifacts/simulation-2026-10-19/fit/run.json` và `artifacts/simulation-2026-10-19/evaluation/run.json`. Receipt hai lần chạy: `artifacts/reproducibility-2026-10-19.json`. Hai file run.json bị loại khỏi phép so byte vì chứa thời gian và metadata môi trường; 17 file nội dung còn lại đều giống nhau. Đã đối chiếu thêm 17 hash của lần chạy hiện hành với receipt này, đều khớp.
 
-Model SHA-256: `ae99e1f3314d068298060063c8f728af30e9d89b9ab77067c6f06f0343e11710`.
+Model SHA-256: `0da4585a6ca59bf5cb359502aa7717d10ae10ec3f0621a60af87f32910c1cf88`.
 
-Đối chiếu trước/sau trên 11 bảng CSV: số hàng giữ nguyên (880 hàng kịch bản theo scorer, 3.520 lượt scenario-policy, 29.183 quyết định, 7.600 sự kiện). Mọi giá trị của các cột cũ giữ nguyên trừ 108 ô time_ms của SEGMENT_RESET. Có thêm các cột nguồn thời gian, nguồn cửa sổ cảnh báo và cờ validation. Không có thời gian quyết định/sự kiện đi lùi trong log mới; không có cảnh báo genuine trễ trong lần chạy mặc định.
+So với simulation-reviewed, số hàng vẫn là 880 kịch bản theo scorer, 3.520 lượt scenario-policy, 29.183 quyết định và 7.600 sự kiện. Mốc horizon của A1 và exposure A1 được cập nhật theo điểm dừng thực tế; thêm các cột truy nguyên horizon/prefix và số đếm G0. Đây không phải tuyên bố mọi ô trong 11 bảng đều giữ nguyên. Các chỉ số chính ở bốn bảng đã nêu không đổi; chưa có cảnh báo genuine trễ trong lần chạy mặc định.
+
+Receipt đối chiếu độc lập: `artifacts/member4-fixed-2026-10-19/receipt.json`; bảng khớp: `reconciliation.json`. Adapter này chưa xác minh độc lập giá trị scorer, trích đặc trưng, fit hoặc replay có trạng thái.
 
 ## Kết quả mô hình không đồng nghĩa kết quả kiểm thử
 
@@ -73,10 +80,10 @@ Tỷ lệ phát hiện, TTD, FAR phiên tại L, MFA/giờ và số thu hồi oa
 
 - Chưa thu và đánh giá dữ liệu người tham gia thật.
 - Chưa chạy lại toàn bộ test/kiểm thử trình duyệt của thành viên 2; kiểm tra ở đây là phần giao tiếp và dữ liệu đã bàn giao.
-- Chưa có mã evaluator của Minh để xác nhận adapter.
+- Chưa đối chiếu độc lập TTD/MFA replay bằng evaluator Minh; mới xác nhận chỉ số cửa sổ cố định.
 - Chưa nối hệ thống trực tiếp của Trâm hoặc đo latency xử lý thực.
 - Chưa đối chiếu số điểm Isolation Forest với một thư viện độc lập.
 - Chưa triển khai P2, One-Class SVM, ngưỡng theo ngữ cảnh/độ dài phiên và MFA có khoảng chờ.
 - Chưa chứng minh H1, H2 hoặc H3; đặc biệt so sánh cùng một giới hạn chưa phải so sánh đúng cùng TTD/FAR.
 
-Hướng dẫn chạy đã được tổ chức theo skill `beautiful-readme`; nội dung và lệnh bám mã thực tế. Tài liệu nội bộ không thay cho một thành viên khác review độc lập mã và kết quả.
+Trước dữ liệu thật còn phải chốt số phiên: thiết kế formal hiện 2 train + 1 validation + 1 test chưa đủ hai phiên validation mà phần 3 yêu cầu. Không bỏ kiểm phân hoạch để chạy qua. Tài liệu nội bộ không thay cho một thành viên khác review độc lập mã và kết quả.

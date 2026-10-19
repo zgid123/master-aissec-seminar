@@ -1,5 +1,7 @@
 # Bàn giao phần 3 cho nhóm
 
+Cập nhật hiện hành ngày 19/10/2026: dùng `artifacts/simulation-2026-10-19`, không lấy lại bảng của lần chạy cũ. Đọc [CAP_NHAT_2026-10-19.md](CAP_NHAT_2026-10-19.md) để biết phần đã sửa và phần còn cần phối hợp.
+
 Cập nhật ngày 18/10/2026: xem [BO_SUNG_THEO_GOP_Y_GIAO_VIEN.md](BO_SUNG_THEO_GOP_Y_GIAO_VIEN.md) để ghép đúng những đoạn còn thiếu. Bảng nguồn/cấu hình nằm trong BAO_CAO_PHAN_3.md; không chèn lại các mục bài toán/chỉ số đã có ở phần Trâm/Minh. Chưa sửa trực tiếp hai bản Word của các thành viên.
 
 ## Phong — dữ liệu đầu vào
@@ -9,6 +11,8 @@ Phần 3 đọc trực tiếp bốn file trong `member2/artifacts/processed`: `w
 Đã bám quy ước 3 nhóm phím, 12 đặc trưng và chuẩn hóa theo tài khoản đích. Không đổi mã hoặc file dữ liệu của Phong. `verify` tái tạo toàn bộ 2.304 cửa sổ từ `strokes.csv` rồi so đặc trưng với `windows.csv`. Sai số cho phép 0.2% theo thước đo chuẩn hóa trong mã để tính đến CSV 9 chữ số có nghĩa; sai số lớn nhất đo được trong bộ hiện tại khoảng 0.01273%. Đây là kiểm tra tương thích từ các lần gõ đã xử lý, không phải review độc lập cách ghép cặp sự kiện thô.
 
 Khi chuyển sang dữ liệu thật, cần ít nhất hai phiên validation hợp lệ mỗi người để tách hiệu chỉnh điểm và chọn ngưỡng. Train/test cũng phải có đủ phiên và các đoạn đủ dài cho A1. Nếu một phiên bị chia thành nhiều đoạn quá ngắn, có thể không tạo được A1 theo cấu hình; chương trình báo thiếu dữ liệu, không tự đổi prefix/suffix cho từng mô hình.
+
+Thiết kế formal mới trong `member2/pipeline/src/study-design.ts` hiện kiểm đúng 4 phiên/người: 2 train, 1 validation, 1 test. Thiết kế này chưa đủ cho phần 3. Phương án đề nghị là 5 phiên/người: 2 train ngày 1, 2 validation ngày 2, 1 test ngày 3. Phong cần thống nhất và cập nhật cả validator/protocol trước khi thu; chỉ thêm phiên thứ 5 sẽ bị quy tắc đúng 4 phiên từ chối. Đây chưa phải thay đổi đã áp dụng. Không chia ngẫu nhiên cửa sổ của một phiên để né lỗi và không dùng test hiệu chỉnh điểm.
 
 ## Trâm — API tính điểm và quyết định
 
@@ -20,7 +24,7 @@ import {RiskEngine} from './src/index.ts';
 import type {Bundle, WindowRow} from './src/index.ts';
 
 const bundle: Bundle = JSON.parse(
-  await readFile('artifacts/simulation-reviewed/fit/model.json', 'utf8')
+  await readFile('artifacts/simulation-2026-10-19/fit/model.json', 'utf8')
 );
 const key = 'isolation_forest/SIM01';
 const profile = bundle.profiles[key];
@@ -49,7 +53,7 @@ Khi cắt cửa sổ trực tuyến, chỉ phát cửa sổ sau khi đã nhận 
 
 ## Minh — định dạng log và đánh giá
 
-Mã evaluator của Minh chưa có trong phiên bản repo đã đọc, nên hiện tại chưa có adapter được xác nhận chạy trực tiếp với evaluator đó. Các CSV dưới đây là hợp đồng bàn giao của phần 3. Có thể viết bước chuyển đổi mà không đổi module của các thành viên.
+Đã chạy adapter `member4/src/member3-adapter.mjs` trên lần chạy ngày 19/10: khớp 8/8 cặp scorer–tài khoản cho FAR/FRR/EER cửa sổ, tolerance 1e-12; 1.536 hàng điểm được đối chiếu nguồn và hash byte-exact. Kết quả nằm ở `artifacts/member4-fixed-2026-10-19`. Phạm vi này không xác nhận scorer, trích đặc trưng hoặc replay có trạng thái. TTD/MFA vẫn cần adapter riêng theo các quy ước dưới đây; chưa gọi là đối chiếu xong toàn bộ evaluator.
 
 Khóa chung nên dùng `(scorer, target, policy_id, scenario_id)`, cộng `window_id` hoặc `event_order` khi cần. `scenario_id` lặp có chủ đích giữa các scorer/policy vì đó là cùng nguồn thử.
 
@@ -70,6 +74,9 @@ Quy ước:
 - Điểm lớn hơn là bất thường hơn; từ chối cửa sổ khi z >= ngưỡng chẩn đoán.
 - `label` trong cửa sổ cố định là genuine/impostor; `true_label` của replay có thêm mixed.
 - Null được ghi thành ô CSV trống. Không đổi thành 0.
+- Từ lần chạy 19/10, `scenario_results.horizon_keys/horizon_ms` là theo dõi thực tế đến quyết định cuối (A1), không phải suffix nguồn. `planned_horizon_keys/planned_horizon_ms` lấy lịch cửa sổ nếu không dừng sớm; `source_suffix_keys/source_horizon_ms` giữ độ dài nguồn; `unscored_tail_keys` là số phím không tham gia cửa sổ đầy đủ. `last_decision_ms` và `stop_reason` dùng kiểm điểm dừng. G0 có horizon_keys=0, horizon_ms trống; ca thu hồi trước N cũng vậy. Không dùng planned/source làm mốc kiểm duyệt thực tế.
+- `genuine_prefix_id` nhận diện phiên + segment của prefix A1. Đếm duy nhất theo `(target,genuine_prefix_id)` trong từng scorer/policy. `pre_takeover_revokes` vẫn là số kịch bản; `pre_takeover_revoked_prefixes/attack_genuine_prefixes` là số prefix bị thu hồi/tổng prefix. Không bỏ kịch bản lặp prefix hoặc đổi mẫu số detection rate.
+- MFA/giờ của phần 3 chỉ lấy G0: tử số `mfa_requests`, mẫu số `recording_seconds` hoặc `wall_seconds`. Các yêu cầu A1 vẫn có trong log nhưng không cộng vào chi phí chính chủ. Báo thêm `wrongful_revokes` và `genuine_revokes_without_prior_mfa`. Macro lấy trung bình các tỷ lệ theo tài khoản, không tính tỷ lệ gộp.
 - MFA_REQUEST, MFA_PASS/MFA_FAIL và REVOKE có thể cùng timestamp. `event_order` giữ thứ tự trong một scenario; `request_id` liên kết yêu cầu và kết quả.
 - Thời gian là ms; tỷ lệ ở khoảng [0,1], không phải phần trăm.
 - TTD lấy cảnh báo đầu tiên của toàn chính sách tại hoặc sau t0. Ca thu hồi trước N được báo riêng; ca không phát hiện là kiểm duyệt phải.

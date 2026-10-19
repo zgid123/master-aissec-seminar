@@ -8,7 +8,7 @@ import type {Bundle} from '../src/types.ts';
 
 const root=fileURLToPath(new URL('../',import.meta.url));
 const [target='SIM01',scorer='isolation_forest',policy='P1']=process.argv.slice(2);
-const b=await readJson<Bundle>(resolve(root,'artifacts/simulation-reviewed/fit/model.json'));
+const b=await readJson<Bundle>(resolve(root,'artifacts/simulation-2026-10-19/fit/model.json'));
 const key=profileKey(scorer,target),p=b.profiles[key],selection=b.selections[key]?.[policy];
 if(!p||!selection)throw new Error('Unknown target/scorer/policy');
 const raw=resolve(root,'../member2/artifacts'),data=await loadData(resolve(raw,'processed'),raw,resolve(raw,'manifest.json'));

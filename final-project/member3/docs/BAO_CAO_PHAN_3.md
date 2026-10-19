@@ -70,7 +70,7 @@ FAR cửa sổ và tỷ lệ bỏ lọt của một chính sách có trạng th�
 
 ### Cấu hình thực nghiệm và cách xác định giá trị
 
-Các giá trị dưới đây đối chiếu với `config.json` và cấu hình đóng băng trong `artifacts/simulation-reviewed/fit/model.json`, mô tả lần chạy mô phỏng hiện có.
+Các giá trị dưới đây đối chiếu với `config.json` và cấu hình đóng băng trong `artifacts/simulation-2026-10-19/fit/model.json`, mô tả lần chạy mô phỏng hiện có.
 
 | Tham số | Giá trị hoặc tập ứng viên | Cách xác định |
 |---|---|---|
@@ -99,15 +99,21 @@ TTD được đo từ keydown đầu của người lạ đến lúc có quyết
 
 Thời điểm quyết định là lúc cửa sổ khả dụng theo thứ tự xử lý, lấy giá trị lớn hơn giữa key-up cuối của cửa sổ và thời điểm quyết định trước đó. Quy tắc này xử lý trường hợp giữ phím lâu mà không đổi các đặc trưng đã tính từ thời gian nguồn.
 
+Chân trời theo dõi được lấy ở quyết định cuối đã xảy ra, không lấy độ dài suffix nguồn. Với 225 phím chính chủ, 300 phím người lạ và W=50, có 25 phím cuối chưa tạo cửa sổ; các ca kiểm duyệt trong bộ hiện tại kết thúc ở 275 hoặc 276 keydown người lạ. Số thu hồi trước tiếp quản được báo cả theo kịch bản và theo prefix chính chủ duy nhất, vì cùng prefix được ghép với nhiều suffix. Hai cách đếm không thay thế nhau trong mẫu số chỉ số vận hành.
+
+TTD theo phím có tính rời rạc do cửa sổ, nhưng điều kiện median TTD ≤150 không được đổi thành ≤125: hai giá trị 125 và 175 có median bằng 150. Nhóm giữ nguyên ràng buộc đã cấu hình.
+
 Chỉ số detected/TTD hiện mô tả cảnh báo của toàn chính sách. Nếu cảnh báo sau thời điểm tiếp quản xuất phát từ cửa sổ thuần chính chủ hoàn tất trễ, phiên vẫn có thể bị chặn nhờ MFA giả lập. Nhóm xuất riêng nguồn cửa sổ gây cảnh báo và số ca này, giữ chúng trong mẫu số; không quy thành công đó cho khả năng phát hiện hành vi của scorer. Định nghĩa chỉ số chính cần đối chiếu với phần đánh giá trước thực nghiệm người thật.
 
 Đánh giá scorer dùng toàn bộ cửa sổ cố định, độc lập với việc replay bị kết thúc sớm. Đánh giá vận hành dùng log các quyết định và sự kiện MFA/thu hồi. Thời gian quan sát của chính chủ được cắt tại thời điểm thu hồi khi cần, tránh dùng cả thời lượng dự kiến của phiên làm mẫu số thuận lợi cho MFA/giờ.
+
+Kết quả MFA/giờ được đọc cùng số yêu cầu, số phút recording và số thu hồi oan. Ví dụ, Isolation Forest–P1 trên SIM04 có 0 yêu cầu MFA nhưng 2 phiên chính chủ bị thu hồi, với tổng thời lượng quan sát khoảng 2,480 phút; không thể diễn giải 0 MFA/giờ là ít gây gián đoạn. Các danh tính dùng làm người lạ ở validation và test giống nhau, dù khác phiên/ngày, nên chưa đánh giá được khả năng khái quát tới người lạ chưa tham gia chọn ngưỡng.
 
 ## Hiện trạng kết quả và phạm vi kết luận
 
 Mã đã chạy với bộ dữ liệu mô phỏng SIM01-SIM04 do thành viên 2 bàn giao. Các bảng kết quả được xuất theo từng tài khoản, cùng bảng macro và các ca không phát hiện hoặc thu hồi oan. Nhiều cấu hình chưa đạt toàn bộ ràng buộc; phần kết quả phải giữ rõ trạng thái đó.
 
-Lần chạy sau review nằm trong `artifacts/simulation-reviewed`. Mô hình và các tham số được chọn giữ nguyên so với lần trước; các chỉ số chính không đổi. Bản sửa bổ sung phân loại nguồn cảnh báo, tách cờ validation từng người khỏi cờ toàn lựa chọn và sửa timestamp sự kiện reset. Bộ kiểm thử có 59 ca đạt; hai lần chạy độc lập cho 17 file nội dung giống từng byte. Kết quả này xác nhận các sửa đổi kỹ thuật trong phạm vi đã kiểm tra, không bổ sung bằng chứng hiệu quả trên người thật.
+Lần chạy hiện hành ngày 19/10/2026 nằm trong `artifacts/simulation-2026-10-19`, dùng receipt dữ liệu mới của thành viên 2. Mô hình và chính sách được chọn giữ nguyên so với `simulation-reviewed`; các cột chỉ số cũ trong bốn bảng window/policy/macro/paired_statistics không đổi. Bản sửa cập nhật chân trời thực tế, mẫu số prefix và các số đếm đọc kèm MFA/giờ. Bộ kiểm thử có 65 ca đạt; hai lần chạy độc lập cho 17 file nội dung giống từng byte. Evaluator của Minh đối chiếu khớp 8/8 cặp scorer–tài khoản ở chỉ số cửa sổ với sai số tối đa cho phép 1e-12; chưa xác nhận độc lập replay TTD/MFA. Đây là kiểm chứng kỹ thuật, không bổ sung bằng chứng hiệu quả trên người thật.
 
 Chạy được pipeline và vượt kiểm thử xác nhận tính nhất quán kỹ thuật ở các trường hợp đã kiểm tra, không chứng minh hiệu quả bảo mật trên người thật. Cấu hình mô phỏng đã được dùng trong phát triển phần mềm nên không được trình bày như nghiên cứu xác nhận trên một holdout chưa từng xem. Nhóm cần thu dữ liệu thật, khóa thiết kế và đối chiếu evaluator trước khi kết luận H1-H3.
 

@@ -15,6 +15,8 @@ export function replay(scenario:Scenario,p:Policy):ReplayResult {
   let recordingObserved=scenario.recordingSeconds,wallObserved=scenario.wallSeconds;
   let previousStart=-Infinity,previousDecision=-Infinity;
   let detectionEvidence:ReplayResult['detectionEvidence']=null;
+  let observedImpostorKeys=0,lastDecisionMs:number|null=null;
+  let stopReason:ReplayResult['stopReason']='end_of_scored_windows';
   for(const w of scenario.windows){
     const timeMs=decisionTime(w.startMs,w.endMs,previousStart,previousDecision);
     previousStart=w.startMs;previousDecision=timeMs;
@@ -23,6 +25,8 @@ export function replay(scenario:Scenario,p:Policy):ReplayResult {
     previousSegment=segment;
     const before={...state},r=step(w.z,state,p);state={s:r.s,cooldown:r.cooldown};
     const afterTakeover=scenario.t0!==null&&timeMs>=scenario.t0;
+    lastDecisionMs=timeMs;
+    if(afterTakeover)observedImpostorKeys=w.observedImpostorKeys;
     const delayedGenuineAlert=afterTakeover&&w.label==='genuine'&&r.action!=='CONTINUE';
     // Event labels are available only in replay wrapper, never in step() or scorer.
     if(!detection&&afterTakeover&&r.action!=='CONTINUE'){
@@ -39,15 +43,19 @@ export function replay(scenario:Scenario,p:Policy):ReplayResult {
       if(pass)state={s:0,cooldown:p.cooldownWindows};else revoke=true;
     }
     if(revoke){
+      stopReason='revoke';
       if(!afterTakeover){wrongfulRevokes++;if(scenario.kind==='A1')preTakeoverRevoke=true;}
       events.push({scenario_id:scenario.id,time_ms:timeMs,event:'REVOKE',cause:r.action==='REVOKE'?'risk_h2':'mfa_fail'});
-      // A genuine session revoked early contributes only exposure through decision.
-      if(scenario.kind==='G0'){
-        wallObserved=(timeMs-scenario.wallStartMs)/1000;
-        recordingObserved=scenario.recordingIntervals.reduce((s,[a,b])=>s+Math.max(0,Math.min(timeMs,b)-a),0)/1000;
-      }
       break;
     }
   }
-  return {scenarioId:scenario.id,target:scenario.target,kind:scenario.kind,detection,detectionEvidence,ttdKeys,ttdMs,censored:scenario.kind==='A1'&&!detection&&!preTakeoverRevoke,preTakeoverRevoke,horizonKeys:scenario.horizonKeys,mfaRequests,wrongfulRevokes,observedRecordingSeconds:recordingObserved,observedWallSeconds:wallObserved,logs,events};
+  // G0 keeps its recorded-session exposure unless revoked. A1 stops at the last
+  // actual decision, so an unscored source tail cannot extend censoring/exposure.
+  if(lastDecisionMs!==null&&(scenario.kind==='A1'||stopReason==='revoke')){
+    wallObserved=Math.max(0,lastDecisionMs-scenario.wallStartMs)/1000;
+    const end=lastDecisionMs;
+    recordingObserved=scenario.recordingIntervals.reduce((s,[a,b])=>s+Math.max(0,Math.min(end,b)-a),0)/1000;
+  }
+  const observedHorizonMs=scenario.t0!==null&&lastDecisionMs!==null&&lastDecisionMs>=scenario.t0?lastDecisionMs-scenario.t0:null;
+  return {scenarioId:scenario.id,target:scenario.target,kind:scenario.kind,detection,detectionEvidence,ttdKeys,ttdMs,censored:scenario.kind==='A1'&&!detection&&!preTakeoverRevoke,preTakeoverRevoke,horizonKeys:observedImpostorKeys,genuinePrefixId:scenario.genuinePrefixId,lastDecisionMs,observedHorizonMs,stopReason,mfaRequests,wrongfulRevokes,observedRecordingSeconds:recordingObserved,observedWallSeconds:wallObserved,logs,events};
 }
