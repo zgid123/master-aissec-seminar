@@ -19,11 +19,11 @@ transition: slide-left
 </div>
 
 <div class="mt-10 grid grid-cols-2 gap-5 text-[19px] leading-snug">
-  <div v-click class="border-l-4 border-emerald-500 bg-emerald-50 px-5 py-4">
-    <b>Đã làm</b><br>Collector, pipeline đặc trưng, hai bộ chấm điểm, các cấu hình và bộ đối chiếu.
+  <div v-click="2" class="border-l-4 border-emerald-500 bg-emerald-50 px-5 py-4">
+    <b>Đã làm</b><br>Công cụ thu phím, xử lý đặc trưng, hai bộ chấm điểm, các cấu hình và bộ kiểm lại kết quả.
   </div>
-  <div v-click class="border-l-4 border-amber-500 bg-amber-50 px-5 py-4">
-    <b>Còn là thiết kế</b><br>Chạy trực tiếp trên phiên thật, MFA thật, lớp truyền chống gửi lại.
+  <div v-click="3" class="border-l-4 border-amber-500 bg-amber-50 px-5 py-4">
+    <b>Bước sau</b><br>Gắn vào hệ thống thật với MFA thật, chống gửi lại dữ liệu cũ.
   </div>
 </div>
 <style scoped>

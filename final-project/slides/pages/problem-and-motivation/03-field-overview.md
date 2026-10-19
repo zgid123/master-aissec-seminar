@@ -14,7 +14,7 @@ transition: slide-left
       { y: '2012', t: 'Xác thực liên tục', d: 'Bours: kẻ lạ gõ bao nhiêu phím thì bị phát hiện?' },
       { y: '2020', t: 'Điểm tin cậy hai ngưỡng', d: 'Kiyani: cộng dồn độ tin cậy rồi mới khóa.' },
       { y: '2021-24', t: 'Học sâu', d: 'TypeNet, TypeFormer học từ dữ liệu rất lớn.' },
-      { y: '2025', t: 'Benchmark và chuẩn', d: 'KVC-onGoing: 20.000 người. NIST thêm giám sát phiên.' },
+      { y: '2025', t: 'Benchmark và chuẩn', d: 'KVC-onGoing: 20.000 người. NIST đưa giám sát phiên vào chuẩn.' },
     ]" :key="e.y" class="flex flex-col items-center text-center">
       <div class="z-1 rounded-full bg-sky-700 text-white font-bold px-3 py-1 text-[15px]">{{ e.y }}</div>
       <div class="mt-2 font-bold text-slate-900 text-[16.5px]">{{ e.t }}</div>
@@ -23,7 +23,7 @@ transition: slide-left
   </div>
 </div>
 
-<div v-click class="mt-5 grid grid-cols-3 gap-4 text-[16.5px] leading-snug">
+<div v-click="2" class="mt-5 grid grid-cols-3 gap-4 text-[16.5px] leading-snug">
   <div class="rounded-lg border border-emerald-300 bg-emerald-50 px-4 py-3">
     <div class="flex items-center gap-2 font-bold text-emerald-800"><div class="i-carbon-data-share text-xl" />Kết hợp nhiều tín hiệu</div>
     <div class="mt-1 text-slate-700">Gõ phím cùng chuột, cảm ứng, dáng đi.</div>
@@ -34,13 +34,13 @@ transition: slide-left
   </div>
   <div class="rounded-lg border border-rose-300 bg-rose-50 px-4 py-3">
     <div class="flex items-center gap-2 font-bold text-rose-800"><div class="i-carbon-security text-xl" />Riêng tư và giả mạo</div>
-    <div class="mt-1 text-slate-700">Không lưu nội dung gõ; chống bắt chước, giả lập.</div>
+    <div class="mt-1 text-slate-700">Không lưu nội dung gõ; chống giả mạo nhịp gõ.</div>
   </div>
 </div>
 
-<div v-click class="mt-5 flex items-center gap-3 rounded-lg bg-sky-700 text-white px-5 py-3 text-[18px]">
+<div v-click="3" class="mt-5 flex items-center gap-3 rounded-lg bg-sky-700 text-white px-5 py-3 text-[18px]">
   <div class="i-carbon-location-filled text-2xl shrink-0" />
-  <div><b>Đề tài:</b> hướng nhẹ, giải thích được; đo <b>bao lâu bắt được kẻ lạ</b> và <b>chủ thật bị hỏi MFA bao nhiêu lần</b>.</div>
+  <div><b>Đề tài:</b> mô hình nhẹ, dễ giải thích; đo <b>bao lâu bắt được kẻ lạ</b> và <b>chủ thật bị hỏi MFA bao nhiêu lần</b>.</div>
 </div>
 
 <!--

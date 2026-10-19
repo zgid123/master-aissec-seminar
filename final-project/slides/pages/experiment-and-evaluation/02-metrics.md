@@ -23,12 +23,12 @@ transition: slide-left
   </div>
 </div>
 
-<div v-click class="mt-6 rounded-lg border-2 border-violet-400 bg-violet-50 px-5 py-4 text-[20px] leading-snug">
+<div v-click="2" class="mt-5 rounded-lg border-2 border-violet-400 bg-violet-50 px-5 py-4 text-[20px] leading-snug">
   <div class="font-bold text-violet-900">Bẫy mẫu số</div>
-  <div class="mt-1">Nếu bỏ các kịch bản đã bị thu hồi oan từ trước, cấu hình càng thu hồi oan nhiều thì tỷ lệ phát hiện <b>trông càng đẹp</b>. Nên nhóm báo cả hai cách tính.</div>
+  <div class="mt-1">Nếu loại các kịch bản chủ thật đã bị đăng xuất oan trước khi kẻ lạ xuất hiện, cấu hình càng đăng xuất oan nhiều thì tỷ lệ phát hiện lại <b>càng đẹp</b>. Vì vậy nhóm báo cả hai cách tính.</div>
 </div>
 
-<div v-click class="mt-6 flex items-center gap-3 rounded-lg bg-slate-100 px-5 py-4 text-[20px] text-slate-700"><div class="i-carbon-rule text-2xl text-slate-600 shrink-0" />Đạt khi: phát hiện ≥ 80%, TTD ≤ 150 phím, không thu hồi oan.</div>
+<div v-click="3" class="mt-4 flex items-center gap-3 rounded-lg bg-slate-100 px-5 py-4 text-[20px] text-slate-700"><div class="i-carbon-rule text-2xl text-slate-600 shrink-0" />Đạt khi: phát hiện ≥ 80%, TTD ≤ 150 phím, không thu hồi oan.</div>
 
 <!--
 Mục tiêu: 0:45

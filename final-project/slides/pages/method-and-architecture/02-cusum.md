@@ -13,7 +13,7 @@ transition: slide-left
   </div>
   <div class="flex gap-3 items-start rounded-lg bg-violet-50 border border-violet-200 px-4 py-3">
     <div class="i-carbon-chart-line-data text-3xl text-violet-700 shrink-0" />
-    <div><b>Cộng dồn</b><br/>Lệch nhỏ bỏ qua, điểm cũ phai dần.</div>
+    <div><b>Cộng dồn</b><br/>Bỏ qua lệch nhỏ, điểm cũ giảm dần.</div>
   </div>
   <div class="flex gap-3 items-start rounded-lg bg-rose-50 border border-rose-200 px-4 py-3">
     <div class="i-carbon-warning-alt text-3xl text-rose-700 shrink-0" />
@@ -21,7 +21,7 @@ transition: slide-left
   </div>
 </div>
 
-<div v-click class="mt-3 grid grid-cols-2 gap-6">
+<div v-click="2" class="mt-3 grid grid-cols-2 gap-6">
   <div class="rounded-lg border border-slate-200 px-3 pt-2">
     <div class="text-[16px] font-bold text-slate-700">Xét riêng từng đoạn</div>
     <svg viewBox="0 0 400 190" class="w-full h-[165px]">

@@ -13,11 +13,11 @@ transition: slide-left
 <img src="/figures/hinh1_timeline.png" class="mx-auto mt-3 h-[235px]" alt="Kịch bản chiếm phiên sau khi đăng nhập" />
 
 <div class="mt-3 grid grid-cols-2 gap-5 text-[18px] leading-snug">
-  <div v-click class="border-l-4 border-sky-500 bg-sky-50 px-4 py-2.5">
+  <div v-click="2" class="border-l-4 border-sky-500 bg-sky-50 px-4 py-2.5">
     <b>NIST SP 800-63B-4 (2025)</b><br>
     Đã có mục giám sát phiên bằng sinh trắc hành vi, ví dụ nhịp gõ.
   </div>
-  <div v-click class="border-l-4 border-rose-500 bg-rose-50 px-4 py-2.5">
+  <div v-click="3" class="border-l-4 border-rose-500 bg-rose-50 px-4 py-2.5">
     <b>Khi nghi vấn</b><br>
     Hệ thống <b>hỏi lại MFA</b> hoặc <b>thu hồi phiên</b>.
   </div>

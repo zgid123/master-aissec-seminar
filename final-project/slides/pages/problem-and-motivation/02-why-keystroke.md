@@ -15,30 +15,30 @@ transition: slide-left
     <TableComparisonRows>
       <TableComparisonRow title="Timeout phiên" color="#dce9f6" text-color="#244b71">
         <TableComparisonCell align="left">Hết giờ thì đóng.</TableComparisonCell>
-        <TableComparisonCell align="left">Kẻ lạ cứ thao tác thì phiên còn.</TableComparisonCell>
+        <TableComparisonCell align="left">Kẻ lạ còn thao tác thì phiên vẫn mở.</TableComparisonCell>
       </TableComparisonRow>
       <TableComparisonRow title="Xác thực lại định kỳ" color="#dce9f6" text-color="#244b71">
         <TableComparisonCell align="left">Dễ hiểu.</TableComparisonCell>
-        <TableComparisonCell align="left">Phiền, vẫn hở giữa hai lần.</TableComparisonCell>
+        <TableComparisonCell align="left">Gây phiền, vẫn hở giữa hai lần hỏi.</TableComparisonCell>
       </TableComparisonRow>
       <TableComparisonRow title="IP, thiết bị" color="#dce9f6" text-color="#244b71">
-        <TableComparisonCell align="left">Thêm tín hiệu.</TableComparisonCell>
-        <TableComparisonCell align="left">Cùng máy thì không đổi.</TableComparisonCell>
+        <TableComparisonCell align="left">Có sẵn, dễ dùng.</TableComparisonCell>
+        <TableComparisonCell align="left">Cùng máy thì không phân biệt được.</TableComparisonCell>
       </TableComparisonRow>
       <TableComparisonRow title="Nhịp gõ phím" color="#cfe3f5" text-color="#1d3d5c">
-        <TableComparisonCell align="left">Thụ động, không cần thiết bị mới.</TableComparisonCell>
+        <TableComparisonCell align="left">Chạy ngầm, không cần thiết bị mới.</TableComparisonCell>
         <TableComparisonCell align="left">Không gõ thì không có dữ liệu.</TableComparisonCell>
       </TableComparisonRow>
     </TableComparisonRows>
   </TableComparison>
   <div class="flex flex-col gap-5 text-[19px] leading-snug">
-    <div v-click class="border-l-4 border-emerald-500 bg-emerald-50 px-5 py-5">
+    <div v-click="2" class="border-l-4 border-emerald-500 bg-emerald-50 px-5 py-5">
       <b>Mỗi người gõ một kiểu:</b> giữ phím bao lâu, nghỉ bao lâu giữa hai phím.
     </div>
-    <div v-click class="border-l-4 border-amber-500 bg-amber-50 px-5 py-5">
+    <div v-click="3" class="border-l-4 border-amber-500 bg-amber-50 px-5 py-5">
       <b>So với chính người đó</b>, không so với chuẩn chung.
     </div>
-    <div v-click class="border-l-4 border-slate-500 bg-slate-50 px-5 py-5">
+    <div v-click="4" class="border-l-4 border-slate-500 bg-slate-50 px-5 py-5">
       Là lớp <b>bổ sung</b>, không thay MFA.
     </div>
   </div>

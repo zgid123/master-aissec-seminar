@@ -32,8 +32,8 @@ transition: slide-left
 
 <div class="mt-1.5 text-[14px] text-slate-500">Trung bình 4 hồ sơ, 432 kịch bản mỗi cấu hình. L1: khoảng cách; IF: Isolation Forest.</div>
 
-<div v-click="1" class="mt-3 rounded-lg bg-slate-800 px-5 py-3 text-[18px] text-white">
-  <b>0/4 tài khoản đạt đủ ràng buộc.</b> Chưa có cấu hình nào dùng được ngay.
+<div v-click="1" class="mt-2 rounded-lg bg-slate-800 px-5 py-2.5 text-[18px] text-white">
+  <b>Cộng dồn: phát hiện từ 0,36 lên 0,63</b>, MFA chỉ tăng nhẹ. Chưa cấu hình nào đạt đủ ba ngưỡng.
 </div>
 
 <style scoped>
@@ -46,11 +46,11 @@ transition: slide-left
 <!--
 Mục tiêu: 1:15
 
-Đây là bảng kết quả chính trên tập test.
+Đây là bảng kết quả chính trên tập test, trung bình trên bốn hồ sơ.
 
-So B0 với B1: cộng dồn bằng CUSUM tăng tỷ lệ phát hiện rõ rệt, với Isolation Forest từ 0,361 lên 0,627. Cái giá là MFA mỗi giờ tăng.
+So B0 với B1: cộng dồn bằng CUSUM tăng tỷ lệ phát hiện rõ rệt. Với Isolation Forest từ 0,361 lên 0,627, trong khi MFA mỗi giờ chỉ tăng từ 13,6 lên 15,3.
 
-[CLICK] Nhưng quan trọng nhất: không cấu hình nào đạt đủ ràng buộc, 0 trên 4 tài khoản, trên cả validation lẫn test. Nên đây là kết quả chẩn đoán, nhóm chưa kết luận H1 hay H2.
+[CLICK] Đó là kết quả chính. Tuy vậy, nhóm đặt ngưỡng khá chặt: phát hiện ít nhất 80%, trong 150 phím, không thu hồi oan. Chưa cấu hình nào đạt đủ cả ba, nên bước tiếp theo là chỉnh ngưỡng trên dữ liệu thật.
 
-[CLICK] Dòng được khoanh là bẫy mẫu số. IF P1 đạt 0,755 nếu bỏ các kịch bản bị thu hồi sớm, trông như tốt nhất. Nhưng tính đủ 432 ca chỉ còn 0,613, thấp hơn B1, vì có 72 kịch bản bị thu hồi oan trước khi người lạ xuất hiện và 4 lần thu hồi oan trên phiên chủ. Không có chính sách nào thắng toàn diện: ngưỡng thấp đổi bỏ sót lấy thu hồi oan. Toàn bộ số liệu đã được replay độc lập và khớp hoàn toàn.
+[CLICK] Dòng được khoanh là bẫy mẫu số. IF P1 đạt 0,755 nếu bỏ các kịch bản bị thu hồi sớm, trông như tốt nhất. Nhưng tính đủ 432 ca chỉ còn 0,613, thấp hơn B1, vì có 72 kịch bản bị thu hồi oan trước khi người lạ xuất hiện và 4 lần thu hồi oan trên phiên chủ. Ngưỡng thấp đổi bỏ sót lấy thu hồi oan. Toàn bộ số liệu đã được kiểm lại độc lập và khớp hoàn toàn.
 -->

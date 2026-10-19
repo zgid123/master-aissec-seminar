@@ -13,7 +13,7 @@ transition: slide-left
 </div>
 
 <div class="mt-8 grid grid-cols-[1fr_1.2fr] gap-8 text-[20px] leading-snug">
-  <div v-click>
+  <div v-click="2">
     <div class="font-bold text-slate-600">Chia theo ngày</div>
     <div class="mt-3 grid grid-cols-3 gap-2 text-center">
       <div class="rounded border-2 border-emerald-500 bg-emerald-50 py-7"><b>Ngày 1</b><br>train</div>
@@ -21,13 +21,13 @@ transition: slide-left
       <div class="rounded border-2 border-rose-500 bg-rose-50 py-7"><b>Ngày 3</b><br>test</div>
     </div>
   </div>
-  <div v-click>
-    <div class="font-bold text-slate-600">Ghép một kịch bản tiếp quản</div>
+  <div v-click="3">
+    <div class="font-bold text-slate-600">Một kịch bản kẻ lạ chiếm phiên</div>
     <div class="mt-3 flex h-[72px] overflow-hidden rounded text-[19px] font-bold text-white">
       <div class="flex w-[43%] items-center justify-center bg-sky-500">Chủ: 225 phím</div>
       <div class="flex w-[57%] items-center justify-center bg-rose-500">Người lạ: 300 phím</div>
     </div>
-    <div class="mt-3 text-slate-700">Điểm nối <b>N</b> chỉ dùng để chấm kết quả, mô hình không biết.</div>
+    <div class="mt-3 text-slate-700">Mô hình không biết điểm nối <b>N</b>; N chỉ dùng để chấm kết quả.</div>
   </div>
 </div>
 

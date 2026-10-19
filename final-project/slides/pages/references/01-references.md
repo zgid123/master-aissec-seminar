@@ -11,80 +11,63 @@ transition: slide-left
 >
   <div>
     <p>
-      <strong>NIST (2025)</strong>
+      <strong>NIST (2025)</strong> <span class="venue">NIST Special Publication</span>
       <br />
-      <a href="https://pages.nist.gov/800-63-4/sp800-63b/session/">
-        SP 800-63B-4: Authentication and Authenticator Management
-      </a>
+      <a href="https://pages.nist.gov/800-63-4/sp800-63b/session/">SP 800-63B-4: Authentication and Authenticator Management</a>
     </p>
     <p>
-      <strong>Shadman et al. (2025)</strong>
+      <strong>Shadman et al. (2025)</strong> <span class="venue">ACM Computing Surveys</span>
       <br />
-      <a href="https://arxiv.org/abs/2303.04605">
-        Keystroke dynamics: Concepts, techniques, and applications
-      </a>
+      <a href="https://arxiv.org/abs/2303.04605">Keystroke dynamics: Concepts, techniques, and applications</a>
     </p>
     <p>
-      <strong>Dhakal et al. (2018)</strong>
+      <strong>Dhakal et al. (2018)</strong> <span class="venue">ACM CHI</span>
       <br />
-      <a href="https://doi.org/10.1145/3173574.3174220">
-        Observations on typing from 136 million keystrokes
-      </a>
+      <a href="https://doi.org/10.1145/3173574.3174220">Observations on typing from 136 million keystrokes</a>
     </p>
     <p>
-      <strong>Killourhy &amp; Maxion (2009)</strong>
+      <strong>Killourhy &amp; Maxion (2009)</strong> <span class="venue">IEEE/IFIP DSN</span>
       <br />
-      <a href="https://doi.org/10.1109/DSN.2009.5270346">
-        Comparing anomaly-detection algorithms for keystroke dynamics
-      </a>
+      <a href="https://doi.org/10.1109/DSN.2009.5270346">Comparing anomaly-detection algorithms for keystroke dynamics</a>
     </p>
     <p>
-      <strong>Kiyani et al. (2020)</strong>
+      <strong>Kiyani et al. (2020)</strong> <span class="venue">IEEE Access</span>
       <br />
-      <a href="https://doi.org/10.1109/ACCESS.2020.3019467">
-        Continuous user authentication featuring keystroke dynamics based on robust recurrent confidence model
-      </a>
+      <a href="https://doi.org/10.1109/ACCESS.2020.3019467">Continuous user authentication featuring keystroke dynamics based on robust recurrent confidence model</a>
     </p>
   </div>
   <div>
     <p>
-      <strong>Tey et al. (2013)</strong>
+      <strong>Tey et al. (2013)</strong> <span class="venue">NDSS</span>
       <br />
-      <a href="https://www.ndss-symposium.org/wp-content/uploads/2017/09/01_1_0.pdf">
-        I can be you: Questioning the use of keystroke dynamics as biometrics
-      </a>
+      <a href="https://www.ndss-symposium.org/wp-content/uploads/2017/09/01_1_0.pdf">I can be you: Questioning the use of keystroke dynamics as biometrics</a>
     </p>
     <p>
-      <strong>Liu et al. (2008)</strong>
+      <strong>Liu et al. (2008)</strong> <span class="venue">IEEE ICDM</span>
       <br />
-      <a href="https://doi.org/10.1109/ICDM.2008.17">
-        Isolation forest
-      </a>
+      <a href="https://doi.org/10.1109/ICDM.2008.17">Isolation forest</a>
     </p>
     <p>
-      <strong>NIST/SEMATECH</strong>
+      <strong>Acien et al. (2022)</strong> <span class="venue">IEEE T-BIOM</span>
       <br />
-      <a href="https://itl.nist.gov/div898/handbook/pmc/section3/pmc3231.html">
-        e-Handbook of Statistical Methods: CUSUM control charts
-      </a>
+      <a href="https://doi.org/10.1109/TBIOM.2021.3112540">TypeNet: Deep Learning Keystroke Biometrics</a>
     </p>
     <p>
-      <strong>Acien et al. (2021)</strong>
+      <strong>Stragapede et al. (2024)</strong> <span class="venue">Neural Computing and Applications</span>
       <br />
-      <a href="https://arxiv.org/abs/2101.05570v3">
-        TypeNet: Deep Learning Keystroke Biometrics
-      </a>
+      <a href="https://doi.org/10.1007/s00521-024-10140-2">TypeFormer: Transformers for mobile keystroke biometrics</a>
     </p>
     <p>
-      <strong>Stragapede et al. (2025)</strong>
+      <strong>Stragapede et al. (2025)</strong> <span class="venue">Pattern Recognition</span>
       <br />
-      <a href="https://doi.org/10.1016/j.patcog.2024.111287">
-        KVC-onGoing: Keystroke Verification Challenge
-      </a>
+      <a href="https://doi.org/10.1016/j.patcog.2024.111287">KVC-onGoing: Keystroke Verification Challenge</a>
     </p>
   </div>
 </div>
 
+<style scoped>
+.venue { margin-left: 4px; padding: 1px 8px; border-radius: 999px; background: #e0f2fe; color: #075985; font-size: 13px; font-weight: 600; white-space: nowrap; }
+</style>
 <!--
 Danh sách đầy đủ trong báo cáo (26 nguồn):
 
@@ -108,7 +91,7 @@ Danh sách đầy đủ trong báo cáo (26 nguồn):
 18. ISO/IEC 27001:2022, Annex A.
 19. Luật Bảo vệ dữ liệu cá nhân số 91/2025/QH15; Nghị định 356/2025/NĐ-CP.
 20. Đặng Trần Khánh, "Key management & exchange protocols," bài giảng MTH042.
-21. A. Acien et al., "TypeNet: Deep Learning Keystroke Biometrics," arXiv:2101.05570v3, 2021.
+21. A. Acien et al., "TypeNet: Deep Learning Keystroke Biometrics," IEEE Transactions on Biometrics, Behavior, and Identity Science, vol. 4, no. 1, 2022. doi: 10.1109/TBIOM.2021.3112540.
 22. G. Stragapede et al., "TypeFormer: transformers for mobile keystroke biometrics," Neural Computing and Applications, vol. 36, 2024.
 23. G. Stragapede et al., "KVC-onGoing: Keystroke Verification Challenge," Pattern Recognition, vol. 161, 2025.
 24. TypingDNA, ActiveLock continuous endpoint authentication.

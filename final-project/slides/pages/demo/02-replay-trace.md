@@ -34,7 +34,7 @@ transition: slide-left
     ]" />
     <div class="text-[15px] text-slate-600">Gõ giống chủ, hết 275 phím vẫn chưa hỏi MFA.</div>
   </div>
-  <div v-click>
+  <div v-click="2">
     <div class="text-[16px] font-bold text-slate-700">Người lạ thứ hai: <span class="text-rose-700">phát hiện ở 125 phím</span></div>
     <CusumTrace :h1="1" :h2="2" :windows="[
       { s: 0, label: 'genuine', action: 'CONTINUE' },
@@ -45,12 +45,12 @@ transition: slide-left
       { s: 0, label: 'impostor', action: 'CONTINUE' },
       { s: 1.08, label: 'impostor', action: 'MFA_CHALLENGE' },
     ]" />
-    <div class="text-[15px] text-slate-600">W6 vượt mức 1, hỏi MFA, người lạ trượt.</div>
+    <div class="text-[15px] text-slate-600">W6 vượt mức 1, hệ thống hỏi MFA, kẻ lạ trả lời sai.</div>
   </div>
 </div>
 
 
-<div v-click class="mt-2 border-l-4 border-violet-500 bg-violet-50 px-4 py-2 text-[16px]">
+<div v-click="3" class="mt-2 border-l-4 border-violet-500 bg-violet-50 px-4 py-2 text-[16px]">
   Ngưỡng chung (B1) bỏ sót cả hai. Ngưỡng riêng (P1) bắt được ca hai nhưng dễ hỏi MFA oan hơn.
 </div>
 

@@ -21,7 +21,7 @@ transition: slide-left
   <img src="/figures/collector_panel.png" class="w-full rounded-lg border border-slate-300 shadow-md" alt="Giao diện collector thu nhịp gõ" />
 </div>
 
-<div v-click class="mt-4 grid grid-cols-3 gap-4 text-[17px] leading-snug">
+<div v-click="2" class="mt-4 grid grid-cols-3 gap-4 text-[17px] leading-snug">
   <div class="border-l-4 border-emerald-500 bg-emerald-50 px-3 py-2">Chỉ lưu <b>loại phím</b> và thời điểm.</div>
   <div class="border-l-4 border-emerald-500 bg-emerald-50 px-3 py-2"><b>Không</b> lưu ký tự đã gõ.</div>
   <div class="border-l-4 border-amber-500 bg-amber-50 px-3 py-2">Chặn dán, tách đoạn khi rời ô gõ.</div>
