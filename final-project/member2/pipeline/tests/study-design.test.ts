@@ -12,6 +12,7 @@ function formalStudy(): StudySession[] {
     { day: 1, split: "train", start: "2026-01-10T08:00:00.000Z" },
     { day: 1, split: "train", start: "2026-01-10T09:00:00.000Z" },
     { day: 2, split: "validation", start: "2026-01-11T09:00:00.000Z" },
+    { day: 2, split: "validation", start: "2026-01-11T10:00:00.000Z" },
     { day: 3, split: "test", start: "2026-01-12T09:00:00.000Z" },
   ] as const;
   return schedule.map(({ day, split, start }, index) => ({
@@ -34,10 +35,79 @@ function formalStudy(): StudySession[] {
   }));
 }
 
-test("accepts the four-session schedule with explicit days and sufficient spacing", () => {
+test("accepts the five-session schedule with two independent validation sessions", () => {
   const audit = auditStudyDesign(formalStudy());
   assert.equal(audit.participantProtocolComplete.get("P01"), true);
   assert.ok([...audit.sessionReasons.values()].every((reasons) => !reasons.length));
+});
+
+test("rejects a schedule missing its second validation session", () => {
+  const sessions = formalStudy().filter(({ row }) => row.session_id !== "P01-3");
+  const audit = auditStudyDesign(sessions);
+  assert.equal(audit.participantProtocolComplete.get("P01"), false);
+  assert.ok(
+    [...audit.sessionReasons.values()].every((reasons) =>
+      reasons.includes("incomplete_participant_protocol"),
+    ),
+  );
+});
+
+test("rejects an extra formal validation session", () => {
+  const sessions = formalStudy();
+  sessions.push({
+    ...sessions[3],
+    row: {
+      ...sessions[3].row,
+      file: "P01-extra-validation.json",
+      session_id: "P01-extra-validation",
+    },
+    metadata: {
+      ...sessions[3].metadata,
+      session_id: "P01-extra-validation",
+      started_at: "2026-01-11T11:00:00.000Z",
+    },
+  });
+  const audit = auditStudyDesign(sessions);
+  assert.equal(audit.participantProtocolComplete.get("P01"), false);
+  assert.ok(
+    [...audit.sessionReasons.values()].every((reasons) =>
+      reasons.includes("incomplete_participant_protocol"),
+    ),
+  );
+});
+
+test("rejects overlapping or identical validation starts regardless of manifest order", () => {
+  for (const start of ["2026-01-11T09:00:00.000Z", "2026-01-11T09:07:59.999Z"]) {
+    for (const reverse of [false, true]) {
+      const sessions = formalStudy();
+      sessions[3].metadata.started_at = start;
+      const audit = auditStudyDesign(reverse ? sessions.reverse() : sessions);
+      assert.equal(audit.participantProtocolComplete.get("P01"), false);
+      assert.ok([...audit.sessionReasons.values()].every((reasons) =>
+        reasons.includes("day2_validation_overlap")));
+    }
+  }
+});
+
+test("accepts adjacent validation sessions and longer gaps regardless of manifest order", () => {
+  for (const start of ["2026-01-11T09:08:00.000Z", "2026-01-11T09:09:00.000Z"]) {
+    const sessions = formalStudy();
+    sessions[3].metadata.started_at = start;
+    assert.equal(auditStudyDesign(sessions.reverse()).participantProtocolComplete.get("P01"), true);
+  }
+});
+
+test("includes pauses in validation wall duration and rejects invalid validation timing", () => {
+  const paused = formalStudy();
+  paused[2].wallDurationMs = 70 * 60 * 1000;
+  assert.ok(auditStudyDesign(paused).sessionReasons.get("P01-2")?.includes("day2_validation_overlap"));
+  for (const duration of [NaN, Infinity, -1]) {
+    const sessions = formalStudy();
+    sessions[2].wallDurationMs = duration;
+    const audit = auditStudyDesign(sessions);
+    assert.equal(audit.participantProtocolComplete.get("P01"), false);
+    assert.ok(audit.sessionReasons.get("P01-2")?.includes("invalid_day2_session_timing"));
+  }
 });
 
 test("marks all formal sessions when participant coverage is incomplete", () => {
@@ -121,7 +191,7 @@ test("rejects overlapping day-one sessions and counts pauses in the earlier wall
 test("rejects invalid timestamps, timezones, and dates that do not follow study-day order", () => {
   const sessions = formalStudy();
   sessions[2].metadata.timezone = "Not/A_Timezone";
-  sessions[3].metadata.started_at = "2026-01-09T09:00:00.000Z";
+  sessions[4].metadata.started_at = "2026-01-09T09:00:00.000Z";
   const audit = auditStudyDesign(sessions);
   assert.equal(audit.participantProtocolComplete.get("P01"), false);
   assert.ok(audit.sessionReasons.get("P01-2")?.includes("invalid_started_at_or_timezone"));

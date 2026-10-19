@@ -22,7 +22,7 @@ File `pnpm-lock.yaml` khóa phiên bản thư viện; `pnpm-workspace.yaml` cấ
 3. Phiên pilot cần ít nhất 5 phút và 300 lần gõ hoàn chỉnh. Thu chính thức cần ít nhất 8 phút ghi và 1.000 lần gõ hoàn chỉnh mỗi phiên. Màn hình báo rõ từng mục tiêu chưa đạt; file vẫn tải được để kiểm tra chất lượng. Rời vùng nhập sẽ tạm dừng; bấm “Tiếp tục gõ” để mở đoạn mới.
 4. Kết thúc và tải file JSON trước khi bắt đầu phiên tiếp theo. Gửi file cho nhóm qua kênh đã thống nhất.
 
-Chạy pilot trên trình duyệt/bộ gõ thực tế trước khi thu chính thức. Kế hoạch là 20 người × bốn phiên trong ba ngày: hai phiên train ngày 1, một validation ngày 2, một test ngày 3; hai phiên ngày 1 cách nhau ít nhất 30 phút. Phiên pilot được đánh dấu trong metadata và phải để ngoài manifest nghiên cứu.
+Chạy pilot trên trình duyệt/bộ gõ thực tế trước khi thu chính thức. Kế hoạch là 20 người × năm phiên trong ba ngày: hai phiên train ngày 1, hai phiên validation ngày 2, một test ngày 3; hai phiên ngày 1 cách nhau ít nhất 30 phút. Phiên pilot được đánh dấu trong metadata và phải để ngoài manifest nghiên cứu.
 
 Nội dung văn bản chỉ nằm trong phần tử nhập của trang, ngoài trạng thái React và JSON xuất; nội dung được xóa khi kết thúc phiên. Danh tính phím vật lý chỉ tồn tại tạm thời để ghép nhấn–nhả. Thao tác dán/kéo văn bản bị chặn. Không có điểm nhận dữ liệu tải lên; bản ghi sự kiện nằm trong bộ nhớ trình duyệt đến khi được tải xuống.
 
