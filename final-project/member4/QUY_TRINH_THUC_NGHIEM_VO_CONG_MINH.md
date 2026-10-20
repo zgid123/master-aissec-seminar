@@ -1,6 +1,6 @@
 # THIẾT KẾ THỰC NGHIỆM VÀ ĐÁNH GIÁ
 Võ Công Minh - Nhóm 02 - MTH042
-Bản nháp 0.5 - cập nhật ngày 18/10/2026
+Bản nháp 0.6 - cập nhật ngày 19/10/2026
 Tài liệu trao đổi trong nhóm; chưa có kết quả đánh giá trên người thật.
 
 Các anh chị xem giúp em mục 9 trước nhé, em gom ở đó những điểm cần trao đổi để các phần khớp nhau; mục 10 là các thông tin mình sẽ thống nhất thêm trước khi chạy thực nghiệm chính thức.
@@ -26,7 +26,9 @@ Các chữ viết tắt dùng trong phần đánh giá: FAR (False Acceptance Ra
 
 Phần đã chuẩn bị gồm tài liệu này, bộ tính chỉ số có kiểm thử, dữ liệu kiểm thử nhỏ (fixture) và mẫu đầu vào/đầu ra. Phần thực nghiệm sau khi ghép mô hình sẽ bổ sung bảng theo người, kết quả tổng hợp, biểu đồ, phân tích sai số và kết luận. Bảng fixture chỉ kiểm tra công thức và luồng đánh giá, không phải kết quả nghiên cứu.
 
-Cập nhật 18/10: đã nhận bản reviewed của phần mô hình và đối chiếu độc lập chỉ số cửa sổ cố định trên dữ liệu mô phỏng. Chi tiết nằm trong DOI_CHIEU_MEMBER3_VO_CONG_MINH.docx; chưa coi replay TTD/MFA đã nối xong hoặc các giả thuyết đã được kiểm chứng. Những định nghĩa còn mở trong tài liệu này không tự trở thành quyết định chung chỉ vì đã có mã chạy.
+Cập nhật 18/10: đã nhận bản reviewed của phần mô hình và đối chiếu độc lập chỉ số cửa sổ cố định trên dữ liệu mô phỏng. Chi tiết nằm trong DOI_CHIEU_MEMBER3_VO_CONG_MINH.docx.
+
+Cập nhật 19/10: đã đối chiếu độc lập replay có trạng thái của lần chạy simulation-2026-10-19. Toàn bộ quyết định, sự kiện, TTD, MFA/giờ và thu hồi nhầm khớp; chi tiết và định nghĩa TTD, MFA/giờ đề xuất chốt nằm trong DOI_CHIEU_REPLAY_MEMBER3_VO_CONG_MINH.docx. Các giả thuyết vẫn chưa được kiểm chứng vì dữ liệu là mô phỏng và không cấu hình nào đạt ràng buộc đặt trước.
 
 ## 2. Câu hỏi nghiên cứu và đối chứng
 
@@ -51,9 +53,9 @@ Phân biệt nguồn bằng cách tạo dữ liệu, không bằng số lượng
 
 Một người gõ bốn vai vẫn chỉ là một người; bốn hồ sơ AI không tạo ra bốn người độc lập. Thời gian chạy hai tiếng hoặc việc gán ngày tổng hợp không chứng minh có biến thiên qua ba ngày thật. Bộ mô phỏng mới cần mô tả bộ sinh, seed, phân phối/tham số và vai trò kiểm thử; không chọn bộ sinh theo kết quả test để tạo lợi thế cho phương pháp. Nếu toàn bộ đánh giá chỉ dùng mô phỏng, phạm vi kết luận phải giữ ở kiểm thử tích hợp và độ nhạy trong giả định bộ sinh.
 
-Cập nhật member2 tại commit f0fb15c: kế hoạch thu thật mới đặt mục tiêu 20 người, bốn phiên chính thức/người qua ít nhất ba ngày: ngày 1 hai train, ngày 2 một validation, ngày 3 một test. Hai phiên train cách nhau ít nhất 30 phút từ kết thúc phiên trước đến bắt đầu phiên sau; mỗi phiên chính thức cần ít nhất 1.000 lần gõ hợp lệ và 480 giây ghi chủ động. Pilot cần 300 lần gõ và 300 giây, tách khỏi nghiên cứu chính. Đây là mục tiêu thiết kế, không phải số người/phiên đã thu được.
+Cập nhật member2 tại commit f0fb15c (đã được thay bằng thiết kế năm phiên ở đoạn dưới): kế hoạch thu thật mới đặt mục tiêu 20 người, bốn phiên chính thức/người qua ít nhất ba ngày: ngày 1 hai train, ngày 2 một validation, ngày 3 một test. Hai phiên train cách nhau ít nhất 30 phút từ kết thúc phiên trước đến bắt đầu phiên sau; mỗi phiên chính thức cần ít nhất 1.000 lần gõ hợp lệ và 480 giây ghi chủ động. Pilot cần 300 lần gõ và 300 giây, tách khỏi nghiên cứu chính. Đây là mục tiêu thiết kế, không phải số người/phiên đã thu được.
 
-Thiết kế này chưa khớp phần mô hình: partitionValidation của member3 yêu cầu ít nhất hai phiên validation độc lập/người để tách hiệu chuẩn điểm và chọn ngưỡng. Lịch bốn phiên chỉ có một phiên validation nên không chạy được quy trình hiện tại. Phương án sáu phiên trong bản 0.3 là lịch cũ, không còn là mô tả hiện hành của member2. Nhóm cần thống nhất bổ sung phiên validation hoặc thiết kế lại bước hiệu chuẩn/chọn ngưỡng và sửa đồng bộ các phần; chưa tự chốt một phương án. Không chia cửa sổ của một phiên để giả làm hai phiên độc lập, không dùng test để bù validation.
+Cập nhật 19/10: phần dữ liệu đã đổi thiết kế thu thật thành năm phiên mỗi người (hai train ngày 1, hai validation ngày 2, một test ngày 3), đồng bộ protocol, validator và kiểm thử. Thiết kế này khớp yêu cầu hai phiên validation của phần mô hình: phiên validation đầu dùng hiệu chỉnh điểm, phiên sau dùng chọn ngưỡng và chính sách. Bộ dữ liệu hiện có vẫn là mô phỏng; thiết kế năm phiên áp dụng cho lần thu người thật nếu có. Không chia cửa sổ của một phiên để giả làm hai phiên độc lập, không dùng test để bù validation.
 
 Bốn file AI-PACED-P01-P04 mới là pilot QA do AI vận hành; hồ sơ kiểm thử ghi 0 người tham gia thật. Đã kiểm lại 1.321 lần gõ hợp lệ, tổng 1.248,125 giây ghi chủ động; các mục tiêu pilot đạt nhưng không trở thành dữ liệu nghiên cứu người thật. Manifest phân tích vẫn chứa 24 phiên synthetic SIM01-SIM04. Quy mô thực tế chỉ ghi theo nguồn thu được và điều kiện đã xác minh.
 
@@ -174,9 +176,9 @@ Với phần của chị Trâm: em đang bám A1 làm kịch bản chính. Chị
 
 Với phần dữ liệu của anh Phong: em đang thấy bản nháp mô tả 10 nhóm phím, còn bộ bàn giao dùng 3 nhóm. Mình đối chiếu lại để phần mô tả và dữ liệu sử dụng cùng một quy ước. Điều kiện độ phân giải đồng hồ <=1 ms cũng cần xem metadata và phép đo thực tế trước khi ghi là đã kiểm tra.
 
-Điểm cần trao đổi trước khi thu chính thức: lịch mới của anh Phong có một phiên validation/người, còn mã anh Vũ cần ít nhất hai phiên độc lập để hiệu chuẩn và chọn ngưỡng. Hai anh xem giúp em mình bổ sung phiên hay điều chỉnh quy trình mô hình cho khớp nhé; chưa chia cửa sổ để thay phiên. Bốn lượt AI pilot hiện chỉ dùng kiểm công cụ, không tính thành bốn người tham gia.
+Về số phiên validation: anh Phong đã cập nhật thiết kế thu thật thành năm phiên mỗi người (có hai phiên validation), khớp với mô hình của anh Vũ. Bốn lượt AI pilot hiện chỉ dùng kiểm công cụ, không tính thành bốn người tham gia.
 
-Với phần mô hình của anh Vũ: bản reviewed đã có scorer L1/Isolation Forest và các chính sách B0/B1/P1. Em đã nối điểm cửa sổ cố định và đối chiếu khớp FAR/FRR/EER. Anh xem giúp em các điểm về mẫu số MFA, TTD và metadata replay trong mục 5 của DOI_CHIEU_MEMBER3_VO_CONG_MINH.docx nhé; phần replay chưa coi là đã khớp chỉ vì bảng cửa sổ khớp.
+Với phần mô hình của anh Vũ: em đã đối chiếu độc lập cả điểm cửa sổ cố định và replay có trạng thái của lần chạy 19/10, tất cả đều khớp. Định nghĩa TTD và MFA/giờ em đề xuất chốt ở mục 6 của DOI_CHIEU_REPLAY_MEMBER3_VO_CONG_MINH.docx; mọi người không có ý kiến khác thì em dùng thống nhất trong báo cáo.
 
 Sau cập nhật member2, sessions.csv và receipt xử lý đã đổi nội dung; lần đối chiếu cũ vẫn là lịch sử, không phải xác nhận cho checkout mới. Cần tạo run fit/evaluate mới với đúng đầu vào và receipt hiện hành trước lần tích hợp tiếp theo, không bỏ kiểm hash để dùng lại model cũ.
 
@@ -217,7 +219,7 @@ Cookie chứa gì và A1 chứng minh được gì? NIST mô tả cookie phiên 
 Các con số W=50, L=150 hay 2.000 bootstrap lấy ở đâu? Đó là lựa chọn thiết kế/triển khai cần ghi cấu hình, không phải định luật hoặc số tối ưu được paper bảo đảm; nguồn công thức và nguồn giá trị cụ thể được tách ở mục 12.
 Bốn vai AI có thay bốn người được không? Không. Chúng là hồ sơ mô phỏng để thử pipeline; tăng số lượt hoặc chạy lâu không thêm người thật và không chứng minh biến thiên qua ngày.
 
-Giới hạn hiện tại: đã nối điểm cửa sổ TV3 và tính lại FAR/FRR/EER trên mô phỏng, chưa nối độc lập replay TTD/MFA. TV3 đã có ghép A1 từ strokes và ablation lambda=1, nhưng member4 chưa tái dựng/đánh giá độc lập các phần đó; chưa có kết quả người thật hoặc phân tích thời gian đến phát hiện đầy đủ khi có kiểm duyệt. Đã có kiểm thử và chặn tính nhầm khi MFA chờ xuyên qua N, nhưng cách phân loại đầy đủ các ca này còn cần thống nhất khi nối log. MFA mô phỏng không chứng minh yếu tố MFA thực tế an toàn.
+Giới hạn hiện tại: đã nối điểm cửa sổ TV3 và đối chiếu độc lập cả FAR/FRR/EER lẫn replay TTD/MFA trên mô phỏng; thời lượng ghi dùng làm mẫu số MFA/giờ mới được kiểm tính nhất quán, chưa tính lại từ dữ liệu thô. TV3 đã có ghép A1 từ strokes và ablation lambda=1, nhưng member4 chưa tái dựng/đánh giá độc lập các phần đó; chưa có kết quả người thật hoặc phân tích thời gian đến phát hiện đầy đủ khi có kiểm duyệt. Đã có kiểm thử và chặn tính nhầm khi MFA chờ xuyên qua N, nhưng cách phân loại đầy đủ các ca này còn cần thống nhất khi nối log. MFA mô phỏng không chứng minh yếu tố MFA thực tế an toàn.
 
 Bản nháp đã có phần phương pháp và câu hỏi phản biện, nhưng phần kết quả, kiểm định trên dữ liệu thật và phân tích sai số vẫn cần thực nghiệm. Tài liệu này không thay cho kết quả chạy mô hình, phần đọc tài liệu khoa học hoặc review mã độc lập theo phân công.
 

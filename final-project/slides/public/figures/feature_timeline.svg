@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 760 400" width="760" height="400" font-family="Roboto, 'Segoe UI', Arial, sans-serif">
+<rect width="760" height="400" fill="#FFFFFF"/>
+<line x1="40" y1="52" x2="715" y2="52" stroke="#64748B" stroke-width="2"/>
+<polygon points="725,52 713,46 713,58" fill="#64748B"/>
+<text x="715" y="38" text-anchor="end" font-size="17" font-weight="600" fill="#64748B">thời gian →</text>
+<text x="40" y="38" font-size="19" font-weight="700" fill="#0F172A">Gõ liên tiếp</text>
+<rect x="90" y="75" width="180" height="40" rx="6" fill="#DBEAFE" stroke="#2563EB" stroke-width="2.5"/>
+<text x="180" y="101" text-anchor="middle" font-size="20" font-weight="700" fill="#1E3A8A">Phím A</text>
+<rect x="360" y="75" width="180" height="40" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="2.5"/>
+<text x="450" y="101" text-anchor="middle" font-size="20" font-weight="700" fill="#065F46">Phím B</text>
+<g stroke="#64748B" stroke-width="1.5"><line x1="90" y1="115" x2="90" y2="128"/><line x1="270" y1="115" x2="270" y2="128"/><line x1="360" y1="115" x2="360" y2="128"/><line x1="540" y1="115" x2="540" y2="128"/></g>
+<g font-size="17" font-weight="600" fill="#475569" text-anchor="middle"><text x="90" y="148">nhấn A</text><text x="270" y="148">nhả A</text><text x="360" y="148">nhấn B</text><text x="540" y="148">nhả B</text></g>
+<path d="M90 160 V168 H270 V160" fill="none" stroke="#2563EB" stroke-width="2.5"/>
+<text x="180" y="192" text-anchor="middle" font-size="19" font-weight="700" fill="#2563EB">giữ phím (d)</text>
+<path d="M270 160 V168 H360 V160" fill="none" stroke="#D97706" stroke-width="2.5"/>
+<text x="315" y="192" text-anchor="middle" font-size="19" font-weight="700" fill="#D97706">nghỉ (f)</text>
+<text x="40" y="222" font-size="18" fill="#2563EB"><tspan font-weight="700">d</tspan> = nhả − nhấn (cùng một phím)</text>
+<text x="40" y="248" font-size="18" fill="#D97706"><tspan font-weight="700">f</tspan> = nhấn phím kế − nhả phím trước</text>
+<line x1="40" y1="268" x2="720" y2="268" stroke="#E2E8F0" stroke-width="2"/>
+<text x="40" y="296" font-size="19" font-weight="700" fill="#0F172A">Gõ chồng phím</text>
+<rect x="90" y="308" width="240" height="34" rx="6" fill="#DBEAFE" stroke="#2563EB" stroke-width="2.5"/>
+<text x="150" y="331" text-anchor="middle" font-size="18" font-weight="700" fill="#1E3A8A">Phím A</text>
+<rect x="270" y="350" width="240" height="34" rx="6" fill="#D1FAE5" stroke="#059669" stroke-width="2.5"/>
+<text x="450" y="373" text-anchor="middle" font-size="18" font-weight="700" fill="#065F46">Phím B</text>
+<rect x="270" y="308" width="60" height="76" fill="#FB7185" opacity="0.45"/>
+<text x="350" y="333" font-size="18" font-weight="700" fill="#E11D48">f &lt; 0: B nhấn trước khi A nhả</text>
+</svg>

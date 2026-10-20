@@ -2,12 +2,12 @@
 
 **Võ Công Minh · phần thực nghiệm và đánh giá.**
 
-Bộ mã **không cài đặt mô hình phát hiện, CUSUM hoặc pipeline thu dữ liệu**. Cập nhật 18/10/2026: đã nối điểm cửa sổ cố định từ bản reviewed của anh Vũ và đối chiếu độc lập FAR/FRR/EER trên dữ liệu mô phỏng; chưa nối replay TTD/MFA hoặc dữ liệu người thật.
+Bộ mã **không cài đặt mô hình phát hiện, CUSUM hoặc pipeline thu dữ liệu**. Cập nhật 18/10/2026: đã nối điểm cửa sổ cố định từ bản reviewed của anh Vũ và đối chiếu độc lập FAR/FRR/EER trên dữ liệu mô phỏng; chưa nối dữ liệu người thật. Cập nhật 19/10/2026: thêm `src/member3-replay.mjs` chạy lại độc lập chính sách B0/B1/P1 từ điểm z trong log member3; lần chạy simulation-2026-10-19 và bộ handoff đều khớp hoàn toàn (xem DOI_CHIEU_REPLAY_MEMBER3_VO_CONG_MINH.docx).
 
 ## Tài liệu gửi nhóm
 
 - [Bản tổng hợp để ghép báo cáo](NGHIEN_CUU_LIEN_QUAN_VA_DINH_HUONG_DANH_GIA.docx), [nguồn Markdown](NGHIEN_CUU_LIEN_QUAN_VA_DINH_HUONG_DANH_GIA.md): nội dung tiếng Việt về ba nghiên cứu liên quan, cách vận dụng vào đánh giá và giới hạn kết luận. Đã biên tập từ phần đối chiếu, giữ trích dẫn; chưa gửi thay Minh hoặc chèn vào báo cáo chung.
-- [Bản Word hiện tại để review](QUY_TRINH_THUC_NGHIEM_VO_CONG_MINH.docx): bản nháp 0.5, giữ tên không hậu tố. Bổ sung phát biểu bài toán, luồng đo, thuật ngữ, nguồn công thức/tham số, phân biệt mô phỏng/người thật, xung đột lịch validation và ba nguồn PDF đã đối chiếu có giới hạn. Trạng thái gửi tài liệu được ghi riêng trong note của Minh; file local mới không có nghĩa nhóm đã nhận bản mới.
+- [Bản Word hiện tại để review](QUY_TRINH_THUC_NGHIEM_VO_CONG_MINH.docx): bản nháp 0.6 (19/10: cập nhật thiết kế năm phiên và kết quả replay), giữ tên không hậu tố. Bổ sung phát biểu bài toán, luồng đo, thuật ngữ, nguồn công thức/tham số, phân biệt mô phỏng/người thật, xung đột lịch validation và ba nguồn PDF đã đối chiếu có giới hạn. Trạng thái gửi tài liệu được ghi riêng trong note của Minh; file local mới không có nghĩa nhóm đã nhận bản mới.
 - [Nguồn tài liệu](QUY_TRINH_THUC_NGHIEM_VO_CONG_MINH.md): chỉnh tại đây rồi xuất lại Word.
 - [Tóm tắt ba tài liệu khoa học](TOM_TAT_3_TAI_LIEU_VO_CONG_MINH.docx), [nguồn Markdown](TOM_TAT_3_TAI_LIEU_VO_CONG_MINH.md): năm ý cho mỗi bài theo bảng phân công. PDF gốc không đưa lên Git; DOI có trong tài liệu.
 - [Review mã member3](REVIEW_MA_MEMBER3_VO_CONG_MINH.docx) và [phân tích ca lỗi mô phỏng](PHAN_TICH_CA_LOI_MO_PHONG_VO_CONG_MINH.docx), kèm nguồn Markdown cùng tên.
@@ -18,7 +18,7 @@ Chị Trâm review protocol/phạm vi; anh Phong xác nhận nguồn dữ liệu
 ### Đối chiếu bản member3 mới
 
 - [Kết quả đối chiếu gửi nhóm](DOI_CHIEU_MEMBER3_VO_CONG_MINH.docx) và [nguồn Markdown](DOI_CHIEU_MEMBER3_VO_CONG_MINH.md).
-- Sau cập nhật member2 `f0fb15c`, `sessions.csv` và receipt xử lý đổi nội dung; kết quả bên dưới là lịch sử trước cập nhật. Adapter hiện dừng ở receipt không khớp, kể cả `--allow-crlf`; cần run fit/evaluate mới và thống nhất lịch validation trước tích hợp tiếp. Chi tiết ở mục 7 bản đối chiếu.
+- Sau cập nhật member2 `f0fb15c`, `sessions.csv` và receipt xử lý đổi nội dung; kết quả bên dưới là lịch sử trước cập nhật. Ngày 19/10 member3 đã chạy lại (`simulation-2026-10-19`); adapter với `--allow-crlf` khớp 8/8 hàng, kết quả ở `results/member3-fixed-2026-10-19`.
 - [Kết quả máy đọc](results/member3-fixed-reviewed/reconciliation.json), [biên nhận nguồn](results/member3-fixed-reviewed/receipt.json), [bảng từng người](results/member3-fixed-reviewed/evaluation/per-user.csv), [ROC](results/member3-fixed-reviewed/evaluation/roc.svg).
 - 1.536 lượt chấm = 192 cửa sổ test W50 × 4 tài khoản đích × 2 scorer. Đây không phải 1.536 quan sát độc lập. Tám hàng scorer/tài khoản khớp chỉ số phần 3 trong sai số tuyệt đối 1e-12.
 - Mọi ngưỡng cửa sổ được kiểm tra với model đã khóa; tất cả cờ `validation_window_feasible` của bản hiện tại là false. Kết quả chỉ để chẩn đoán/tích hợp, không chứng minh giả thuyết hoặc hiệu quả trên người thật.
@@ -202,9 +202,9 @@ Không cần cài Word. Script xuất OOXML ZIP từ Markdown của protocol, h�
 | Đầu việc mục 4 | Trạng thái |
 |---|---|
 | Quy trình, split, kịch bản, công thức, giới hạn | Có bản đề xuất Word/Markdown, chờ review nhóm |
-| Mã chỉ số và thống kê | Có mã cùng fixture/tests; chạy lại ngày 18/10, 48/48 tests đạt (thêm test cho script phân tích ca lỗi) |
+| Mã chỉ số và thống kê | Có mã cùng fixture/tests; chạy lại ngày 19/10, 52/52 tests đạt (thêm 4 test cho replay) |
 | Mẫu bảng/ROC và manifest tái lập | Có fixture và bảng/ROC đối chiếu điểm mô phỏng TV3 |
-| Adapter log TV3 | Lần lịch sử khớp fixed_windows 8/8 hàng; receipt member2 mới không còn khớp model cũ, chưa nối replay TTD/MFA |
+| Adapter log TV3 | Lần lịch sử khớp fixed_windows 8/8 hàng; lần chạy 19/10 khớp 8/8 hàng; replay độc lập khớp 29.183 quyết định, 7.600 sự kiện, 3.520 kết cục |
 | Ghép raw thành A1 | TV3 đã có; member4 chưa tái dựng độc lập và chưa nhập vào evaluator |
 | Bảng kết quả người thật, ablation, kiểm định thực nghiệm | Bỏ thu dữ liệu người thật (quyết định 18/10) vì không kịp; báo cáo chỉ trình bày phạm vi mô phỏng và ghi rõ giới hạn |
 | Phân tích lỗi nghiên cứu | Có [PHAN_TICH_CA_LOI_MO_PHONG_VO_CONG_MINH](PHAN_TICH_CA_LOI_MO_PHONG_VO_CONG_MINH.md) và script `scripts/analyze-member3-failures.mjs` (kết quả trong `results/member3-failure-analysis`); chỉ trên mô phỏng lịch sử |
@@ -233,3 +233,7 @@ Ngày 18/10: đã xuất lại protocol (107 đoạn) và bản đối chiếu p
 Sau đó trong ngày 18/10: protocol nâng bản nháp 0.3 và tài liệu đối chiếu bổ sung quy tắc nhận bộ dữ liệu mới. Các số đoạn phía trên thuộc lần xuất trước. Thay đổi lần này chỉ ở tài liệu, không đổi mã, ngưỡng, số liệu hoặc cách tính metrics; chưa nhận bộ dữ liệu mới từ member2.
 
 Xuất bản nháp 0.3: protocol 137 đoạn, bản đối chiếu 41 đoạn; XML hợp lệ, trích ngược khớp nguồn. Giữ nguyên số mục 1–12 để các lời nhắc mục 9/10 không sai. Các nguồn S1–S6 được phân biệt với paper mới cần đọc; tham số đã đối chiếu model reviewed. Hash mã evaluator và kết quả máy đọc giữ nguyên. Không chạy lại unit tests cho thay đổi chỉ tài liệu; chưa kiểm phân trang bằng Word.
+
+## Slide thuyết trình
+
+Deck Slidev cho buổi trình bày cuối kỳ nằm ở `final-project/slides`. Cách chạy: `pnpm install --frozen-lockfile` rồi `pnpm dev` trong thư mục đó.
