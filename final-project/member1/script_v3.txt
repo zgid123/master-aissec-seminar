@@ -1,0 +1,225 @@
+Phần 1 · Bối cảnh và bài toán
+
+Slide 1 · Mở đầu
+Chào thầy cô và các bạn, Nhóm 02 xin được trình bày.
+Đề tài của nhóm là xác thực liên tục dựa trên nhịp gõ phím.
+Mục tiêu là phát hiện người lạ tiếp quản phiên sau khi qua MFA.
+MFA là xác thực đa yếu tố, chỉ kiểm tra lúc đăng nhập.
+
+Slide 2 · Mục lục
+Bài trình bày gồm năm phần.
+Thứ tự là bối cảnh, phương pháp, thực nghiệm, demo, rồi kết luận.
+
+Slide 4 · Khoảng hở sau MFA
+MFA chỉ kiểm tra người dùng đúng một lần, lúc đăng nhập.
+Lúc 9 giờ người dùng qua MFA, đến 13 giờ 20 có người chiếm phiên.
+Kẻ đó ngồi vào máy đang mở, hoặc lấy được cookie phiên.
+Máy chủ vẫn thấy phiên hợp lệ, vì mỗi yêu cầu chỉ kiểm tra cookie.
+Cookie chỉ là mã phiên ngẫu nhiên, không chứa nhịp gõ của ai.
+Secure hay HttpOnly chỉ là cách gửi cookie, không phải dữ liệu bên trong.
+Vì vậy ai nắm cookie thì dùng được phiên đó.
+Theo NIST, giám sát phiên là tùy chọn, chỉ xác thực lại định kỳ là bắt buộc.
+Giữa hai lần xác thực lại vẫn còn một khoảng hở.
+Khi nghi vấn, hệ thống hỏi lại MFA hoặc thu hồi phiên; đề tài nhắm vào đây.
+
+Slide 5 · Định nghĩa bài toán và ứng dụng
+Giải pháp là xác thực liên tục: đánh giá thêm tín hiệu ngay trong phiên.
+Đầu vào là dòng sự kiện nhấn và nhả phím, không lưu ký tự.
+Cứ mỗi 50 phím, hệ thống chấm một điểm bất thường so với hồ sơ chủ.
+Hệ thống cộng dồn bằng chứng rồi chọn: tiếp tục, hỏi MFA, hoặc thu hồi.
+Mục tiêu có hai vế mâu thuẫn: phát hiện sớm và ít làm phiền chủ.
+TTD đo độ sớm, là số phím từ lúc đổi người đến lúc phát hiện.
+Mức làm phiền chủ được đo bằng số lần hỏi MFA mỗi giờ.
+Đây là xác minh một-một: trả lời “có đúng chủ không”, không phải “là ai”.
+Thực tế đã có sản phẩm như TypingDNA ActiveLock, theo dõi cách gõ để khóa máy.
+Đó chỉ là mô tả của nhà cung cấp, và sản phẩm còn dùng thêm tín hiệu khác.
+
+Slide 6 · Vì sao chọn nhịp gõ
+Nếu không dùng nhịp gõ, ba biện pháp thông thường đều có chỗ hở.
+Hết hạn phiên không chặn được kẻ lạ cứ thao tác để giữ phiên.
+Xác thực lại định kỳ gây gián đoạn, và vẫn hở giữa hai lần.
+Giám sát IP, thiết bị không đổi nếu kẻ lạ dùng chính máy đang mở.
+Nhịp gõ lấp đúng chỗ đó, vì mỗi người gõ một kiểu riêng.
+Dữ liệu 136 triệu lần nhấn phím của 168 nghìn người cho thấy sự đa dạng này.
+Ưu điểm lớn nhất là thu thụ động bằng bàn phím sẵn có.
+Nhược điểm lớn nhất là người dùng không gõ thì không có bằng chứng.
+Vì vậy nhịp gõ là lớp bổ sung, không thay thế MFA.
+
+Slide 7 · Nghiên cứu liên quan
+Nhóm xếp các công trình liên quan theo bốn hướng, đến năm 2025.
+Theo dữ liệu đầu vào có văn bản cố định, bán cố định và tự do.
+Văn bản tự do cho phép xác thực liên tục ngay lúc người dùng gõ.
+Hướng một là thống kê và khoảng cách, như Gunetti 2005, Killourhy–Maxion 2009.
+Hướng này đơn giản, dễ giải thích, chỉ cần mẫu của chính chủ.
+Nhóm chọn hướng này làm bộ chấm điểm: khoảng cách L1 và Isolation Forest.
+Hướng hai là xác thực liên tục, như Bours 2012 và Kiyani 2020.
+Hướng này ra quyết định theo thời gian, nên nhóm lấy CUSUM làm chính sách.
+Hướng ba là học sâu, như TypeNet 2021 và TypeFormer 2024.
+Học sâu cần nhiều dữ liệu, khó giải thích, nên nhóm chưa tái hiện.
+Hướng bốn là benchmark KVC-onGoing 2025, hơn 185 nghìn người, chỉ đo xác minh.
+FAR, FRR, EER là tỷ lệ chấp nhận sai, từ chối sai và lỗi cân bằng.
+Các chỉ số này không cho biết cần bao nhiêu phím để phát hiện.
+Vì vậy nhóm đo thêm TTD và số lần hỏi MFA mỗi giờ.
+
+Slide 8 · Mô hình đe dọa
+Kẻ tấn công đã có phiên hợp lệ, do máy đang mở hoặc có cookie.
+Nhóm xét bốn kịch bản, nhưng mới đo kịch bản A1.
+A1 là người lạ gõ theo thói quen riêng của mình.
+Ba kịch bản chưa đo: biết nội dung, luyện bắt chước, phát lại gói dữ liệu.
+Hậu quả có hai chiều: kẻ lạ lọt qua, hoặc chủ thật bị làm phiền.
+Chủ thật bị làm phiền nghĩa là bị hỏi MFA nhiều hoặc bị thu hồi oan.
+N là phím đầu tiên của người lạ, và TTD luôn tính từ N.
+
+Slide 9 · Câu hỏi nghiên cứu
+Nhóm đặt ba câu hỏi nghiên cứu.
+Câu một: ngưỡng riêng từng người có giúp chủ thật ít bị hỏi MFA hơn không?
+Câu hai: cộng dồn bằng chứng có bắt người lạ tốt hơn xét từng đoạn không?
+Câu ba: cập nhật hồ sơ sau MFA có giảm từ chối nhầm không?
+Kết quả hiện mới ở mức bước đầu.
+Câu một chưa kết luận, vì hai bộ chấm điểm cho chiều ngược nhau.
+Câu hai có gợi ý: Isolation Forest phát hiện tăng từ 0,36 lên 0,63.
+Tuy vậy mức MFA của hai cấu hình chưa được ghép cùng nhau.
+Câu ba nhóm chưa thực hiện.
+
+Phần 2 · Phương pháp và kiến trúc
+
+Slide 11 · Kiến trúc hệ thống
+Hệ thống gồm năm khối, từ thu phím đến ra quyết định.
+Năm khối là thu phím, trích đặc trưng, chấm điểm, CUSUM và quyết định.
+Mỗi cửa sổ gồm 50 phím và 12 đặc trưng.
+Mọi cấu hình dùng chung một đường xử lý, nên so sánh công bằng.
+Nhóm đã làm bộ thu thập, đặc trưng, hai bộ chấm, bốn cấu hình, bộ đối chiếu.
+Nhóm chưa làm lớp truyền chống phát lại: TLS, số thứ tự và nonce.
+TLS mã hóa kênh truyền, còn nonce là mã chỉ dùng một lần.
+Nhóm cũng chưa làm MFA thời gian thực và chạy trực tiếp đầu-cuối.
+Thực nghiệm hiện chạy ngoại tuyến, bằng cách phát lại dữ liệu đã lưu.
+
+Slide 12 · Đặc trưng nhịp gõ
+Mỗi phím cho hai thời điểm: lúc nhấn và lúc nhả.
+Thời gian giữ phím là nhả trừ nhấn của cùng một phím.
+Khoảng nghỉ là nhấn phím kế tiếp trừ nhả phím trước.
+Khoảng nghỉ có thể âm khi gõ chồng phím, nhóm giữ nguyên giá trị âm.
+Mỗi 50 phím tạo một cửa sổ với 12 đặc trưng.
+Đặc trưng nói về giữ phím, khoảng nghỉ, tốc độ, sửa lỗi và độ biến động.
+Mỗi đặc trưng được chuẩn hóa theo từng người, bằng trung vị và MAD.
+MAD là độ lệch tuyệt đối trung vị.
+Hệ thống chỉ ghi nhóm phím và thời điểm, không bao giờ ghi ký tự.
+
+Slide 13 · Cộng dồn bằng chứng, CUSUM
+Mỗi cửa sổ cho một điểm lạ, được đổi thành điểm z theo từng người.
+CUSUM là tổng tích lũy: S mới bằng λ nhân S cũ, cộng z, trừ k.
+S không được âm, và λ nhỏ hơn 1 làm bằng chứng cũ phai dần.
+Đây là ví dụ minh họa, không phải kết quả thực nghiệm.
+Ba cửa sổ liên tiếp đều có z bằng 3, ngưỡng là 6.
+Xét riêng từng cửa sổ thì không cửa sổ nào vượt ngưỡng, nên bỏ lọt.
+Cộng dồn thì S lần lượt là 2,5; 4,75; rồi 6,775 (λ = 0,9; k = 0,5).
+Đến cửa sổ thứ ba, S vượt ngưỡng và hệ thống hỏi MFA.
+
+Slide 14 · Bộ điều khiển phiên
+Bộ điều khiển phiên có ba trạng thái: ACTIVE, MFA_PENDING, REVOKED.
+Khi S dưới h1, phiên tiếp tục bình thường.
+Khi S từ h1 đến dưới h2, hệ thống hỏi MFA.
+MFA đạt thì phiên quay lại và S về 0; trượt thì thu hồi.
+Khi S từ h2 trở lên, phiên bị thu hồi ngay.
+Nhóm so sánh bốn cấu hình, trong đó B0 xét riêng từng cửa sổ.
+B1 cộng dồn với ngưỡng chung, P1 cộng dồn với ngưỡng riêng từng người.
+P2 thêm cập nhật hồ sơ sau MFA, nhưng nhóm chưa làm.
+Tham số chọn trên tập validation, tập test chỉ chấm sau khi khóa cấu hình.
+
+Slide 15 · Nguồn công thức và tham số
+Nhóm tách rõ phần lấy từ công trình có sẵn và phần tự thiết kế.
+Trung vị và MAD với hệ số 1,4826 lấy từ tài liệu R Core Team.
+CUSUM chuẩn, ứng với λ bằng 1, lấy từ sổ tay NIST/SEMATECH.
+Isolation Forest theo Liu, Ting, Zhou 2008, nhóm tự cài đặt theo đặc tả.
+Baseline L1 theo Killourhy–Maxion 2009; ý tưởng hai ngưỡng lấy từ Kiyani 2020.
+Phần nhóm tự đề xuất gồm λ nhỏ hơn 1 và h2 bằng hai lần h1.
+Cooldown là tạm ngừng cảnh báo hai cửa sổ sau khi MFA thành công.
+Cửa sổ 50 phím và các hằng số kịch bản cũng do nhóm chọn.
+Chỉ λ, k, h được chọn trên validation, còn lại là hằng số thiết kế.
+
+Phần 3 · Thực nghiệm và kết quả
+
+Slide 17 · Dữ liệu và quy trình
+Dữ liệu là bốn hồ sơ mô phỏng, gồm 24 phiên và 28.800 lần gõ.
+Vì vậy kết quả chỉ dùng để kiểm tra quy trình.
+Nhóm chia theo ngày để tránh rò rỉ dữ liệu.
+Ngày một huấn luyện, ngày hai chọn tham số và ngưỡng, ngày ba kiểm thử.
+Mỗi kịch bản nối 225 phím của chủ thật với 300 phím của người lạ.
+Mỗi cấu hình chạy 432 kịch bản.
+Mô hình không biết điểm đổi người N, N chỉ dùng để chấm.
+
+Slide 18 · Chỉ số đánh giá
+Nhóm đo hai chiều ngược nhau: bắt người lạ và không làm phiền chủ.
+Bắt người lạ đo bằng tỷ lệ phát hiện, median TTD, và phát hiện trong 150 phím.
+Không làm phiền chủ đo bằng số lần MFA mỗi giờ và số lần thu hồi oan.
+Có một bẫy mẫu số: loại các ca bị thu hồi trước khi người lạ gõ.
+Khi loại các ca đó, Isolation Forest với P1 đạt 0,755.
+Tính đủ 432 kịch bản thì chỉ còn 0,613, nên nhóm luôn báo cả hai cách.
+Cấu hình chỉ đạt khi thỏa cả bốn ràng buộc, đặt trước khi chạy.
+Hai ràng buộc đầu: phát hiện từ 80% trở lên, median TTD không quá 150 phím.
+Hai ràng buộc sau: chưa cảnh báo tại 150 phím không quá 15%, không thu hồi oan.
+FAR, FRR, EER ở đây chỉ là chỉ số chẩn đoán ở mức cửa sổ.
+
+Slide 19 · Kết quả chẩn đoán
+Đây là kết quả chẩn đoán trên tập test, dữ liệu mô phỏng.
+Từ B0 sang B1, tỷ lệ phát hiện tăng: Isolation Forest từ 0,361 lên 0,627.
+L1 cũng tăng, từ 0,380 lên 0,500.
+Số lần hỏi MFA mỗi giờ cũng tăng: Isolation Forest từ 13,6 lên 15,3.
+Với L1, số lần hỏi MFA tăng mạnh hơn, từ 12,6 lên 21,4.
+P1 với Isolation Forest có TTD thấp nhất, 137,5 phím.
+Cấu hình này thu hồi nhầm 72 kịch bản trước khi người lạ gõ.
+Nó còn gây 4 lần thu hồi oan trên phiên chủ thật.
+Không cấu hình nào đạt ràng buộc trên validation, nên không kết luận chính sách nào tốt hơn.
+Kết quả cho thấy sự đánh đổi, chưa chứng minh hiệu quả.
+
+Phần 4 · Demo
+
+Slide 21 · Thu thập nhịp gõ
+Demo một là công cụ thu thập, mở ở chế độ pilot.
+Nhóm gõ một đoạn ngắn, thử sửa bằng Backspace và thử dán.
+Thao tác dán bị chặn.
+Khi nhấp ra ngoài vùng gõ, phiên ngắt đoạn.
+File JSON xuất ra chỉ có loại phím và thời điểm, không có ký tự.
+
+Slide 22 · Phát lại kịch bản tiếp quản
+Demo hai phát lại kịch bản tiếp quản, với Isolation Forest và hồ sơ SIM01.
+Cùng 225 phím của chủ thật, ghép với hai người lạ khác nhau.
+Ca một: người lạ gõ khá giống chủ, nên cả hai chính sách đều bỏ sót.
+Hết 275 phím mà S vẫn chưa vượt h1.
+Ca hai: P1 phát hiện ở 125 phím, hỏi MFA và người lạ trượt.
+B1 phải đến 225 phím mới phát hiện, muộn hơn chân trời 150.
+Tuy vậy ngưỡng thấp cũng khiến chủ thật dễ bị hỏi MFA oan.
+Đó chính là đánh đổi trong bảng kết quả.
+
+Slide 23 · Đối chiếu kết quả
+Demo ba: bộ đối chiếu do một thành viên khác viết độc lập.
+Bộ này chấm lại toàn bộ log để kiểm tra các con số.
+Sáu trên sáu nhóm kiểm tra đều khớp.
+Đó là 29.183 quyết định, 7.600 sự kiện MFA và thu hồi, 3.520 kết cục.
+Tám trên tám cặp chỉ số FAR, FRR, EER cũng khớp.
+Đây chỉ là kiểm tra tính nhất quán, chưa nói gì về hiệu quả với người thật.
+
+Phần 5 · Giới hạn và kết luận
+
+Slide 25 · Giới hạn
+Giới hạn một: dữ liệu là mô phỏng, chưa phản ánh độ biến động người thật.
+Nhóm mới đo một kiểu tấn công là A1, với kẻ tấn công ghép offline.
+Giới hạn hai: MFA mô phỏng lý tưởng, chủ luôn qua, kẻ lạ luôn trượt.
+Giới hạn ba: các cấu hình hỏi MFA với tần suất khác nhau.
+Vì vậy chưa so được ở cùng mức đánh đổi, kết luận mới ở bước đầu.
+Nhóm chưa làm hệ thống chạy trực tiếp và chống phát lại trên mạng.
+P2 và One-Class SVM, tức SVM một lớp, cũng chưa làm.
+
+Slide 26 · Kết luận và hướng phát triển
+Một: khoảng hở sau MFA là có thật.
+Nhịp gõ là tín hiệu bổ sung thụ động, không thay thế MFA.
+Hai: trong mô phỏng, cộng dồn tăng phát hiện nhưng kèm nhiều MFA hơn.
+Đây là một đánh đổi, chưa phải kết luận tối ưu.
+Ba: đóng góp chính là quy trình đánh giá có thể kiểm lại độc lập.
+Quy trình này sẵn sàng chạy trên dữ liệu thật.
+Bước tiếp theo là thu dữ liệu thật của 20 người, mỗi người 5 phiên.
+Sau đó ghép hệ thống chạy trực tiếp với lớp chống phát lại, và triển khai P2.
+
+Slide 29 · Kết
+Nhóm xin cảm ơn thầy cô và các bạn đã lắng nghe.
+Nhóm sẵn sàng nhận câu hỏi và góp ý.

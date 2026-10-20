@@ -1,0 +1,111 @@
+/* Global styles for Slidev presentation */
+
+/* Canvas Slidev mặc định 980×552. Chừa 64px dưới cho số trang → vùng nội dung tối đa 488px */
+.slidev-layout {
+  padding: 28px 44px 64px !important;
+  overflow: hidden !important;
+  box-sizing: border-box !important;
+}
+
+.slidev-layout:not(.alpha-academic-cover):not(.alpha-bg-center) h1 {
+  font-size: 34px !important;
+  line-height: 1.15 !important;
+  margin: 0 0 6px !important;
+}
+
+.alpha-transition-heading {
+  white-space: normal !important;
+  max-width: calc(100% - 6rem) !important;
+  box-sizing: border-box !important;
+}
+
+/* Phụ đề dưới tiêu đề */
+.sub {
+  font-size: 16px !important;
+  line-height: 1.3 !important;
+  color: #64748b !important;
+  margin: 4px 0 14px !important;
+}
+
+/* Khối đầu tiên của trang KHÔNG có phụ đề */
+.first {
+  margin-top: 16px !important;
+}
+
+/* Ép các thẻ trong cùng hàng cao bằng nhau */
+.equal {
+  display: grid;
+  align-items: stretch;
+}
+
+/* Chiều cao tối thiểu cho thẻ chính để không bị "xẹp" */
+.card-min {
+  min-height: 112px;
+}
+
+.fig {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fig img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.fig-card {
+  background: #fff;
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  padding: 8px;
+  box-shadow: 0 1px 2px rgba(15, 23, 42, .06);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.fig-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.chips {
+  display: grid;
+  gap: 14px;
+  font-size: 16px;
+  line-height: 1.35;
+}
+
+.chips.c3 {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.chips.c4 {
+  grid-template-columns: repeat(4, 1fr);
+}
+
+.chips > div {
+  padding: 12px 16px;
+  border-radius: 10px;
+}
+
+.cols-58-42 {
+  display: grid;
+  grid-template-columns: minmax(0, 1.38fr) minmax(0, 1fr);
+  column-gap: 20px;
+  align-items: start;
+}
+
+sub {
+  font-size: 0.7em;
+}
+
+.slidev-layout pre:not(.shiki) {
+  white-space: pre-wrap !important;
+  word-break: break-word !important;
+}

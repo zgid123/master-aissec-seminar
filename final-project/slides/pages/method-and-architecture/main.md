@@ -12,9 +12,17 @@ src: ./01-architecture.md
 ---
 
 ---
-src: ./02-cusum.md
+src: ./02-keystroke-features.md
 ---
 
 ---
-src: ./03-controller-and-configs.md
+src: ./03-cusum.md
+---
+
+---
+src: ./04-controller-and-configs.md
+---
+
+---
+src: ./05-formula-sources.md
 ---

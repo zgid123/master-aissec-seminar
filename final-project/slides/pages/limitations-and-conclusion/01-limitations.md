@@ -4,34 +4,43 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Giới hạn của kết quả
+# Giới hạn nghiên cứu
 
-<div class="mt-8 grid grid-cols-2 gap-x-6 gap-y-7 text-[21px] leading-snug">
-  <div class="border-l-4 border-rose-500 bg-rose-50 px-5 py-6">
-    <div class="mb-1 font-bold text-rose-800">Dữ liệu mô phỏng</div>
-    Cho thấy quy trình chạy đúng, chưa phản ánh độ chính xác trên người dùng thật.
+<div class="first grid grid-cols-2 gap-4 text-[16px] leading-relaxed">
+  <div class="rounded-xl border-l-4 border-rose-500 bg-rose-50/80 p-4 min-h-[110px] shadow-sm flex flex-col justify-center">
+    <div class="font-bold text-rose-900 text-[18px]">Dữ liệu mô phỏng</div>
+    <div class="mt-1 text-slate-700">Cho thấy quy trình phân tích chạy đúng và chặt chẽ, nhưng chưa phản ánh đầy đủ độ biến động trên người dùng thật.</div>
   </div>
-  <div v-click="2" class="border-l-4 border-rose-500 bg-rose-50 px-5 py-6">
-    <div class="mb-1 font-bold text-rose-800">Mới đo một kiểu tấn công</div>
-    Chưa đo trường hợp kẻ lạ cố bắt chước nhịp gõ của chủ.
+
+  <div v-click="1" class="rounded-xl border-l-4 border-rose-500 bg-rose-50/80 p-4 min-h-[110px] shadow-sm flex flex-col justify-center">
+    <div class="font-bold text-rose-900 text-[18px]">Mới đo một kiểu tấn công (A1)</div>
+    <div class="mt-1 text-slate-700">Kẻ tấn công được ghép offline từ phiên người khác; cơ chế kiểm tra chống phát lại mới ở mức thiết kế.</div>
   </div>
-  <div v-click="3" class="border-l-4 border-amber-500 bg-amber-50 px-5 py-6">
-    <div class="mb-1 font-bold text-amber-800">MFA chưa phải hệ thống thật</div>
-    Giả định chủ tài khoản luôn trả lời MFA đúng, kẻ lạ luôn trả lời sai.
+
+  <div v-click="2" class="rounded-xl border-l-4 border-amber-500 bg-amber-50/80 p-4 min-h-[110px] shadow-sm flex flex-col justify-center">
+    <div class="font-bold text-amber-900 text-[18px]">MFA chưa phải hệ thống thật</div>
+    <div class="mt-1 text-slate-700">Giả định lý tưởng: chủ tài khoản luôn vượt qua MFA thành công, kẻ lạ luôn xác thực thất bại.</div>
   </div>
-  <div v-click="4" class="border-l-4 border-slate-500 bg-slate-50 px-5 py-6">
-    <div class="mb-1 font-bold text-slate-800">So sánh chưa hoàn toàn cân bằng</div>
-    Các cấu hình hỏi MFA với tần suất khác nhau, nên kết luận mới là bước đầu.
+
+  <div v-click="2" class="rounded-xl border-l-4 border-slate-500 bg-slate-50 p-4 min-h-[110px] shadow-sm flex flex-col justify-center">
+    <div class="font-bold text-slate-800 text-[18px]">So sánh chưa hoàn toàn cân bằng</div>
+    <div class="mt-1 text-slate-700">Các cấu hình hỏi MFA với tần suất khác nhau nên chưa so được ở cùng mức đánh đổi, kết luận dừng ở bước đầu.</div>
   </div>
 </div>
+
+<!-- Dải 4 chip Chưa triển khai -->
+<div v-click="3" class="mt-5">
+  <div class="text-[13px] font-bold uppercase tracking-wider text-rose-800 mb-2">CHƯA HIỆN THỰC (GIỚI HẠN PHẠM VI)</div>
+  <div class="grid grid-cols-4 gap-3">
+    <div class="rounded-lg border border-rose-200 bg-rose-50/90 p-3 text-[14.5px] font-medium text-rose-900 text-center shadow-sm">Hệ thống live end-to-end</div>
+    <div class="rounded-lg border border-rose-200 bg-rose-50/90 p-3 text-[14.5px] font-medium text-rose-900 text-center shadow-sm">Chống phát lại trên mạng</div>
+    <div class="rounded-lg border border-rose-200 bg-rose-50/90 p-3 text-[14.5px] font-medium text-rose-900 text-center shadow-sm">Cập nhật hồ sơ sau MFA (P2)</div>
+    <div class="rounded-lg border border-rose-200 bg-rose-50/90 p-3 text-[14.5px] font-medium text-rose-900 text-center shadow-sm">Thuật toán One-Class SVM</div>
+  </div>
+</div>
+
 <!--
 Mục tiêu: 0:45
 
-Thứ nhất, dữ liệu là dữ liệu mô phỏng của 4 hồ sơ, nên kết quả dùng để kiểm chứng quy trình, chưa phải độ chính xác trên người thật.
-
-[CLICK] Thứ hai, mới đo kịch bản người lạ gõ theo thói quen.
-
-[CLICK] Thứ ba, MFA chưa nối với hệ thống thật: nhóm giả định chủ luôn trả lời đúng, kẻ lạ luôn sai. P2 chưa cài.
-
-[CLICK] Và các cấu hình hỏi MFA với tần suất khác nhau, nên các kết luận ở RQ1, RQ2 mới là bước đầu, cần so lại ở cùng một mức hỏi MFA.
+Giới hạn lớn nhất là dữ liệu và MFA đều mô phỏng, kẻ tấn công ghép offline, và các cấu hình hỏi MFA với tần suất khác nhau nên kết luận mới là bước đầu. Live, chống phát lại, P2 và One-Class SVM chưa làm.
 -->

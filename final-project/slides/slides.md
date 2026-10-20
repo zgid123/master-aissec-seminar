@@ -15,22 +15,23 @@ fonts:
   sans: Roboto
   serif: Roboto
   mono: Roboto Mono
-duration: 20min
+duration: 15min
 ---
 
-# Xác thực liên tục thích ứng dựa trên nhịp gõ phím
+# Xác thực liên tục thích ứng<br>dựa trên nhịp gõ phím
 
-<span class="text-[24px] text-cyan-300">Phát hiện người lạ tiếp quản phiên sau khi đã qua MFA</span>
+<span class="text-[24px] text-cyan-300">Phát hiện tiếp quản phiên sau khi đã qua MFA</span>
 
 <Speaker
   :team="[
-    'Nhóm 02',
+    'Nhóm 02 (2026-10-20)',
     '25C12011 - Nguyễn Bảo Trâm',
     '25C11012 - Võ Công Minh',
     '25C12016 - Trần Huy Vũ',
     '25C12031 - Dương Tấn Huỳnh Phong',
   ]"
   :date="'2026-10-20'"
+  class="!right-[44px] !bottom-[36px] [&_.alpha-date]:hidden"
 />
 
 <Speaker
@@ -41,7 +42,7 @@ duration: 20min
     'ThS. Lương Vĩ Minh',
   ]"
   :date="'2026-10-20'"
-  class="!left-[30px] !right-auto !bottom-[64px] [&_.alpha-date]:hidden"
+  class="!left-[44px] !right-auto !bottom-[36px] [&_.alpha-date]:hidden"
 />
 
 <style>
@@ -52,19 +53,25 @@ duration: 20min
 .alpha-academic-cover h1 {
   font-size: 2.7rem !important;
   line-height: 1.2 !important;
+  text-wrap: balance !important;
 }
 .alpha-academic-cover__content > h1,
 .alpha-academic-cover__content > p {
   transform: translateY(-70px);
 }
+
+/* Headings: prevent truncation & overflow across all slides */
+.alpha-transition-heading {
+  white-space: normal !important;
+  max-width: calc(100% - 6rem) !important;
+  box-sizing: border-box !important;
+}
 </style>
 
 <!--
-Mục tiêu: 0:20
+Mục tiêu: 0:15
 
-Kính chào thầy cô và các bạn. Em là Võ Công Minh, đại diện nhóm 02 trình bày đồ án cuối kỳ môn An toàn và bảo mật trong hệ thống thông tin.
-
-Đề tài của nhóm là xác thực liên tục thích ứng dựa trên nhịp gõ phím. Câu hỏi nhóm theo đuổi khá đơn giản: sau khi người dùng đã đăng nhập và qua MFA, làm sao biết người đang gõ vẫn là chủ tài khoản?
+Chúng em trình bày đề tài xác thực liên tục dựa trên nhịp gõ phím. Phần kết quả hiện chạy trên dữ liệu mô phỏng và chúng em sẽ nói rõ điều đó ở từng chỗ.
 -->
 
 ---
@@ -77,9 +84,9 @@ indexed: true
 # Mục lục
 
 <!--
-Mục tiêu: 0:10
+Mục tiêu: 0:05
 
-Bài trình bày gồm năm phần chính: bối cảnh và mô hình đe dọa, phương pháp, thực nghiệm, demo, và cuối cùng là kết luận.
+Bài trình bày gồm năm phần chính: 1. Bối cảnh và bài toán · 2. Phương pháp và kiến trúc · 3. Thực nghiệm và kết quả · 4. Demo · 5. Giới hạn và kết luận.
 -->
 
 ---
@@ -107,6 +114,21 @@ src: ./pages/references/main.md
 ---
 
 ---
-layout: thanks
+layout: default
 hideInToc: true
+class: "h-full flex flex-col items-center justify-center text-center relative"
 ---
+
+<div class="flex flex-col items-center justify-center">
+  <h1 class="!text-5xl !font-bold text-sky-600 !mb-2">Xin cảm ơn thầy cô và các bạn đã lắng nghe.</h1>
+</div>
+
+<div class="absolute bottom-8 left-0 right-0 text-center text-[15px] text-slate-500 font-medium">
+  Mã nguồn và bộ dữ liệu mô phỏng: <a href="https://github.com/zgid123/master-aissec-seminar.git" target="_blank" class="text-sky-600 underline">https://github.com/zgid123/master-aissec-seminar.git</a>
+</div>
+
+<!--
+Mục tiêu: 0:10
+
+Chúng em xin chân thành cảm ơn thầy cô và các bạn đã lắng nghe. Nhóm sẵn sàng nhận câu hỏi và góp ý.
+-->

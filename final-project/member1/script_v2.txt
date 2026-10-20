@@ -1,0 +1,150 @@
+---
+
+## SLIDE 1 — Trang bìa (0:15)
+**Hiển thị:** Xác thực liên tục thích ứng dựa trên nhịp gõ phím · MTH042 – Nhóm 02 · tên 4 thành viên
+**Script:** "Chúng em xin trình bày đề tài xác thực liên tục dựa trên nhịp gõ phím. Phần kết quả hiện chạy trên dữ liệu mô phỏng, và chúng em sẽ nói rõ điều này ở từng chỗ."
+
+## SLIDE 2 — Sau khi đăng nhập, ai biết người đang gõ vẫn là chủ tài khoản? (1:15)
+**Hiển thị:**
+- MFA (xác thực đa yếu tố) chỉ xác nhận người dùng **tại lúc đăng nhập**
+- Sau đó phiên được giữ bằng **bí mật phiên** (cookie/token) gửi kèm mỗi yêu cầu
+- Cookie phiên thường chỉ là **mã định danh ngẫu nhiên**, không chứa nhịp gõ
+- Ai giữ được bí mật phiên hoặc ngồi vào máy đang mở: máy chủ vẫn thấy "một phiên hợp lệ"
+
+**Hình:** H1 (09:00 đăng nhập · 13:20 chiếm phiên · 13:21 cần phát hiện)
+**Script:** "9 giờ người dùng đăng nhập và qua MFA. 13 giờ 20, người khác ngồi vào máy đang mở. Máy chủ chỉ kiểm tra cookie, mà cookie chỉ là mã định danh ngẫu nhiên, nó không biết ai đang gõ. Theo NIST, bí mật phiên hoạt động như bearer token: ai giữ thì dùng được. Khoảng hở này là điều đề tài muốn rút ngắn."
+
+## SLIDE 3 — Bài toán: xác thực liên tục và mô hình đe dọa (1:15)
+**Hiển thị:**
+- Đầu vào: dòng sự kiện phím (nhóm phím, lúc nhấn, lúc nhả), **không lưu ký tự**
+- Mỗi bước ra một quyết định: `CONTINUE` / `MFA_CHALLENGE` / `REVOKE`
+- Là xác minh 1:1 ("có đúng chủ không?"), không phải nhận dạng "đây là ai"
+- Hai mục tiêu mâu thuẫn: **phát hiện nhanh** ↔ **ít làm phiền chủ thật**
+- Kẻ tấn công đã có phiên hợp lệ. Kịch bản chính A1: người lạ gõ theo thói quen riêng. Hậu quả: xâm nhập (FAR) hoặc chủ thật bị làm phiền (FRR)
+
+**Hình:** H2
+**Script:** "Bài toán là theo dõi nhịp gõ suốt phiên và quyết định tiếp tục, yêu cầu xác thực lại, hoặc thu hồi phiên. Khó ở chỗ hai mục tiêu kéo ngược nhau. Kẻ tấn công trong mô hình đã có phiên hợp lệ, nên chúng em đo cả hai loại sai: kẻ lạ lọt qua, và chủ thật bị làm phiền oan."
+
+## SLIDE 4 — Thực tế: đã có ứng dụng, nhưng chỉ là lớp bổ sung (1:30)
+**Hiển thị:**
+- Ví dụ thương mại: TypingDNA **ActiveLock** theo dõi cách gõ, có thể khóa máy hoặc cảnh báo *(thông tin từ nhà cung cấp, chưa phải đánh giá độc lập)*
+
+| Biện pháp | Giới hạn |
+|---|---|
+| Timeout phiên | Kẻ lạ tiếp tục thao tác thì phiên vẫn sống |
+| Xác thực lại định kỳ | Gây gián đoạn; vẫn có khoảng hở giữa hai lần |
+| Giám sát IP/thiết bị | Dùng ngay máy đang mở thì tín hiệu có thể không đổi |
+| **Nhịp gõ** | Cần đủ lượng phím mới có bằng chứng |
+
+- **Ưu điểm lớn nhất:** thu thụ động, không cần phần cứng thêm
+- **Nhược điểm lớn nhất:** không gõ thì không có bằng chứng
+
+**Script:** "Đã có sản phẩm như ActiveLock, nhưng đó là mô tả của nhà cung cấp và có thêm tín hiệu khác, nên không tương đương hệ thống chỉ dùng nhịp gõ của nhóm. Mỗi biện pháp quản lý phiên đều có chỗ hở. Chúng em chọn nhịp gõ vì thu được thụ động bằng bàn phím sẵn có. Điểm yếu lớn nhất là cần đủ lượng phím. Vì vậy nhịp gõ bổ sung cho các biện pháp khác, không thay thế chúng."
+
+## SLIDE 5 — Các hướng nghiên cứu và khoảng trống (1:15)
+**Hiển thị:**
+- **Theo dữ liệu:** văn bản cố định · bán cố định · văn bản tự do
+- **Theo phương pháp:** thống kê/khoảng cách → học máy → học sâu
+- Mốc tiêu biểu: Gunetti & Picardi 2005 · Killourhy & Maxion 2009 (14 bộ phát hiện) · Bours 2012 · **TypeNet 2021** · **TypeFormer 2024** · **KVC-onGoing 2025**
+- **Khoảng trống:** FAR/FRR/EER không cho biết cần *bao nhiêu phím* để phát hiện → đo thêm **TTD** (Time To Detection) và **MFA/giờ**
+- Nhóm chỉ hiện thực L1 và Isolation Forest, chưa tái hiện học sâu
+
+**Script:** "Nghiên cứu có thể chia theo loại văn bản và theo phương pháp, từ thống kê đến học sâu; gần đây có TypeNet, TypeFormer và benchmark KVC-onGoing. Phần lớn báo cáo FAR, FRR, EER, nhưng các chỉ số này không cho biết cần bao nhiêu phím mới phát hiện được. Vì vậy chúng em đo thêm thời gian phát hiện và số lần phải xác thực lại. Chúng em khảo sát một số công trình tiêu biểu, không khẳng định chưa ai làm điều tương tự."
+
+## SLIDE 6 — Kiến trúc: đã làm gì, chưa làm gì (1:00)
+**Hiển thị:** 3 ý ngắn bên cạnh hình
+- Đã hiện thực: collector, pipeline, mô hình, đánh giá replay
+- Đề xuất, chưa hiện thực: lớp truyền (TLS, seq, nonce chống phát lại), MFA theo thời gian thực
+- B0/B1/P1 dùng **chung một đường xử lý**, chỉ khác cấu hình
+
+**Hình:** H3
+**Script:** "Thực nghiệm chạy ngoại tuyến theo kiểu replay trên dữ liệu mô phỏng. Các cấu hình so sánh dùng chung một đường xử lý nên so sánh công bằng. Lớp truyền chống phát lại và luồng live chưa làm, chúng em ghi rõ trên hình."
+
+## SLIDE 7 — Phương pháp và nguồn của từng công thức (1:30)
+**Hiển thị:**
+1. Cửa sổ 50 phím → **12 đặc trưng** (thời gian giữ phím, khoảng nghỉ, tốc độ, tỷ lệ sửa lỗi, độ biến động)
+2. Điểm bất thường aₜ: **L1** hoặc **Isolation Forest** [13]
+3. zₜ = (aₜ − median) / (1,4826 · MAD) — MAD: độ lệch tuyệt đối trung vị [26]
+4. **CUSUM có hệ số quên:** Sₜ = max{0, λSₜ₋₁ + zₜ − k} [12]
+5. Sₜ < h₁ tiếp tục · h₁ ≤ Sₜ < h₂ MFA · Sₜ ≥ h₂ thu hồi
+- *Do nhóm đặt:* hệ số quên λ, h₂ = 2h₁, cooldown 2 cửa sổ
+
+**Script:** "Mỗi 50 phím tạo một cửa sổ 12 đặc trưng, tính điểm bất thường rồi chuẩn hóa theo từng người bằng median và MAD. Điểm đưa vào CUSUM, tức tổng tích lũy một phía, để cộng dồn bằng chứng qua nhiều cửa sổ. Chúng em phân biệt rõ: công thức nền lấy từ tài liệu đã nêu, còn hệ số quên, tỷ lệ hai ngưỡng và cooldown là lựa chọn thiết kế của nhóm."
+
+## SLIDE 8 — Vì sao cần CUSUM: ví dụ tính tay và máy trạng thái (1:15)
+**Hiển thị:**
+- zₜ = 3 ở 3 cửa sổ liên tiếp, λ = 0,9, k = 0,5 → Sₜ = **2,5 → 4,75 → 6,775**
+- Ngưỡng 6: CUSUM báo ở cửa sổ thứ 3; xét riêng từng cửa sổ (3 < 6) thì **không báo lần nào**
+- *(ví dụ minh họa, không phải kết quả thực nghiệm)*
+
+**Hình:** H4
+**Script:** "Ba cửa sổ liên tiếp hơi bất thường, mỗi cái đều dưới ngưỡng nên xét riêng sẽ không báo. Cộng dồn thì ở cửa sổ thứ ba vượt ngưỡng. Vượt h₁ thì phiên chuyển sang chờ xác thực lại; MFA đạt thì quay về hoạt động, trượt hoặc vượt h₂ thì thu hồi."
+
+## SLIDE 9 — Thiết kế thực nghiệm (1:00)
+**Hiển thị:**
+- **Dữ liệu:** 4 hồ sơ mô phỏng SIM01–SIM04 · 24 phiên · 28.800 lần gõ — **tổng hợp, không phải người thật**
+- **Chia theo phiên/ngày:** D1 train · D2 validation · D3 test (không chia ngẫu nhiên cửa sổ trong cùng phiên)
+- **So sánh:** B0 (từng cửa sổ) · B1 (CUSUM, ngưỡng chung) · P1 (CUSUM, ngưỡng riêng từng người) · B1 λ=1 (không quên)
+- **Kịch bản A1:** 225 phím chủ thật rồi 300 phím người lạ; theo dõi L = 150 phím
+- **Chỉ số:** FAR/FRR/EER (False Acceptance/False Rejection/Equal Error Rate, mức cửa sổ) · TTD · MFA/giờ · thu hồi oan
+- Tham số chọn trên validation, không dùng test; seed cố định
+
+**Script:** "Dữ liệu là bốn hồ sơ mô phỏng nên kết quả chỉ dùng để kiểm tra quy trình. Chúng em chia theo phiên và theo ngày để tránh rò rỉ dữ liệu, và tham số chỉ chọn trên validation. Mỗi kịch bản nối 225 phím của chủ thật với 300 phím của người lạ, rồi đo thời gian phát hiện từ điểm đổi người."
+
+## SLIDE 10 — Kết quả sơ bộ: có đánh đổi, chưa có người thắng (1:30)
+**Hiển thị (Isolation Forest, macro trên 4 hồ sơ):**
+
+| Chính sách | Phát hiện (432 kịch bản) | Median TTD (phím) | MFA/giờ chủ thật | Thu hồi oan |
+|---|---|---|---|---|
+| B0 | 0,361 | 162,5 | 13,6 | 0 |
+| B1 | 0,627 | 162,5 | 15,3 | 1 |
+| P1 | 0,613 | 137,5 | 20,3 | 4 |
+
+*L1: B0 → B1, phát hiện 0,380 → 0,500; MFA/giờ 12,6 → 21,4.*
+- Cộng dồn bằng chứng phát hiện nhiều hơn, nhưng **chủ thật bị xác thực lại nhiều hơn**
+- **0/4 tài khoản** đạt ràng buộc validation ở cả 8 tổ hợp → **chưa kết luận H1, H2**
+
+**Script:** "Với Isolation Forest, cộng dồn bằng chứng nâng tỷ lệ phát hiện từ 0,36 lên 0,63, nhưng số lần chủ thật bị xác thực lại cũng tăng. P1 có median TTD thấp hơn nhưng nhiều thu hồi oan nhất. Không cấu hình nào đạt ràng buộc trên validation, nên chúng em không kết luận chính sách nào tốt hơn. Kết quả cho thấy sự đánh đổi, chưa chứng minh hiệu quả."
+
+## SLIDE 11 — Phân tích lỗi và độ tin cậy của phép đo (1:00)
+**Hiển thị:**
+- Isolation Forest, B0: **276** kịch bản không phát hiện. P1 giảm còn **95**, nhưng **72 kịch bản bị thu hồi trước khi người lạ gõ** (4/24 prefix chủ thật)
+- Hạ ngưỡng không tự giải quyết vấn đề: điểm người lạ gần điểm chủ → tăng báo giả mà không ổn định hơn
+- **Kiểm chứng:** bộ đánh giá viết độc lập khớp 8/8 cặp FAR/FRR/EER (sai số ≤ 10⁻¹²) và 29.183 quyết định trong log
+- Đây là kiểm tra tính nhất quán của phép tính, không phải bằng chứng hiệu quả trên người thật
+
+**Script:** "Chúng em phân tích lỗi trước khi kết luận. Cấu hình phát hiện nhiều hơn lại thu hồi nhầm nhiều hơn, nên không đọc tỷ lệ phát hiện hay MFA/giờ riêng lẻ. Bộ đánh giá do thành viên khác viết độc lập đã chấm lại và khớp, nghĩa là phép tính nhất quán, nhưng chưa nói gì về hiệu quả với người thật."
+
+## SLIDE 12 — Giới hạn, hướng tiếp theo và kết luận (1:15)
+**Hiển thị:**
+- **Giới hạn:** dữ liệu mô phỏng 4 hồ sơ · MFA mô phỏng · kẻ tấn công ghép offline · một loại thiết bị
+- **Chưa triển khai:** live end-to-end, chống phát lại, cập nhật hồ sơ sau MFA (P2), One-Class SVM
+- **Tiếp theo:** thu dữ liệu thật 20 người × 5 phiên · ghép collector với bộ điều khiển phiên · đánh giá P2
+- **Kết luận:**
+  1. Khoảng hở sau MFA là có thật; nhịp gõ là tín hiệu **bổ sung, thụ động**
+  2. Đã dựng quy trình đo bằng **TTD và MFA/giờ**, có kiểm chứng độc lập
+  3. Kết quả mô phỏng cho thấy **đánh đổi**; cần dữ liệu thật để kết luận
+
+**Script:** "Giới hạn lớn nhất là dữ liệu và MFA đều mô phỏng. Bước tiếp theo là thu dữ liệu 20 người, ghép collector với bộ điều khiển phiên và đánh giá cập nhật hồ sơ. Tóm lại: nhịp gõ bổ sung cho MFA chứ không thay thế, và kết quả hiện tại mới cho thấy sự đánh đổi. Em xin cảm ơn thầy cô và các bạn."
+
+---
+
+## Những điểm đã sửa so với bản `script.txt`
+- Gộp từ 14 xuống 12 slide: gộp mô hình đe dọa vào slide 3, gộp phân tích lỗi cùng độ tin cậy ở slide 11, gộp giới hạn và kết luận ở slide 12.
+- Câu "chỉ hiện thực nhóm thống kê" đổi thành "chỉ hiện thực L1 và Isolation Forest". Isolation Forest là học máy, nên câu cũ dễ bị bắt lỗi.
+- Câu "tái lập từng byte" bỏ khỏi slide, vì báo cáo v2 không nêu như vậy (chỉ có seed cố định). Nếu muốn giữ, hãy bổ sung vào báo cáo từ `member3/VERIFICATION.md`.
+- Viết đầy đủ FAR/FRR/EER ở slide 9, TTD ở slide 5, MAD ở slide 7.
+
+## Việc cần làm trước khi trình bày
+1. Mở lại nguồn [24] ActiveLock và [25] OWASP (mình chưa mở trang gốc), vì slide 2 và 4 dựa vào hai nguồn này.
+2. Nếu thành viên đổi số, sửa lại slide 9–11 theo Bảng 13–16 của báo cáo.
+3. **Nếu chỉ có 10 phút:** gộp slide 2 và 3, gộp slide 6 và 8, bỏ slide 11 (chuyển ý "72 kịch bản thu hồi trước" sang slide 10).
+
+## Câu hỏi dễ gặp
+- **Cookie của hệ thống nhóm chứa gì?** Demo không dùng cookie đăng nhập thật; `session_id` của collector chỉ là mã bản ghi.
+- **Vì sao chưa đạt mà vẫn trình bày?** Mục tiêu hiện tại là dựng và kiểm chứng quy trình đo. Không cấu hình nào thỏa đồng thời phát hiện ≥ 80%, chưa cảnh báo tại L ≤ 15% và không thu hồi oan.
+- **MFA/giờ 13–20 có phải quá cao?** Đúng, nên nhóm không nói hệ thống vận hành được; đây là chi phí mà lưới tham số hiện tại chưa giảm được.
+- **Công thức lấy từ đâu?** Slide 7 có sẵn nguồn [12], [13], [26]; phần còn lại là quy tắc do nhóm đặt.
+- **Có hệ thống thực tế nào dùng phương pháp này không?** Có, ví dụ ActiveLock, nhưng đó là thông tin từ nhà cung cấp.
+
+Mình có thể chia lượt nói cho 4 người hoặc viết thêm bộ câu hỏi phản biện kèm trả lời chi tiết nếu bạn cần. Các hình đã chuẩn bị là `H1_timeline_khoang_ho.png`, `H2_dinh_nghia_tu_du_lieu_den_quyet_dinh.png`, `H3_kien_truc_muc_tieu_va_hien_thuc.png` và `H4_may_trang_thai.png`.

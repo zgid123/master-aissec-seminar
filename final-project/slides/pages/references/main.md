@@ -1,7 +1,7 @@
 ---
 layout: bg-center
 transition: fade
-indexed: true
+hideInToc: true
 background: ../../assets/heading.png
 ---
 

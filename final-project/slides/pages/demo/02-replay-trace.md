@@ -4,22 +4,25 @@ hideInToc: true
 transition: slide-left
 ---
 
-# Demo 2: replay một kịch bản tiếp quản
+# Demo 2 - Phát lại kịch bản tiếp quản
 
 <DemoProgress :active="2" />
 
-<div class="mt-2 flex items-center justify-between text-[17px] text-slate-600">
-  <span>Cùng một chủ tài khoản, ghép với hai người lạ khác nhau.</span>
-  <span class="flex gap-4 text-[14px]">
-    <span><span class="inline-block h-2.5 w-2.5 rounded-sm bg-sky-500"></span> chủ thật</span>
-    <span><span class="inline-block h-2.5 w-2.5 rounded-sm bg-purple-500"></span> cửa sổ trộn</span>
-    <span><span class="inline-block h-2.5 w-2.5 rounded-sm bg-rose-500"></span> người lạ</span>
+<div class="mt-2 flex items-center justify-between text-[14px] text-slate-600 bg-slate-50 px-3.5 py-1.5 rounded-lg border border-slate-200">
+  <span class="font-medium"><b>Cấu hình:</b> Isolation Forest, SIM01, hai kịch bản A1 đầu tiên theo thứ tự trong file log</span>
+  <span class="flex gap-3 text-[13px]">
+    <span class="inline-flex items-center gap-1.5"><span class="inline-block h-2.5 w-2.5 rounded-sm bg-sky-500"></span> Chủ thật</span>
+    <span class="inline-flex items-center gap-1.5"><span class="inline-block h-2.5 w-2.5 rounded-sm bg-purple-500"></span> Cửa sổ trộn</span>
+    <span class="inline-flex items-center gap-1.5"><span class="inline-block h-2.5 w-2.5 rounded-sm bg-rose-500"></span> Người lạ</span>
   </span>
 </div>
 
-<div class="mt-2 grid grid-cols-2 gap-5">
-  <div>
-    <div class="text-[16px] font-bold text-slate-700">Người lạ thứ nhất: <span class="text-slate-500">bỏ sót</span></div>
+<div class="mt-3 grid grid-cols-2 gap-4">
+  <div class="rounded-lg border border-slate-200 bg-white p-3 shadow-sm">
+    <div class="text-[15px] font-bold text-slate-700 flex justify-between">
+      <span>Ca 1: Ghép SIM02 (G0)</span>
+      <span class="text-slate-500 font-normal">Bỏ sót cả 2 chính sách</span>
+    </div>
     <CusumTrace :h1="1" :h2="2" :windows="[
       { s: 0, label: 'genuine', action: 'CONTINUE' },
       { s: 0.49, label: 'genuine', action: 'CONTINUE' },
@@ -32,10 +35,14 @@ transition: slide-left
       { s: 0, label: 'impostor', action: 'CONTINUE' },
       { s: 0, label: 'impostor', action: 'CONTINUE' },
     ]" />
-    <div class="text-[15px] text-slate-600">Gõ giống chủ, hết 275 phím vẫn chưa hỏi MFA.</div>
+    <div class="text-[14px] text-slate-500 text-center mt-1">Hết 275 phím vẫn chưa vượt h<sub>1</sub>.</div>
   </div>
-  <div v-click="2">
-    <div class="text-[16px] font-bold text-slate-700">Người lạ thứ hai: <span class="text-rose-700">phát hiện ở 125 phím</span></div>
+
+  <div v-click="1" class="rounded-lg border border-rose-200 bg-white p-3 shadow-sm">
+    <div class="text-[15px] font-bold text-rose-800 flex justify-between">
+      <span>Ca 2: Ghép SIM02 (G1)</span>
+      <span class="text-rose-700 font-semibold">P1 bắt ở 125 phím</span>
+    </div>
     <CusumTrace :h1="1" :h2="2" :windows="[
       { s: 0, label: 'genuine', action: 'CONTINUE' },
       { s: 0.49, label: 'genuine', action: 'CONTINUE' },
@@ -45,25 +52,16 @@ transition: slide-left
       { s: 0, label: 'impostor', action: 'CONTINUE' },
       { s: 1.08, label: 'impostor', action: 'MFA_CHALLENGE' },
     ]" />
-    <div class="text-[15px] text-slate-600">W6 vượt mức 1, hệ thống hỏi MFA, kẻ lạ trả lời sai.</div>
+    <div class="text-[14px] text-slate-500 text-center mt-1">W6 vượt h<sub>1</sub> &rarr; hỏi MFA &rarr; người lạ trượt.</div>
   </div>
 </div>
 
-
-<div v-click="3" class="mt-2 border-l-4 border-violet-500 bg-violet-50 px-4 py-2 text-[16px]">
-  Ngưỡng chung (B1) bỏ sót cả hai. Ngưỡng riêng (P1) bắt được ca hai nhưng dễ hỏi MFA oan hơn.
+<div v-click="2" class="mt-3 rounded-lg bg-slate-900 px-4 py-2.5 text-[14px] text-white">
+  <b>Đánh giá:</b> Ca 1: B1 và P1 đều bỏ sót. Ca 2: ngưỡng riêng (P1) phát hiện ở 125 phím, ngưỡng chung (B1) ở 225 phím, muộn hơn chân trời 150.
 </div>
 
 <!--
-Mục tiêu: 1:00
+Mục tiêu: 0:50
 
-Đây là log từ lần chạy ngày 19/10 của pipeline mô hình. Cả hai biểu đồ dùng cùng 225 phím đầu của chủ SIM01, ghép với hai phiên người lạ khác nhau. Em lấy theo thứ tự trong file, không chọn ca đẹp. Xanh là cửa sổ của chủ, tím là cửa sổ trộn, đỏ là người lạ.
-
-Ca thứ nhất: người lạ gõ khá giống chủ, điểm rủi ro chỉ nhích lên rồi về 0. Hết 275 phím mà không cảnh báo, đây là ca bỏ sót.
-
-[CLICK] Ca thứ hai: đến đoạn W6 nhịp gõ lạ rõ, điểm rủi ro vượt mức hỏi MFA. Hệ thống hỏi MFA, người lạ trượt và phiên bị thu hồi, TTD là 125 phím.
-
-[CLICK] Nếu dùng B1 với ngưỡng chung thì cả hai ca đều bị bỏ sót. P1 hạ ngưỡng riêng cho SIM01 nên bắt được, nhưng chính ngưỡng thấp này cũng làm chủ thật dễ bị hỏi MFA oan. Đó là đánh đổi đã thấy ở bảng kết quả.
-
-Ghi chú: script demo.ts của member3 kiểm hash dữ liệu nên báo lỗi trên bản checkout Windows có CRLF. Slide này dùng số lấy trực tiếp từ decisions.csv và events.csv, không cần chạy script.
+Cùng 225 phím của chủ thật, ghép với hai phiên người lạ khác nhau. Ca đầu người lạ gõ khá giống chủ nên cả hai chính sách đều bỏ sót. Ca hai, ngưỡng riêng phát hiện ở 125 phím còn ngưỡng chung phải đến 225 phím, muộn hơn chân trời 150. Ngưỡng thấp này cũng làm chủ thật dễ bị hỏi MFA oan, đó là đánh đổi trong bảng.
 -->

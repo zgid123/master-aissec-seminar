@@ -5,7 +5,7 @@ indexed: true
 background: ../../assets/heading.png
 ---
 
-# Thực nghiệm và đánh giá
+# Thực nghiệm và kết quả
 
 ---
 src: ./01-data-and-protocol.md

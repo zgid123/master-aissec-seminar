@@ -15,10 +15,10 @@ const props = withDefaults(defineProps<{
 }>(), { maxS: 2.4 })
 
 const W = 420
-const H = 170
-const padL = 34
-const padB = 26
-const padT = 10
+const H = 190
+const padL = 38
+const padB = 28
+const padT = 12
 const plotW = W - padL - 8
 const plotH = H - padB - padT
 
@@ -31,9 +31,9 @@ const fill = (label: string) => ({ genuine: '#0ea5e9', mixed: '#a855f7', imposto
   <svg :viewBox="`0 0 ${W} ${H}`" class="w-full" role="img" aria-label="Diễn biến điểm tích lũy S theo cửa sổ">
     <line :x1="padL" :x2="W - 8" :y1="y(0)" :y2="y(0)" stroke="#94a3b8" />
     <line :x1="padL" :x2="W - 8" :y1="y(h1)" :y2="y(h1)" stroke="#d97706" stroke-dasharray="5 4" />
-    <text :x="padL - 4" :y="y(h1) + 4" text-anchor="end" style="font-size: 11px; line-height: 1" fill="#b45309">h₁={{ h1 }}</text>
+    <text :x="padL - 4" :y="y(h1) + 4" text-anchor="end" style="font-size: 13px; font-weight: 700; line-height: 1" fill="#b45309">h₁={{ h1 }}</text>
     <line :x1="padL" :x2="W - 8" :y1="y(h2)" :y2="y(h2)" stroke="#e11d48" stroke-dasharray="5 4" />
-    <text :x="padL - 4" :y="y(h2) + 4" text-anchor="end" style="font-size: 11px; line-height: 1" fill="#be123c">h₂={{ h2 }}</text>
+    <text :x="padL - 4" :y="y(h2) + 4" text-anchor="end" style="font-size: 13px; font-weight: 700; line-height: 1" fill="#be123c">h₂={{ h2 }}</text>
     <g v-for="(w, i) in windows" :key="i">
       <rect
         :x="padL + i * slot + slot * 0.18"
@@ -43,13 +43,13 @@ const fill = (label: string) => ({ genuine: '#0ea5e9', mixed: '#a855f7', imposto
         :fill="fill(w.label)"
         rx="2"
       />
-      <text :x="padL + i * slot + slot / 2" :y="H - 10" text-anchor="middle" style="font-size: 10px; line-height: 1" fill="#475569">W{{ i }}</text>
+      <text :x="padL + i * slot + slot / 2" :y="H - 8" text-anchor="middle" style="font-size: 12px; font-weight: 500; line-height: 1" fill="#475569">W{{ i }}</text>
       <text
         v-if="w.action !== 'CONTINUE'"
         :x="padL + i * slot + slot / 2"
         :y="y(w.s) - 5"
         text-anchor="middle"
-        style="font-size: 10px; line-height: 1; font-weight: 700"
+        style="font-size: 12px; line-height: 1; font-weight: 700"
         fill="#be123c"
       >MFA</text>
     </g>

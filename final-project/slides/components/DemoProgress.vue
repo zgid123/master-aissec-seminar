@@ -1,7 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{ active: number }>()
 
-const steps = ['Thu nhịp gõ', 'Replay một kịch bản', 'Đối chiếu kết quả']
+const steps = ['Thu thập', 'Phát lại', 'Đối chiếu']
 </script>
 
 <template>

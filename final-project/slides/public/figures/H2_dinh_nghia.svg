@@ -1,0 +1,75 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 880 230" width="880" height="230" font-family="Roboto, 'Segoe UI', Arial, sans-serif">
+  <!-- Background -->
+  <rect width="880" height="230" fill="#FFFFFF"/>
+
+  <!-- Account Profile Top Block -->
+  <rect x="290" y="12" width="300" height="48" rx="8" fill="#F5F3FF" stroke="#7C3AED" stroke-width="2"/>
+  <text x="440" y="32" text-anchor="middle" font-size="15" font-weight="700" fill="#5B21B6">Hồ sơ tài khoản</text>
+  <text x="440" y="49" text-anchor="middle" font-size="13.5" fill="#6D28D9">Mô hình riêng + median/MAD của điểm</text>
+
+  <!-- Dashed lines from Profile to Steps 3 and 4 -->
+  <line x1="400" y1="60" x2="400" y2="88" stroke="#7C3AED" stroke-width="2" stroke-dasharray="4 3"/>
+  <polygon points="400,94 396,86 404,86" fill="#7C3AED"/>
+
+  <line x1="480" y1="60" x2="570" y2="88" stroke="#7C3AED" stroke-width="2" stroke-dasharray="4 3"/>
+  <polygon points="574,94 566,88 573,83" fill="#7C3AED"/>
+
+  <!-- Process Blocks: 5 Steps -->
+  <!-- Step 1: Thu phím -->
+  <g transform="translate(10, 95)">
+    <rect width="150" height="115" rx="8" fill="#ECFDF5" stroke="#059669" stroke-width="2"/>
+    <text x="75" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#065F46">1. Thu phím</text>
+    <text x="75" y="65" text-anchor="middle" font-size="13.5" fill="#047857">Nhóm phím</text>
+    <text x="75" y="85" text-anchor="middle" font-size="13.5" fill="#047857">+ thời điểm</text>
+    <text x="75" y="105" text-anchor="middle" font-size="13.5" fill="#047857">nhấn / nhả</text>
+  </g>
+
+  <!-- Arrow 1 -> 2 -->
+  <line x1="162" y1="152" x2="182" y2="152" stroke="#475569" stroke-width="2.5"/>
+  <polygon points="187,152 180,147 180,157" fill="#475569"/>
+
+  <!-- Step 2: Cắt cửa sổ -->
+  <g transform="translate(189, 95)">
+    <rect width="150" height="115" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+    <text x="75" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#1E40AF">2. Cắt cửa sổ</text>
+    <text x="75" y="68" text-anchor="middle" font-size="13.5" fill="#1D4ED8">Cửa sổ 50 lần gõ</text>
+    <text x="75" y="92" text-anchor="middle" font-size="13.5" font-weight="600" fill="#1E40AF">12 đặc trưng</text>
+  </g>
+
+  <!-- Arrow 2 -> 3 -->
+  <line x1="341" y1="152" x2="361" y2="152" stroke="#475569" stroke-width="2.5"/>
+  <polygon points="366,152 359,147 359,157" fill="#475569"/>
+
+  <!-- Step 3: Chấm điểm lạ -->
+  <g transform="translate(368, 95)">
+    <rect width="150" height="115" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+    <text x="75" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#92400E">3. Chấm điểm lạ</text>
+    <text x="75" y="68" text-anchor="middle" font-size="13.5" fill="#B45309">L1 hoặc</text>
+    <text x="75" y="92" text-anchor="middle" font-size="13.5" fill="#B45309">Isolation Forest</text>
+  </g>
+
+  <!-- Arrow 3 -> 4 -->
+  <line x1="520" y1="152" x2="540" y2="152" stroke="#475569" stroke-width="2.5"/>
+  <polygon points="545,152 538,147 538,157" fill="#475569"/>
+
+  <!-- Step 4: Cộng dồn -->
+  <g transform="translate(547, 95)">
+    <rect width="150" height="115" rx="8" fill="#FFFBEB" stroke="#D97706" stroke-width="2"/>
+    <text x="75" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#92400E">4. Cộng dồn</text>
+    <text x="75" y="68" text-anchor="middle" font-size="13.5" fill="#B45309">Robust z-score</text>
+    <text x="75" y="92" text-anchor="middle" font-size="13.5" font-weight="600" fill="#92400E">Thuật toán CUSUM</text>
+  </g>
+
+  <!-- Arrow 4 -> 5 -->
+  <line x1="699" y1="152" x2="719" y2="152" stroke="#475569" stroke-width="2.5"/>
+  <polygon points="724,152 717,147 717,157" fill="#475569"/>
+
+  <!-- Step 5: Quyết định -->
+  <g transform="translate(726, 95)">
+    <rect width="144" height="115" rx="8" fill="#EFF6FF" stroke="#2563EB" stroke-width="2"/>
+    <text x="72" y="30" text-anchor="middle" font-size="16" font-weight="700" fill="#1E40AF">5. Quyết định</text>
+    <text x="72" y="65" text-anchor="middle" font-size="13.5" fill="#1D4ED8">Tiếp tục phiên</text>
+    <text x="72" y="85" text-anchor="middle" font-size="13.5" fill="#1D4ED8">Hỏi lại MFA</text>
+    <text x="72" y="105" text-anchor="middle" font-size="13.5" fill="#1D4ED8">Thu hồi phiên</text>
+  </g>
+</svg>
